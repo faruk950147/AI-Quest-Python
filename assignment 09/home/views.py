@@ -10,7 +10,7 @@ class HomeView(generic.View):
     
 class RegistrationView(generic.View):
     def get(self, request):
-        form = Registration()
+        form = Registration(auto_id='id_%s') # Custom auto_id prefix for form fields id customization
         return render(request, 'home/registration.html', {'form': form})
     
     def post(self, request):
