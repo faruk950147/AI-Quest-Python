@@ -10,7 +10,7 @@ class HomeView(generic.View):
     
 class RegistrationView(generic.View):
     def get(self, request):
-        form = Registration(auto_id='id_for_%s')
+        form = Registration()
         return render(request, 'home/registration.html', {'form': form})
     
     def post(self, request):
