@@ -24,52 +24,48 @@ from django import forms
   
 """
 
+from django import forms
+
 class Registration(forms.Form):
     name = forms.CharField(
         label='Name', initial='Faruk', max_length=50,
         widget=forms.TextInput(
-            attrs={'class': 'form-control', 'placeholder': 'Enter your full name'})
+            attrs={'id': 'name', 'class': 'form-control', 'placeholder': 'Enter your full name'})
     )
     email = forms.EmailField(
         label='Email',
         widget=forms.EmailInput(
-            attrs={'class': 'form-control', 'placeholder': 'Enter your email address'})
+            attrs={'id': 'email', 'class': 'form-control', 'placeholder': 'Enter your email address'})
     )
-
     roll = forms.IntegerField(
         label='Roll',
         widget=forms.NumberInput(
-            attrs={'class': 'form-control', 'placeholder': 'Enter your roll number'})
+            attrs={'id': 'roll', 'class': 'form-control', 'placeholder': 'Enter your roll number'})
     )
-
     dob = forms.DateField(
         label='Date of Birth',
         widget=forms.DateInput(
-            attrs={'type': 'date', 
-            'class': 'form-control',
-            'placeholder': 'Select your date of birth'})
+            attrs={'id': 'dob', 'type': 'date', 
+                   'class': 'form-control',
+                   'placeholder': 'Select your date of birth'})
     )
-
-    
     department = forms.ChoiceField(
         choices=[
             ('CSE', 'Computer Science'),
             ('EEE', 'Electrical Engineering'),
             ('ME', 'Mechanical')
         ],
-        widget=forms.Select(attrs={'class': 'form-control'})
+        widget=forms.Select(
+            attrs={'id': 'department', 'class': 'form-control'})
     )
-
     agree = forms.BooleanField(
         label='I agree to the terms', initial=False, required=True,
-        widget=forms.CheckboxInput(attrs={'class': 'form-check-input'})
+        widget=forms.CheckboxInput(
+            attrs={'id': 'agree', 'class': 'form-check-input'})
     )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        # as your wish
         self.order_fields(['roll', 'name', 'email', 'department', 'dob', 'agree'])
-
-
 
 
