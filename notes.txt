@@ -1,0 +1,55 @@
+from django.db import models
+from django.utils.text import slugify
+
+class Category(models.Model):
+    name = models.CharField(max_length=255, unique=True)
+    slug = models.SlugField(max_length=255, unique=True, blank=True)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.name
+
+
+class Project(models.Model):
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='projects')
+    name = models.CharField(max_length=255)
+    description = models.TextField(blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
+
+
+from django.shortcuts import render
+from .models import Project
+
+def project_list(request):
+    # Dynamic category ID নিতে GET parameter থেকে
+    category_id = request.GET.get('category_id')  # URL: ?category_id=1
+
+    if category_id:
+        # Dynamic ID দিয়ে filter
+        girls = Project.objects.filter(category_id=category_id)
+    else:
+        # যদি ID না দেয়, সব projects দেখাবে
+        girls = Project.objects.all()
+
+    return render(request, 'projects.html', {'projects': girls})
+
+
+<h2>Projects</h2>
+<ul>
+    {% for project in projects %}
+        <li>{{ project.name }} - Category: {{ project.category.name }}</li>
+    {% empty %}
+        <li>No projects found.</li>
+    {% endfor %}
+</ul>
+
+
+
+
