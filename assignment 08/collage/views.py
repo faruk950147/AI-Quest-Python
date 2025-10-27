@@ -8,3 +8,8 @@ class CollageView(generic.View):
             
         }
         return render(request, "collage/collage.html", context)
+    def post(self, request):
+        context = {
+            
+        }
+        return render(request, "collage/collage.html", context)
