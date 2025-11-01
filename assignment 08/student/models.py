@@ -11,7 +11,9 @@ class Student(models.Model):
     email = models.EmailField(max_length=150)
     phone = models.CharField(max_length=15)
     cgpa = models.DecimalField(validators=[ MinValueValidator(3.50), MaxValueValidator(5.00)], max_digits=5, decimal_places=2)
-    
+    status = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
   
     def __str__(self):
         return f"Name of student {self.name}"
