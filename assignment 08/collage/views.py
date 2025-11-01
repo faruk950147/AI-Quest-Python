@@ -6,7 +6,8 @@ from collage.models import Collage, Department
 class CollageView(generic.View):
     def get(self, request):
         context = {
-            'collages': Collage.objects.filter(),
+            'collages': Collage.objects.filter(status=True),
+            'departments': Department.objects.filter(status=True)
         }
         return render(request, "collage/collage.html", context)
     def post(self, request):
