@@ -25,10 +25,7 @@ class SingleProductView(generic.View):
 class CategoryProductView(generic.View):
     def get(self, request, id):
 
-        category = Product.objects.filter(category__id=id)
-        print(category)
-
         context = {
-            'category': category,
+            'category': Product.objects.filter(category__id=id),
         }
         return render(request, "store/category-product.html", context)
