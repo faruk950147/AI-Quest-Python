@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Category Products{% endblock %}
+
+{% block main_content %}
+<!--<h1>{{women}}</h1>-->
+{% for cates in category %}
+    <h2>{{cates.title}}</h2>
+{% endfor %}
+{% endblock main_content %}
