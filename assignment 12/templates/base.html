@@ -71,7 +71,8 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="profileDropdown">
                                 <li><a class="dropdown-item" href="{% url "profile" %}">Profile</a></li>
-                                <li><a class="dropdown-item" href="">Orders</a></li>
+                                <li><a class="dropdown-item" href="{% url "checkout" %}">Orders</a></li>
+                                <li><a class="dropdown-item" href="{% url "address" %}">Address</a></li>
                                 <li><a class="dropdown-item" href="{% url "password-change" %}">Change Password</a></li>
                                 <li><a class="dropdown-item" href="{% url "sign-out" %}">Logout</a></li>
                             </ul>
