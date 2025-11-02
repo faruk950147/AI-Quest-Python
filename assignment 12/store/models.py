@@ -3,13 +3,13 @@ from django.utils.html import mark_safe
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.utils.text import slugify
 
-# Category Model
+
 class Category(models.Model):
     parent = models.ForeignKey('self', related_name='children', on_delete=models.CASCADE, null=True, blank=True)
     title = models.CharField(max_length=150, unique=True)
     slug = models.SlugField(max_length=150, unique=True, null=True, blank=True)
-    keyword = models.CharField(max_length=150, null=True, blank=True)
-    description = models.CharField(max_length=150, null=True, blank=True)
+    keyword = models.CharField(max_length=150, default='N/A')
+    description = models.CharField(max_length=150, default='N/A')
     image = models.ImageField(upload_to='categories/%Y/%m/%d/') 
     status = models.BooleanField(default=True)
     created_date = models.DateTimeField(auto_now_add=True)
@@ -34,12 +34,11 @@ class Category(models.Model):
         return f'{self.title} - {"Active" if self.status else "Inactive"}'
 
 
-# Brand Model
 class Brand(models.Model):
     title = models.CharField(max_length=150, unique=True)
-    slug = models.SlugField(max_length=150, unique=True, blank=True)
-    keyword = models.CharField(max_length=150, null=True, blank=True)
-    description = models.CharField(max_length=150, null=True, blank=True)
+    slug = models.SlugField(max_length=150, unique=True, null=True, blank=True)
+    keyword = models.CharField(max_length=150, default='N/A')
+    description = models.CharField(max_length=150, default='N/A')
     image = models.ImageField(upload_to='brands/%Y/%m/%d/')
     status = models.BooleanField(default=True)
     created_date = models.DateTimeField(auto_now_add=True)
@@ -64,19 +63,18 @@ class Brand(models.Model):
         return f'{self.title} - {"Active" if self.status else "Inactive"}'
 
 
-# Product Model
 class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
-    title = models.CharField(max_length=150)
-    slug = models.SlugField(max_length=150, unique=True, blank=True)
-    selling_price = models.DecimalField(decimal_places=2, max_digits=10, default=1000.00)
-    discounted_price = models.DecimalField(decimal_places=2, max_digits=10, default=500.00)
+    title = models.CharField(max_length=150, unique=True)
+    slug = models.SlugField(max_length=150, unique=True, null=True, blank=True)
+    old_price = models.DecimalField(decimal_places=2, max_digits=10, default=1000.00)
+    sale_price = models.DecimalField(decimal_places=2, max_digits=10, default=500.00)
+    available_stock = models.PositiveIntegerField(validators=[MaxValueValidator(50)], default=0)
+    discount_percent = models.PositiveIntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], default=0)
+    keyword = models.TextField(default='N/A')
+    description = models.TextField(default='N/A')
     image = models.ImageField(upload_to='products/%Y/%m/%d/')
-    available_stock = models.PositiveIntegerField(
-        validators=[MaxValueValidator(50)],
-        default=0
-    )
     status = models.BooleanField(default=True)
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
