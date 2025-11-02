@@ -70,10 +70,10 @@
                                 aiQuest
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="profileDropdown">
-                                <li><a class="dropdown-item" href="">Profile</a></li>
+                                <li><a class="dropdown-item" href="{% url "profile" %}">Profile</a></li>
                                 <li><a class="dropdown-item" href="">Orders</a></li>
-                                <li><a class="dropdown-item" href="">Change Password</a></li>
-                                <li><a class="dropdown-item" href="#">Logout</a></li>
+                                <li><a class="dropdown-item" href="{% url "password-change" %}">Change Password</a></li>
+                                <li><a class="dropdown-item" href="{% url "sign-out" %}">Logout</a></li>
                             </ul>
                         </li>
                         <li class="nav-item mx-2">
@@ -81,10 +81,10 @@
                                     class="badge bg-danger">10</span> Cart </a>
                         </li>
                         <li class="nav-item mx-2">
-                            <a href="" class="nav-link text-white">Login</a>
+                            <a href="{% url "sign-in" %}" class="nav-link text-white">Sign-In</a>
                         </li>
                         <li class="nav-item mx-2">
-                            <a href="" class="nav-link text-white">Registration</a>
+                            <a href="{% url "sign-up" %}" class="nav-link text-white">Sign-Up</a>
                         </li>
                     </ul>
                 </div>
