@@ -5,9 +5,22 @@ from store.models import Category, Brand, Product
 class HomeView(generic.View):
     def get(self, request):
         context = {
-        """ Product model category is ForeignKey (Category model) type
-        it code Category table title field 'borkha' icontains filter use
-        borkha category product select and show """
+        """
+        The 'category' field of the Product model is a ForeignKey to the Category model.
+        This code filters the Category table's 'title' field using the value 'borkha':
+
+        - `icontains`: case-insensitive substring matching.  
+        Example: 'Borkha', 'borkha', 'BORKHA' all will match.
+
+        - `contains`: case-sensitive substring matching.  
+        Example: only 'borkha' will match; 'Borkha' or 'BORKHA' will not.
+
+        - `iexact`: case-insensitive exact match.  
+        Example: 'Borkha', 'borkha', 'BORKHA' will match, but 'borkhas' or 'borkha123' will not.
+
+        Using these filters, you can select and display all products belonging to the 'borkha' category.
+        """
+
         
         'borkha': Product.objects.filter(category__title__icontains='borkha')
         
