@@ -71,14 +71,14 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="profileDropdown">
                                 <li><a class="dropdown-item" href="{% url "profile" %}">Profile</a></li>
-                                <li><a class="dropdown-item" href="{% url "checkout" %}">Orders</a></li>
+                                <li><a class="dropdown-item" href="{% url "order" %}">Orders</a></li>
                                 <li><a class="dropdown-item" href="{% url "address" %}">Address</a></li>
                                 <li><a class="dropdown-item" href="{% url "password-change" %}">Change Password</a></li>
                                 <li><a class="dropdown-item" href="{% url "sign-out" %}">Logout</a></li>
                             </ul>
                         </li>
                         <li class="nav-item mx-2">
-                            <a href="" class="nav-link text-white"><span
+                            <a href="{% url "cart-detail" %}" class="nav-link text-white"><span
                                     class="badge bg-danger">10</span> Cart </a>
                         </li>
                         <li class="nav-item mx-2">
