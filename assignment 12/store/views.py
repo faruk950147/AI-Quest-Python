@@ -8,3 +8,10 @@ class HomeView(generic.View):
 
         }
         return render(request, "store/home.html", context)
+    
+class SingleProductView(generic.View):
+    def get(self, request):
+        context = {
+
+        }
+        return render(request, "store/single_product.html", context)
