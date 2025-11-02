@@ -14,4 +14,4 @@ class SingleProductView(generic.View):
         context = {
 
         }
-        return render(request, "store/single_product.html", context)
+        return render(request, "store/single-product.html", context)
