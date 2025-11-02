@@ -4,9 +4,7 @@ from django.views import generic
 class StudentView(generic.View):
     def get(self, request):
         context = {
-            "student_name": "John Doe",
-            "student_age": 20,
-            "student_roll":501,
+
         }
         return render(request, "student/student.html", context)
 
