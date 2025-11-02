@@ -1,5 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.html import mark_safe
+
+
+# Create your models here.
 
 DIVISION_CHOICES = (
     ('Dhaka', 'Dhaka'),
@@ -12,8 +16,8 @@ DIVISION_CHOICES = (
     ('Sylhet', 'Sylhet'),
 )
 
-class Profile(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='profiles')
+class Customer(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='customers')
     name = models.CharField(max_length=200)
     division = models.CharField(choices=DIVISION_CHOICES, max_length=50)
     district = models.CharField(max_length=200)
@@ -21,9 +25,19 @@ class Profile(models.Model):
     villorroad = models.CharField(max_length=100)
     phone = models.CharField(max_length=15, default='+880')
     zipcode = models.PositiveIntegerField()
+    image = models.ImageField(upload_to='Customer/%Y/%m/%d/')
+    
+    @property
+    def image_tag(self):
+        try:
+            return mark_safe(f'<img src="{self.image.url}" width="50" height="50"/>')
+        except AttributeError:
+            return mark_safe('<span>No Image</span>')
 
     class Meta:
-        verbose_name_plural = 'User Profiles'
+        ordering = ['id']
+        verbose_name_plural = '01. Customers'
 
     def __str__(self):
         return f"{self.name} - {self.user.username}"
+
