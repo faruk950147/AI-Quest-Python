@@ -3,7 +3,6 @@ from django.utils.html import mark_safe
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.utils.text import slugify
 
-
 class Category(models.Model):
     parent = models.ForeignKey('self', related_name='children', on_delete=models.CASCADE, null=True, blank=True)
     title = models.CharField(max_length=150, unique=True)
@@ -33,7 +32,6 @@ class Category(models.Model):
     def __str__(self):
         return f'{self.title} - {"Active" if self.status else "Inactive"}'
 
-
 class Brand(models.Model):
     title = models.CharField(max_length=150, unique=True)
     slug = models.SlugField(max_length=150, unique=True, null=True, blank=True)
@@ -62,7 +60,6 @@ class Brand(models.Model):
     def __str__(self):
         return f'{self.title} - {"Active" if self.status else "Inactive"}'
 
-
 class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
@@ -87,6 +84,26 @@ class Product(models.Model):
         if not self.slug:
             self.slug = slugify(self.title)
         super().save(*args, **kwargs)
+
+    @property
+    def image_tag(self):
+        if self.image and hasattr(self.image, 'url'):
+            return mark_safe(f'<img src="{self.image.url}" width="50" height="50"/>')
+        return mark_safe('<span>No Image</span>')
+
+    def __str__(self):
+        return f'{self.title} - {"Active" if self.status else "Inactive"}'
+
+class Slider(models.Model):
+    title = models.CharField(max_length=150, unique=True)
+    image = models.ImageField(upload_to='sliders/%Y/%m/%d/')
+    status = models.BooleanField(default=True)
+    created_date = models.DateTimeField(auto_now_add=True)
+    updated_date = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['id']
+        verbose_name_plural = '04. Sliders'
 
     @property
     def image_tag(self):
