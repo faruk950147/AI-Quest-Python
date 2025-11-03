@@ -1,16 +1,42 @@
-from django.shortcuts import render
-from django.views import generic
-from account.forms import SignUpForm
+from django.contrib import messages
+from django.contrib.auth import authenticate, login
+from django.shortcuts import render, redirect
+from django.views import View
+from account.forms import SignUpForm, SignInForm  
 
-# Create your views here.
+class SignUpView(View):
+    def get(self, request):
+        if request.user.is_authenticated:
+            return redirect('home')  
+        form = SignUpForm()
+        return render(request, 'account/sign-up.html', {'form': form})
 
-class SignUpView(generic.View):
+    def post(self, request):
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            messages.success(request, 'Account created successfully! Please sign in.')
+            return redirect('sign-in')
+        # if invalid form data 
+        messages.error(request, 'Please correct the errors below.')
+        return render(request, 'account/sign-up.html', {'form': form})
+
+
+class SignInView(View):
     def get(self, request):
-        context = {
-            'form': SignUpForm()
-        }
-        return render(request, 'account/sign-up.html', context)
-    
-class SignInView(generic.View):
-    def get(self, request):
+        if request.user.is_authenticated:
+            return redirect('home')
         return render(request, 'account/sign-in.html')
+
+    def post(self, request):
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+
+        user = authenticate(request, username=email, password=password)
+        if user is not None:
+            login(request, user)
+            messages.success(request, f'Welcome back, {user.username}!')
+            return redirect('home')
+        else:
+            messages.error(request, 'Invalid email or password.')
+            return render(request, 'account/sign-in.html')
