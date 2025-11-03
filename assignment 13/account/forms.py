@@ -1,6 +1,11 @@
 from django import forms
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.forms import (
+    UserCreationForm, 
+    AuthenticationForm,
+    PasswordChangeForm, #it's with old password
+    SetPasswordForm  #it's without old password
+)
 
 class SignUpForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
