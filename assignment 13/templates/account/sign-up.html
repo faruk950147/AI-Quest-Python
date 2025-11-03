@@ -8,6 +8,14 @@
             <h1 class="display-4">Sign Up</h1>
             <p class="lead">Please create an account.</p>
             <a class="btn btn-primary btn-lg" href="{% url 'sign-in' %}" role="button">Sign In</a>
+
+            <div class="mt-4">
+                <form method="post" action="">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-success">Sign-Up Now</button>
+                </form>
+            </div>
         </div>
     </section>
 {% endblock main_content %}
