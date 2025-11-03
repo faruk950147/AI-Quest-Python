@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from django.views import View
-from account.forms import SignUpForm, SignInForm  
+from account.forms import SignUpForm
 
 class SignUpView(View):
     def get(self, request):
