@@ -1,24 +1,39 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %} Sign Up {% endblock title %}
+{% block title %}Sign Up{% endblock title %}
 
 {% block main_content %}
-    <section class="main-section">
-        <div class="container text-center">
-            <h1 class="display-4">Sign Up</h1>
+<section class="main-section py-5">
+    <div class="container">
+        <div class="text-center mb-4">
+            <h1 class="display-5 fw-bold">Sign Up</h1>
             <p class="lead">Please create an account.</p>
- 
-            <div class="mt-4">
-                <form method="post" action="">
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-5">
+                <!--Message -->
+                {% include "alert.html" %}
+                <form method="post" action="" class="border p-4 rounded shadow-sm bg-light">
                     {% csrf_token %}
                     {% for field in form %}
-                    {{ field.label_tag }} {{ field }}
-                    <br>
+                        <div class="mb-3 text-start">
+                            {{ field.label_tag }}
+                            {{ field }}
+                            {% if field.errors %}
+                                <div class="text-danger small">{{ field.errors|striptags }}</div>
+                            {% endif %}
+                        </div>
                     {% endfor %}
-                    <button type="submit" class="btn btn-success">Sign-Up Now</button>
+                    <button type="submit" class="btn btn-success w-100">Sign Up Now</button>
                 </form>
-                <a class="text-decoration-none" href="{% url 'sign-in' %}" role="button">Sign In</a>
+
+                <p class="mt-3">
+                    Already have an account?
+                    <a href="{% url 'sign-in' %}" class="text-decoration-none fw-semibold">Sign In</a>
+                </p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 {% endblock main_content %}
