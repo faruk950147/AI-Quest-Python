@@ -48,7 +48,10 @@ class SignInForm(AuthenticationForm):
         fields = ['username', 'password']
 
 class ChangePasswordForm(PasswordChangeForm):
+    # Extending the parent class PasswordChangeForm
     def __init__(self, user, *args, **kwargs):
+        # Call the parent class __init__ method
+        super(ChangePasswordForm, self).__init__(user, *args, **kwargs) 
         super(ChangePasswordForm, self).__init__(user, *args, **kwargs) 
         self.fields['old_password'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Enter old password', 'type': 'password'})
         self.fields['new_password1'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Enter new password', 'type': 'password'})
