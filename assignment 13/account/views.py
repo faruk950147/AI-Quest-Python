@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from django.views import View
-from account.forms import SignUpForm, SignInForm
+from account.forms import SignUpForm, SignInForm, ChangePasswordForm
 
 
 class SignUpView(View):
@@ -50,3 +50,10 @@ class SignInView(View):
 
         return render(request, 'account/sign-in.html', {'form': form})
 
+class ChangesPasswordView(View):
+    def get(self, request):
+        form = ChangePasswordForm()
+        return render(request, 'account/change-password.html', {'form': form})
+
+    def post(self, request):
+        return render(request, 'account/change-password.html')
