@@ -30,6 +30,10 @@ class SignInView(View):
         return render(request, 'account/sign-in.html', {'form': form})
 
     def post(self, request):
+        """ when use authenticationForm use request=request, data=request.POST
+        to pass request object and POST data to the form
+        when use custom form just pass request.POST
+        """
         form = SignInForm(request=request, data=request.POST)
         if form.is_valid():
             username = form.cleaned_data.get('username')
