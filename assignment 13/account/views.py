@@ -66,9 +66,4 @@ class ChangesPasswordView(View):
             return redirect('home')  
         else:
             return render(request, 'account/change-password.html', {'form': form})
-   
-
- 
-
-
 
