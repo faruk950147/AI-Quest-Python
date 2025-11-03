@@ -61,7 +61,7 @@ class ChangesPasswordView(View):
             user = form.save()
             # automatically not log out after password change for 
             # this function update_session_auth_hash optional 
-            # update_session_auth_hash(request, user)  
+            update_session_auth_hash(request, user)  
             messages.success(request, "Password changed successfully.")
             return redirect('home')  
         else:
