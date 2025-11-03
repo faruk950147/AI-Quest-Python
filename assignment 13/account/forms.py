@@ -46,14 +46,14 @@ class SignInForm(AuthenticationForm):
     class Meta:
         model = User
         fields = ['username', 'password']
-        
+
 class ChangePasswordForm(PasswordChangeForm):
-    def __init__(self, *args, **kwargs):
-        super(ChangePasswordForm, self).__init__(*args, **kwargs)
-        self.fields['old_password'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Enter old password'})
-        self.fields['new_password1'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Enter new password'})
-        self.fields['new_password2'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Confirm new password'})
-        
+    def __init__(self, user, *args, **kwargs):
+        super(ChangePasswordForm, self).__init__(user, *args, **kwargs) 
+        self.fields['old_password'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Enter old password', 'type': 'password'})
+        self.fields['new_password1'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Enter new password', 'type': 'password'})
+        self.fields['new_password2'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Confirm new password', 'type': 'password'})
+
     class Meta:
         model = User
         fields = ['old_password', 'new_password1', 'new_password2']

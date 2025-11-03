@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from django.views import View
 from account.forms import SignUpForm, SignInForm, ChangePasswordForm
-
+from django.contrib.auth import update_session_auth_hash
 
 class SignUpView(View):
     def get(self, request):
@@ -52,8 +52,23 @@ class SignInView(View):
 
 class ChangesPasswordView(View):
     def get(self, request):
-        form = ChangePasswordForm()
+        form = ChangePasswordForm(user=request.user)
         return render(request, 'account/change-password.html', {'form': form})
 
     def post(self, request):
-        return render(request, 'account/change-password.html')
+        form = ChangePasswordForm(user=request.user, data=request.POST)
+        if form.is_valid():
+            user = form.save()
+            # automatically not log out after password change for 
+            # this function update_session_auth_hash optional 
+            # update_session_auth_hash(request, user)  
+            messages.success(request, "Password changed successfully.")
+            return redirect('home')  
+        else:
+            return render(request, 'account/change-password.html', {'form': form})
+   
+
+ 
+
+
+
