@@ -1,0 +1,13 @@
+extends "base.html" %}
+{% load static %}
+{% block title %} Sign Up {% endblock title %}
+
+{% block main_content %}
+    <section class="main-section">
+        <div class="container text-center">
+            <h1 class="display-4">Sign Up</h1>
+            <p class="lead">Please create an account.</p>
+            <a class="btn btn-primary btn-lg" href="{% url 'sign-in' %}" role="button">Sign In</a>
+        </div>
+    </section>
+{% endblock main_content %}
