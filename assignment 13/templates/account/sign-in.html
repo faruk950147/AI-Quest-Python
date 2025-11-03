@@ -15,7 +15,7 @@
                 {% include "alert.html" %}
                 <form method="post" action="" class="border p-4 rounded shadow-sm bg-light">
                     {% csrf_token %}
-  {% comment %}                   {% for field in form %}
+                    {% for field in form %}
                         <div class="mb-3 text-start">
                             {{ field.label_tag }}
                             {{ field }}
@@ -23,7 +23,7 @@
                                 <div class="text-danger small">{{ field.errors|striptags }}</div>
                             {% endif %}
                         </div>
-                    {% endfor %} {% endcomment %}
+                    {% endfor %}
                     <button type="submit" class="btn btn-success w-100">Sign Up Now</button>
                 </form>
 

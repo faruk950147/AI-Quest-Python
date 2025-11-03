@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
 class SignUpForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
@@ -31,3 +31,13 @@ class SignUpForm(UserCreationForm):
         if commit:
             user.save()
         return user
+
+class SignInForm(AuthenticationForm):
+    def __init__(self, *args, **kwargs):
+        super(SignInForm, self).__init__(*args, **kwargs)
+        self.fields['username'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Enter username'})
+        self.fields['password'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Enter password'})
+    
+    class Meta:
+        model = User
+        fields = ['username', 'password']
