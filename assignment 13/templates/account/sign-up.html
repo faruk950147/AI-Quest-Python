@@ -11,7 +11,10 @@
             <div class="mt-4">
                 <form method="post" action="">
                     {% csrf_token %}
-                    {{ form.as_p }}
+                    {% for field in form %}
+                    {{ field.label_tag }} {{ field }}
+                    <br>
+                    {% endfor %}
                     <button type="submit" class="btn btn-success">Sign-Up Now</button>
                 </form>
                 <a class="text-decoration-none" href="{% url 'sign-in' %}" role="button">Sign In</a>
