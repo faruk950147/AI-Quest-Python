@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 from django.views import View
 from account.forms import SignUpForm, SignInForm, ChangePasswordForm
@@ -20,7 +20,6 @@ class SignUpView(View):
             return redirect('sign-in')
         messages.error(request, 'Please correct the errors below.')
         return render(request, 'account/sign-up.html', {'form': form})
-
 
 class SignInView(View):
     def get(self, request):
@@ -49,6 +48,12 @@ class SignInView(View):
             messages.error(request, 'Please correct the errors below.')
 
         return render(request, 'account/sign-in.html', {'form': form})
+
+class SignOutView(View):
+    def get(self, request):
+        logout(request)
+        messages.success(request, 'You have been signed out successfully.')
+        return redirect('sign-in')
 
 class ChangesPasswordView(View):
     def get(self, request):
