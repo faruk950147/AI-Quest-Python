@@ -1,10 +1,11 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, HttpResponseRedirect, redirect
 from django.views import generic
+from account.forms import SignUpForm, SignInForm
 # Create your views here.
 class SignUpView(generic.View):
     def get(self, request):
-        
-        return render(request, 'account/sign-up.html', {})
+        form = SignUpForm()
+        return render(request, 'account/sign-up.html', {'form': form})
     
 class SignInView(generic.View):
     def get(self, request):
