@@ -67,7 +67,7 @@
                         <li class="nav-item dropdown mx-2">
                             <a class="nav-link dropdown-toggle text-white" href="#" id="profileDropdown" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                aiQuest
+                                {{request.user.username|default:"Profile"}}
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="profileDropdown">
                                 {% if request.user.is_authenticated %}

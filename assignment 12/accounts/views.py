@@ -23,6 +23,7 @@ class SignUpView(generic.View):
         return render(request, 'account/sign-up.html', {'form': form})
 
 # Sign-in View
+""" 
 class SignInView(generic.View):
     def get(self, request):
         if request.user.is_authenticated:
@@ -64,7 +65,9 @@ class SignOutView(LoginRequiredMixin, generic.View):
         logout(request)
         messages.success(request, 'You have been signed out successfully.')
         return redirect('sign-in')
-
+        
+ """
+ 
 # Password Change View
 class PasswordChangeView(generic.View):
     def get(self, request):
@@ -87,6 +90,6 @@ class PasswordResetView(generic.View):
         return render(request, 'accounts/password-reset.html', {})
 
 # Profile View
-class ProfileView(generic.View):
+class ProfileView(LoginRequiredMixin, generic.View):
     def get(self, request):
         return render(request, 'accounts/profile.html', {})
