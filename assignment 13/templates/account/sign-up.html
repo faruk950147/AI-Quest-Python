@@ -13,7 +13,7 @@
             <div class="col-md-6 col-lg-5">
                 <!--Message -->
                 {% include "alert.html" %}
-                <form method="post" action="" class="border p-4 rounded shadow-sm bg-light">
+                <form method="post" action="" class="border p-4 rounded shadow-sm bg-light" novalidate>
                     {% csrf_token %}
                     {% for field in form %}
                         <div class="mb-3 text-start">
