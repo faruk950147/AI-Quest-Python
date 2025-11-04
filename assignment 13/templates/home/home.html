@@ -7,8 +7,6 @@
         <div class="container text-center">
             <h1 class="display-4">Welcome to the E-Shop</h1>
             <p class="lead">{{request.user.username}}</p>
-            <a href="{% url 'sign-up' %}" class="btn btn-primary btn-lg mt-3">Sign Up</a>
-            <a href="{% url 'sign-in' %}" class="btn btn-secondary btn-lg mt-3">Sign In</a>
         </div>
     </section>
 {% endblock main_content %}
