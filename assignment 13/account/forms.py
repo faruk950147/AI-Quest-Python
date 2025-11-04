@@ -13,24 +13,10 @@ class SignUpForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         # Call the parent class __init__ method
         super(SignUpForm, self).__init__(*args, **kwargs)
-        self.fields['username'].widget.attrs.update({
-            'class': 'form-control', 
-            'placeholder': _('Enter username')
-        })
-        self.fields['password1'].widget.attrs.update({
-            'class': 'form-control', 
-            'placeholder': _('Enter password')
-        })
-        self.fields['password2'].widget.attrs.update({
-            'class': 'form-control', 
-            'placeholder': _('Confirm password')
-        })
-    email = forms.EmailField(
-        widget=forms.EmailInput(attrs={
-            'class': 'form-control', 
-            'placeholder': _('Enter email')
-        })
-    )
+        self.fields['username'].widget.attrs.update({'class': 'form-control', 'placeholder': _('Enter username')})
+        self.fields['password1'].widget.attrs.update({'class': 'form-control', 'placeholder': _('Enter password')})
+        self.fields['password2'].widget.attrs.update({'class': 'form-control', 'placeholder': _('Confirm password')})
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': _('Enter email')}))
 
     class Meta:
         model = User
@@ -66,14 +52,8 @@ class SignInForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
         # Call the parent class __init__ method
         super(SignInForm, self).__init__(*args, **kwargs)
-        self.fields['username'].widget.attrs.update({
-            'class': 'form-control', 
-            'placeholder': _('Enter username')
-        })
-        self.fields['password'].widget.attrs.update({
-            'class': 'form-control', 
-            'placeholder': _('Enter password')
-        })
+        self.fields['username'].widget.attrs.update({'class': 'form-control', 'placeholder': _('Enter username')})
+        self.fields['password'].widget.attrs.update({'class': 'form-control', 'placeholder': _('Enter password')})
     
     class Meta:
         model = User
@@ -85,21 +65,9 @@ class ChangePasswordForm(PasswordChangeForm):
     def __init__(self, user, *args, **kwargs):
         # Call the parent class __init__ method
         super(ChangePasswordForm, self).__init__(user, *args, **kwargs) 
-        self.fields['old_password'].widget.attrs.update({
-            'class': 'form-control', 
-            'placeholder': _('Enter old password'), 
-            'type': 'password'
-        })
-        self.fields['new_password1'].widget.attrs.update({
-            'class': 'form-control', 
-            'placeholder': _('Enter new password'), 
-            'type': 'password'
-        })
-        self.fields['new_password2'].widget.attrs.update({
-            'class': 'form-control', 
-            'placeholder': _('Confirm new password'), 
-            'type': 'password'
-        })
+        self.fields['old_password'].widget.attrs.update({'class': 'form-control', 'placeholder': _('Enter old password'), 'type': 'password'})
+        self.fields['new_password1'].widget.attrs.update({'class': 'form-control', 'placeholder': _('Enter new password'), 'type': 'password'})
+        self.fields['new_password2'].widget.attrs.update({'class': 'form-control', 'placeholder': _('Confirm new password'), 'type': 'password'})
 
     class Meta:
         model = User
