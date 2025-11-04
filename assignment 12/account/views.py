@@ -9,7 +9,8 @@ class SignUpView(generic.View):
     
 class SignInView(generic.View):
     def get(self, request):
-        return render(request, 'account/sign-in.html', {})
+        form = SignInForm()
+        return render(request, 'account/sign-in.html', {'form': form})
 
 class SignOutView(generic.View):
     def get(self, request):
