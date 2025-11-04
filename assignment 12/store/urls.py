@@ -5,6 +5,6 @@ from store.views import (
 urlpatterns = [
     # Define your URL patterns here
     path('', HomeView.as_view(), name='home'),
-    path('single-product/', SingleProductView.as_view(), name='single-product'),
+    path('single-product/<str:slug>/<int:id>/', SingleProductView.as_view(), name='single-product'),
     path('category-product/<int:id>', CategoryProductView.as_view(), name='category-product'),
 ]

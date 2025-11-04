@@ -1,10 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from store.models import Category, Brand, Product
 # Create your views here.
 class HomeView(generic.View):
     def get(self, request):
-        context = {
         """
         The 'category' field of the Product model is a ForeignKey to the Category model.
         This code filters the Category table's 'title' field using the value 'borkha':
@@ -20,14 +19,15 @@ class HomeView(generic.View):
 
         Using these filters, you can select and display all products belonging to the 'borkha' category.
         """
+        context = {
         'borkha': Product.objects.filter(category__title__icontains='borkha'),
         }
         return render(request, "store/home.html", context)
 
 class SingleProductView(generic.View):
-    def get(self, request):
+    def get(self, request, slug, id):
         context = {
-
+            'product':get_object_or_404(Product, slug=slug, id=id),
         }
         return render(request, "store/single-product.html", context)
     

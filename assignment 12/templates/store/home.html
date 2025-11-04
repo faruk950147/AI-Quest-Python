@@ -5,6 +5,7 @@
 <!--Banner Slider-->
 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
+        
         <div class="carousel-item active">
             <img src="{% static 'assets/images/banner/b1.jpg' %}" class="d-block w-100" alt="...">
         </div>
@@ -24,11 +25,13 @@
 {% block live_sale %} 
 <!-- Live Sale Section -->
 <div class="container">
+
     <div class="row text-center p-5 text-white border-bottom shadow" style="background-color: violet;">
         <h1>Welcome to aiQuest Fashion</h1>
         <span>10% Instant Discount above 10,000 TK's product buy</span>
         <small class="fw-lighter">Term and Condition Applied (For details visit 'https://www.aiquest.org/'))</small>
     </div>
+
 </div>
 <!-- End Live Sale Section -->
 {% endblock live_sale %}
@@ -39,7 +42,7 @@
     <h2>aiQuest | Gents Pant</h2>
     <!-- Slider 1 -->
     <div class="owl-carousel" id="slider1">
-        <a href="{% url 'single-product' %}" class="btn">
+        <a href="{% url 'single-product' product.slug product.id %}" class="btn">
             <div class="item"><img src="{% static 'assets/images/product/1.jpg' %}" alt="" height="200px"><span
                     class="fw-bold">Product 1</span><br><span class="fs-5">Tk. 7500</span></div>
         </a>
