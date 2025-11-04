@@ -1,22 +1,25 @@
 from django import forms
 from django.contrib.auth.models import User
-# why use gettext_lazy as _ ? because it's for translation purpose
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.forms import (
-    UserCreationForm, 
+    UserCreationForm,
     AuthenticationForm,
-    PasswordChangeForm,  # it's with old password
-    SetPasswordForm      # it's without old password
+    PasswordChangeForm,
+    SetPasswordForm,
+    PasswordResetForm
 )
 
+# ------------------ Sign Up Form ------------------
 class SignUpForm(UserCreationForm):
+    email = forms.EmailField(
+        widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': _('Enter email')})
+    )
+
     def __init__(self, *args, **kwargs):
-        # Call the parent class __init__ method
-        super(SignUpForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.fields['username'].widget.attrs.update({'class': 'form-control', 'placeholder': _('Enter username')})
         self.fields['password1'].widget.attrs.update({'class': 'form-control', 'placeholder': _('Enter password')})
         self.fields['password2'].widget.attrs.update({'class': 'form-control', 'placeholder': _('Confirm password')})
-    email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': _('Enter email')}))
 
     class Meta:
         model = User
@@ -48,27 +51,33 @@ class SignUpForm(UserCreationForm):
         return user
 
 
+# ------------------ Sign In Form ------------------
 class SignInForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
-        # Call the parent class __init__ method
-        super(SignInForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.fields['username'].widget.attrs.update({'class': 'form-control', 'placeholder': _('Enter username')})
         self.fields['password'].widget.attrs.update({'class': 'form-control', 'placeholder': _('Enter password')})
-    
-    class Meta:
-        model = User
-        fields = ['username', 'password']
 
 
+# ------------------ Change Password Form ------------------
 class ChangePasswordForm(PasswordChangeForm):
-    # Extending the parent class PasswordChangeForm
     def __init__(self, user, *args, **kwargs):
-        # Call the parent class __init__ method
-        super(ChangePasswordForm, self).__init__(user, *args, **kwargs) 
+        super().__init__(user, *args, **kwargs)
         self.fields['old_password'].widget.attrs.update({'class': 'form-control', 'placeholder': _('Enter old password'), 'type': 'password'})
         self.fields['new_password1'].widget.attrs.update({'class': 'form-control', 'placeholder': _('Enter new password'), 'type': 'password'})
         self.fields['new_password2'].widget.attrs.update({'class': 'form-control', 'placeholder': _('Confirm new password'), 'type': 'password'})
 
-    class Meta:
-        model = User
-        fields = ['old_password', 'new_password1', 'new_password2']
+
+# ------------------ Reset Password Form ------------------
+class ResetPasswordForm(PasswordResetForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['email'].widget.attrs.update({'class': 'form-control', 'placeholder': _('Enter your registered email')})
+
+
+# ------------------ Set New Password Form ------------------
+class SetNewPasswordForm(SetPasswordForm):
+    def __init__(self, user, *args, **kwargs):
+        super().__init__(user, *args, **kwargs)
+        self.fields['new_password1'].widget.attrs.update({'class': 'form-control', 'placeholder': _('Enter new password'), 'type': 'password'})
+        self.fields['new_password2'].widget.attrs.update({'class': 'form-control', 'placeholder': _('Confirm new password'), 'type': 'password'})
