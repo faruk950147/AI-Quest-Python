@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # custom apps
-    'account.apps.AccountConfig',
+    'accounts.apps.AccountsConfig',
     'store.apps.StoreConfig',
     'cart.apps.CartConfig',
     'order.apps.OrderConfig',
@@ -124,6 +124,8 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR / 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR / 'staticfiles')
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR / 'media')
+LOGOUT_REDIRECT_URL = 'sign-in'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
