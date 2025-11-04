@@ -5,6 +5,7 @@ from accounts.views import (
     # SignInView, 
     # SignOutView, 
     PasswordChangeView, 
+    PasswordResetView,
     ProfileView
 )
 from accounts.forms import SignInForm
@@ -19,8 +20,6 @@ urlpatterns = [
     authentication_form=SignInForm), name='sign-in'),
     path('sign-out/', auth_views.LogoutView.as_view(next_page='sign-in'), name='sign-out'),
     path('password-change/', PasswordChangeView.as_view(), name='password-change'),
+    path('password-reset/', PasswordResetView.as_view(), name='password-reset'),
     path('profile/', ProfileView.as_view(), name='profile'),
-    path('password-reset/', auth_views.PasswordResetView.as_view(
-        template_name='account/password-reset.html'
-    ), name='password-reset'),
 ]
