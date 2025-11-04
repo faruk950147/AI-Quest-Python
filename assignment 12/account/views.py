@@ -26,7 +26,7 @@ class SignUpView(generic.View):
         messages.error(request, 'Please correct the errors below.')
         return render(request, 'account/sign-up.html', {'form': form})
 
-class SignInView(generic.View):
+""" class SignInView(generic.View):
     def get(self, request):
         if request.user.is_authenticated:
             return redirect('profile')
@@ -34,10 +34,10 @@ class SignInView(generic.View):
         return render(request, 'account/sign-in.html', {'form': form})
 
     def post(self, request):
-        """ when use authenticationForm use request=request, data=request.POST
-        to pass request object and POST data to the form
-        when use custom form just pass request.POST
-        """
+        # when use authenticationForm use request=request, data=request.POST
+        # to pass request object and POST data to the form
+        # when use custom form just pass request.POST
+        
         form = SignInForm(request=request, data=request.POST)
         if form.is_valid():
             username = form.cleaned_data.get('username')
@@ -56,8 +56,10 @@ class SignInView(generic.View):
 
 class SignOutView(generic.View):
     def get(self, request):
+        logout(request)
+        messages.success(request, 'You have been signed out successfully.')
         return redirect('sign-in')
-    
+     """
 class PasswordChangeView(generic.View):
     def get(self, request):
         form = ChangePasswordForm(user=request.user)
