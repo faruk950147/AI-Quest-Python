@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.views import generic
 from accounts.forms import SignUpForm, SignInForm, ChangePasswordForm
 from django.contrib.auth import update_session_auth_hash, logout, authenticate, login
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Sign-up View
 class SignUpView(generic.View):
@@ -22,7 +23,7 @@ class SignUpView(generic.View):
         return render(request, 'account/sign-up.html', {'form': form})
 
 # Sign-in View
-""" class SignInView(generic.View):
+class SignInView(generic.View):
     def get(self, request):
         if request.user.is_authenticated:
             return redirect('profile')
@@ -49,14 +50,21 @@ class SignUpView(generic.View):
             messages.error(request, 'Please correct the errors below.')
 
         return render(request, 'accounts/sign-in.html', {'form': form})
-    
+
 # Sign-out View
-class SignOutView(generic.View):
+class SignOutView(LoginRequiredMixin, generic.View):
+    # Logs out the user and redirects to the sign-in page with a success message.
+    def post(self, request):
+        logout(request)
+        messages.success(request, 'You have been signed out successfully.')
+        return redirect('sign-in')
+    
+    # Optional: support GET request too (less secure)
     def get(self, request):
         logout(request)
         messages.success(request, 'You have been signed out successfully.')
         return redirect('sign-in')
- """
+
 # Password Change View
 class PasswordChangeView(generic.View):
     def get(self, request):

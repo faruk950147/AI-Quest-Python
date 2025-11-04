@@ -75,11 +75,10 @@
                                 <li><a class="dropdown-item" href="{% url 'order' %}">Orders</a></li>
                                 <li><a class="dropdown-item" href="{% url 'address' %}">Address</a></li>
                                 <li><a class="dropdown-item" href="{% url 'password-change' %}">Change Password</a></li>
-                                {% comment %} <li> <a class="dropdown-item" href="{% url 'sign-out' %}">Sign Out</a> </li> {% endcomment %}
                                 <li>
-                                    <form action="{% url 'sign-out' %}" method="post" class="d-inline">
+                                    <form method="post" action="{% url 'sign-out' %}">
                                         {% csrf_token %}
-                                        <button type="submit" class="btn btn-link text-decoration-none text-dark p-0">Sign Out</button>
+                                        <button type="submit" class="btn btn-link text-decoration-none text-dark">Sign Out</button>
                                     </form>
                                 </li>
                             {% else %}
