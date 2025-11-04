@@ -47,3 +47,12 @@ class SignInForm(AuthenticationForm):
     class Meta:
         model = User
         fields = ('username', 'password')
+
+class ChangePasswordForm(PasswordChangeForm):
+    old_password = forms.CharField(label='Old Password', widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Old Password'}))
+    new_password1 = forms.CharField(label='New Password', widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'New Password'}))
+    new_password2 = forms.CharField(label='Confirm New Password', widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Confirm New Password'}))
+    
+    class Meta:
+        model = User
+        fields = ('old_password', 'new_password1', 'new_password2')
