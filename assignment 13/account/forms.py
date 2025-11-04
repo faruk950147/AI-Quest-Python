@@ -9,6 +9,7 @@ from django.contrib.auth.forms import (
 
 class SignUpForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
+        # Call the parent class __init__ method
         super(SignUpForm, self).__init__(*args, **kwargs)
         self.fields['username'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Enter username'})
         self.fields['password1'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Enter password'})
@@ -39,6 +40,7 @@ class SignUpForm(UserCreationForm):
 
 class SignInForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
+        # Call the parent class __init__ method
         super(SignInForm, self).__init__(*args, **kwargs)
         self.fields['username'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Enter username'})
         self.fields['password'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Enter password'})
@@ -51,7 +53,6 @@ class ChangePasswordForm(PasswordChangeForm):
     # Extending the parent class PasswordChangeForm
     def __init__(self, user, *args, **kwargs):
         # Call the parent class __init__ method
-        super(ChangePasswordForm, self).__init__(user, *args, **kwargs) 
         super(ChangePasswordForm, self).__init__(user, *args, **kwargs) 
         self.fields['old_password'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Enter old password', 'type': 'password'})
         self.fields['new_password1'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Enter new password', 'type': 'password'})
