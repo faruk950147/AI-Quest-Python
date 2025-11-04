@@ -2,9 +2,11 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.views import generic
+from django.contrib.auth.models import User
 from account.forms import (
     SignUpForm,
     SignInForm,
+    ChangePasswordForm,
 )
 
 # Create your views here.
@@ -58,7 +60,8 @@ class SignOutView(generic.View):
     
 class PasswordChangeView(generic.View):
     def get(self, request):
-        return render(request, 'account/password-change.html', {})
+        form = ChangePasswordForm(user=request.user)
+        return render(request, 'account/password-change.html', {'form': form})
     
 class PasswordResetView(generic.View):
     def get(self, request):
