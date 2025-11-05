@@ -20,7 +20,7 @@ class SignUpView(generic.View):
             messages.success(request, 'Account created successfully! Please sign in.')
             return redirect('sign-in')
         messages.error(request, 'Please correct the errors below.')
-        return render(request, 'account/sign-up.html', {'form': form})
+        return render(request, 'accounts/sign-up.html', {'form': form})
 
 # Sign-in View
 """ 
@@ -66,8 +66,7 @@ class SignOutView(LoginRequiredMixin, generic.View):
         messages.success(request, 'You have been signed out successfully.')
         return redirect('sign-in')
         
- """
- 
+
 # Password Change View
 class PasswordChangeView(generic.View):
     def get(self, request):
@@ -83,6 +82,9 @@ class PasswordChangeView(generic.View):
             return redirect('profile')
         messages.error(request, 'Please correct the errors below.')
         return render(request, 'accounts/password-change.html', {'form': form})
+
+ """
+ 
 
 # Password Reset View
 class PasswordResetView(generic.View):
