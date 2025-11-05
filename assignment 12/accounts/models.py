@@ -25,8 +25,9 @@ class Profile(models.Model):
     villorroad = models.CharField(max_length=100)
     phone = models.CharField(max_length=15, default='+880')
     zipcode = models.PositiveIntegerField()
-    image = models.ImageField(upload_to='Profile/%Y/%m/%d/')
-    
+    # image = models.ImageField(upload_to='Profile/%Y/%m/%d/')
+    # created_date = models.DateTimeField(auto_now_add=True)
+    # updated_date = models.DateTimeField(auto_now=True)
     @property
     def image_tag(self):
         try:
