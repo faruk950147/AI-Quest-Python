@@ -1,9 +1,11 @@
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.views import View
 from account.forms import SignUpForm, SignInForm, ChangePasswordForm, ResetPasswordForm, SetNewPasswordForm
 from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.models import User
 
 class SignUpView(View):
     def get(self, request):
@@ -72,3 +74,25 @@ class ChangesPasswordView(View):
         else:
             return render(request, 'account/change-password.html', {'form': form})
 
+class ResetPasswordView(View):
+    def get(self, request):
+        form = ResetPasswordForm()
+        return render(request, 'account/password-reset.html', {'form': form})
+
+    def post(self, request):
+        form = ResetPasswordForm(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data.get('email')
+            if User.objects.filter(email=email).exists():
+                user = User.objects.get(email=email)
+
+
+                reset_link = request.build_absolute_uri(reverse('password_reset_confirm'))
+                messages.success(request, f'Password reset link sent to {email}.')
+                
+                # send_mail(subject, message, from_email, [email])
+
+                return redirect('password_reset_done')
+            else:
+                messages.error(request, '।')
+        return render(request, 'account/password-reset.html', {'form': form})
