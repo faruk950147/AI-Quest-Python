@@ -52,6 +52,13 @@ urlpatterns = [
             template_name='accounts/password-reset-confirm.html', form_class=SetPasswordForm),
         name='password_reset_confirm'
     ),
+    path(
+        'password-reset-complete/',
+        auth_views.PasswordResetCompleteView.as_view(
+            template_name='accounts/password-reset-complete.html',
+        ),
+        name='password_reset_complete'
+    ),
 
     path('profile/', ProfileView.as_view(), name='profile')
 ]
