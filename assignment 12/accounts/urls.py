@@ -6,10 +6,10 @@ from accounts.views import (
     # SignInView, 
     # SignOutView, 
     # PasswordChangeView, 
-    PasswordResetView,
+    # PasswordResetView,
     ProfileView
 )
-from accounts.forms import SignInForm, ChangePasswordForm
+from accounts.forms import SignInForm, ChangePasswordForm, PasswordResetForm, SetPasswordForm
 
 urlpatterns = [
     path('sign-up/', SignUpView.as_view(), name='sign-up'),
@@ -37,7 +37,21 @@ urlpatterns = [
     #     template_name='accounts/password-change-done.html'
     # ), name='password-change-done'),
 
-    path('password-reset/', PasswordResetView.as_view(), name='password-reset'),
+    path('password-reset/', auth_views.PasswordResetView.as_view(
+        template_name='accounts/password-reset.html', 
+        form_class=PasswordResetForm,
+        ), name='password_reset'),    
+    path(
+        'password-reset-done/',
+        auth_views.PasswordResetDoneView.as_view(template_name='accounts/password-reset-done.html'),
+        name='password_reset_done'
+    ),
+    path(
+        'password-reset-confirm/<uidb64>/<token>/',
+        auth_views.PasswordResetConfirmView.as_view(
+            template_name='accounts/password-reset-confirm.html', form_class=SetPasswordForm),
+        name='password_reset_confirm'
+    ),
 
     path('profile/', ProfileView.as_view(), name='profile')
 ]

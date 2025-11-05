@@ -87,10 +87,10 @@ class PasswordChangeView(generic.View):
  
 
 # Password Reset View
-class PasswordResetView(generic.View):
+""" class PasswordResetView(generic.View):
     def get(self, request):
         return render(request, 'accounts/password-reset.html', {})
-
+ """
 # Profile View
 class ProfileView(LoginRequiredMixin, generic.View):
     def get(self, request):
