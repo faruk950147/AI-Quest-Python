@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 from django.views import View
-from account.forms import SignUpForm, SignInForm, ChangePasswordForm
+from account.forms import SignUpForm, SignInForm, ChangePasswordForm, ResetPasswordForm, SetNewPasswordForm
 from django.contrib.auth import update_session_auth_hash
 
 class SignUpView(View):
