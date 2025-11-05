@@ -85,13 +85,9 @@ class ResetPasswordView(View):
             email = form.cleaned_data.get('email')
             if User.objects.filter(email=email).exists():
                 user = User.objects.get(email=email)
-
-
                 reset_link = request.build_absolute_uri(reverse('password_reset_confirm'))
                 messages.success(request, f'Password reset link sent to {email}.')
-                
                 # send_mail(subject, message, from_email, [email])
-
                 return redirect('password_reset_done')
             else:
                 messages.error(request, '।')
