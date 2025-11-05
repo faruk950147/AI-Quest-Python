@@ -90,5 +90,5 @@ class ResetPasswordView(View):
                 # send_mail(subject, message, from_email, [email])
                 return redirect('password_reset_done')
             else:
-                messages.error(request, '।')
+                messages.error(request, 'You email does not exists।')
         return render(request, 'account/password-reset.html', {'form': form})
