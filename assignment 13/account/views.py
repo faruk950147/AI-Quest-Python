@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse
 from django.views import View
 from account.forms import SignUpForm, SignInForm, ChangePasswordForm, ResetPasswordForm, SetNewPasswordForm
@@ -84,7 +84,9 @@ class ResetPasswordView(View):
         if form.is_valid():
             email = form.cleaned_data.get('email')
             if User.objects.filter(email=email).exists():
-                user = User.objects.get(email=email)
+                user = get_object_or_404(User, email=email)
+                print('==========================', user, '==========================')
             else:
+                print("================ Don't exist")
                 messages.error(request, 'You email does not exists।')
         return render(request, 'account/password-reset.html', {'form': form})
