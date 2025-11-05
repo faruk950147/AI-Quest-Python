@@ -20,7 +20,9 @@ class HomeView(generic.View):
         Using these filters, you can select and display all products belonging to the 'borkha' category.
         """
         context = {
-        'borkha': Product.objects.filter(category__title__icontains='borkha'),
+        'gents_pants': Product.objects.filter(category__title__icontains='Gents Pants', status=True),
+        'borkhas': Product.objects.filter(category__title__icontains='borkhas', status=True),
+        'baby_fashions': Product.objects.filter(category__title__icontains='Baby Fashion', status=True),
         }
         return render(request, "store/home.html", context)
 

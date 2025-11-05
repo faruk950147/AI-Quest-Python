@@ -43,12 +43,21 @@
     <h2>E-Shop | Gents Pant</h2>
     <!-- Slider 1 -->
     <div class="owl-carousel" id="slider1">
+        {% if gents_pants %}
+        {% for gents_pant in gents_pants %}
         <div class="item">
-            <img src="{% static 'assets/images/product/1.jpg' %}" alt="" height="200px">
-            <span class="fw-bold">
-                Product 1</span><br><span class="fs-5">Tk. 7500
+            <a class="text-decoration-none" href=""><img src="{{gents_pant.image.url}}" alt="" height="200px"></a>
+            <span class="fw-bold"><a class="text-decoration-none text-dark" href="">{{gents_pant.title|title}}</a></span><br>
+                    {{gents_pant.sale_price|title}}
+                    {% if gents_pant.old_price %}
+                        <del>{{gents_pant.old_price|title}}</del>
+                    {% endif %}
             </span>
         </div>
+        {% endfor %}
+        {% else %}
+        <h3> Please category name must be Gents Pant </h3>
+        {% endif %}
     </div>
 </div>
 <!-- End 1st Product Slider -->
@@ -56,7 +65,7 @@
 <!-- Payment Info Section -->
 <div class="container my-5">
     <div class="row">
-
+        
         <div class="col-sm-3">
             <div class="card mb-3">
                 <div class="card-body">
@@ -74,12 +83,22 @@
     <h2>E-Shop | Borkha</h2>
     <!-- Slider 2 -->
     <div class="owl-carousel" id="slider2">
-
-        <div class="item">
-            <img src="{% static 'assets/images/product/3.jpg' %}" alt="" height="200px">
-            <span class="fw-bold">Product 1</span><br><span class="fs-5">Tk. 7500</span>
-        </div>
-
+        {% if borkhas  %}
+        {% for borkha in borkhas %}
+            <div class="item">
+            <a class="text-decoration-none" href=""><img src="{{borkha.image.url}}" alt="" height="200px"></a>
+            <span class="fw-bold"><a class="text-decoration-none text-dark" href="">{{borkha.title|title}}</a></span><br>
+                <span class="fs-5">Tk. 
+                    {{borkha.sale_price}}
+                    {% if borkha.old_price %}
+                    <del> {{borkha.old_price}} </del>
+                    {% endif %}
+                </span>
+            </div>
+        {% endfor %}
+        {% else %}
+        <h3> </h3> 
+        {% endif %}
     </div>
 </div>
 <!-- End 2nd Product Slider -->
@@ -105,11 +124,20 @@
     <h2>E-Shop | Baby Fashion</h2>
     <!-- Slider 3 -->
     <div class="owl-carousel" id="slider3">
-
-        <div class="item"><img src="{% static 'assets/images/product/6.jpg' %}" alt="" height="200px">
-            <span class="fw-bold">Product 2</span><br><span class="fs-5">Tk. 5300</span>
+        {% if baby_fashions %}
+        {% for baby_fashion in baby_fashions %}
+        <div class="item">
+            <a class="text-decoration-none" href=""><img src="{{baby_fashion.image.url}}" alt="" height="200px"></a>
+            <span class="fw-bold"><a class="text-decoration-none text-dark" href="">{{baby_fashion.title|title}}</a></span><br>
+            <span class="fs-5">Tk. 
+                {{baby_fashion.sale_price|title}}
+                {% if baby_fashion.old_price %}
+                <del>{{baby_fashion.old_price|title}}</del>
+                {% endif %}
+            </span>
         </div>
-      
+        {% endfor %}
+      {% endif %}
     </div>
 </div>
 <!-- End 3rd Product Slider -->
