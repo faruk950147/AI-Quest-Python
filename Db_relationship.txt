@@ -126,3 +126,20 @@ class Order(models.Model):
 
 class Profile(models.Model):
     customer = models.OneToOneField(Customer, on_delete=models.CASCADE)
+
+সম্পর্কের ধরন	কখন ব্যবহার হবে	Django Field
+একটির সাথে একটি	যেমন একজন user-এর একটাই profile থাকে	OneToOneField
+একটির সাথে অনেক	যেমন এক category-তে অনেক product থাকে	ForeignKey
+অনেকের সাথে অনেক	যেমন এক student অনেক course নিতে পারে, এক course-এ অনেক student থাকতে পারে	ManyToManyField
+Shortcut Formula:
+
+একটি → একটি → OneToOneField
+একটি → অনেক → ForeignKey
+অনেক → অনেক → ManyToManyField
+
+আরও সহজভাবে বুঝতে:
+
+যখন তোমার মনে হবে —
+
+“এই model-এর ডেটা অন্য model-এর ওপর নির্ভর করছে”
+তখনই relationship দরকার।
