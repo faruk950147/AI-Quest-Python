@@ -1,16 +1,31 @@
 from django.db import models
-from django.utils.html import mark_safe
-from django.core.validators import MinValueValidator, MaxValueValidator
 from django.utils.text import slugify
+from django.utils.html import mark_safe
+from django.core.exceptions import ValidationError
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 class Category(models.Model):
+    CATEGORY_CHOICES = (
+        ('LEHENGA', 'Lehenga'),
+        ('SHAREE', 'Sharee'),
+        ('GENT_PANTS', 'Gent Pants'),
+        ('BORKHA', 'Borkha'),
+        ('BABY_FASHION', 'Baby Fashion'),
+    )
+
     parent = models.ForeignKey('self', related_name='children', on_delete=models.CASCADE, null=True, blank=True)
+    category_type = models.CharField(max_length=50, choices=CATEGORY_CHOICES, default='LEHENGA')
     title = models.CharField(max_length=150, unique=True)
     slug = models.SlugField(max_length=150, unique=True, null=True, blank=True)
-    keyword = models.CharField(max_length=150, default='N/A')
-    description = models.CharField(max_length=150, default='N/A')
-    image = models.ImageField(upload_to='categories/%Y/%m/%d/') 
-    status = models.BooleanField(default=True)
+    keyword = models.CharField(max_length=150, default='N/A', blank=True)
+    description = models.CharField(max_length=150, default='N/A', blank=True)
+    image = models.ImageField(upload_to='categories/%Y/%m/%d/')
+    
+    STATUS_CHOICES = (
+        ('ACTIVE', 'Active'),
+        ('INACTIVE', 'Inactive'),
+    )
+    status = models.CharField(max_length=8, choices=STATUS_CHOICES, default='ACTIVE')
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
 
@@ -21,16 +36,25 @@ class Category(models.Model):
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
+        
+        # Ensure unique slug by appending an incremental number if it already exists
+        if Category.objects.filter(slug=self.slug).exists() and not self.id:
+            self.slug = f'{self.slug}-{self.pk}'
+        
         super().save(*args, **kwargs)
 
     @property
     def image_tag(self):
-        if self.image and hasattr(self.image, 'url'):
-            return mark_safe(f'<img src="{self.image.url}" width="50" height="50"/>')
-        return mark_safe('<span>No Image</span>')
+        return self.get_image_tag(self.image)
+
+    def get_image_tag(self, image):
+        if image and hasattr(image, 'url'):
+            return mark_safe(f'<img src="{image.url}" width="100" height="100"/>')
+        return mark_safe('<span>No Image Available</span>')
 
     def __str__(self):
-        return f'{self.title} - {"Active" if self.status else "Inactive"}'
+        return f'{self.title} - {"Active" if self.status == "ACTIVE" else "Inactive"}'
+
 
 class Brand(models.Model):
     title = models.CharField(max_length=150, unique=True)
@@ -38,7 +62,12 @@ class Brand(models.Model):
     keyword = models.CharField(max_length=150, default='N/A')
     description = models.CharField(max_length=150, default='N/A')
     image = models.ImageField(upload_to='brands/%Y/%m/%d/')
-    status = models.BooleanField(default=True)
+    
+    STATUS_CHOICES = (
+        ('ACTIVE', 'Active'),
+        ('INACTIVE', 'Inactive'),
+    )
+    status = models.CharField(max_length=8, choices=STATUS_CHOICES, default='ACTIVE')
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
 
@@ -49,16 +78,25 @@ class Brand(models.Model):
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
+        
+        # Ensure unique slug by appending an incremental number if it already exists
+        if Brand.objects.filter(slug=self.slug).exists() and not self.id:
+            self.slug = f'{self.slug}-{self.pk}'
+        
         super().save(*args, **kwargs)
 
     @property
     def image_tag(self):
-        if self.image and hasattr(self.image, 'url'):
-            return mark_safe(f'<img src="{self.image.url}" width="50" height="50"/>')
-        return mark_safe('<span>No Image</span>')
+        return self.get_image_tag(self.image)
+
+    def get_image_tag(self, image):
+        if image and hasattr(image, 'url'):
+            return mark_safe(f'<img src="{image.url}" width="50" height="50"/>')
+        return mark_safe('<span>No Image Available</span>')
 
     def __str__(self):
-        return f'{self.title} - {"Active" if self.status else "Inactive"}'
+        return f'{self.title} - {"Active" if self.status == "ACTIVE" else "Inactive"}'
+
 
 class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
@@ -72,7 +110,12 @@ class Product(models.Model):
     keyword = models.TextField(default='N/A')
     description = models.TextField(default='N/A')
     image = models.ImageField(upload_to='products/%Y/%m/%d/')
-    status = models.BooleanField(default=True)
+    
+    STATUS_CHOICES = (
+        ('ACTIVE', 'Active'),
+        ('INACTIVE', 'Inactive'),
+    )
+    status = models.CharField(max_length=8, choices=STATUS_CHOICES, default='ACTIVE')
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
 
@@ -83,21 +126,39 @@ class Product(models.Model):
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
+        
+        # Ensure unique slug by appending an incremental number if it already exists
+        if Product.objects.filter(slug=self.slug).exists() and not self.id:
+            self.slug = f'{self.slug}-{self.pk}'
+        
         super().save(*args, **kwargs)
+
+    def clean(self):
+        if self.sale_price > self.old_price:
+            raise ValidationError("Sale price cannot be greater than old price.")
 
     @property
     def image_tag(self):
-        if self.image and hasattr(self.image, 'url'):
-            return mark_safe(f'<img src="{self.image.url}" width="50" height="50"/>')
-        return mark_safe('<span>No Image</span>')
+        return self.get_image_tag(self.image)
+
+    def get_image_tag(self, image):
+        if image and hasattr(image, 'url'):
+            return mark_safe(f'<img src="{image.url}" width="50" height="50"/>')
+        return mark_safe('<span>No Image Available</span>')
 
     def __str__(self):
-        return f'{self.title} - {"Active" if self.status else "Inactive"}'
+        return f'{self.title} - {"Active" if self.status == "ACTIVE" else "Inactive"}'
+
 
 class Slider(models.Model):
     title = models.CharField(max_length=150, unique=True)
     image = models.ImageField(upload_to='sliders/%Y/%m/%d/')
-    status = models.BooleanField(default=True)
+    
+    STATUS_CHOICES = (
+        ('ACTIVE', 'Active'),
+        ('INACTIVE', 'Inactive'),
+    )
+    status = models.CharField(max_length=8, choices=STATUS_CHOICES, default='ACTIVE')
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
 
@@ -107,9 +168,12 @@ class Slider(models.Model):
 
     @property
     def image_tag(self):
-        if self.image and hasattr(self.image, 'url'):
-            return mark_safe(f'<img src="{self.image.url}" width="50" height="50"/>')
-        return mark_safe('<span>No Image</span>')
+        return self.get_image_tag(self.image)
+
+    def get_image_tag(self, image):
+        if image and hasattr(image, 'url'):
+            return mark_safe(f'<img src="{image.url}" width="50" height="50"/>')
+        return mark_safe('<span>No Image Available</span>')
 
     def __str__(self):
-        return f'{self.title} - {"Active" if self.status else "Inactive"}'
+        return f'{self.title} - {"Active" if self.status == "ACTIVE" else "Inactive"}'

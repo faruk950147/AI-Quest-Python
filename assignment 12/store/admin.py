@@ -7,7 +7,7 @@ from store.models import (
 )
 # Register your models here.
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('id', 'parent', 'title', 'slug', 'keyword', 'description', 'image_tag', 'status', 'created_date', 'updated_date')
+    list_display = ('id', 'parent', 'category_type', 'title', 'slug', 'keyword', 'description', 'image_tag', 'status', 'created_date', 'updated_date')
     prepopulated_fields = {'slug': ('title',)}
 admin.site.register(Category, CategoryAdmin)
 

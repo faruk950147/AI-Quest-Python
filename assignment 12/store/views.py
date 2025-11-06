@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
-from store.models import Category, Brand, Product
+from store.models import Category, Brand, Product, Slider
 # Create your views here.
 class HomeView(generic.View):
     def get(self, request):
@@ -20,6 +20,7 @@ class HomeView(generic.View):
         Using these filters, you can select and display all products belonging to the 'borkha' category.
         """
         context = {
+        'sliders': Slider.objects.filter(status=True),
         'gents_pants': Product.objects.filter(category__title__icontains='Gents Pants', status=True),
         'borkhas': Product.objects.filter(category__title__icontains='borkhas', status=True),
         'baby_fashions': Product.objects.filter(category__title__icontains='Baby Fashion', status=True),

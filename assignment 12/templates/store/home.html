@@ -5,11 +5,16 @@
 <!--Banner Slider-->
 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
-        
-        <div class="carousel-item active">
-            <img src="{% static 'assets/images/banner/b1.jpg' %}" class="d-block w-100" alt="...">
+        {% if sliders %}
+        {% for slider in sliders %}
+        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+            <img src="{{ slider.image.url }}" class="d-block w-100" alt="{{ slider.title }}">
+            <div class="carousel-caption d-none d-md-block">
+            <h5>{{ slider.title }}</h5>
+            </div>
         </div>
-
+        {% endfor %}
+        {% endif %}
     </div>
     <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -46,8 +51,8 @@
         {% if gents_pants %}
         {% for gents_pant in gents_pants %}
         <div class="item">
-            <a class="text-decoration-none" href=""><img src="{{gents_pant.image.url}}" alt="" height="200px"></a>
-            <span class="fw-bold"><a class="text-decoration-none text-dark" href="">{{gents_pant.title|title}}</a></span><br>
+            <a class="text-decoration-none" href="{% url "single-product" gents_pant.slug gents_pant.id %}"><img src="{{gents_pant.image.url}}" alt="" height="200px"></a>
+            <span class="fw-bold"><a class="text-decoration-none text-dark" href="{% url "single-product" gents_pant.slug gents_pant.id %}">{{gents_pant.title|title}}</a></span><br>
                     {{gents_pant.sale_price|title}}
                     {% if gents_pant.old_price %}
                         <del>{{gents_pant.old_price|title}}</del>
@@ -86,8 +91,8 @@
         {% if borkhas  %}
         {% for borkha in borkhas %}
             <div class="item">
-            <a class="text-decoration-none" href=""><img src="{{borkha.image.url}}" alt="" height="200px"></a>
-            <span class="fw-bold"><a class="text-decoration-none text-dark" href="">{{borkha.title|title}}</a></span><br>
+            <a class="text-decoration-none" href="{% url "single-product" borkha.slug borkha.id %}"><img src="{{borkha.image.url}}" alt="" height="200px"></a>
+            <span class="fw-bold"><a class="text-decoration-none text-dark" href="{% url "single-product" borkha.slug borkha.id %}">{{borkha.title|title}}</a></span><br>
                 <span class="fs-5">Tk. 
                     {{borkha.sale_price}}
                     {% if borkha.old_price %}
@@ -127,8 +132,8 @@
         {% if baby_fashions %}
         {% for baby_fashion in baby_fashions %}
         <div class="item">
-            <a class="text-decoration-none" href=""><img src="{{baby_fashion.image.url}}" alt="" height="200px"></a>
-            <span class="fw-bold"><a class="text-decoration-none text-dark" href="">{{baby_fashion.title|title}}</a></span><br>
+            <a class="text-decoration-none" href="{% url "single-product" baby_fashion.slug baby_fashion.id %}"><img src="{{baby_fashion.image.url}}" alt="" height="200px"></a>
+            <span class="fw-bold"><a class="text-decoration-none text-dark" href="{% url "single-product" baby_fashion.slug baby_fashion.id %}">{{baby_fashion.title|title}}</a></span><br>
             <span class="fs-5">Tk. 
                 {{baby_fashion.sale_price|title}}
                 {% if baby_fashion.old_price %}
