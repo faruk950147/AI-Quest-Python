@@ -14,7 +14,7 @@ class Category(models.Model):
         ('BORKHA', 'Borkha'),
         ('BABY_FASHION', 'Baby Fashion'),
     )
-    category = models.CharField(max_length=50, choices=CATEGORY_CHOICES, default='NONE')
+    title = models.CharField(max_length=50, choices=CATEGORY_CHOICES, default='NONE')
     keyword = models.CharField(max_length=150, default='N/A')
     description = models.CharField(max_length=150, default='N/A')
     image = models.ImageField(upload_to='categories/%Y/%m/%d/')

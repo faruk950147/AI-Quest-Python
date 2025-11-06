@@ -7,7 +7,7 @@ from store.models import (
 )
 # Register your models here.
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('id', 'category', 'keyword', 'description', 'image_tag', 'status', 'created_date', 'updated_date')
+    list_display = ('id', 'title', 'keyword', 'description', 'image_tag', 'status', 'created_date', 'updated_date')
 
 admin.site.register(Category, CategoryAdmin)
 
