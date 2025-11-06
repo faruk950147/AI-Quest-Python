@@ -6,6 +6,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 
 class Category(models.Model):
     CATEGORY_CHOICES = (
+        ('NONE', 'None'),
         ('LEHENGA', 'Lehenga'),
         ('SHAREE', 'Sharee'),
         ('GENT_PANTS', 'Gent Pants'),
@@ -14,7 +15,7 @@ class Category(models.Model):
     )
 
     parent = models.ForeignKey('self', related_name='children', on_delete=models.CASCADE, null=True, blank=True)
-    category_type = models.CharField(max_length=50, choices=CATEGORY_CHOICES, default='LEHENGA')
+    category_type = models.CharField(max_length=50, choices=CATEGORY_CHOICES, default='NONE')
     title = models.CharField(max_length=150, unique=True)
     slug = models.SlugField(max_length=150, unique=True, null=True, blank=True)
     keyword = models.CharField(max_length=150, default='N/A', blank=True)
