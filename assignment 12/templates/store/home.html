@@ -8,12 +8,14 @@
         {% if sliders %}
         {% for slider in sliders %}
         <div class="carousel-item {% if forloop.first %}active{% endif %}">
-            <img src="{{ slider.image.url }}" class="d-block w-100" alt="{{ slider.title }}">
+            <img src="{{ slider.image.url }}" class="d-block w-100" alt="{{ slider.title|title }}">
             <div class="carousel-caption d-none d-md-block">
-            <h5>{{ slider.title }}</h5>
+            <h5>{{ slider.title|title }}</h5>
             </div>
         </div>
         {% endfor %}
+        {% else %}
+        <h3>Please no slider</h3>
         {% endif %}
     </div>
     <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
@@ -61,7 +63,7 @@
         </div>
         {% endfor %}
         {% else %}
-        <h3> Please category name must be Gents Pant </h3>
+        <h3> Please no products </h3>
         {% endif %}
     </div>
 </div>
@@ -102,7 +104,7 @@
             </div>
         {% endfor %}
         {% else %}
-        <h3> </h3> 
+        <h3> Please no products </h3>
         {% endif %}
     </div>
 </div>
@@ -142,6 +144,8 @@
             </span>
         </div>
         {% endfor %}
+        {% else %}
+        <h3> Please no products </h3>
       {% endif %}
     </div>
 </div>
