@@ -9,19 +9,13 @@ from django.core.exceptions import ValidationError
 #  CATEGORY MODEL
 # =============================
 class Category(models.Model):
-    parent = models.ForeignKey(
-        'self', related_name='children', on_delete=models.CASCADE, null=True, blank=True
-    )
+    parent = models.ForeignKey('self', related_name='children', on_delete=models.CASCADE, null=True, blank=True)
     title = models.CharField(max_length=150, unique=True)
     slug = models.SlugField(max_length=150, unique=True, null=True, blank=True)
-    keyword = models.TextField(default='N/A', blank=True)
-    description = models.TextField(default='N/A', blank=True)
-    image = models.ImageField(upload_to='categories/%Y/%m/%d/', blank=True, null=True)
-
-    STATUS_CHOICES = (
-        ('ACTIVE', 'Active'),
-        ('INACTIVE', 'Inactive'),
-    )
+    keyword = models.TextField(default='N/A')
+    description = models.TextField(default='N/A')
+    image = models.ImageField(upload_to='categories/%Y/%m/%d/')
+    STATUS_CHOICES = (('ACTIVE', 'Active'),('INACTIVE', 'Inactive'),)
     status = models.CharField(max_length=8, choices=STATUS_CHOICES, default='ACTIVE')
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
@@ -56,14 +50,10 @@ class Category(models.Model):
 class Brand(models.Model):
     title = models.CharField(max_length=150, unique=True)
     slug = models.SlugField(max_length=150, unique=True, null=True, blank=True)
-    keyword = models.TextField(default='N/A', blank=True)
-    description = models.TextField(default='N/A', blank=True)
-    image = models.ImageField(upload_to='brands/%Y/%m/%d/', blank=True, null=True)
-
-    STATUS_CHOICES = (
-        ('ACTIVE', 'Active'),
-        ('INACTIVE', 'Inactive'),
-    )
+    keyword = models.TextField(default='N/A')
+    description = models.TextField(default='N/A')
+    image = models.ImageField(upload_to='brands/%Y/%m/%d/')
+    STATUS_CHOICES = (('ACTIVE', 'Active'),('INACTIVE', 'Inactive'),)
     status = models.CharField(max_length=8, choices=STATUS_CHOICES, default='ACTIVE')
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
@@ -103,14 +93,10 @@ class Product(models.Model):
     sale_price = models.DecimalField(decimal_places=2, max_digits=10, default=500.00)
     available_stock = models.PositiveIntegerField(validators=[MaxValueValidator(50)], default=0)
     discount_percent = models.PositiveIntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], default=0)
-    keyword = models.TextField(default='N/A', blank=True)
-    description = models.TextField(default='N/A', blank=True)
-    image = models.ImageField(upload_to='products/%Y/%m/%d/', blank=True, null=True)
-
-    STATUS_CHOICES = (
-        ('ACTIVE', 'Active'),
-        ('INACTIVE', 'Inactive'),
-    )
+    keyword = models.TextField(default='N/A')
+    description = models.TextField(default='N/A')
+    image = models.ImageField(upload_to='products/%Y/%m/%d/')
+    STATUS_CHOICES = (('ACTIVE', 'Active'),('INACTIVE', 'Inactive'),)
     status = models.CharField(max_length=8, choices=STATUS_CHOICES, default='ACTIVE')
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
@@ -147,12 +133,8 @@ class Product(models.Model):
 # =============================
 class Slider(models.Model):
     title = models.CharField(max_length=150, unique=True)
-    image = models.ImageField(upload_to='sliders/%Y/%m/%d/', blank=True, null=True)
-
-    STATUS_CHOICES = (
-        ('ACTIVE', 'Active'),
-        ('INACTIVE', 'Inactive'),
-    )
+    image = models.ImageField(upload_to='sliders/%Y/%m/%d/')
+    STATUS_CHOICES = (('ACTIVE', 'Active'),('INACTIVE', 'Inactive'),)
     status = models.CharField(max_length=8, choices=STATUS_CHOICES, default='ACTIVE')
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
