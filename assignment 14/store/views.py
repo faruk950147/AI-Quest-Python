@@ -22,10 +22,9 @@ class HomeView(generic.View):
     """
     def get(self, request):
         sliders = Slider.objects.filter(status='ACTIVE'),
-        active_category_types = CategoryType.objects.filter(status='ACTIVE')
-        categories = Category.objects.filter(category_type__in=active_category_types, status='ACTIVE')
-        catsProducts = Product.objects.filter(category__category_type__in=active_category_types, status='ACTIVE').select_related('category')
-
+        gents_pants = Product.objects.filter(category__title__in="Pants", status='ACTIVE').select_related('category')
+        borkhas = Product.objects.filter(category__title__in="Borkhas", status='ACTIVE').select_related('category')
+        baby_fashions = Product.objects.filter(category__title__in="Baby", status='ACTIVE').select_related('category')
         context = {
             # 'sliders': sliders, 
             # 'gents_pants': gents_pants, 
