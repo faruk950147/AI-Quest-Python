@@ -3,6 +3,10 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse
 from django.views import View
+from django.utils.encoding import force_str, force_bytes
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.contrib.auth.tokens import default_token_generator
+from django.core.mail import send_mail
 from account.forms import SignUpForm, SignInForm, ChangePasswordForm, ResetPasswordForm, SetNewPasswordForm
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.models import User
@@ -84,9 +88,60 @@ class ResetPasswordView(View):
         if form.is_valid():
             email = form.cleaned_data.get('email')
             if User.objects.filter(email=email).exists():
-                user = get_object_or_404(User, email=email)
-                print('==========================', user, '==========================')
+                user = User.objects.get(email=email)
+
+                # Generate token
+                token = default_token_generator.make_token(user)
+                uid = urlsafe_base64_encode(force_bytes(user.pk))
+                
+                reset_link = request.build_absolute_uri(
+                    reverse('password_reset_confirm', kwargs={'uidb64': uid, 'token': token})
+                )
+
+                # Send email (update subject & message as needed)
+                send_mail(
+                    subject='Password Reset Request',
+                    message=f'Click the link below to reset your password:\n{reset_link}',
+                    from_email='no-reply@example.com',
+                    recipient_list=[email],
+                    fail_silently=False,
+                )
+
+                messages.success(request, f'Password reset link has been sent to {email}.')
+                return redirect('sign-in')
             else:
-                print("================ Don't exist")
-                messages.error(request, 'You email does not exists।')
+                messages.error(request, 'No user is associated with this email.')
         return render(request, 'account/password-reset.html', {'form': form})
+
+class PasswordResetConfirmView(View):
+    def get(self, request, uidb64, token):
+        try:
+            uid = force_str(urlsafe_base64_decode(uidb64))
+            user = User.objects.get(pk=uid)
+        except (TypeError, ValueError, OverflowError, User.DoesNotExist):
+            user = None
+
+        if user is not None and default_token_generator.check_token(user, token):
+            form = SetNewPasswordForm(user)
+            return render(request, 'account/set-new-password.html', {'form': form, 'uidb64': uidb64, 'token': token})
+        else:
+            messages.error(request, 'The password reset link is invalid or has expired.')
+            return redirect('reset-password')
+
+    def post(self, request, uidb64, token):
+        try:
+            uid = force_str(urlsafe_base64_decode(uidb64))
+            user = User.objects.get(pk=uid)
+        except (TypeError, ValueError, OverflowError, User.DoesNotExist):
+            user = None
+
+        if user is not None and default_token_generator.check_token(user, token):
+            form = SetNewPasswordForm(user, request.POST)
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'Password has been reset successfully. You can now sign in.')
+                return redirect('sign-in')
+            return render(request, 'account/set-new-password.html', {'form': form, 'uidb64': uidb64, 'token': token})
+        else:
+            messages.error(request, 'The password reset link is invalid or has expired.')
+            return redirect('reset-password')
