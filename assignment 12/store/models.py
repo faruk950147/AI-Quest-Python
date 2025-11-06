@@ -4,32 +4,24 @@ from django.utils.html import mark_safe
 from django.core.exceptions import ValidationError
 from django.core.validators import MaxValueValidator, MinValueValidator
 
-class CategoryType(models.Model):
-    title = models.CharField(max_length=50, unique=True)
-    STATUS_CHOICES = (
-        ('ACTIVE', 'Active'),
-        ('INACTIVE', 'Inactive'),
-    )
-    status = models.CharField(max_length=8, choices=STATUS_CHOICES, default='ACTIVE')
-    created_date = models.DateTimeField(auto_now_add=True)
-    updated_date = models.DateTimeField(auto_now=True)
-    def __str__(self):
-        return self.title
-
-
 class Category(models.Model):
-    parent = models.ForeignKey(
-        'self', related_name='children', on_delete=models.CASCADE, null=True, blank=True
+    CATEGORY_CHOICES = (
+        ('NONE', 'None'),
+        ('LEHENGA', 'Lehenga'),
+        ('SHAREE', 'Sharee'),
+        ('GENT_PANTS', 'Gent Pants'),
+        ('BORKHA', 'Borkha'),
+        ('BABY_FASHION', 'Baby Fashion'),
     )
-    category_type = models.ForeignKey(
-        CategoryType, on_delete=models.SET_NULL, null=True, blank=True
-    )
+
+    parent = models.ForeignKey('self', related_name='children', on_delete=models.CASCADE, null=True, blank=True)
+    category_type = models.CharField(max_length=50, choices=CATEGORY_CHOICES, default='NONE')
     title = models.CharField(max_length=150, unique=True)
     slug = models.SlugField(max_length=150, unique=True, null=True, blank=True)
     keyword = models.CharField(max_length=150, default='N/A', blank=True)
     description = models.CharField(max_length=150, default='N/A', blank=True)
     image = models.ImageField(upload_to='categories/%Y/%m/%d/')
-
+    
     STATUS_CHOICES = (
         ('ACTIVE', 'Active'),
         ('INACTIVE', 'Inactive'),
@@ -45,8 +37,11 @@ class Category(models.Model):
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
+        
+        # Ensure unique slug by appending an incremental number if it already exists
         if Category.objects.filter(slug=self.slug).exists() and not self.id:
             self.slug = f'{self.slug}-{self.pk}'
+        
         super().save(*args, **kwargs)
 
     @property
@@ -59,8 +54,7 @@ class Category(models.Model):
         return mark_safe('<span>No Image Available</span>')
 
     def __str__(self):
-        type_name = self.category_type.title if self.category_type else "No Type"
-        return f'{self.title} - {type_name} - {"Active" if self.status=="ACTIVE" else "Inactive"}'
+        return f'{self.title} - {"Active" if self.status == "ACTIVE" else "Inactive"}'
 
 
 class Brand(models.Model):

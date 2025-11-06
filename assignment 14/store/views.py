@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from store.models import CategoryType, Category, Brand, Product, Slider
-
+from django.db.models import Prefetch
 
 # Create your views here.
 class HomeView(generic.View):
@@ -22,9 +22,9 @@ class HomeView(generic.View):
     """
     def get(self, request):
         sliders = Slider.objects.filter(status='ACTIVE'),
-        category_types = CategoryType.objects.filter(status='ACTIVE')
-        categories = Category.objects.filter(category_type__in=category_types, status='ACTIVE')
-
+        active_category_types = CategoryType.objects.filter(status='ACTIVE')
+        categories = Category.objects.filter(category_type__in=active_category_types, status='ACTIVE')
+        catsProducts = Product.objects.filter(category__category_type__in=active_category_types, status='ACTIVE').select_related('category')
 
         context = {
             # 'sliders': sliders, 
