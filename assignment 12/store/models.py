@@ -18,7 +18,7 @@ class Category(models.Model):
     keyword = models.CharField(max_length=150, default='N/A')
     description = models.CharField(max_length=150, default='N/A')
     image = models.ImageField(upload_to='categories/%Y/%m/%d/')
-    STATUS_CHOICES = (('ACTIVE', 'Active'),('INACTIVE', 'Inactive'),)
+    STATUS_CHOICES = (('ACTIVE', 'Active'), ('INACTIVE', 'Inactive'))
     status = models.CharField(max_length=8, choices=STATUS_CHOICES, default='ACTIVE')
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
@@ -26,7 +26,7 @@ class Category(models.Model):
     class Meta:
         ordering = ['id']
         verbose_name_plural = '01. Categories'
-        
+
     @property
     def image_tag(self):
         if self.image and hasattr(self.image, 'url'):
@@ -34,7 +34,7 @@ class Category(models.Model):
         return mark_safe('<span>No Image Available</span>')
 
     def __str__(self):
-        return f'{self.category} - {"Active" if self.status == "ACTIVE" else "Inactive"}'
+        return f'{self.title} - {"Active" if self.status == "ACTIVE" else "Inactive"}'
 
 
 class Brand(models.Model):
@@ -42,7 +42,7 @@ class Brand(models.Model):
     keyword = models.CharField(max_length=150, default='N/A')
     description = models.CharField(max_length=150, default='N/A')
     image = models.ImageField(upload_to='brands/%Y/%m/%d/')
-    STATUS_CHOICES = (('ACTIVE', 'Active'),('INACTIVE', 'Inactive'),)
+    STATUS_CHOICES = (('ACTIVE', 'Active'), ('INACTIVE', 'Inactive'))
     status = models.CharField(max_length=8, choices=STATUS_CHOICES, default='ACTIVE')
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
@@ -102,7 +102,7 @@ class Product(models.Model):
 
 
 class Slider(models.Model):
-    title = models.CharField(max_length=150)
+    title = models.CharField(max_length=150, unique=True)
     image = models.ImageField(upload_to='sliders/%Y/%m/%d/')
     link = models.URLField(blank=True, null=True)
     STATUS_CHOICES = (('ACTIVE', 'Active'), ('INACTIVE', 'Inactive'))
@@ -118,33 +118,6 @@ class Slider(models.Model):
     def image_tag(self):
         if self.image and hasattr(self.image, 'url'):
             return mark_safe(f'<img src="{self.image.url}" width="100" height="50"/>')
-        return mark_safe('<span>No Image Available</span>')
-
-    def __str__(self):
-        return f'{self.title} - {"Active" if self.status == "ACTIVE" else "Inactive"}'
-
-    title = models.CharField(max_length=150, unique=True)
-    image = models.ImageField(upload_to='sliders/%Y/%m/%d/')
-    
-    STATUS_CHOICES = (
-        ('ACTIVE', 'Active'),
-        ('INACTIVE', 'Inactive'),
-    )
-    status = models.CharField(max_length=8, choices=STATUS_CHOICES, default='ACTIVE')
-    created_date = models.DateTimeField(auto_now_add=True)
-    updated_date = models.DateTimeField(auto_now=True)
-
-    class Meta:
-        ordering = ['id']
-        verbose_name_plural = '04. Sliders'
-
-    @property
-    def image_tag(self):
-        return self.get_image_tag(self.image)
-
-    def get_image_tag(self, image):
-        if image and hasattr(image, 'url'):
-            return mark_safe(f'<img src="{image.url}" width="50" height="50"/>')
         return mark_safe('<span>No Image Available</span>')
 
     def __str__(self):
