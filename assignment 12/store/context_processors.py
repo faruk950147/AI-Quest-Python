@@ -4,3 +4,4 @@ from store.models import (
 )
 def get_filters(request):
     categories = Category.objects.filter(status='ACTIVE')
+    return {'categories': categories}
