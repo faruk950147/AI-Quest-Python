@@ -13,19 +13,22 @@
                     All Filters
                 </a>
 
-                <!-- Brand Filter -->
                 <h6 class="mt-3 mb-2 fw-bold px-3">Brands</h6>
                 {% if brands %}
-                {% for brand in brands %}
-                <a href="{% url "brand-product" brand.slug brand.id %}" class="list-group-item list-group-item-action">{{brand.title|title}}</a>
-                {% endfor %}
+                    {% for brand in brands %}
+                        <a href="{% url 'brand-product' brand.slug brand.id %}" 
+                        class="list-group-item list-group-item-action">
+                            {{ brand.title|title }}
+                        </a>
+                    {% endfor %}
                 {% endif %}
-                <!-- Price Filter -->
+
                 <h6 class="mt-4 mb-2 fw-bold px-3">Prices</h6>
                 <a href="#" class="list-group-item list-group-item-action">Above 20k</a>
                 <a href="#" class="list-group-item list-group-item-action">Below 20k</a>
             </div>
         </div>
+
 
         <!-- Product Section -->
         <div class="col-sm-9">
