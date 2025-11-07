@@ -1,0 +1,48 @@
+GET Parameter Format in django
+
+{% comment %} views.py 
+1. views.py
+def product_list(request):
+    # GET parameter from value get
+    category = request.GET.get('category')  # if ?category=something then it will get
+    sort_by = request.GET.get('sort')       # if ?sort=price then it will get
+
+    # Product queryset
+    products = Product.objects.all()
+
+    # category filter
+    if category:
+        products = products.filter(category=category)
+
+    # sort by
+    if sort_by:
+        products = products.order_by(sort_by)
+
+    # template products
+    return render(request, 'product_list.html', {'products': products}) 
+2. urls.py
+
+    from django.urls import path
+    from . import views
+    
+    urlpatterns = [
+        path('products/', views.product_list, name='product_list'),
+    ] 
+    
+3. Template: product_list.html
+
+    <h1>Product List</h1>
+
+    {% if products %}
+        <ul>
+        {% for product in products %}
+            <li>{{ product.name }} - {{ product.category }} - {{ product.price }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No products found.</p>
+    {% endif %}    
+    
+    http://localhost:8000/products/?category=electronics&sort=price
+
+{% endcomment %}

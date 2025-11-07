@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <title>CRUD</title>
+</head>
+<body> 
+    <header id="header">
+        <div class="header container">
+            <div class="navBar">
+                <div class="brand"><a href="#"><h1><span>O</span>ma<span>r</span> F<span>a</span>ru<span>k</span></h1></a></div>
+                <div class="navList">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Project</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <div id="hero">
+        <div class="container">
+            <div class="row my-5 justify-content-center align-items-center">
+                <div class="col-lg-6">
+                    <h4 class="text-center">Edit Student</h4>
+                    <hr>
+                    <form action="{% url 'EditedView' student.id %}" method="POST">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+
+                        {% comment %} 
+                        <input type="text" name="name" value="{{ student.name }}" class="form-control my-3" placeholder="Name" required>
+                        <input type="text" name="department" value="{{ student.department }}" class="form-control my-3" placeholder="Department" required>
+                        <input type="text" name="phone" value="{{ student.phone }}" class="form-control my-3" placeholder="Phone" required>   {% endcomment %}
+                        
+                        <button type="submit" class="form-control btn btn-success my-3">Edit Student</button>
+                        <a href="{% url 'HomeView' %}" class="form-control btn btn-danger my-3">Back</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/js/custom.js' %}"></script>
+</body>
+</html>
