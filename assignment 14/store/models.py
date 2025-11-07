@@ -8,14 +8,21 @@ from django.core.exceptions import ValidationError
 # =============================
 #  CATEGORY MODEL
 # =============================
+
 class Category(models.Model):
-    parent = models.ForeignKey('self', related_name='children', on_delete=models.CASCADE, null=True, blank=True)
+    parent = models.ForeignKey(
+        'self', related_name='children',
+        on_delete=models.CASCADE, null=True, blank=True
+    )
     title = models.CharField(max_length=150, unique=True)
     slug = models.SlugField(max_length=150, unique=True, null=True, blank=True)
     keyword = models.TextField(default='N/A')
     description = models.TextField(default='N/A')
     image = models.ImageField(upload_to='categories/%Y/%m/%d/')
-    STATUS_CHOICES = (('ACTIVE', 'Active'),('INACTIVE', 'Inactive'),)
+    STATUS_CHOICES = (
+        ('ACTIVE', 'Active'),
+        ('INACTIVE', 'Inactive'),
+    )
     status = models.CharField(max_length=8, choices=STATUS_CHOICES, default='ACTIVE')
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
@@ -28,11 +35,6 @@ class Category(models.Model):
         if not self.slug:
             self.slug = slugify(self.title)
         super().save(*args, **kwargs)
-
-        # make slug unique if duplicate exists
-        if Category.objects.filter(slug=self.slug).exclude(id=self.id).exists():
-            self.slug = f"{self.slug}-{self.id}"
-            super().save(update_fields=['slug'])
 
     @property
     def image_tag(self):
@@ -47,13 +49,17 @@ class Category(models.Model):
 # =============================
 #  BRAND MODEL
 # =============================
+
 class Brand(models.Model):
     title = models.CharField(max_length=150, unique=True)
     slug = models.SlugField(max_length=150, unique=True, null=True, blank=True)
     keyword = models.TextField(default='N/A')
     description = models.TextField(default='N/A')
     image = models.ImageField(upload_to='brands/%Y/%m/%d/')
-    STATUS_CHOICES = (('ACTIVE', 'Active'),('INACTIVE', 'Inactive'),)
+    STATUS_CHOICES = (
+        ('ACTIVE', 'Active'),
+        ('INACTIVE', 'Inactive'),
+    )
     status = models.CharField(max_length=8, choices=STATUS_CHOICES, default='ACTIVE')
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
@@ -66,10 +72,6 @@ class Brand(models.Model):
         if not self.slug:
             self.slug = slugify(self.title)
         super().save(*args, **kwargs)
-
-        if Brand.objects.filter(slug=self.slug).exclude(id=self.id).exists():
-            self.slug = f"{self.slug}-{self.id}"
-            super().save(update_fields=['slug'])
 
     @property
     def image_tag(self):
@@ -84,6 +86,7 @@ class Brand(models.Model):
 # =============================
 #  PRODUCT MODEL
 # =============================
+
 class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
@@ -91,12 +94,19 @@ class Product(models.Model):
     slug = models.SlugField(max_length=150, unique=True, null=True, blank=True)
     old_price = models.DecimalField(decimal_places=2, max_digits=10, default=1000.00)
     sale_price = models.DecimalField(decimal_places=2, max_digits=10, default=500.00)
-    available_stock = models.PositiveIntegerField(validators=[MaxValueValidator(50)], default=0)
-    discount_percent = models.PositiveIntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], default=0)
+    available_stock = models.PositiveIntegerField(
+        validators=[MaxValueValidator(50)], default=0
+    )
+    discount_percent = models.PositiveIntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(100)], default=0
+    )
     keyword = models.TextField(default='N/A')
     description = models.TextField(default='N/A')
     image = models.ImageField(upload_to='products/%Y/%m/%d/')
-    STATUS_CHOICES = (('ACTIVE', 'Active'),('INACTIVE', 'Inactive'),)
+    STATUS_CHOICES = (
+        ('ACTIVE', 'Active'),
+        ('INACTIVE', 'Inactive'),
+    )
     status = models.CharField(max_length=8, choices=STATUS_CHOICES, default='ACTIVE')
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
@@ -109,10 +119,6 @@ class Product(models.Model):
         if not self.slug:
             self.slug = slugify(self.title)
         super().save(*args, **kwargs)
-
-        if Product.objects.filter(slug=self.slug).exclude(id=self.id).exists():
-            self.slug = f"{self.slug}-{self.id}"
-            super().save(update_fields=['slug'])
 
     def clean(self):
         if self.sale_price > self.old_price:
@@ -131,10 +137,14 @@ class Product(models.Model):
 # =============================
 #  SLIDER MODEL
 # =============================
+
 class Slider(models.Model):
     title = models.CharField(max_length=150, unique=True)
     image = models.ImageField(upload_to='sliders/%Y/%m/%d/')
-    STATUS_CHOICES = (('ACTIVE', 'Active'),('INACTIVE', 'Inactive'),)
+    STATUS_CHOICES = (
+        ('ACTIVE', 'Active'),
+        ('INACTIVE', 'Inactive'),
+    )
     status = models.CharField(max_length=8, choices=STATUS_CHOICES, default='ACTIVE')
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
