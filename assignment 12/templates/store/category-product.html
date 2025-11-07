@@ -20,7 +20,7 @@
                 <h6 class="mt-3 mb-2 fw-bold px-3">Brands</h6>
                 {% if brands %}
                     {% for brand in brands %}
-                    <a href="{% url 'category-filter' category.slug category.id brand.slug %}"
+                    <a href="{% url 'filters-products' category.slug category.id brand.slug %}"
                        class="list-group-item list-group-item-action {% if current_data == brand.slug %}active{% endif %}">
                         {{ brand.title|title }}
                     </a>
@@ -31,11 +31,11 @@
 
                 <!-- Price Filter -->
                 <h6 class="mt-4 mb-2 fw-bold px-3">Prices</h6>
-                <a href="{% url 'category-filter' category.slug category.id 'above' %}"
+                <a href="{% url 'filters-products' category.slug category.id 'above' %}"
                    class="list-group-item list-group-item-action {% if current_data == 'above' %}active{% endif %}">
                     Above 20k
                 </a>
-                <a href="{% url 'category-filter' category.slug category.id 'below' %}"
+                <a href="{% url 'filters-products' category.slug category.id 'below' %}"
                    class="list-group-item list-group-item-action {% if current_data == 'below' %}active{% endif %}">
                     Below 20k
                 </a>
