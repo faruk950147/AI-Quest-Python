@@ -44,8 +44,12 @@
                             Categories
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="electronicsDropdown">
-                            <li><a class="dropdown-item" href="">Lehenga</a></li>
-                            <li><a class="dropdown-item" href="#">Saree</a></li>
+                            {% if categories %}
+                                {% for category in categories %}
+                                <li><a class="dropdown-item" href=""> {{category.title|title}} </a></li>
+                                {% endfor %}
+                            {% endif %}
+
                         </ul>
                     </li>
 
