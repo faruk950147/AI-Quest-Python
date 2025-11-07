@@ -56,7 +56,9 @@ class CategoryProductView(generic.View):
     
 class BrandProductView(generic.View):
     def get(self, request, slug, id):
-        brand_products = Product.objects.filter(brand__slug=slug, brand__id=id, status='ACTIVE')
+        brand = get_object_or_404(Brand, slug=slug, id=id)
+        brand_products = Product.objects.filter(brand=brand, status='ACTIVE')
+        # brand_products = Product.objects.filter(brand__slug=slug, brand__id=id, status='ACTIVE')
         context = {
             'brand_products': brand_products,
         }
