@@ -46,7 +46,7 @@
                         <ul class="dropdown-menu" aria-labelledby="electronicsDropdown">
                             {% if categories %}
                                 {% for category in categories %}
-                                <li><a class="dropdown-item" href="{% url "category-product" category.id %}"> {{category.title|title}} </a></li>
+                                <li><a class="dropdown-item" href="{% url "category-product" category.slug category.id %}"> {{category.title|title}} </a></li>
                                 {% endfor %}
                             {% endif %}
 
