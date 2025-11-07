@@ -15,9 +15,11 @@
 
                 <!-- Brand Filter -->
                 <h6 class="mt-3 mb-2 fw-bold px-3">Brands</h6>
-                <a href="#" class="list-group-item list-group-item-action">Lubnan</a>
-                <a href="#" class="list-group-item list-group-item-action">Infinity</a>
-
+                {% if brands %}
+                {% for brand in brands %}
+                <a href="" class="list-group-item list-group-item-action">{{brand.title|title}}</a>
+                {% endfor %}
+                {% endif %}
                 <!-- Price Filter -->
                 <h6 class="mt-4 mb-2 fw-bold px-3">Prices</h6>
                 <a href="#" class="list-group-item list-group-item-action">Above 20k</a>
@@ -45,6 +47,8 @@
                                         </small>
                                     {% endif %}
                                 </p>
+                                <p style="font-size: 13px;">Category: {{product.category.title|title}} </p>
+                                <p style="font-size: 13px;">Brand: {{product.brand.title|title}} </p>
                             </div>
                         </div>
                     </div>
