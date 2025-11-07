@@ -88,7 +88,8 @@ class ResetPasswordView(View):
         if form.is_valid():
             email = form.cleaned_data.get('email')
             if User.objects.filter(email=email).exists():
-                user = User.objects.get(email=email)
+                
+                user = get_object_or_404(User, email=email)
 
                 # Generate token
                 token = default_token_generator.make_token(user)
