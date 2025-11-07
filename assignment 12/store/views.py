@@ -27,7 +27,6 @@ class HomeView(generic.View):
         gents_pants = Product.objects.filter(category__title__contains='GENT_PANTS', status='ACTIVE')
         borkhas = Product.objects.filter(category__title__contains='BORKHA', status='ACTIVE')
         baby_fashions = Product.objects.filter(category__title__contains='BABY_FASHION', status='ACTIVE')
-
         context = {
             'sliders': sliders, 
             'gents_pants': gents_pants, 
@@ -44,13 +43,35 @@ class SingleProductView(generic.View):
         }
         return render(request, "store/single-product.html", context)
     
+
 class CategoryProductView(generic.View):
-    def get(self, request, slug, id):
+    def get(self, request, slug, id, data=None):
         category = get_object_or_404(Category, slug=slug, id=id)
         cats_products = Product.objects.filter(category=category, status='ACTIVE')
-        # cats_products = Product.objects.filter(category__slug=slug, category__id=id, status='ACTIVE')
+        brands = Brand.objects.filter(product__category=category, product__status='ACTIVE').distinct().order_by('title')
+
+        if data:
+            brand_slugs = list(brands.values_list('slug', flat=True))
+            
+            # DEBUG: 
+            print(f"Clicked data: {data}")
+            print(f"Available brand slugs: {brand_slugs}")
+
+            if data in brand_slugs:
+                cats_products = cats_products.filter(brand__slug=data)
+                print(f"Filtering by brand: {data} → {cats_products.count()} products")
+            elif data == 'above':
+                cats_products = cats_products.filter(sale_price__gte=20000)
+            elif data == 'below':
+                cats_products = cats_products.filter(sale_price__lt=20000)
+            else:
+                cats_products = Product.objects.none()
+
         context = {
             'cats_products': cats_products,
+            'category': category,
+            'brands': brands,
+            'current_data': data,
         }
         return render(request, "store/category-product.html", context)
     
