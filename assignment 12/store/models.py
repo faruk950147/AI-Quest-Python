@@ -15,6 +15,7 @@ class Category(models.Model):
         ('BABY_FASHION', 'Baby Fashion'),
     )
     title = models.CharField(max_length=50, choices=CATEGORY_CHOICES, default='NONE')
+    slug = models.SlugField(max_length=150, unique=True, null=True, blank=True)
     keyword = models.CharField(max_length=150, default='N/A')
     description = models.CharField(max_length=150, default='N/A')
     image = models.ImageField(upload_to='categories/%Y/%m/%d/')
@@ -26,6 +27,11 @@ class Category(models.Model):
     class Meta:
         ordering = ['id']
         verbose_name_plural = '01. Categories'
+        
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
 
     @property
     def image_tag(self):
@@ -39,6 +45,7 @@ class Category(models.Model):
 
 class Brand(models.Model):
     title = models.CharField(max_length=150, unique=True)
+    slug = models.SlugField(max_length=150, unique=True, null=True, blank=True)
     keyword = models.CharField(max_length=150, default='N/A')
     description = models.CharField(max_length=150, default='N/A')
     image = models.ImageField(upload_to='brands/%Y/%m/%d/')
@@ -50,6 +57,11 @@ class Brand(models.Model):
     class Meta:
         ordering = ['id']
         verbose_name_plural = '02. Brands'
+        
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
 
     @property
     def image_tag(self):
