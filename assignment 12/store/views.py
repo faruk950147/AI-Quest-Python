@@ -45,9 +45,7 @@ class SingleProductView(generic.View):
         return render(request, "store/single-product.html", context)
     
 class CategoryProductView(generic.View):
-    def get(self, request, slug, id):
-        cats_products = Product.objects.filter(category__slug=slug, category__id=id, status='ACTIVE')
-        context = {
-            'cats_products': cats_products,
-        }
+    def get(self, request, id):
+        cats_products = Product.objects.filter(category__id=id, status='ACTIVE')
+        context = {'cats_products': cats_products}
         return render(request, "store/category-product.html", context)
