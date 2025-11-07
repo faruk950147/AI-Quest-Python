@@ -19,16 +19,20 @@ class HomeView(generic.View):
     Example: 'Borkha', 'borkha', 'BORKHA' will match, but 'borkhas' or 'borkha123' will not.
 
     Using these filters, you can select and display all products belonging to the 'borkha' category.
+    gents_pants = Product.objects.filter(category__title__in=['GENT_PANTS'])
+
     """
     def get(self, request):
-        sliders = Slider.objects.filter(status='ACTIVE'),
-
+        sliders = Slider.objects.filter(status='ACTIVE')
+        gents_pants = Product.objects.filter(category__title__contains='GENT_PANTS')
+        borkhas = Product.objects.filter(category__title__contains='BORKHA')
+        baby_fashions = Product.objects.filter(category__title__contains='BABY_FASHION')
 
         context = {
             'sliders': sliders, 
-            # 'gents_pants': gents_pants, 
-            # 'borkhas': borkhas, 
-            # 'baby_fashions': baby_fashions,
+            'gents_pants': gents_pants, 
+            'borkhas': borkhas, 
+            'baby_fashions': baby_fashions,
         }
         return render(request, "store/home.html", context)
 

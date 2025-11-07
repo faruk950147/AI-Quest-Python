@@ -104,7 +104,6 @@ class Product(models.Model):
 class Slider(models.Model):
     title = models.CharField(max_length=150, unique=True)
     image = models.ImageField(upload_to='sliders/%Y/%m/%d/')
-    link = models.URLField(blank=True, null=True)
     STATUS_CHOICES = (('ACTIVE', 'Active'), ('INACTIVE', 'Inactive'))
     status = models.CharField(max_length=8, choices=STATUS_CHOICES, default='ACTIVE')
     created_date = models.DateTimeField(auto_now_add=True)
