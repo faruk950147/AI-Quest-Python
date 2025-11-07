@@ -38,7 +38,7 @@ class HomeView(generic.View):
 
 class SingleProductView(generic.View):
     def get(self, request, slug, id):
-        product = get_object_or_404(Product, slug=slug, id=id),
+        product = get_object_or_404(Product, slug=slug, id=id)
         context = {
             'product': product,
         }
