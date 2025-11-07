@@ -24,9 +24,9 @@ class HomeView(generic.View):
     """
     def get(self, request):
         sliders = Slider.objects.filter(status='ACTIVE')
-        gents_pants = Product.objects.filter(category__title__contains='GENT_PANTS')
-        borkhas = Product.objects.filter(category__title__contains='BORKHA')
-        baby_fashions = Product.objects.filter(category__title__contains='BABY_FASHION')
+        gents_pants = Product.objects.filter(category__title__contains='GENT_PANTS', status='ACTIVE')
+        borkhas = Product.objects.filter(category__title__contains='BORKHA', status='ACTIVE')
+        baby_fashions = Product.objects.filter(category__title__contains='BABY_FASHION', status='ACTIVE')
 
         context = {
             'sliders': sliders, 
@@ -46,7 +46,7 @@ class SingleProductView(generic.View):
     
 class CategoryProductView(generic.View):
     def get(self, request, slug, id):
-        cats_products = Product.objects.filter(category__slug=slug, category__id=id),
+        cats_products = Product.objects.filter(category__slug=slug, category__id=id, status='ACTIVE')
         context = {
             'cats_products': cats_products,
         }
