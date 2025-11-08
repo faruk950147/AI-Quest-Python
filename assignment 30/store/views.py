@@ -47,23 +47,29 @@ class SingleProductView(generic.View):
         }
         return render(request, "store/single-product.html", context)
     
-
-
 class CategoryProductView(generic.View):
     def get(self, request, slug, id):
         category = get_object_or_404(Category, slug=slug, id=id)
         products = Product.objects.filter(category=category, status='ACTIVE')
 
-        # Brand filter only
+        # Brand filter
         selected_brands = request.GET.getlist('brand')
         if selected_brands:
             products = products.filter(brand__id__in=selected_brands).distinct()
+
+        # Price filter
+        price_filter = request.GET.get('price')
+        if price_filter == 'below_20k':
+            products = products.filter(sale_price__lt=20000)
+        elif price_filter == 'above_20k':
+            products = products.filter(sale_price__gte=20000)
 
         context = {
             'category': category,
             'products': products.order_by('-id').distinct(),
             'brands': Brand.objects.all(),
             'selected_brands': list(map(int, selected_brands)),
+            'price_filter': price_filter,
         }
         return render(request, "store/category-product.html", context)
 

@@ -4,46 +4,73 @@
 {% block main_content %}
 <div class="container my-5">
     <div class="row">
+
         <!-- Sidebar -->
-        <div class="col-sm-3">
-            <form method="get">
-                <h5>Brands</h5>
-                {% for brand in brands %}
-                <label class="d-block">
-                    <input type="checkbox" name="brand" value="{{ brand.id }}"
-                        {% if brand.id in selected_brands %}checked{% endif %}>
-                    {{ brand.title }}
-                </label>
-                {% endfor %}
-                <button type="submit" class="btn btn-primary mt-2">Filter</button>
-            </form>
+        <div class="col-lg-3 col-md-4 mb-4">
+            <div class="card p-3 shadow-sm">
+                <!-- Brand Filter -->
+                <h6 class="fw-bold mb-2">Brands</h6>
+                <ul class="list-group list-group-flush">
+                    {% if brands %}
+                        {% for brand in brands %}
+                        <li class="list-group-item p-0 border-0">
+                            <a href="?{% for b in selected_brands %}{% if b != brand.id %}brand={{ b }}&{% endif %}{% endfor %}brand={{ brand.id }}"
+                               class="list-group-item list-group-item-action {% if brand.id in selected_brands %}active{% endif %}">
+                                {{ brand.title|title }}
+                            </a>
+                        </li>
+                        {% endfor %}
+                    {% else %}
+                        <li class="list-group-item text-muted small">No brands available</li>
+                    {% endif %}
+                </ul>
+
+                <!-- Price Filter -->
+                <h6 class="fw-bold mb-2 mt-3">Prices</h6>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item p-0 border-0">
+                        <a href="?{% for b in selected_brands %}brand={{ b }}&{% endfor %}price=below_20k"
+                           class="list-group-item list-group-item-action {% if price_filter == 'below_20k' %}active{% endif %}">
+                            Below 20k
+                        </a>
+                    </li>
+                    <li class="list-group-item p-0 border-0">
+                        <a href="?{% for b in selected_brands %}brand={{ b }}&{% endfor %}price=above_20k"
+                           class="list-group-item list-group-item-action {% if price_filter == 'above_20k' %}active{% endif %}">
+                            Above 20k
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
         </div>
 
         <!-- Product Grid -->
-        <div class="col-sm-9">
-            <div class="row">
+        <div class="col-lg-9 col-md-8">
+            <div class="row g-3">
                 {% for product in products %}
-                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                    <div class="card h-100">
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="card h-100 shadow-sm">
                         <a href="{% url 'single-product' product.slug product.id %}">
                             <img src="{{ product.image.url }}" class="card-img-top" style="height:220px; object-fit:cover;">
                         </a>
                         <div class="card-body p-2">
                             <h6 class="card-title">{{ product.title|truncatechars:25 }}</h6>
-                            <p class="text-success">Tk. {{ product.sale_price }}
+                            <p class="text-success mb-1">Tk. {{ product.sale_price }}
                                 {% if product.old_price > product.sale_price %}
-                                <small class="text-muted text-decoration-line-through">Tk. {{ product.old_price }}</small>
+                                    <small class="text-muted text-decoration-line-through">Tk. {{ product.old_price }}</small>
                                 {% endif %}
                             </p>
-                            <p>Brand: {{ product.brand.title }}</p>
+                            <p class="mb-0" style="font-size: 14px;">Brand: {{ product.brand.title }}</p>
                         </div>
                     </div>
                 </div>
                 {% empty %}
-                <p class="text-center">No products available for selected brands.</p>
+                <p class="text-center">No products available for selected filters.</p>
                 {% endfor %}
             </div>
         </div>
+
     </div>
 </div>
-{% endblock %}
+{% endblock main_content %}
