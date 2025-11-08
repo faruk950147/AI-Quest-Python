@@ -6,27 +6,30 @@ from store.models import Category, Brand, Product, Slider
 # Create your views here.
 class HomeView(generic.View):
     """
-    The 'category' field of the Product model is a ForeignKey to the Category model.
-    This code filters the Category table's 'title' field using the value 'borkha':
+    # 1. Case-insensitive substring search 
+    # Example: "Pant", "pant", "PANT" — all will match
+    products = Product.objects.filter(category__title__icontains='pant')
 
-    - `icontains`: case-insensitive substring matching.  
-    Example: 'Borkha', 'borkha', 'BORKHA' all will match.
+    # 2. Case-sensitive substring search
+    # Example: only "pant" will match; "PANT" or "Pant" will not
+    products = Product.objects.filter(category__title__contains='pant')
 
-    - `contains`: case-sensitive substring matching.  
-    Example: only 'borkha' will match; 'Borkha' or 'BORKHA' will not.
+    # 3. Case-insensitive exact match 
+    # Example: "pant", "PANT", "Pant" — all will match, 
+    # but "pants" or "pant123" will not
+    products = Product.objects.filter(category__title__iexact='pant')
 
-    - `iexact`: case-insensitive exact match.  
-    Example: 'Borkha', 'borkha', 'BORKHA' will match, but 'borkhas' or 'borkha123' will not.
-
-    Using these filters, you can select and display all products belonging to the 'borkha' category.
-    gents_pants = Product.objects.filter(category__title__in=['GENT_PANTS'])
-
+    # 4. Multiple match using 'in' lookup
+    # This returns all products whose category title is either 
+    # 'pant', 'shirt', or 'howdy'
+    products = Product.objects.filter(category__title__in=['pant', 'shirt', 'howdy'])        
+    shirts = Product.objects.filter(category__title__in="SHIRT", status='ACTIVE').select_related('category')
     """
     def get(self, request):
         sliders = Slider.objects.filter(status='ACTIVE')
-        gents_pants = Product.objects.filter(category__title__contains='GENT_PANTS', status='ACTIVE')
+        gents_pants = Product.objects.filter(category__title__contains='GENT PANTS', status='ACTIVE')
         borkhas = Product.objects.filter(category__title__contains='BORKHA', status='ACTIVE')
-        baby_fashions = Product.objects.filter(category__title__contains='BABY_FASHION', status='ACTIVE')
+        baby_fashions = Product.objects.filter(category__title__contains='BABY FASHION', status='ACTIVE')
 
         context = {
             'sliders': sliders, 
