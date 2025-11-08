@@ -48,7 +48,7 @@ class SingleProductView(generic.View):
         return render(request, "store/single-product.html", context)
     
 
-class CategoryProductView(View):
+class CategoryProductView(generic.View):
     def get(self, request, slug, id):
         category = get_object_or_404(Category, slug=slug, id=id)
         products = Product.objects.filter(category=category, status='ACTIVE')
@@ -68,7 +68,7 @@ class CategoryProductView(View):
 
         context = {
             'category': category,
-            'products': products.order_by('-id'),
+            'products': products,
             'brands': brands,
             'selected_brand': int(selected_brand) if selected_brand else None,
             'price_filter': price_filter,
