@@ -49,7 +49,7 @@ class CategoryProductView(generic.View):
         category = get_object_or_404(Category, slug=slug, id=id)
         products = Product.objects.filter(category=category, status='ACTIVE')
         brands = Brand.objects.filter(product__category=category).distinct()
-
+        print('===============', brands)
         # Brand filter
         selected_brand = request.GET.get('brand')
         if selected_brand:

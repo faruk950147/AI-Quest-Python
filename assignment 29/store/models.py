@@ -10,9 +10,9 @@ class Category(models.Model):
         ('NONE', 'None'),
         ('LEHENGA', 'Lehenga'),
         ('SHAREE', 'Sharee'),
-        ('GENT_PANTS', 'Gent Pants'),
+        ('GENT PANTS', 'Gent Pants'),
         ('BORKHA', 'Borkha'),
-        ('BABY_FASHION', 'Baby Fashion'),
+        ('BABY FASHION', 'Baby Fashion'),
     )
     title = models.CharField(max_length=50, choices=CATEGORY_CHOICES, default='NONE')
     slug = models.SlugField(max_length=150, unique=True, null=True, blank=True)
