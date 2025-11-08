@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block title %}{{ category.title }} Products{% endblock %}
+
+{% block main_content %}
+<div class="container my-5">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-sm-3">
+            <form method="get">
+                <h5>Brands</h5>
+                {% for brand in brands %}
+                <label class="d-block">
+                    <input type="checkbox" name="brand" value="{{ brand.id }}"
+                        {% if brand.id in selected_brands %}checked{% endif %}>
+                    {{ brand.title }}
+                </label>
+                {% endfor %}
+                <button type="submit" class="btn btn-primary mt-2">Filter</button>
+            </form>
+        </div>
+
+        <!-- Product Grid -->
+        <div class="col-sm-9">
+            <div class="row">
+                {% for product in products %}
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                    <div class="card h-100">
+                        <a href="{% url 'single-product' product.slug product.id %}">
+                            <img src="{{ product.image.url }}" class="card-img-top" style="height:220px; object-fit:cover;">
+                        </a>
+                        <div class="card-body p-2">
+                            <h6 class="card-title">{{ product.title|truncatechars:25 }}</h6>
+                            <p class="text-success">Tk. {{ product.sale_price }}
+                                {% if product.old_price > product.sale_price %}
+                                <small class="text-muted text-decoration-line-through">Tk. {{ product.old_price }}</small>
+                                {% endif %}
+                            </p>
+                            <p>Brand: {{ product.brand.title }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <p class="text-center">No products available for selected brands.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
