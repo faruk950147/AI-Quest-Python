@@ -23,6 +23,7 @@
                 <ul class="list-group list-group-flush">
                     {% for brand in brands %}
                     <li class="list-group-item p-0 border-0">
+                        <!-- django template query dynamic urls ? means query string start & separate -->
                         <a href="?brand={{ brand.id }}{% if price_filter %}&price={{ price_filter }}{% endif %}"
                         class="list-group-item list-group-item-action {% if selected_brand == brand.id %}list-group-item-success{% endif %}">
                             {{ brand.title|title }}
@@ -37,12 +38,14 @@
                 <h6 class="fw-bold mb-2 mt-3">Prices</h6>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item p-0 border-0">
+                        <!-- django template query dynamic urls ? means query string start & separate -->
                         <a href="?{% if selected_brand %}brand={{ selected_brand }}&{% endif %}price=below_20k"
                         class="list-group-item list-group-item-action {% if price_filter == 'below_20k' %}list-group-item-success{% endif %}">
                             Below 20k
                         </a>
                     </li>
                     <li class="list-group-item p-0 border-0">
+                        <!-- django template query dynamic urls ? means query string start & separate -->
                         <a href="?{% if selected_brand %}brand={{ selected_brand }}&{% endif %}price=above_20k"
                         class="list-group-item list-group-item-action {% if price_filter == 'above_20k' %}list-group-item-success{% endif %}">
                             Above 20k
