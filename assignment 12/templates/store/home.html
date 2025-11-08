@@ -51,19 +51,20 @@
     <!-- Slider 1 -->
     <div class="owl-carousel" id="slider1">
         {% if gents_pants %}
-        {% for gents_pant in gents_pants %}
-        <div class="item">
-            <a class="text-decoration-none" href="{% url "single-product" gents_pant.slug gents_pant.id %}"><img src="{{gents_pant.image.url}}" alt="" height="200px"></a>
-            <span class="fs-5 fw-bold"><a class="text-decoration-none text-dark" href="{% url "single-product" gents_pant.slug gents_pant.id %}">{{gents_pant.title|title}}</a></span><br>
-                    {{gents_pant.sale_price|title}}
-                    {% if gents_pant.old_price %}
-                        <del>{{gents_pant.old_price|title}}</del>
+            {% for product in gents_pants %}
+                <div class="item" style="width: 100%; max-width: 190px; margin: auto;">
+                    <a class="text-decoration-none" href="{% url "single-product" product.slug product.id %}"><img src="{{product.image.url}}" alt="{{product.title|title}}" height="200px"></a>
+                    <h6 class="card-title fw-bold mb-1" style="font-size: 14px;">{{ product.title|truncatechars:25 }}</h6>
+                    <p class="fw-bold mb-0 text-success" style="font-size: 13px;">
+                    Tk. {{ product.sale_price }}
+                    {% if product.old_price %}
+                    <small class="text-muted text-decoration-line-through">
+                        Tk. {{ product.old_price }}
+                    </small>
                     {% endif %}
-            </span>
-            <p class="fs-5">Category: {{gents_pant.category.title|title}} </p>
-            <p class="fs-5">Brand: {{gents_pant.brand.title|title}} </p>
-        </div>
-        {% endfor %}
+                    </p>
+                </div>
+            {% endfor %}
         {% else %}
         <h3> Please no products </h3>
         {% endif %}
@@ -93,20 +94,20 @@
     <!-- Slider 2 -->
     <div class="owl-carousel" id="slider2">
         {% if borkhas  %}
-        {% for borkha in borkhas %}
-            <div class="item">
-            <a class="text-decoration-none" href="{% url "single-product" borkha.slug borkha.id %}"><img src="{{borkha.image.url}}" alt="" height="200px"></a>
-            <span class="fs-5 fw-bold""><a class="text-decoration-none text-dark" href="{% url "single-product" borkha.slug borkha.id %}">{{borkha.title|title}}</a></span><br>
-                <span class="fs-5">Tk. 
-                    {{borkha.sale_price}}
-                    {% if borkha.old_price %}
-                    <del> {{borkha.old_price}} </del>
+            {% for product in borkhas %}
+                <div class="item" style="width: 100%; max-width: 190px; margin: auto;">
+                    <a class="text-decoration-none" href="{% url "single-product" product.slug product.id %}"><img src="{{product.image.url}}" alt="{{product.title|title}}" height="200px"></a>
+                    <h6 class="card-title fw-bold mb-1" style="font-size: 14px;">{{ product.title|truncatechars:25 }}</h6>
+                    <p class="fw-bold mb-0 text-success" style="font-size: 13px;">
+                    Tk. {{ product.sale_price }}
+                    {% if product.old_price %}
+                    <small class="text-muted text-decoration-line-through">
+                        Tk. {{ product.old_price }}
+                    </small>
                     {% endif %}
-                </span>
-            <p class="fs-5">Category: {{borkha.category.title|title}} </p>
-            <p class="fs-5">Brand: {{borkha.brand.title|title}} </p>
-            </div>
-        {% endfor %}
+                    </p>
+                </div>
+            {% endfor %}
         {% else %}
         <h3> Please no products </h3>
         {% endif %}
@@ -136,20 +137,20 @@
     <!-- Slider 3 -->
     <div class="owl-carousel" id="slider3">
         {% if baby_fashions %}
-        {% for baby_fashion in baby_fashions %}
-        <div class="item">
-            <a class="text-decoration-none" href="{% url "single-product" baby_fashion.slug baby_fashion.id %}"><img src="{{baby_fashion.image.url}}" alt="" height="200px"></a>
-            <span class="fs-5 fw-bold"><a class="text-decoration-none text-dark" href="{% url "single-product" baby_fashion.slug baby_fashion.id %}">{{baby_fashion.title|title}}</a></span><br>
-            <span class="fs-5">Tk. 
-                {{baby_fashion.sale_price|title}}
-                {% if baby_fashion.old_price %}
-                <del>{{baby_fashion.old_price|title}}</del>
-                {% endif %}
-            </span>
-            <p class="fs-5">Category: {{baby_fashion.category.title|title}} </p>
-            <p class="fs-5">Brand: {{baby_fashion.brand.title|title}} </p>
-        </div>
-        {% endfor %}
+            {% for product in gents_pants %}
+                <div class="item" style="width: 100%; max-width: 190px; margin: auto;">
+                    <a class="text-decoration-none" href="{% url "single-product" product.slug product.id %}"><img src="{{product.image.url}}" alt="{{product.title|title}}" height="200px"></a>
+                    <h6 class="card-title fw-bold mb-1" style="font-size: 14px;">{{ product.title|truncatechars:25 }}</h6>
+                    <p class="fw-bold mb-0 text-success" style="font-size: 13px;">
+                    Tk. {{ product.sale_price }}
+                    {% if product.old_price %}
+                    <small class="text-muted text-decoration-line-through">
+                        Tk. {{ product.old_price }}
+                    </small>
+                    {% endif %}
+                    </p>
+                </div>
+            {% endfor %}
         {% else %}
         <h3> Please no products </h3>
       {% endif %}
