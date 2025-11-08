@@ -4,17 +4,15 @@
 {% block main_content %}
 <div class="container my-5">
     <div class="row">
-
         <!-- Sidebar -->
         <div class="col-lg-3 col-md-4 mb-4">
             <div class="card p-3 shadow-sm">
-
                 <!-- All Filter -->
                 <h6 class="fw-bold mb-2">All Filters</h6>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item p-0 border-0">
                         <a href="{% url 'category-product' category.slug category.id %}"
-                           class="list-group-item list-group-item-action {% if not selected_brand and not price_filter %}active{% endif %}">
+                        class="list-group-item list-group-item-action {% if not selected_brand and not price_filter %}list-group-item-success{% endif %}">
                             All Products
                         </a>
                     </li>
@@ -26,7 +24,7 @@
                     {% for brand in brands %}
                     <li class="list-group-item p-0 border-0">
                         <a href="?brand={{ brand.id }}{% if price_filter %}&price={{ price_filter }}{% endif %}"
-                           class="list-group-item list-group-item-action {% if selected_brand == brand.id %}active{% endif %}">
+                        class="list-group-item list-group-item-action {% if selected_brand == brand.id %}list-group-item-success{% endif %}">
                             {{ brand.title|title }}
                         </a>
                     </li>
@@ -40,13 +38,13 @@
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item p-0 border-0">
                         <a href="?{% if selected_brand %}brand={{ selected_brand }}&{% endif %}price=below_20k"
-                           class="list-group-item list-group-item-action {% if price_filter == 'below_20k' %}active{% endif %}">
+                        class="list-group-item list-group-item-action {% if price_filter == 'below_20k' %}list-group-item-success{% endif %}">
                             Below 20k
                         </a>
                     </li>
                     <li class="list-group-item p-0 border-0">
                         <a href="?{% if selected_brand %}brand={{ selected_brand }}&{% endif %}price=above_20k"
-                           class="list-group-item list-group-item-action {% if price_filter == 'above_20k' %}active{% endif %}">
+                        class="list-group-item list-group-item-action {% if price_filter == 'above_20k' %}list-group-item-success{% endif %}">
                             Above 20k
                         </a>
                     </li>
