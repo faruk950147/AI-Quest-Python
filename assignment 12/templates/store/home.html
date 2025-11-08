@@ -137,7 +137,7 @@
     <!-- Slider 3 -->
     <div class="owl-carousel" id="slider3">
         {% if baby_fashions %}
-            {% for product in gents_pants %}
+            {% for product in baby_fashions %}
                 <div class="item" style="width: 100%; max-width: 190px; margin: auto;">
                     <a class="text-decoration-none" href="{% url "single-product" product.slug product.id %}"><img src="{{product.image.url}}" alt="{{product.title|title}}" height="200px"></a>
                     <h6 class="card-title fw-bold mb-1" style="font-size: 14px;">{{ product.title|truncatechars:25 }}</h6>
