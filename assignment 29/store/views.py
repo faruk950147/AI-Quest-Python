@@ -47,7 +47,6 @@ class SingleProductView(generic.View):
         }
         return render(request, "store/single-product.html", context)
     
-
 class CategoryProductView(generic.View):
     def get(self, request, slug, id):
         category = get_object_or_404(Category, slug=slug, id=id)
