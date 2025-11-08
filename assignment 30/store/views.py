@@ -52,10 +52,10 @@ class CategoryProductView(generic.View):
         category = get_object_or_404(Category, slug=slug, id=id)
         products = Product.objects.filter(category=category, status='ACTIVE')
 
-        # Brand filter
-        selected_brands = request.GET.getlist('brand')
-        if selected_brands:
-            products = products.filter(brand__id__in=selected_brands).distinct()
+        # Single brand filter
+        selected_brand = request.GET.get('brand')
+        if selected_brand:
+            products = products.filter(brand__id=selected_brand)
 
         # Price filter
         price_filter = request.GET.get('price')
@@ -66,15 +66,13 @@ class CategoryProductView(generic.View):
 
         context = {
             'category': category,
-            'products': products.order_by('-id').distinct(),
+            'products': products.order_by('-id'),
             'brands': Brand.objects.all(),
-            'selected_brands': list(map(int, selected_brands)),
+            'selected_brand': int(selected_brand) if selected_brand else None,
             'price_filter': price_filter,
         }
         return render(request, "store/category-product.html", context)
 
-
-    
 class BrandProductView(generic.View):
     def get(self, request, slug, id):
         brand = get_object_or_404(Brand, slug=slug, id=id)

@@ -11,18 +11,14 @@
                 <!-- Brand Filter -->
                 <h6 class="fw-bold mb-2">Brands</h6>
                 <ul class="list-group list-group-flush">
-                    {% if brands %}
-                        {% for brand in brands %}
-                        <li class="list-group-item p-0 border-0">
-                            <a href="?{% for b in selected_brands %}{% if b != brand.id %}brand={{ b }}&{% endif %}{% endfor %}brand={{ brand.id }}"
-                               class="list-group-item list-group-item-action {% if brand.id in selected_brands %}active{% endif %}">
-                                {{ brand.title|title }}
-                            </a>
-                        </li>
-                        {% endfor %}
-                    {% else %}
-                        <li class="list-group-item text-muted small">No brands available</li>
-                    {% endif %}
+                    {% for brand in brands %}
+                    <li class="list-group-item p-0 border-0">
+                        <a href="?brand={{ brand.id }}{% if price_filter %}&price={{ price_filter }}{% endif %}"
+                        class="list-group-item list-group-item-action {% if selected_brand == brand.id %}active{% endif %}">
+                            {{ brand.title|title }}
+                        </a>
+                    </li>
+                    {% endfor %}
                 </ul>
 
                 <!-- Price Filter -->
@@ -41,7 +37,6 @@
                         </a>
                     </li>
                 </ul>
-
             </div>
         </div>
 
