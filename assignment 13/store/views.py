@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
-from store.models import CategoryType, Category, Brand, Product, Slider
+from store.models import Category, Brand, Product, Slider
 from django.db.models import Prefetch
 
 # Create your views here.
