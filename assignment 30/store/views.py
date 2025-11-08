@@ -49,7 +49,7 @@ class SingleProductView(generic.View):
     
 
 
-class CategoryProductView(View):
+class CategoryProductView(generic.View):
     def get(self, request, slug, id):
         category = get_object_or_404(Category, slug=slug, id=id)
         products = Product.objects.filter(category=category, status='ACTIVE')
