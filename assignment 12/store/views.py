@@ -46,28 +46,23 @@ class SingleProductView(generic.View):
 class CategoryProductView(generic.View):
     def get(self, request, slug, id, data=None):
         category = get_object_or_404(Category, slug=slug, id=id)
-        cats_products = Product.objects.filter(category=category, status='ACTIVE')
+        products = Product.objects.filter(category=category, status='ACTIVE')
         brands = Brand.objects.filter(product__category=category, product__status='ACTIVE').distinct().order_by('title')
 
         if data:
             brand_slugs = list(brands.values_list('slug', flat=True))
             
-            # DEBUG: 
-            print(f"Clicked data: {data}")
-            print(f"Available brand slugs: {brand_slugs}")
-
             if data in brand_slugs:
-                cats_products = cats_products.filter(brand__slug=data)
-                print(f"Filtering by brand: {data} → {cats_products.count()} products")
+                products = products.filter(brand__slug=data)
             elif data == 'above':
-                cats_products = cats_products.filter(sale_price__gte=20000)
+                products = products.filter(sale_price__gte=20000)
             elif data == 'below':
-                cats_products = cats_products.filter(sale_price__lt=20000)
+                products = products.filter(sale_price__lt=20000)
             else:
-                cats_products = Product.objects.none()
+                products = Product.objects.none()
 
         context = {
-            'cats_products': cats_products,
+            'products': products,
             'category': category,
             'brands': brands,
             'current_data': data,
