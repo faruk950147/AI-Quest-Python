@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block title %}{{ category.title }} Products{% endblock %}
+
+{% block main_content %}
+<div class="container my-5">
+    <div class="row">
+
+        <!-- Sidebar -->
+        <div class="col-lg-3 col-md-4 mb-4">
+            <div class="card p-3 shadow-sm">
+                <!-- Brand Filter -->
+                <h6 class="fw-bold mb-2">Brands</h6>
+                <ul class="list-group list-group-flush">
+                    {% for brand in brands %}
+                    <li class="list-group-item p-0 border-0">
+                        <a href="?brand={{ brand.id }}{% if price_filter %}&price={{ price_filter }}{% endif %}"
+                           class="list-group-item list-group-item-action {% if selected_brand == brand.id %}active{% endif %}">
+                            {{ brand.title|title }}
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+
+                <!-- Price Filter -->
+                <h6 class="fw-bold mb-2 mt-3">Prices</h6>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item p-0 border-0">
+                        <a href="?{% if selected_brand %}brand={{ selected_brand }}&{% endif %}price=below_20k"
+                           class="list-group-item list-group-item-action {% if price_filter == 'below_20k' %}active{% endif %}">
+                            Below 20k
+                        </a>
+                    </li>
+                    <li class="list-group-item p-0 border-0">
+                        <a href="?{% if selected_brand %}brand={{ selected_brand }}&{% endif %}price=above_20k"
+                           class="list-group-item list-group-item-action {% if price_filter == 'above_20k' %}active{% endif %}">
+                            Above 20k
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Product Grid -->
+        <div class="col-lg-9 col-md-8">
+            <div class="row g-3">
+                {% for product in products %}
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="card h-100 shadow-sm">
+                        <a href="{% url 'single-product' product.slug product.id %}">
+                            <img src="{{ product.image.url }}" class="card-img-top" style="height:220px; object-fit:cover;">
+                        </a>
+                        <div class="card-body p-2">
+                            <h6 class="card-title">{{ product.title|truncatechars:25 }}</h6>
+                            <p class="text-success mb-1">Tk. {{ product.sale_price }}
+                                {% if product.old_price > product.sale_price %}
+                                    <small class="text-muted text-decoration-line-through">Tk. {{ product.old_price }}</small>
+                                {% endif %}
+                            </p>
+                            <p class="mb-0" style="font-size: 14px;">Brand: {{ product.brand.title }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <p class="text-center">No products available for selected filters.</p>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock main_content %}
