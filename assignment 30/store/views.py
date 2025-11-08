@@ -28,14 +28,11 @@ class HomeView(generic.View):
         borkhas = Product.objects.filter(category__title__contains='BORKHA', status='ACTIVE')
         baby_fashions = Product.objects.filter(category__title__contains='BABY_FASHION', status='ACTIVE')
 
-        categories = Category.objects.filter(status='ACTIVE')
-
         context = {
             'sliders': sliders, 
             'gents_pants': gents_pants, 
             'borkhas': borkhas, 
             'baby_fashions': baby_fashions,
-            'categories': categories,
         }
         return render(request, "store/home.html", context)
 
@@ -49,13 +46,11 @@ class SingleProductView(generic.View):
     
 class CategoryProductView(generic.View):
     def get(self, request, slug, id):
-        # Category get
         category = get_object_or_404(Category, slug=slug, id=id)
-
-        # Active products for this category
         products = Product.objects.filter(category=category, status='ACTIVE')
-
-        # Single brand filter
+        brands = Brand.objects.filter(product__category=category).distinct()
+        print('===============', brands)
+        # Brand filter
         selected_brand = request.GET.get('brand')
         if selected_brand:
             products = products.filter(brand__id=selected_brand)
@@ -67,21 +62,19 @@ class CategoryProductView(generic.View):
         elif price_filter == 'above_20k':
             products = products.filter(sale_price__gte=20000)
 
-
         context = {
             'category': category,
-            'products': products.order_by('-id'),
+            'products': products,
+            'brands': brands,
             'selected_brand': int(selected_brand) if selected_brand else None,
             'price_filter': price_filter,
         }
         return render(request, "store/category-product.html", context)
 
-
 class BrandProductView(generic.View):
     def get(self, request, slug, id):
         brand = get_object_or_404(Brand, slug=slug, id=id)
         brand_products = Product.objects.filter(brand=brand, status='ACTIVE')
-        # brand_products = Product.objects.filter(brand__slug=slug, brand__id=id, status='ACTIVE')
         context = {
             'brand_products': brand_products,
         }

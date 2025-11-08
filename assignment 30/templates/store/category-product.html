@@ -1,15 +1,25 @@
 {% extends 'base.html' %}
-{% block title %}{{ category.title }} Products{% endblock %}
+{% block title %}Category Products{% endblock %}
 
 {% block main_content %}
 <div class="container my-5">
     <div class="row">
-
         <!-- Sidebar -->
         <div class="col-lg-3 col-md-4 mb-4">
             <div class="card p-3 shadow-sm">
+                <!-- All Filter -->
+                <h6 class="fw-bold mb-2">All Filters</h6>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item p-0 border-0">
+                        <a href="{% url 'category-product' category.slug category.id %}"
+                        class="list-group-item list-group-item-action {% if not selected_brand and not price_filter %}list-group-item-success{% endif %}">
+                            All Products
+                        </a>
+                    </li>
+                </ul>
+
                 <!-- Brand Filter -->
-                <h6 class="fw-bold mb-2">Brands</h6>
+                <h6 class="fw-bold mb-2 mt-3">Brands</h6>
                 <ul class="list-group list-group-flush">
                     {% for brand in brands %}
                     <li class="list-group-item p-0 border-0">
@@ -18,6 +28,8 @@
                             {{ brand.title|title }}
                         </a>
                     </li>
+                    {% empty %}
+                    <li class="list-group-item text-muted small">No brands available</li>
                     {% endfor %}
                 </ul>
 
@@ -61,7 +73,7 @@
                     </div>
                 </div>
                 {% empty %}
-                <p class="text-center">No products available for selected filters.</p>
+                <p class="text-center mt-4">No products available for selected filters.</p>
                 {% endfor %}
             </div>
         </div>
