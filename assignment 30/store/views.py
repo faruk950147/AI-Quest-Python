@@ -49,7 +49,10 @@ class SingleProductView(generic.View):
     
 class CategoryProductView(generic.View):
     def get(self, request, slug, id):
+        # Category get
         category = get_object_or_404(Category, slug=slug, id=id)
+
+        # Active products for this category
         products = Product.objects.filter(category=category, status='ACTIVE')
 
         # Single brand filter
@@ -64,14 +67,15 @@ class CategoryProductView(generic.View):
         elif price_filter == 'above_20k':
             products = products.filter(sale_price__gte=20000)
 
+
         context = {
             'category': category,
             'products': products.order_by('-id'),
-            'brands': Brand.objects.all(),
             'selected_brand': int(selected_brand) if selected_brand else None,
             'price_filter': price_filter,
         }
         return render(request, "store/category-product.html", context)
+
 
 class BrandProductView(generic.View):
     def get(self, request, slug, id):
