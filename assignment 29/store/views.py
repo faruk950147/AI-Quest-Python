@@ -28,14 +28,11 @@ class HomeView(generic.View):
         borkhas = Product.objects.filter(category__title__contains='BORKHA', status='ACTIVE')
         baby_fashions = Product.objects.filter(category__title__contains='BABY_FASHION', status='ACTIVE')
 
-        categories = Category.objects.filter(status='ACTIVE')
-
         context = {
             'sliders': sliders, 
             'gents_pants': gents_pants, 
             'borkhas': borkhas, 
             'baby_fashions': baby_fashions,
-            'categories': categories,
         }
         return render(request, "store/home.html", context)
 
@@ -78,7 +75,6 @@ class BrandProductView(generic.View):
     def get(self, request, slug, id):
         brand = get_object_or_404(Brand, slug=slug, id=id)
         brand_products = Product.objects.filter(brand=brand, status='ACTIVE')
-        # brand_products = Product.objects.filter(brand__slug=slug, brand__id=id, status='ACTIVE')
         context = {
             'brand_products': brand_products,
         }
