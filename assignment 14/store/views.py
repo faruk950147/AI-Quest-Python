@@ -26,10 +26,10 @@ class HomeView(generic.View):
         borkhas = Product.objects.filter(category__title__in="Borkhas", status='ACTIVE').select_related('category')
         baby_fashions = Product.objects.filter(category__title__in="Baby", status='ACTIVE').select_related('category')
         context = {
-            # 'sliders': sliders, 
-            # 'gents_pants': gents_pants, 
-            # 'borkhas': borkhas, 
-            # 'baby_fashions': baby_fashions,
+            'sliders': sliders, 
+            'gents_pants': gents_pants, 
+            'borkhas': borkhas, 
+            'baby_fashions': baby_fashions,
         }
         return render(request, "store/home.html", context)
 
@@ -43,8 +43,6 @@ class SingleProductView(generic.View):
     
 class CategoryProductView(generic.View):
     def get(self, request, slug, id):
-        cats_products = Product.objects.filter(category__slug=slug, category__id=id),
         context = {
-            'cats_products': cats_products,
         }
         return render(request, "store/category-product.html", context)
