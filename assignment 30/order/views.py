@@ -10,6 +10,3 @@ class OrderView(generic.View):
     def get(self, request):
         return render(request, 'order/order.html')
 
-class AddressView(generic.View):
-    def get(self, request):
-        return render(request, 'order/address.html')

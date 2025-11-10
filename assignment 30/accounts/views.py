@@ -4,6 +4,7 @@ from django.views import generic
 from accounts.forms import SignUpForm, SignInForm, ChangePasswordForm, ResetPasswordForm, SetNewPasswordForm, ProfileForm
 from django.contrib.auth import update_session_auth_hash, logout, authenticate, login
 from django.contrib.auth.mixins import LoginRequiredMixin
+from accounts.models import Profile
 
 # Sign-up View
 class SignUpView(generic.View):
@@ -95,7 +96,25 @@ class ProfileView(LoginRequiredMixin, generic.View):
         if not request.user.is_authenticated:
             return redirect('sign-in')
         form = ProfileForm()
-        return render(request, 'accounts/profile.html', {'form': form})
+        return render(request, 'accounts/profile.html', {'form': form, 'active': 'btn-success'})
     def post(self, request):
         form = ProfileForm(request.POST)
-        return render(request, 'accounts/profile.html', {'form': form})
+        if form.is_valid():
+            profiles = Profile(
+                user=request.user,
+                name = form.cleaned_data['name'],
+                division=form.cleaned_data['division'],
+                district=form.cleaned_data['district'],
+                thana=form.cleaned_data['thana'],
+                villorroad=form.cleaned_data['villorroad'],
+                phone=form.cleaned_data['phone'],
+                zipcode=form.cleaned_data['zipcode'],
+            )
+            profiles.save() 
+            messages.success(request, 'Profile successfully updated')
+        messages.success(request, 'something is invalid')
+        return render(request, 'accounts/profile.html', {'form': form, 'active': 'btn-success'})
+
+class AddressView(generic.View):
+    def get(self, request):
+        return render(request, 'accounts/address.html')

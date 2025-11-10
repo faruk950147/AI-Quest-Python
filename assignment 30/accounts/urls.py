@@ -7,7 +7,8 @@ from accounts.views import (
     # SignOutView, 
     # PasswordChangeView, 
     # PasswordResetView,
-    ProfileView
+    ProfileView,
+    AddressView
 )
 from accounts.forms import SignInForm, ChangePasswordForm, PasswordResetForm, SetPasswordForm
 
@@ -60,5 +61,6 @@ urlpatterns = [
         name='password_reset_complete'
     ),
 
-    path('profile/', ProfileView.as_view(), name='profile')
+    path('profile/', ProfileView.as_view(), name='profile'),
+    path('address/', AddressView.as_view(), name='address'),
 ]
