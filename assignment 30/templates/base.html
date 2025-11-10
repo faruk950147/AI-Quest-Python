@@ -21,82 +21,96 @@
 
 
     <title>E-Shop | {% block title %} {% endblock title %} </title>
+    <!-- Optional CSS for better active highlighting -->
+    <link rel="stylesheet" href="{% static "assets/css/main.css" %}">
 </head>
 
 <body>
     <!-- Start Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-success">
         <div class="container">
-            <a class="navbar-brand" href="{% url "home" %}">E-Shop</a>
+            <!-- Brand -->
+            <a class="navbar-brand" href="{% url 'home' %}">E-Shop</a>
+
+            <!-- Mobile Toggle Button -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
+            <!-- Navbar Content -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Left Links -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <!-- Home -->
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{% url "home" %}">Home</a>
+                        <a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}" href="{% url 'home' %}">Home</a>
                     </li>
+
+                    <!-- Categories Dropdown -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white" href="#" id="electronicsDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle {% if request.resolver_match.url_name == 'category-product' %}active{% endif %} text-white" href="#" id="categoriesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Categories
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="electronicsDropdown">
+                        <ul class="dropdown-menu" aria-labelledby="categoriesDropdown">
                             {% if categories %}
                                 {% for category in categories %}
-                                <li>
-                                <a class="dropdown-item" href="{% url 'category-product' category.slug category.id %}">
-                                    {{ category.title|title }}
-                                </a>
-                            </li>
+                                    <li>
+                                        <a class="dropdown-item {% if request.resolver_match.kwargs.id|stringformat:"s" == category.id|stringformat:"s" %}active{% endif %}" href="{% url 'category-product' category.slug category.id %}">
+                                            {{ category.title|title }}
+                                        </a>
+                                    </li>
                                 {% endfor %}
+                            {% else %}
+                                <li><span class="dropdown-item text-muted">No categories</span></li>
                             {% endif %}
-
                         </ul>
                     </li>
-
                 </ul>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+
+                <!-- Search Form -->
+                <form class="d-flex me-3" method="get" action="">
+                    <input class="form-control me-2" type="search" name="q" placeholder="Search" aria-label="Search">
                     <button class="btn btn-warning" type="submit">Search</button>
                 </form>
-                <div>
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item dropdown mx-2">
-                            <a class="nav-link dropdown-toggle text-white" href="#" id="profileDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                {{request.user.username|default:"Profile"}}
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="profileDropdown">
-                                {% if request.user.is_authenticated %}
-                                <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
-                                <li><a class="dropdown-item" href="{% url 'order' %}">Orders</a></li>
-                                <li><a class="dropdown-item" href="{% url 'password-change' %}">Change Password</a></li>
+
+                <!-- Right Links: Profile + Cart -->
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <!-- Profile Dropdown -->
+                    <li class="nav-item dropdown mx-2">
+                        <a class="nav-link dropdown-toggle text-white{% if request.resolver_match.url_name == 'profile' or request.resolver_match.url_name == 'order' or request.resolver_match.url_name == 'password-change' or request.resolver_match.url_name == 'sign-in' or request.resolver_match.url_name == 'sign-up' %} active{% endif %}" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ request.user.username|default:"Profile" }}
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+                            {% if request.user.is_authenticated %}
+                                <li><a class="dropdown-item {% if request.resolver_match.url_name == 'profile' %}active{% endif %}" href="{% url 'profile' %}">Profile</a></li>
+                                <li><a class="dropdown-item {% if request.resolver_match.url_name == 'order' %}active{% endif %}" href="{% url 'order' %}">Orders</a></li>
+                                <li><a class="dropdown-item {% if request.resolver_match.url_name == 'password-change' %}active{% endif %}" href="{% url 'password-change' %}">Change Password</a></li>
                                 <li>
                                     <form method="post" action="{% url 'sign-out' %}">
                                         {% csrf_token %}
-                                        <button type="submit" class="btn btn-link text-decoration-none text-dark">Sign Out</button>
+                                        <button type="submit" class="btn btn-link text-decoration-none text-dark w-100 text-start">Sign Out</button>
                                     </form>
                                 </li>
                             {% else %}
-                                <li><a class="dropdown-item" href="{% url 'sign-in' %}">Sign In</a></li>
-                                <li><a class="dropdown-item" href="{% url 'sign-up' %}">Sign Up</a></li>
+                                <li><a class="dropdown-item {% if request.resolver_match.url_name == 'sign-in' %}active{% endif %}" href="{% url 'sign-in' %}">Sign In</a></li>
+                                <li><a class="dropdown-item {% if request.resolver_match.url_name == 'sign-up' %}active{% endif %}" href="{% url 'sign-up' %}">Sign Up</a></li>
                             {% endif %}
+                        </ul>
+                    </li>
 
-                            </ul>
-
-                        </li>
-                        <li class="nav-item mx-2">
-                            <a href="{% url "cart-detail" %}" class="nav-link text-white"><span
-                                    class="badge bg-danger">10</span> Cart </a>
-                        </li>
-                    </ul>
-                </div>
+                    <!-- Cart -->
+                    <li class="nav-item mx-2">
+                        <a href="{% url 'cart-detail' %}" class="nav-link text-white {% if request.resolver_match.url_name == 'cart-detail' %}active{% endif %}">
+                            <span class="badge bg-danger">{{ cart_count|default:0 }}</span> Cart
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
-    </nav> <!-- End Navbar -->
+    </nav>
+    <!-- End Navbar -->
 
     {% block slider %} {% endblock slider %}
 
