@@ -73,7 +73,6 @@
                                 {% if request.user.is_authenticated %}
                                 <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
                                 <li><a class="dropdown-item" href="{% url 'order' %}">Orders</a></li>
-                                <li><a class="dropdown-item" href="{% url 'address' %}">Address</a></li>
                                 <li><a class="dropdown-item" href="{% url 'password-change' %}">Change Password</a></li>
                                 <li>
                                     <form method="post" action="{% url 'sign-out' %}">
