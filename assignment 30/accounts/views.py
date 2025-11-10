@@ -92,5 +92,10 @@ class PasswordResetView(generic.View):
 # Profile View
 class ProfileView(LoginRequiredMixin, generic.View):
     def get(self, request):
+        if not request.user.is_authenticated:
+            return redirect('sign-in')
         form = ProfileForm()
+        return render(request, 'accounts/profile.html', {'form': form})
+    def post(self, request):
+        form = ProfileForm(request.POST)
         return render(request, 'accounts/profile.html', {'form': form})
