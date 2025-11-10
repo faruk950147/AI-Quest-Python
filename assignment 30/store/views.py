@@ -1,9 +1,12 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import never_cache
 from store.models import Category, Brand, Product, Slider
 
 
 # Create your views here.
+@method_decorator(never_cache, name='dispatch')
 class HomeView(generic.View):
     """
     # 1. Case-insensitive substring search 
@@ -39,6 +42,7 @@ class HomeView(generic.View):
         }
         return render(request, "store/home.html", context)
 
+@method_decorator(never_cache, name='dispatch')
 class SingleProductView(generic.View):
     def get(self, request, slug, id):
         product = get_object_or_404(Product, slug=slug, id=id)
@@ -46,7 +50,8 @@ class SingleProductView(generic.View):
             'product': product,
         }
         return render(request, "store/single-product.html", context)
-    
+
+@method_decorator(never_cache, name='dispatch')
 class CategoryProductView(generic.View):
     def get(self, request, slug, id):
         category = get_object_or_404(Category, slug=slug, id=id)
@@ -73,6 +78,7 @@ class CategoryProductView(generic.View):
         }
         return render(request, "store/category-product.html", context)
 
+@method_decorator(never_cache, name='dispatch')
 class ProductsListView(generic.View):
     def get(self, request):
         products = Product.objects.filter(status='ACTIVE')

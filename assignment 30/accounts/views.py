@@ -1,13 +1,15 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.views import generic
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import never_cache
 from accounts.forms import SignUpForm, SignInForm, ChangePasswordForm, ResetPasswordForm, SetNewPasswordForm, ProfileForm
 from django.contrib.auth import update_session_auth_hash, logout, authenticate, login
-from django.contrib.auth.mixins import LoginRequiredMixin
 from accounts.models import Profile
-
+from accounts.mixing import LoginRequiredMixin, LogoutRequiredMixin
 # Sign-up View
-class SignUpView(generic.View):
+@method_decorator(never_cache, name='dispatch')
+class SignUpView(LogoutRequiredMixin, generic.View):
     def get(self, request):
         if request.user.is_authenticated:
             return redirect('profile')
@@ -24,8 +26,9 @@ class SignUpView(generic.View):
         return render(request, 'accounts/sign-up.html', {'form': form})
 
 # Sign-in View
-""" 
-class SignInView(generic.View):
+"""
+@method_decorator(never_cache, name='dispatch')
+class SignInView(LogoutRequiredMixin, generic.View):
     def get(self, request):
         if request.user.is_authenticated:
             return redirect('profile')
@@ -53,7 +56,29 @@ class SignInView(generic.View):
 
         return render(request, 'accounts/sign-in.html', {'form': form})
 
+# Password Reset View
+@method_decorator(never_cache, name='dispatch')
+class PasswordResetView(LogoutRequiredMixin, generic.View):
+    def get(self, request):
+        return render(request, 'accounts/password-reset.html', {})
+
+# Password Reset Done View
+class PasswordResetDoneView(LogoutRequiredMixin, generic.View):
+    def get(self, request):
+        return render(request, 'accounts/password-reset-done.html', {})
+
+# Password Reset Confirm View
+class PasswordResetConfirmView(LogoutRequiredMixin, generic.View):
+    def get(self, request):
+        return render(request, 'accounts/password-reset-confirm.html', {})
+
+# Password Reset Complete View
+class PasswordResetCompleteView(LogoutRequiredMixin, generic.View):
+    def get(self, request):
+        return render(request, 'accounts/password-reset-complete.html', {})
+
 # Sign-out View
+@method_decorator(never_cache, name='dispatch')
 class SignOutView(LoginRequiredMixin, generic.View):
     # Logs out the user and redirects to the sign-in page with a success message.
     def post(self, request):
@@ -66,10 +91,10 @@ class SignOutView(LoginRequiredMixin, generic.View):
         logout(request)
         messages.success(request, 'You have been signed out successfully.')
         return redirect('sign-in')
-        
 
 # Password Change View
-class PasswordChangeView(generic.View):
+@method_decorator(never_cache, name='dispatch')
+class PasswordChangeView(LoginRequiredMixin, generic.View):
     def get(self, request):
         form = ChangePasswordForm(user=request.user)
         return render(request, 'accounts/password-change.html', {'form': form})
@@ -85,13 +110,12 @@ class PasswordChangeView(generic.View):
         return render(request, 'accounts/password-change.html', {'form': form})
 
 
-# Password Reset View
-class PasswordResetView(generic.View):
     def get(self, request):
         return render(request, 'accounts/password-reset.html', {})
  """
 # Profile View
-class ProfileView(generic.View):
+@method_decorator(never_cache, name='dispatch')
+class ProfileView(LoginRequiredMixin, generic.View):
     def get(self, request):
         if not request.user.is_authenticated:
             return redirect('sign-in')
@@ -126,7 +150,8 @@ class ProfileView(generic.View):
             messages.error(request, 'Something is invalid')
         return render(request, 'accounts/profile.html', {'form': form, 'active': 'btn-success'})
 
-class AddressView(generic.View):
+@method_decorator(never_cache, name='dispatch')
+class AddressView(LoginRequiredMixin, generic.View):
     def get(self, request):
         profiles = Profile.objects.filter(user=request.user)
         return render(request, 'accounts/address.html', {'profiles': profiles, 'active': 'btn-success'})
