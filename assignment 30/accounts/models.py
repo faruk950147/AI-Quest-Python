@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils.html import mark_safe
 
-
 # Create your models here.
 
 DIVISION_CHOICES = (
@@ -25,20 +24,12 @@ class Profile(models.Model):
     villorroad = models.CharField(max_length=100)
     phone = models.CharField(max_length=15, default='+880')
     zipcode = models.PositiveIntegerField()
-    # image = models.ImageField(upload_to='Profile/%Y/%m/%d/')
-    # created_date = models.DateTimeField(auto_now_add=True)
-    # updated_date = models.DateTimeField(auto_now=True)
-    @property
-    def image_tag(self):
-        try:
-            return mark_safe(f'<img src="{self.image.url}" width="50" height="50"/>')
-        except AttributeError:
-            return mark_safe('<span>No Image</span>')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         ordering = ['id']
-    verbose_name_plural = '01. Profiles'
+        verbose_name_plural = '01. Profiles'
 
     def __str__(self):
         return f"{self.name} - {self.user.username}"
-

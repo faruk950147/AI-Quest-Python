@@ -10,6 +10,7 @@ from django.contrib.auth.forms import (
     SetPasswordForm,   # it's without old password
     PasswordResetForm
 )
+from accounts.models import Profile
 # SignUpForm
 class SignUpForm(UserCreationForm):
     username = forms.CharField(label=_('Username'), max_length=150, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Username'}))
@@ -79,3 +80,17 @@ class SetNewPasswordForm(SetPasswordForm):
     class Meta:
         model = User
         fields = ('new_password1', 'new_password2')
+        
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['name', 'division', 'district', 'thana', 'villorroad', 'phone', 'zipcode']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control'}),
+            'division': forms.Select(attrs={'class': 'form-control'}),
+            'district': forms.TextInput(attrs={'class': 'form-control'}),
+            'thana': forms.TextInput(attrs={'class': 'form-control'}),
+            'villorroad': forms.TextInput(attrs={'class': 'form-control'}),
+            'phone': forms.TextInput(attrs={'class': 'form-control', 'placeholder': '+880'}),
+            'zipcode': forms.NumberInput(attrs={'class': 'form-control'}),
+        }
