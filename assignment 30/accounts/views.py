@@ -91,7 +91,7 @@ class PasswordResetView(generic.View):
         return render(request, 'accounts/password-reset.html', {})
  """
 # Profile View
-class ProfileView(LoginRequiredMixin, generic.View):
+class ProfileView(generic.View):
     def get(self, request):
         if not request.user.is_authenticated:
             return redirect('sign-in')
@@ -100,9 +100,20 @@ class ProfileView(LoginRequiredMixin, generic.View):
     def post(self, request):
         form = ProfileForm(request.POST)
         if form.is_valid():
-            profiles = Profile(
+            # profiles = Profile(
+            #     user=request.user,
+            #     name = form.cleaned_data['name'],
+            #     division=form.cleaned_data['division'],
+            #     district=form.cleaned_data['district'],
+            #     thana=form.cleaned_data['thana'],
+            #     villorroad=form.cleaned_data['villorroad'],
+            #     phone=form.cleaned_data['phone'],
+            #     zipcode=form.cleaned_data['zipcode'],
+            # )
+            # profiles.save() 
+            Profile.objects.create(
                 user=request.user,
-                name = form.cleaned_data['name'],
+                name=form.cleaned_data['name'],
                 division=form.cleaned_data['division'],
                 district=form.cleaned_data['district'],
                 thana=form.cleaned_data['thana'],
@@ -110,13 +121,12 @@ class ProfileView(LoginRequiredMixin, generic.View):
                 phone=form.cleaned_data['phone'],
                 zipcode=form.cleaned_data['zipcode'],
             )
-            profiles.save() 
             messages.success(request, 'Profile successfully updated')
-        messages.success(request, 'something is invalid')
+        else:
+            messages.error(request, 'Something is invalid')
         return render(request, 'accounts/profile.html', {'form': form, 'active': 'btn-success'})
 
-class AddressView(LoginRequiredMixin, generic.View):
+class AddressView(generic.View):
     def get(self, request):
         profiles = Profile.objects.filter(user=request.user)
-
         return render(request, 'accounts/address.html', {'profiles': profiles, 'active': 'btn-success'})
