@@ -47,7 +47,9 @@
                     <li class="nav-item">
                         <a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}" href="{% url 'home' %}">Home</a>
                     </li>
-
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.resolver_match.url_name == 'products-lists' %}active{% endif %}" href="{% url 'products-lists' %}">All Products</a>
+                    </li>
                     <!-- Categories Dropdown -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle {% if request.resolver_match.url_name == 'category-product' %}active{% endif %} text-white" href="#" id="categoriesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

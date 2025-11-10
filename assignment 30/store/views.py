@@ -73,11 +73,10 @@ class CategoryProductView(generic.View):
         }
         return render(request, "store/category-product.html", context)
 
-class BrandProductView(generic.View):
-    def get(self, request, slug, id):
-        brand = get_object_or_404(Brand, slug=slug, id=id)
-        brand_products = Product.objects.filter(brand=brand, status='ACTIVE')
+class ProductsListView(generic.View):
+    def get(self, request):
+        products = Product.objects.filter(status='ACTIVE')
         context = {
-            'brand_products': brand_products,
+            'products': products,
         }
-        return render(request, "store/brand-product.html", context)
+        return render(request, "store/products-list.html", context)
