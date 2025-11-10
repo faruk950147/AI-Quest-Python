@@ -115,6 +115,8 @@ class ProfileView(LoginRequiredMixin, generic.View):
         messages.success(request, 'something is invalid')
         return render(request, 'accounts/profile.html', {'form': form, 'active': 'btn-success'})
 
-class AddressView(generic.View):
+class AddressView(LoginRequiredMixin, generic.View):
     def get(self, request):
-        return render(request, 'accounts/address.html')
+        profiles = Profile.objects.filter(user=request.user)
+
+        return render(request, 'accounts/address.html', {'profiles': profiles, 'active': 'btn-success'})
