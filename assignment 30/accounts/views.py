@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.views import generic
-from accounts.forms import SignUpForm, SignInForm, ChangePasswordForm
+from accounts.forms import SignUpForm, SignInForm, ChangePasswordForm, ResetPasswordForm, SetNewPasswordForm, ProfileForm
 from django.contrib.auth import update_session_auth_hash, logout, authenticate, login
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -92,4 +92,5 @@ class PasswordResetView(generic.View):
 # Profile View
 class ProfileView(LoginRequiredMixin, generic.View):
     def get(self, request):
-        return render(request, 'accounts/profile.html', {})
+        form = ProfileForm()
+        return render(request, 'accounts/profile.html', {'form': form})
