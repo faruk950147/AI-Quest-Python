@@ -12,6 +12,7 @@ class AddToCartView(LoginRequiredMixin, generic.View):
         # Logic to add item to cart
         product_id = request.POST.get('product-id')
         
+        
 @method_decorator(never_cache, name='dispatch')
 class CartDetailView(generic.View):
     def get(self, request):
