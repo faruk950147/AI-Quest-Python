@@ -1,41 +1,74 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}Product Detail{% endblock title %}
+
 {% block main_content %}
-    <div class="container my-5">
-        <div class="row">
-            <div class="col-sm-6 text-center align-self-center">
-                <img src="{{product.image.url}}" alt="{{product.title|title}}" class="img-fluid img-thumbnail">
-            </div>
-            <div class="col-sm-5 offset-sm-1">
-                <h2>Product Title: {{product.title|title}}</h2>
-                <hr>
-                <p>{{product.description}}</p> <br>
-                <h4>Tk. {{product.sale_price}} <small class="fw-light text-decoration-line-through">{% if product.old_price %}
-                    {{product.old_price}}
-                    {% endif %}</small></h4> <br>
-
-                <p>Available Discount: {{product.discount_percent|title}}%</p>
-                <form method="POST" action="{% url "add-to-cart" %}" class="d-inline">
-                    {% csrf_token %}    
-                    <div class="qty-input" style="margin-top: 15px;">
-                        <span class="text-uppercase">QTY: </span>
-                        <input class="quantity input" name="quantity" type="number" value="1" min="1" max="">
-
-                    </div>
-                    
-                    <input type="hidden" name="product-id" id="product-id" value="{{product.id}}" />
-                    <button type="submit" class="btn btn-success shadow px-5 py-2">Add to Cart</button>
-                </form>              
-                    <a href="" class="btn btn-danger shadow px-5 py-2 ms-4">Buy Now</a>
-                <h5 class="mt-5">Available Info</h5>
-                <ul>
-                    <li>Category: {{product.category.title|title}}</li>
-                    <li>Brand: {{product.brand.title|title}}</li>
-                    <li>Available stock: {{product.available_stock|title}}</li>
-                    <li>Tag: {{product.keyword|title}}
-                </ul>
+<div class="container my-5">
+    <div class="row">
+        <!-- Product Image -->
+        <div class="col-sm-6 text-center align-self-center">
+            <div class="card shadow-sm border-0 p-3" style="max-width: 500px; max-height: 500px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                <img src="{{ product.image.url }}" 
+                    alt="{{ product.title|title }}" 
+                    class="img-fluid" 
+                    style="width: 100%; height: 100%; object-fit: contain;">
             </div>
         </div>
+
+
+        <!-- Product Details -->
+        <div class="col-sm-5 offset-sm-1">
+            <h2>Product Title: {{ product.title|title }}</h2>
+            <hr>
+            <p>{{ product.description }}</p>
+            <br>
+            <h4>
+                Tk. {{ product.sale_price }}
+                <small class="fw-light text-decoration-line-through">
+                    {% if product.old_price %}
+                        {{ product.old_price }}
+                    {% endif %}
+                </small>
+            </h4>
+            <br>
+            <p>Available Discount: {{ product.discount_percent|title }}%</p>
+
+            <!-- Quantity & Buttons -->
+            <div class="card-body">
+                <h6 class="text-uppercase text-muted mb-3 text-start">Select Quantity</h6>
+
+                <!-- Quantity Input (left aligned) -->
+                <div class="mb-3" style="max-width: 120px;">
+                    <input type="number" name="quantity" class="form-control text-center" value="1" min="1">
+                    <input type="hidden" name="product-id" id="product-id" value="{{ product.id }}">
+                </div>
+
+                <!-- Buttons Inline -->
+                <div class="d-flex justify-content-start gap-2">
+                    <!-- Add To Cart Form -->
+                    <form method="POST" action="{% url 'add-to-cart' %}" class="m-0">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-success fw-semibold shadow-sm">
+                            <i class="bi bi-cart-plus me-1"></i> Add To Cart
+                        </button>
+                    </form>
+
+                    <!-- Buy Now Button -->
+                    <a href="" class="btn btn-danger fw-semibold shadow-sm">
+                        <i class="bi bi-lightning-charge me-1"></i> Buy Now
+                    </a>
+                </div>
+            </div>
+
+            <!-- Additional Info -->
+            <h5 class="mt-5">Available Info</h5>
+            <ul>
+                <li>Category: {{ product.category.title|title }}</li>
+                <li>Brand: {{ product.brand.title|title }}</li>
+                <li>Available stock: {{ product.available_stock|title }}</li>
+                <li>Tag: {{ product.keyword|title }}</li>
+            </ul>
+        </div>
     </div>
+</div>
 {% endblock main_content %}
