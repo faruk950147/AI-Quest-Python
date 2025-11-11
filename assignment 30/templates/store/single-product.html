@@ -17,7 +17,13 @@
 
                 <p>Available Discount: {{product.discount_percent|title}}%</p>
                 <form method="POST" action="{% url "add-to-cart" %}" class="d-inline">
-                    {% csrf_token %}
+                    {% csrf_token %}    
+                    <div class="qty-input" style="margin-top: 15px;">
+                        <span class="text-uppercase">QTY: </span>
+                        <input class="quantity input" name="quantity" type="number" value="1" min="1" max="">
+
+                    </div>
+                    
                     <input type="hidden" name="product-id" id="product-id" value="{{product.id}}" />
                     <button type="submit" class="btn btn-success shadow px-5 py-2">Add to Cart</button>
                 </form>              
