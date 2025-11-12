@@ -65,7 +65,7 @@ class CartDetailView(LoginRequiredMixin, generic.View):
         cart_total = sum(item.subtotal for item in cart_items)
 
         # Define shipping cost (you can make it dynamic if needed)
-        shipping_cost = 50  # Example flat shipping fee
+        shipping_cost = 50  
 
         context = {
             "cart_items": cart_items,
