@@ -1,4 +1,5 @@
-from django.shortcuts import get_object_or_404, render
+from django.contrib import messages
+from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
 from django.views import generic
 from django.utils.decorators import method_decorator
@@ -7,16 +8,32 @@ from accounts.mixing import LoginRequiredMixin
 from store.models import Product
 # Create your views here.
 @method_decorator(never_cache, name='dispatch')
-class AddToCartView(LoginRequiredMixin, generic.View):
-     login_url = reverse_lazy('sign-in')
-     def post(self, request):
-        # Logic to add item to cart
-        quantity = request.POST.get('quantity')
-        product_id = request.POST.get('product-id')
+class AddToCartView(generic.View):
+    def post(self, request):
+        product_id = request.POST.get("product-id")
+        quantity = int(request.POST.get("quantity"))
+
+        if not product_id or not quantity:
+            messages.error(request, "Invalid request.")
+            return redirect('home')  
+
         product = get_object_or_404(Product, id=product_id)
-        print('Quantity===================', quantity)
-        print('Product Id ====================', product_id)
-        print('product====================', product)
+        
+        if quantity < 1:
+            messages.error(request, "Quantity must be at least 1!")
+            return redirect('single-product', slug=product.slug, id=product.id)
+
+        if quantity > product.available_stock:
+            messages.error(
+                request,
+                f"Quantity cannot exceed available stock! Maximum available: {product.available_stock}."
+            )
+            return redirect('single-product', slug=product.slug, id=product.id)
+
+        # add to cart logic
+        messages.success(request, "Product added to cart successfully!")
+        return redirect('single-product', slug=product.slug, id=product.id)
+
         
 @method_decorator(never_cache, name='dispatch')
 class CartDetailView(generic.View):
