@@ -3,7 +3,7 @@ from cart.models import Cart
 
 
 class CartAdmin(admin.ModelAdmin):
-    list_display = ('id', 'user', 'product', 'quantity', 'subtotal_display')
+    list_display = ('id', 'user', 'product', 'quantity', 'paid', 'created_at', 'updated_at', 'subtotal_display')
     
     # Custom method to display subtotal
     def subtotal_display(self, obj):
