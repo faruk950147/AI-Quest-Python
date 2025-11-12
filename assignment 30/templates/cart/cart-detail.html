@@ -27,7 +27,7 @@
                                 <div class="my-3 d-flex align-items-center">
                                     <form method="post" action="{% url 'qty-inc-dec' %}">
                                         {% csrf_token %}
-                                        <input type="hidden" name="id" value="{{ cart_item.id }}">
+                                        <input type="hidden" name="product-id" value="{{ cart_item.id }}">
 
                                         <!-- Decrease -->
                                         <button type="submit" name="action" value="dec" class="btn btn-sm btn-outline-secondary">

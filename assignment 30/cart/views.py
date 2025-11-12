@@ -77,7 +77,7 @@ class CartDetailView(LoginRequiredMixin, generic.View):
 class QuantityIncDec(LoginRequiredMixin, generic.View):
     login_url = reverse_lazy('sign-in')
     def post(self, request):
-        cart_item_id = request.POST.get("id")
+        cart_item_id = request.POST.get("product-id")
         action = request.POST.get("action")
 
         if cart_item_id and action:
