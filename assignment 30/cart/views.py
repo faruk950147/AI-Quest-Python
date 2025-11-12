@@ -9,7 +9,8 @@ from cart.models import Cart
 from accounts.mixing import LoginRequiredMixin
 
 @method_decorator(never_cache, name='dispatch')
-class AddToCartView(generic.View):
+class AddToCartView(LoginRequiredMixin, generic.View):
+    login_url = reverse_lazy('sign-in')
     def post(self, request):
         # 1. Get product ID and quantity from POST request
         product_id = request.POST.get("product-id")
@@ -54,7 +55,8 @@ class AddToCartView(generic.View):
         return redirect('single-product', slug=product.slug, id=product.id)
 
 @method_decorator(never_cache, name='dispatch')
-class CartDetailView(generic.View):
+class CartDetailView(LoginRequiredMixin, generic.View):
+    login_url = reverse_lazy('sign-in')
     def get(self, request):
         # Get all unpaid cart items for the user
         cart_items = Cart.objects.filter(user=request.user, paid=False)
@@ -73,9 +75,8 @@ class CartDetailView(generic.View):
         return render(request, 'cart/cart-detail.html', context)
 
 class QuantityIncDec(LoginRequiredMixin, generic.View):
-    login_url = '/sign-in/'
-
-    def post(self, request, *args, **kwargs):
+    login_url = reverse_lazy('sign-in')
+    def post(self, request):
         cart_item_id = request.POST.get("id")
         action = request.POST.get("action")
 

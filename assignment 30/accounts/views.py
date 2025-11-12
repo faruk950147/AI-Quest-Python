@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.urls import reverse_lazy
 from django.views import generic
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import never_cache
@@ -80,6 +81,7 @@ class PasswordResetCompleteView(LogoutRequiredMixin, generic.View):
 # Sign-out View
 @method_decorator(never_cache, name='dispatch')
 class SignOutView(LoginRequiredMixin, generic.View):
+    login_url = reverse_lazy('sign-in')
     # Logs out the user and redirects to the sign-in page with a success message.
     def post(self, request):
         logout(request)
@@ -95,6 +97,7 @@ class SignOutView(LoginRequiredMixin, generic.View):
 # Password Change View
 @method_decorator(never_cache, name='dispatch')
 class PasswordChangeView(LoginRequiredMixin, generic.View):
+    login_url = reverse_lazy('sign-in')
     def get(self, request):
         form = ChangePasswordForm(user=request.user)
         return render(request, 'accounts/password-change.html', {'form': form})
@@ -116,6 +119,7 @@ class PasswordChangeView(LoginRequiredMixin, generic.View):
 # Profile View
 @method_decorator(never_cache, name='dispatch')
 class ProfileView(LoginRequiredMixin, generic.View):
+    login_url = reverse_lazy('sign-in')
     def get(self, request):
         if not request.user.is_authenticated:
             return redirect('sign-in')
@@ -152,6 +156,7 @@ class ProfileView(LoginRequiredMixin, generic.View):
 
 @method_decorator(never_cache, name='dispatch')
 class AddressView(LoginRequiredMixin, generic.View):
+    login_url = reverse_lazy('sign-in')
     def get(self, request):
         profiles = Profile.objects.filter(user=request.user)
         return render(request, 'accounts/address.html', {'profiles': profiles, 'active': 'btn-success'})

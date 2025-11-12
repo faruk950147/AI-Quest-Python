@@ -20,40 +20,38 @@
                                      class="img-fluid img-thumbnail shadow-sm">
                             </div>
                             <div class="col-sm-10">
-                                <div>
-                                    <h5>{{ cart_item.product.title|title }}</h5>
-                                    <p class="mb-2 text-muted small">Description: {{ cart_item.product.description }}</p>
-                                    
-                                    <!-- Quantity Form -->
-                                    <div class="my-3 d-flex align-items-center">
-                                        <form method="post" action="{% url 'qty-inc-dec' %}">
-                                            {% csrf_token %}
-                                            <input type="hidden" name="id" value="{{ cart_item.id }}">
+                                <h5>{{ cart_item.product.title|title }}</h5>
+                                <p class="mb-2 text-muted small">Description: {{ cart_item.product.description }}</p>
+                                
+                                <!-- Quantity Form -->
+                                <div class="my-3 d-flex align-items-center">
+                                    <form method="post" action="{% url 'qty-inc-dec' %}">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="id" value="{{ cart_item.id }}">
 
-                                            <!-- Decrease -->
-                                            <button type="submit" name="action" value="dec" class="btn btn-sm btn-outline-secondary">
-                                                <i class="fa fa-minus"></i>
-                                            </button>
+                                        <!-- Decrease -->
+                                        <button type="submit" name="action" value="dec" class="btn btn-sm btn-outline-secondary">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
 
-                                            <span class="mx-2">{{ cart_item.quantity }}</span>
+                                        <span class="mx-2">{{ cart_item.quantity }}</span>
 
-                                            <!-- Increase -->
-                                            <button type="submit" name="action" value="inc" class="btn btn-sm btn-outline-secondary">
-                                                <i class="fa fa-plus"></i>
-                                            </button>
-                                        </form>
-                                    </div>
+                                        <!-- Increase -->
+                                        <button type="submit" name="action" value="inc" class="btn btn-sm btn-outline-secondary">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
+                                    </form>
+                                </div>
 
-                                    <!-- Remove Item -->
-                                    <div class="d-flex justify-content-between">
-                                        <form method="post" action="">
-                                            {% csrf_token %}
-                                            <button type="submit" class="btn btn-sm btn-danger text-white">
-                                                Remove item
-                                            </button>
-                                        </form>
-                                        <p class="mb-0"><strong>Tk. {{ cart_item.subtotal }}</strong></p>
-                                    </div>
+                                <!-- Remove Item -->
+                                <div class="d-flex justify-content-between">
+                                    <form method="post" action="">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-sm btn-danger text-white">
+                                            Remove item
+                                        </button>
+                                    </form>
+                                    <p class="mb-0"><strong>Tk. {{ cart_item.subtotal }}</strong></p>
                                 </div>
                             </div>
                         </div>
