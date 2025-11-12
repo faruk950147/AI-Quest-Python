@@ -58,18 +58,39 @@ class CartDetailView(generic.View):
     def get(self, request):
         # Get all unpaid cart items for the user
         cart_items = Cart.objects.filter(user=request.user, paid=False)
-        total = sum(item.subtotal for item in cart_items)
+
+        # Calculate total for all cart items
+        cart_total = sum(item.subtotal for item in cart_items)
+
+        # Define shipping cost (you can make it dynamic if needed)
+        shipping_cost = 50  # Example flat shipping fee
 
         context = {
             "cart_items": cart_items,
-            "total": total
+            "cart_total": cart_total,
+            "shipping_cost": shipping_cost,
         }
         return render(request, 'cart/cart-detail.html', context)
 
-@method_decorator(never_cache, name='dispatch')
 class QuantityIncDec(LoginRequiredMixin, generic.View):
-    login_url = reverse_lazy('sign-in')
-    
-    def post(self, request):
+    login_url = '/sign-in/'
+
+    def post(self, request, *args, **kwargs):
         cart_item_id = request.POST.get("id")
         action = request.POST.get("action")
+
+        if cart_item_id and action:
+            try:
+                cart_item = Cart.objects.get(id=cart_item_id, user=request.user, paid=False)
+                if action == "inc":
+                    cart_item.quantity += 1
+                    cart_item.save()
+                elif action == "dec" and cart_item.quantity > 1:
+                    cart_item.quantity -= 1
+                    cart_item.save()
+
+            except Cart.DoesNotExist:
+                pass  # item not found, quietly ignore
+
+        # quantity updated cart page redirect
+        return redirect('cart-detail')
