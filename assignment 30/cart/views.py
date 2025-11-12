@@ -1,11 +1,14 @@
 from django.contrib import messages
 from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import reverse_lazy
 from django.views import generic
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import never_cache
 from store.models import Product
 from cart.models import Cart
+from accounts.mixing import LoginRequiredMixin
 
+@method_decorator(never_cache, name='dispatch')
 class AddToCartView(generic.View):
     def post(self, request):
         # 1. Get product ID and quantity from POST request
@@ -50,7 +53,6 @@ class AddToCartView(generic.View):
         # 8. Redirect user back to the product page
         return redirect('single-product', slug=product.slug, id=product.id)
 
-
 @method_decorator(never_cache, name='dispatch')
 class CartDetailView(generic.View):
     def get(self, request):
@@ -63,3 +65,11 @@ class CartDetailView(generic.View):
             "total": total
         }
         return render(request, 'cart/cart-detail.html', context)
+
+@method_decorator(never_cache, name='dispatch')
+class QuantityIncDec(LoginRequiredMixin, generic.View):
+    login_url = reverse_lazy('sign-in')
+    
+    def post(self, request):
+        cart_item_id = request.POST.get("id")
+        action = request.POST.get("action")
