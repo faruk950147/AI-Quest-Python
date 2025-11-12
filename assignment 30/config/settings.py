@@ -131,11 +131,11 @@ LOGOUT_REDIRECT_URL = 'sign-in'
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 
-# EMAIL_USE_TLS = True
-# EMAIL_HOST = "smtp.gmail.com"
-# EMAIL_HOST_USER = "md.omarfaruk950147@gmail.com"
-# EMAIL_HOST_PASSWORD = "lqsd vtui jcxf mfqm"
-# EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST_USER = "md.omarfaruk950147@gmail.com"
+EMAIL_HOST_PASSWORD = "lqsd vtui jcxf mfqm"
+EMAIL_PORT = 587
 
 
 # Default primary key field type
