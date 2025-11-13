@@ -8,7 +8,7 @@
             <div class="card-body p-2">
                 <h6 class="card-title">{{ product.title|truncatechars:25 }}</h6>
                 <p class="text-success mb-1">Tk. {{ product.sale_price }}
-                    {% if product.old_price > product.sale_price %}
+                    {% if product.old_price %}
                         <small class="text-muted text-decoration-line-through">Tk. {{ product.old_price }}</small>
                     {% endif %}
                 </p>
