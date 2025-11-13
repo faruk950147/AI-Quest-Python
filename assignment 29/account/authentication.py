@@ -6,18 +6,18 @@ User = get_user_model()
 
 class EmailAuthBackend(ModelBackend):
     def authenticate(self, request, username=None, password=None, **kwargs):
-        try:
-            user = User.objects.get(Q(username__iexact=username) | Q(email__iexact=username))
-            if user.check_password(password):
-                return user
-            return None
-        except User.DoesNotExist:
+        if not username or not password:
             return None
 
-    def get_user(self, user_id):
-        try:
-            user = User.objects.get(id=user_id)
+        # Single query: filter by username/email
+        user_qs = User.objects.filter(Q(username__iexact=username) | Q(email__iexact=username))
+        # Get the first match safely
+        user = user_qs.first()
+        # Check password on the fetched user object
+        if user and user.check_password(password):
             return user
-        except User.DoesNotExist:
-            return None
-      
+        return None
+
+    def get_user(self, user_id):
+        # Safe and efficient
+        return User.objects.filter(id=user_id).first()
