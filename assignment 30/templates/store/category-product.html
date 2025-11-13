@@ -84,3 +84,10 @@
     </div>
 </div>
 {% endblock main_content %}
+{% block extra_scripts %}
+<script>
+$(document).ready(function() {
+    console.log('ready')
+});
+</script>
+{% endblock extra_scripts %}
