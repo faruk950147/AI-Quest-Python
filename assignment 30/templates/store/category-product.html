@@ -59,7 +59,7 @@ $(document).ready(function() {
 
         $.ajax({
             url: url,
-            type: 'GET',
+            method: 'GET',
             headers: { 'X-Requested-With': 'XMLHttpRequest' },
             success: function(response) {
                 $('#product-grid').html(response.html);
