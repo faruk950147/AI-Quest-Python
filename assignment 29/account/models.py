@@ -1,4 +1,7 @@
 from django.db import models
+
+# Create your models here.
+from django.db import models
 from django.http import HttpResponse
 from django.dispatch import receiver
 from django.db.models.signals import post_save

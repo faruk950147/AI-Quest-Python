@@ -129,8 +129,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR / 'media')
 LOGOUT_REDIRECT_URL = 'sign-in'
 # Email send # settings.py
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-
-
 EMAIL_USE_TLS = True
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_HOST_USER = "md.omarfaruk950147@gmail.com"
