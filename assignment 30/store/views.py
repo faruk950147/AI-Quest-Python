@@ -2,6 +2,8 @@ from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import never_cache
+from django.template.loader import render_to_string
+from django.http import JsonResponse
 from store.models import Category, Brand, Product, Slider
 
 
@@ -57,6 +59,7 @@ class CategoryProductView(generic.View):
         category = get_object_or_404(Category, slug=slug, id=id)
         products = Product.objects.filter(category=category, status='ACTIVE')
         brands = Brand.objects.filter(product__category=category).distinct()
+
         # Brand filter
         selected_brand = request.GET.get('brand')
         if selected_brand:
@@ -76,6 +79,12 @@ class CategoryProductView(generic.View):
             'selected_brand': int(selected_brand) if selected_brand else None,
             'price_filter': price_filter,
         }
+
+        # if AJAX request 
+        if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+            html = render_to_string('store/product_grid.html', context, request=request)
+            return JsonResponse({'html': html})
+
         return render(request, "store/category-product.html", context)
 
 @method_decorator(never_cache, name='dispatch')
