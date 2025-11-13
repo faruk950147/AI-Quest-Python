@@ -10,7 +10,7 @@
                 <h6 class="fw-bold mb-2">All Filters</h6>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item p-0 border-0">
-                        <a href="?" class="text-decoration-none text-black">All Products</a>
+                        <a href="?" class="filter-link text-decoration-none text-black">All Products</a>
                     </li>
                 </ul>
 
@@ -18,7 +18,7 @@
                 <ul class="list-group list-group-flush">
                     {% for brand in brands %}
                     <li class="list-group-item p-0 border-0">
-                        <a href="?brand={{ brand.id }}{% if price_filter %}&price={{ price_filter }}{% endif %}" class="filter-link filter-link text-decoration-none text-black">
+                        <a href="?brand={{ brand.id }}{% if price_filter %}&price={{ price_filter }}{% endif %}" class="filter-link text-decoration-none text-black">
                             {{ brand.title }}
                         </a>
                     </li>
