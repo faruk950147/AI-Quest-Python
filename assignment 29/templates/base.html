@@ -1,44 +1,85 @@
 <!doctype html>
 <html lang="en">
   <head>
-  	<title>{% block title %}  {% endblock title %} | Buy Coding </title>
+    <!-- Required meta tags -->
+     <!--all language supported-->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!--custom CSS -->
-	  {% include "components/css.html" %}
+    <!--responsive design-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--Internet Explore compatibility supported-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--SEO meta tags-->
+    <meta name="author" content="Faruk Ahmed">
+    <meta name="description" content="AI Quest Python Assignment 13">
+    <meta name="keywords" content="Django, Python, Web Development, Assignment 13">
+    <meta name="robots" content="index, follow">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>{% block title %}{% endblock title %}</title>
   </head>
   <body>
-		
-		<div class="wrapper d-flex align-items-stretch">
-      <!-- Sidebar   -->
-		  {% include "components/sidebar.html" %}
-      <!-- Sidebar   -->
-        <!-- Page Content  -->
-      <div id="content" class="p-4 p-md-5">
-        <!-- Topbar Area -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <div class="container-fluid">
-            <!-- Topbar Toggle Button -->
-            {% include "components/toggle.html" %}
-            <!-- End Topbar Toggle Button -->
-            <!-- Topbar Menu Area -->
-            {% include "components/topbar.html" %}
-            <!-- End Topbar Menu Area -->
-          </div>
-        </nav>
-        <!-- Topbar Area -->
-        <!-- main Area -->
-        {% block main %}
-    
-        {% endblock main %}
-        <!-- main Area -->
+    <!--Header Begin-->
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+      <div class="container-fluid">
+        
+        <!-- Left Side -->
+        <a class="navbar-brand" href="#">Faruk</a>
+
+        <!-- Toggle Button -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar Content -->
+        <div class="collapse navbar-collapse" id="navbarText">
+          
+          <!-- Middle Menu -->
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" href="{% url 'home' %}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+          </ul>
+
+          <!-- Right Side Auth Links -->
+          <span class="navbar-text ms-auto">
+            {% if user.is_authenticated %}
+              <a class="nav-link d-inline text-white" href="{% url 'sign-out' %}">Sign Out</a>
+              <a class="nav-link d-inline text-white" href="{% url 'change-password' %}">Change Password</a>
+            {% else %}
+              <a class="nav-link d-inline text-white" href="{% url 'sign-in' %}">Sign In</a>
+              <a class="nav-link d-inline text-white" href="{% url 'sign-up' %}">Sign Up</a>
+            {% endif %}
+          </span>
+
+        </div>
       </div>
-	  </div>
+    </nav>
+    <!--Header End-->
 
-    {% include "components/script.html" %}
-    {% include "components/alert.html" %}
-    {% block extra_scripts %}
+    <!-- Main Content Begin -->
+    {% block main_content %}
+    {% endblock main_content %} 
+    <!-- Main Content End -->
 
-    {% endblock extra_scripts %}
+    <!--Footer Begin-->
+    <footer class="bg-light text-center text-lg-start">
+      <div class="text-center p-3" style="background-color: #000000; color: white;">
+        © 2024 AI Quest:
+        <a class="text-decoration-none text-white" href="https://aiquest.pythonanywhere.com/">aiquest.pythonanywhere.com</a>
+      </div>
+    </footer>
+    <!--Footer End-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   </body>
 </html>
