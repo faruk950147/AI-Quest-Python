@@ -43,15 +43,15 @@ class UsernameValidationView(generic.View):
             username = data.get('username', '').strip()
 
             if not isinstance(username, str) or not username.isalnum():
-                return JsonResponse({'username_error': 'Username should only contain alphanumeric characters', 'status': 400})
+                return JsonResponse({'username_error': 'Username should only contain alphanumeric characters'})
 
             if User.objects.filter(username=username).exists():
-                return JsonResponse({'username_error': 'Sorry, this username is already taken. Choose another one.', 'status': 400})
+                return JsonResponse({'username_error': 'Sorry, this username is already taken. Choose another one.'})
 
             return JsonResponse({'username_valid': True})
 
         except json.JSONDecodeError:
-            return JsonResponse({'error': 'Invalid JSON data', 'status': 400})
+            return JsonResponse({'error': 'Invalid JSON data'})
 
 @method_decorator(never_cache, name='dispatch')
 class EmailValidationView(generic.View):
@@ -61,15 +61,15 @@ class EmailValidationView(generic.View):
             email = data.get('email', '').strip()
 
             if not validate_email(email):
-                    return JsonResponse({'email_error': 'Email is invalid', 'status': 400})
+                    return JsonResponse({'email_error': 'Email is invalid'})
                     
             if User.objects.filter(email__iexact=email).exists():
-                return JsonResponse({'email_error': 'Sorry, this email is already in use. Choose another one.', 'status': 400})
+                return JsonResponse({'email_error': 'Sorry, this email is already in use. Choose another one.'})
 
             return JsonResponse({'email_valid': True})
 
         except json.JSONDecodeError:
-            return JsonResponse({'error': 'Invalid JSON data', 'status': 400})
+            return JsonResponse({'error': 'Invalid JSON data'})
         
 @method_decorator(never_cache, name='dispatch')
 class PasswordValidationView(generic.View):
@@ -80,15 +80,15 @@ class PasswordValidationView(generic.View):
             password2 = data.get('password2', '').strip()
 
             if password != password2:
-                return JsonResponse({'password_error': 'Passwords does not match!', 'status': 400})
+                return JsonResponse({'password_error': 'Passwords does not match!'})
 
             if len(password) < 8:
-                return JsonResponse({'password_info': 'Your password is too short! It must be at least 8 characters long.', 'status': 400})
+                return JsonResponse({'password_info': 'Your password is too short! It must be at least 8 characters long.'})
 
             return JsonResponse({'password_valid': True})
 
         except json.JSONDecodeError:
-            return JsonResponse({'error': 'Invalid JSON data', 'status': 400})
+            return JsonResponse({'error': 'Invalid JSON data'})
 
 @method_decorator(never_cache, name='dispatch')
 class SignInValidationView(generic.View):
@@ -98,12 +98,12 @@ class SignInValidationView(generic.View):
             username = data.get('username', '').strip()
 
             if not User.objects.filter(Q(username__iexact=username) | Q(email__iexact=username)).exists():
-                return JsonResponse({'username_error': 'No account found with this username or email. Please try again.', 'status': 400})
+                return JsonResponse({'username_error': 'No account found with this username or email. Please try again.'})
 
             return JsonResponse({'username_valid': True})
 
         except json.JSONDecodeError:
-            return JsonResponse({'error': 'Invalid JSON data', 'status': 400})
+            return JsonResponse({'error': 'Invalid JSON data'})
     
 @method_decorator(never_cache, name='dispatch')
 class ActivationView(generic.View):
@@ -275,13 +275,12 @@ class SendOTPView(LogoutRequiredMixin, generic.View):
                 EmailThread(email_message).start()
 
                 return JsonResponse({
-                    "status": 200,
                     "messages": "OTP sent successfully!",
                     "email": user.email,
                     "otp": otp  # Return the OTP in the response
                 })
         except Exception as e:
-            return JsonResponse({"status": 400, "messages": f"Error: {str(e)}"})
+            return JsonResponse({"messages": f"Error: {str(e)}"})
 
 @method_decorator(never_cache, name='dispatch')    
 class ResetPasswordView(LogoutRequiredMixin, generic.View):
@@ -297,10 +296,10 @@ class ResetPasswordView(LogoutRequiredMixin, generic.View):
             # Retrieve OTP from cache
             cached_otp = cache.get(f'otp_{email}')
             if cached_otp is None:
-                return JsonResponse({'status': 400, 'messages': 'OTP expired or invalid!'})
+                return JsonResponse({'messages': 'OTP expired or invalid!'})
 
             if str(otp) != str(cached_otp):
-                return JsonResponse({'status': 400, 'messages': 'Invalid OTP!'})
+                return JsonResponse({'messages': 'Invalid OTP!'})
 
             user = get_object_or_404(User, email=email)
             user.set_password(password)
@@ -309,47 +308,40 @@ class ResetPasswordView(LogoutRequiredMixin, generic.View):
             # Remove OTP from cache after successful reset
             cache.delete(f'otp_{email}')
 
-            return JsonResponse({'status': 200, 'messages': 'Your password has been reset successfully!'})
+            return JsonResponse({'messages': 'Your password has been reset successfully!'})
         except json.JSONDecodeError:
-            return JsonResponse({'status': 400, 'messages': 'Invalid JSON data!'})
+            return JsonResponse({'messages': 'Invalid JSON data!'})
 
         except Exception as e:
-            return JsonResponse({'status': 400, 'messages': f"Error: {str(e)}"})
-        
-
-            
-@method_decorator(never_cache, name='dispatch')    
+            return JsonResponse({'messages': f"Error: {str(e)}"})
+             
+@method_decorator(never_cache, name='dispatch')
 class ProfileView(LoginRequiredMixin, generic.View):
     login_url = reverse_lazy('sign')
+
     def get(self, request):
-        
         return render(request, 'account/profile.html')
+
     def post(self, request):
-        try:
-            username = request.POST.get("username")
-            email = request.POST.get("email")
-            country = request.POST.get("country")
-            city = request.POST.get("city")
-            home_city = request.POST.get("home_city")
-            zip_code = request.POST.get("zip_code")
-            phone = request.POST.get("phone")
-            address = request.POST.get("address")
-            user = get_object_or_404(User, id=request.user.id)
-            user.username = username
-            user.email = email
-            user.save()
-            user_p = get_object_or_404(Profile, user=request.user)
-            user_p.country = country
-            user_p.city = city
-            user_p.home_city = home_city
-            user_p.zip_code = zip_code
-            user_p.phone = phone
-            user_p.address = address
-            if "profile_image" in request.FILES:
-                user_p.image = request.FILES.get("profile_image")
-            user_p.save()
+        # user = get_object_or_404(User, id=request.user.id)
+        user = request.user
+        user.username = request.POST.get("username")
+        user.email = request.POST.get("email")
+        user.save()
+    
+        profile = get_object_or_404(Profile, user=request.user)
+        profile.country = request.POST.get("country")
+        profile.city = request.POST.get("city")
+        profile.home_city = request.POST.get("home_city")
+        profile.zip_code = request.POST.get("zip_code")
+        profile.phone = request.POST.get("phone")
+        profile.address = request.POST.get("address")
 
-            return JsonResponse({"status": 200, 'messages': 'Your profile updated successfully!'})
+        if "profile_image" in request.FILES:
+            if profile.image:
+                profile.image.delete(save=False)
+            profile.image = request.FILES["profile_image"]
 
-        except Exception as e:
-            return JsonResponse({'status': 400, 'messages': f"Error: {str(e)}"})
+        profile.save()
+
+        return JsonResponse({'status': 200, 'messages': 'Your profile updated successfully!'})
