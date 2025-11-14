@@ -59,7 +59,7 @@ class AddToCartView(LoginRequiredMixin, generic.View):
             "status": "success",
             "message": "Product added to cart successfully!",
             "quantity": cart_item.quantity,
-            "cart_count": cart_summary['total_items'] or 0,
+            "cart_count": len(cart_item),
             "cart_total_price": float(cart_summary['total_price'] or 0)
         })
 
