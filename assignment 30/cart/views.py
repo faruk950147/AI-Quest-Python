@@ -121,17 +121,17 @@ class QuantityIncDec(LoginRequiredMixin, generic.View):
             total_price=Sum(F("quantity") * F("product__sale_price"))
         )
 
-        cart_total = float(summary["total_price"] or 0)
         shipping_cost = 50
-        grand_total = cart_total + shipping_cost
 
         return JsonResponse({
             "status": "success",
             "quantity": cart_item.quantity,
-            "cart_total": round(cart_total, 2),
-            "grand_total": round(grand_total, 2),
+            "cart_total": round(float(summary["total_price"] or 0), 2),
+            "grand_total": round(float(summary["total_price"] or 0) + shipping_cost, 2),
             "cart_count": cart_items.count() or 0,
+            "subtotal": summary["total_price"] or 0
         })
+
 
 
 @method_decorator(never_cache, name="dispatch")
