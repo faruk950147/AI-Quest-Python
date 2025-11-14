@@ -99,7 +99,7 @@
                 success: function(response){
                     if(response.status === "success"){
                         parent.find('.quantity').text(response.quantity);
-                        parent.find('.subtotal').text(response.subtotal.toFixed(2));
+                        parent.find('.subtotal').text(response.item_subtotal.toFixed(2));
 
                         // Update cart totals
                         $('#cart-total').text(response.cart_total.toFixed(2));
