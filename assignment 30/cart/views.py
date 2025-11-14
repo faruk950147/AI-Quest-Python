@@ -15,6 +15,10 @@ class AddToCartView(LoginRequiredMixin, generic.View):
     login_url = reverse_lazy('sign-in')
 
     def post(self, request):
+        # Ensure user is authenticated
+        if not request.user.is_authenticated:
+            return JsonResponse({"status": "error", "message": "Please log in first."}, status=403)
+
         product_id = request.POST.get("product-id")
         quantity = request.POST.get("quantity", "0")
 
@@ -46,21 +50,18 @@ class AddToCartView(LoginRequiredMixin, generic.View):
                     "status": "error",
                     "message": f"You can't add more than {product.available_stock} units!"
                 })
-
             cart_item.quantity = F("quantity") + quantity
             cart_item.save()
             cart_item.refresh_from_db()
 
         cart_items = Cart.objects.filter(user=request.user, paid=False)
-        summary = cart_items.aggregate(
-            total_price=Sum(F("quantity") * F("product__sale_price"))
-        )
+        summary = cart_items.aggregate(total_price=Sum(F("quantity") * F("product__sale_price")))
 
         return JsonResponse({
             "status": "success",
             "message": "Product added to cart!",
             "quantity": cart_item.quantity,
-            "cart_count": cart_items.count() or 0,
+            "cart_count": cart_items.count(),
             "cart_total_price": float(summary["total_price"] or 0),
             "product_title": product.title,
             "product_image": product.image.url if product.image else "",
@@ -74,11 +75,9 @@ class CartDetailView(LoginRequiredMixin, generic.View):
     login_url = reverse_lazy('sign-in')
 
     def get(self, request):
+        # user authentication guaranteed by LoginRequiredMixin
         cart_items = Cart.objects.filter(user=request.user, paid=False)
-
-        summary = cart_items.aggregate(
-            total_price=Sum(F("quantity") * F("product__sale_price"))
-        )
+        summary = cart_items.aggregate(total_price=Sum(F("quantity") * F("product__sale_price")))
 
         cart_total = float(summary["total_price"] or 0)
         shipping_cost = 50
@@ -99,44 +98,42 @@ class QuantityIncDec(LoginRequiredMixin, generic.View):
     login_url = reverse_lazy('sign-in')
 
     def post(self, request):
+        if not request.user.is_authenticated:
+            return JsonResponse({"status": "error", "message": "Please log in first."}, status=403)
+
         cart_id = request.POST.get("cart-id")
         action = request.POST.get("action")
 
         cart_item = get_object_or_404(Cart, id=cart_id, user=request.user, paid=False)
 
         # Increase
-        if action == "inc":
-            if cart_item.quantity < cart_item.product.available_stock:
-                cart_item.quantity = F("quantity") + 1
-                cart_item.save()
-                cart_item.refresh_from_db()
+        if action == "inc" and cart_item.quantity < cart_item.product.available_stock:
+            cart_item.quantity = F("quantity") + 1
+            cart_item.save()
+            cart_item.refresh_from_db()
 
         # Decrease
-        elif action == "dec":
-            if cart_item.quantity > 1:
-                cart_item.quantity = F("quantity") - 1
-                cart_item.save()
-                cart_item.refresh_from_db()
+        elif action == "dec" and cart_item.quantity > 1:
+            cart_item.quantity = F("quantity") - 1
+            cart_item.save()
+            cart_item.refresh_from_db()
 
         # Single item subtotal
         item_subtotal = float(cart_item.quantity * cart_item.product.sale_price)
 
         # Total cart summary
         cart_items = Cart.objects.filter(user=request.user, paid=False)
-        summary = cart_items.aggregate(
-            total_price=Sum(F("quantity") * F("product__sale_price"))
-        )
-
-        shipping_cost = 50
+        summary = cart_items.aggregate(total_price=Sum(F("quantity") * F("product__sale_price")))
         cart_total = float(summary["total_price"] or 0)
+        shipping_cost = 50
         grand_total = cart_total + shipping_cost
 
         return JsonResponse({
             "status": "success",
             "quantity": cart_item.quantity,
-            "item_subtotal": round(item_subtotal, 2),      # ✔ per-item subtotal
-            "cart_total": round(cart_total, 2),       # ✔ updated total
-            "grand_total": round(grand_total, 2),     # ✔ updated grand total
+            "item_subtotal": round(item_subtotal, 2),
+            "cart_total": round(cart_total, 2),
+            "grand_total": round(grand_total, 2),
         })
 
 
@@ -146,22 +143,23 @@ class CartRemoveView(LoginRequiredMixin, generic.View):
     login_url = reverse_lazy('sign-in')
 
     def post(self, request):
+        if not request.user.is_authenticated:
+            return JsonResponse({"status": "error", "message": "Please log in first."}, status=403)
+
         cart_id = request.POST.get("cart-id")
         cart_item = get_object_or_404(Cart, id=cart_id, user=request.user, paid=False)
         cart_item.delete()
 
         cart_items = Cart.objects.filter(user=request.user, paid=False)
-        summary = cart_items.aggregate(
-            total_price=Sum(F("quantity") * F("product__sale_price"))
-        )
-
+        summary = cart_items.aggregate(total_price=Sum(F("quantity") * F("product__sale_price")))
         cart_total = float(summary["total_price"] or 0)
-        grand_total = cart_total + 50
+        shipping_cost = 50
+        grand_total = cart_total + shipping_cost
 
         return JsonResponse({
             "status": "success",
             "message": "Product removed!",
-            "cart_count": cart_items.count() or 0,
+            "cart_count": cart_items.count(),
             "cart_total": round(cart_total, 2),
             "grand_total": round(grand_total, 2),
         })
