@@ -36,7 +36,7 @@
 
             <div class="card-body">
                 <!-- Add To Cart Form -->
-                <form method="POST" action="{% url 'add-to-cart' %}" class="m-0">
+                <form method="POST" action="{% url 'add-to-cart' %}" class="m-0" id="form">
                     {% csrf_token %}
                     <p class="text-muted mb-3 text-start">Select Quantity</p>
 
@@ -77,17 +77,15 @@
 </div>
 {% endblock main_content %}
 {% block extra_scripts %}
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script>
 $(document).ready(function() {
-    $("form[action='{% url 'add-to-cart' %}']").on("submit", function(e) {
-        e.preventDefault(); // Prevent default form submit
+    $("#form").on("submit", function(e) {
+        e.preventDefault(); // Stop normal submission
 
-        var $form = $(this);
-        var formData = new FormData(this);
+        let formData = new FormData(this);  // Create FormData object
 
         $.ajax({
-            url: $form.attr("action"),
+            url: "{% url 'add-to-cart' %}",
             type: "POST",
             data: formData,
             processData: false,
@@ -99,7 +97,7 @@ $(document).ready(function() {
                 if(data.status === "success") {
                     alert(data.message);
 
-                    // Update cart totals
+                    // Update cart totals dynamically (if elements exist)
                     if($("#cart-total-items").length)
                         $("#cart-total-items").text(data.cart_total_items);
 
