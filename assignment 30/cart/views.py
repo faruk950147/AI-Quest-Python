@@ -11,34 +11,37 @@ from cart.models import Cart
 from accounts.mixing import LoginRequiredMixin
 from django.db.models import F, Sum
 
+# Prevent caching for all methods in this class
 @method_decorator(never_cache, name='dispatch')
 class AddToCartView(LoginRequiredMixin, generic.View):
     login_url = reverse_lazy('sign-in')
 
     def post(self, request):
         product_id = request.POST.get("product-id")
-        quantity = int(request.POST.get("quantity", 0))
+        quantity = request.POST.get("quantity", "0")
 
-        if not product_id or quantity < 1:
+        # Validate product_id and quantity
+        if not product_id or not quantity.isdigit() or int(quantity) < 1:
             return JsonResponse({"status": "error", "message": "Invalid request."})
 
+        quantity = int(quantity)
         product = get_object_or_404(Product, id=product_id)
 
         if quantity > product.available_stock:
             return JsonResponse({
                 "status": "error",
-                "message": f"Quantity cannot exceed available stock! Maximum available: {product.available_stock}."
+                "message": f"Quantity cannot exceed available stock! Maximum: {product.available_stock}."
             })
 
-        cart_item, created = Cart.objects.get_or_create(
+        # Update or create cart item atomically
+        cart_item, created = Cart.objects.update_or_create(
             user=request.user,
             product=product,
             paid=False,
-            defaults={'quantity': quantity}
+            defaults={'quantity': quantity} if created else {}
         )
 
         if not created:
-            # Update quantity safely using F()
             new_quantity = cart_item.quantity + quantity
             if new_quantity > product.available_stock:
                 return JsonResponse({
@@ -49,8 +52,9 @@ class AddToCartView(LoginRequiredMixin, generic.View):
             cart_item.save()
             cart_item.refresh_from_db()
 
-        # Calculate cart totals
-        cart_summary = Cart.objects.filter(user=request.user, paid=False).aggregate(
+        # Aggregate cart
+        cart_calculations = Cart.objects.filter(user=request.user, paid=False)
+        cart_summary = cart_calculations.aggregate(
             total_items=Sum('quantity'),
             total_price=Sum(F('quantity') * F('product__sale_price'))
         )
@@ -59,22 +63,26 @@ class AddToCartView(LoginRequiredMixin, generic.View):
             "status": "success",
             "message": "Product added to cart successfully!",
             "quantity": cart_item.quantity,
-            "cart_count": len(cart_item),
-            "cart_total_price": float(cart_summary['total_price'] or 0)
+            "cart_count": cart_calculations.count() or 0,
+            "cart_total_price": round(float(cart_summary['total_price'] or 0), 2)
         })
-
+   
 @method_decorator(never_cache, name='dispatch')
 class CartDetailView(LoginRequiredMixin, generic.View):
     login_url = reverse_lazy('sign-in')
+
     def get(self, request):
         # Get all unpaid cart items for the user
         cart_items = Cart.objects.filter(user=request.user, paid=False)
 
-        # Calculate total for all cart items
-        cart_total = sum(item.subtotal for item in cart_items)
+        # Calculate cart total price
+        cart_summary = cart_items.aggregate(
+            total_price=Sum(F('quantity') * F('product__sale_price'))
+        )
+        cart_total = float(cart_summary['total_price'] or 0)
 
-        # Define shipping cost (you can make it dynamic if needed)
-        shipping_cost = 50  
+        # Define shipping cost 
+        shipping_cost = 50
 
         context = {
             "cart_items": cart_items,
