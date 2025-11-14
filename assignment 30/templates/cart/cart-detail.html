@@ -102,7 +102,7 @@
                         console.log(response)
 
                         // Update subtotal
-
+                        $('.subtotal').text(response.subtotal.toFixed(2));
 
                         // Update cart totals
                         $('#cart-total').text(response.cart_total.toFixed(2));
