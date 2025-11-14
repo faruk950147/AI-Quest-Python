@@ -51,7 +51,6 @@ class AddToCartView(LoginRequiredMixin, generic.View):
             cart_item.save()
             cart_item.refresh_from_db()
 
-        # 🔥 summary (NO helper function)
         cart_items = Cart.objects.filter(user=request.user, paid=False)
         summary = cart_items.aggregate(
             total_items=Sum("quantity"),
@@ -68,6 +67,7 @@ class AddToCartView(LoginRequiredMixin, generic.View):
             "product_image": product.image.url if product.image else "",
             "product_price": float(product.sale_price),
         })
+
 
 @method_decorator(never_cache, name='dispatch')
 class CartDetailView(LoginRequiredMixin, generic.View):
@@ -101,7 +101,7 @@ class QuantityIncDec(LoginRequiredMixin, generic.View):
         cart_id = request.POST.get("cart-id")
         action = request.POST.get("action")
 
-        cart_item = get_object_or_404(Cart, id=cart_id, user=request.user, paid=False)
+        cart_item = get_object_or_404(Ccart, id=cart_id, user=request.user, paid=False)
         product = cart_item.product
 
         if action == "inc":
