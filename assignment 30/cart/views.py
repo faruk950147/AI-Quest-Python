@@ -126,10 +126,10 @@ class QuantityIncDec(LoginRequiredMixin, generic.View):
         return JsonResponse({
             "status": "success",
             "quantity": cart_item.quantity,
+            "cart_count": cart_items.count() or 0,
+            "subtotal": round(float(summary["total_price"] or 0), 2),
             "cart_total": round(float(summary["total_price"] or 0), 2),
             "grand_total": round(float(summary["total_price"] or 0) + shipping_cost, 2),
-            "cart_count": cart_items.count() or 0,
-            "subtotal": summary["total_price"] or 0
         })
 
 
