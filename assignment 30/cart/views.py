@@ -151,7 +151,7 @@ class CartRemoveView(LoginRequiredMixin, generic.View):
 
         return JsonResponse({
             "status": "success",
-            "message": "Item removed!",
+            "message": "product removed!",
             "cart_count": cart_items.count() or 0,
             "cart_total_price": float(summary["total_price"] or 0)
         })
