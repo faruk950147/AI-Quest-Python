@@ -61,7 +61,7 @@ class AddToCartView(LoginRequiredMixin, generic.View):
             "status": "success",
             "message": "Product added to cart!",
             "quantity": cart_item.quantity,
-            "cart_count": summary["total_items"] or 0,
+            "cart_count": cart_items.count() or 0,
             "cart_total_price": float(summary["total_price"] or 0),
             "product_title": product.title,
             "product_image": product.image.url if product.image else "",
@@ -130,7 +130,7 @@ class QuantityIncDec(LoginRequiredMixin, generic.View):
             "quantity": cart_item.quantity,
             "cart_total": round(cart_total, 2),
             "grand_total": round(grand_total, 2),
-            "cart_count": summary["total_items"] or 0,
+            "cart_count": cart_items.count() or 0,
         })
 
 
@@ -152,6 +152,6 @@ class CartRemoveView(LoginRequiredMixin, generic.View):
         return JsonResponse({
             "status": "success",
             "message": "Item removed!",
-            "cart_count": summary["total_items"] or 0,
+            "cart_count": cart_items.count() or 0,
             "cart_total_price": float(summary["total_price"] or 0)
         })
