@@ -57,7 +57,7 @@ class AddToCartView(LoginRequiredMixin, generic.View):
 
         return JsonResponse({
             "status": "success",
-            "message": " added to cart successfully!",
+            "message": "Product added to cart successfully!",
             "quantity": cart_item.quantity,
             "cart_total_items": cart_summary['total_items'] or 0,
             "cart_total_price": float(cart_summary['total_price'] or 0)
