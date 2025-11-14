@@ -14,7 +14,7 @@
                 {% for item in cart_items %}
                 <div class="row align-items-center mb-3 cart-item" data-id="{{ item.id }}">
                     <div class="col-3">
-                        <img src="{{ item.product.image.url }}" alt="{{ item.product.title }}" class="img-fluid">
+                        <img src="{{ item.product.image.url }}" alt="{{ item.product.title }}" class="img-fluid" style="width: 100px; height: 100px;">
                     </div>
                     <div class="col-6">
                         <h5>{{ item.product.title|title }}</h5>
@@ -26,7 +26,7 @@
                         </div>
                     </div>
                     <div class="col-3 text-end">
-                        <button class="btn btn-sm btn-danger remove-item">Remove</button>
+                        <button class="btn btn-sm btn-danger remove-item"><i class="bi bi-trash"></i></button>
                         <p class="mt-2">Tk. <span class="subtotal">{{ item.subtotal|floatformat:2 }}</span></p>
                     </div>
                 </div>
