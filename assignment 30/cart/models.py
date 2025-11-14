@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
+from django.db.models import F
 from store.models import Product
 
 class Cart(models.Model):
@@ -15,18 +17,19 @@ class Cart(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-        ordering = ['id']  # oldest cart items first
+        ordering = ['id']
         verbose_name_plural = '01. Carts'
+        unique_together = ('user', 'product')  # Prevent duplicates
 
     @property
     def subtotal(self):
-        """
-        Calculate total price for this cart item.
-        """
-        return self.product.sale_price * self.quantity
+        return round(self.product.sale_price * self.quantity, 2)
+
+    def clean(self):
+        if self.quantity > self.product.available_stock:
+            raise ValidationError(
+                f"Cannot add more than {self.product.available_stock} units of {self.product.title}."
+            )
 
     def __str__(self):
-        """
-        Human-readable representation for admin or debugging.
-        """
         return f'{self.user.username} - {self.product.title} ({self.quantity})'

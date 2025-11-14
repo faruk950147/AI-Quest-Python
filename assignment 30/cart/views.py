@@ -1,17 +1,14 @@
-from django.contrib import messages
-from django.shortcuts import get_object_or_404, redirect, render
-from django.urls import reverse_lazy
+from django.shortcuts import get_object_or_404, render, redirect
 from django.views import generic
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import never_cache
-from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
-from store.models import Product
-from cart.models import Cart
-from accounts.mixing import LoginRequiredMixin
 from django.db.models import F, Sum
+from django.urls import reverse_lazy
+from store.models import Product
+from .models import Cart
 
-# Prevent caching for all methods in this class
 @method_decorator(never_cache, name='dispatch')
 class AddToCartView(LoginRequiredMixin, generic.View):
     login_url = reverse_lazy('sign-in')
@@ -20,7 +17,6 @@ class AddToCartView(LoginRequiredMixin, generic.View):
         product_id = request.POST.get("product-id")
         quantity = request.POST.get("quantity", "0")
 
-        # Validate product_id and quantity
         if not product_id or not quantity.isdigit() or int(quantity) < 1:
             return JsonResponse({"status": "error", "message": "Invalid request."})
 
@@ -33,12 +29,12 @@ class AddToCartView(LoginRequiredMixin, generic.View):
                 "message": f"Quantity cannot exceed available stock! Maximum: {product.available_stock}."
             })
 
-        # Update or create cart item atomically
-        cart_item, created = Cart.objects.update_or_create(
+        # Update or create cart item
+        cart_item, created = Cart.objects.get_or_create(
             user=request.user,
             product=product,
             paid=False,
-            defaults={'quantity': quantity} if created else {}
+            defaults={'quantity': quantity}
         )
 
         if not created:
@@ -63,25 +59,24 @@ class AddToCartView(LoginRequiredMixin, generic.View):
             "status": "success",
             "message": "Product added to cart successfully!",
             "quantity": cart_item.quantity,
-            "cart_count": cart_calculations.count() or 0,
-            "cart_total_price": round(float(cart_summary['total_price'] or 0), 2)
+            "cart_count": cart_calculations.count(),
+            "cart_total_price": round(float(cart_summary['total_price'] or 0), 2),
+            "product_title": product.title,
+            "product_image": product.image.url if product.image else "",
+            "product_price": float(product.sale_price)
         })
-   
+
+
 @method_decorator(never_cache, name='dispatch')
 class CartDetailView(LoginRequiredMixin, generic.View):
     login_url = reverse_lazy('sign-in')
 
     def get(self, request):
-        # Get all unpaid cart items for the user
         cart_items = Cart.objects.filter(user=request.user, paid=False)
-
-        # Calculate cart total price
         cart_summary = cart_items.aggregate(
             total_price=Sum(F('quantity') * F('product__sale_price'))
         )
         cart_total = float(cart_summary['total_price'] or 0)
-
-        # Define shipping cost 
         shipping_cost = 50
 
         context = {
