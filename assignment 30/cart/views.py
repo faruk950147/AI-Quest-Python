@@ -101,7 +101,7 @@ class QuantityIncDec(LoginRequiredMixin, generic.View):
         cart_id = request.POST.get("cart-id")
         action = request.POST.get("action")
 
-        cart_item = get_object_or_404(Ccart, id=cart_id, user=request.user, paid=False)
+        cart_item = get_object_or_404(Cart, id=cart_id, user=request.user, paid=False)
         product = cart_item.product
 
         if action == "inc":
