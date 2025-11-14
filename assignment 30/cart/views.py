@@ -15,10 +15,6 @@ class AddToCartView(LoginRequiredMixin, generic.View):
     login_url = reverse_lazy('sign-in')
 
     def post(self, request):
-        # Ensure user is authenticated
-        if not request.user.is_authenticated:
-            return JsonResponse({"status": "error", "message": "Please log in first."}, status=403)
-
         product_id = request.POST.get("product-id")
         quantity = request.POST.get("quantity", "0")
 
@@ -68,14 +64,11 @@ class AddToCartView(LoginRequiredMixin, generic.View):
             "product_price": float(product.sale_price),
         })
 
-
-
 @method_decorator(never_cache, name='dispatch')
 class CartDetailView(LoginRequiredMixin, generic.View):
     login_url = reverse_lazy('sign-in')
 
     def get(self, request):
-        # user authentication guaranteed by LoginRequiredMixin
         cart_items = Cart.objects.filter(user=request.user, paid=False)
         summary = cart_items.aggregate(total_price=Sum(F("quantity") * F("product__sale_price")))
 
@@ -91,16 +84,11 @@ class CartDetailView(LoginRequiredMixin, generic.View):
         }
         return render(request, 'cart/cart-detail.html', context)
 
-
-
 @method_decorator(never_cache, name="dispatch")
 class QuantityIncDec(LoginRequiredMixin, generic.View):
     login_url = reverse_lazy('sign-in')
 
     def post(self, request):
-        if not request.user.is_authenticated:
-            return JsonResponse({"status": "error", "message": "Please log in first."}, status=403)
-
         cart_id = request.POST.get("cart-id")
         action = request.POST.get("action")
 
@@ -136,16 +124,11 @@ class QuantityIncDec(LoginRequiredMixin, generic.View):
             "grand_total": round(grand_total, 2),
         })
 
-
-
 @method_decorator(never_cache, name="dispatch")
 class CartRemoveView(LoginRequiredMixin, generic.View):
     login_url = reverse_lazy('sign-in')
 
     def post(self, request):
-        if not request.user.is_authenticated:
-            return JsonResponse({"status": "error", "message": "Please log in first."}, status=403)
-
         cart_id = request.POST.get("cart-id")
         cart_item = get_object_or_404(Cart, id=cart_id, user=request.user, paid=False)
         cart_item.delete()
