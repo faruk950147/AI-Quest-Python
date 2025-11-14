@@ -15,3 +15,22 @@ Django CSRF protection চালু থাকলে POST, PUT, PATCH, DELETE req
 
 X-Requested-With: 'XMLHttpRequest'
 Django এর view-এ request.is_ajax() বা modern Django version-এ request.headers.get('x-requested-with') == 'XMLHttpRequest' চেক করার জন্য। এটা মূলত server-কে বলে দেয় যে requestটি AJAX call।
+
+FormData AJAX submit
+$("#form").on("submit", function(e) {
+    e.preventDefault();
+
+    let formData = new FormData(this);
+
+    $.ajax({
+        url: "/submit/",
+        type: "POST",
+        data: formData,
+        processData: false,   // FormData এর জন্য অবশ্যই false
+        contentType: false,   // FormData এর জন্য অবশ্যই false
+
+        success: function(response) {
+            console.log(response);
+        }
+    });
+});
