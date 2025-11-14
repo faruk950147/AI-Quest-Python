@@ -102,10 +102,9 @@ class QuantityIncDec(LoginRequiredMixin, generic.View):
         action = request.POST.get("action")
 
         cart_item = get_object_or_404(Cart, id=cart_id, user=request.user, paid=False)
-        product = cart_item.product
 
         if action == "inc":
-            if cart_item.quantity < product.available_stock:
+            if cart_item.quantity < cart_item.product.available_stock:
                 cart_item.quantity = F("quantity") + 1
                 cart_item.save()
                 cart_item.refresh_from_db()
