@@ -78,11 +78,13 @@ class CartDetailView(LoginRequiredMixin, generic.View):
         )
         cart_total = float(cart_summary['total_price'] or 0)
         shipping_cost = 50
+        grand_total = cart_total + shipping_cost
 
         context = {
             "cart_items": cart_items,
             "cart_total": cart_total,
             "shipping_cost": shipping_cost,
+            "grand_total": grand_total
         }
         return render(request, 'cart/cart-detail.html', context)
 
