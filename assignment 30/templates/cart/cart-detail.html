@@ -1,95 +1,139 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %}Cart Detail{% endblock title %}
+{% block title %}Cart Detail{% endblock %}
 
 {% block main_content %}
 <div class="container my-5">
+    <h1 class="text-center mb-5">Shopping Cart</h1>
+
+    {% if cart_items %}
     <div class="row">
-        <h1 class="text-center mb-5">Shopping Cart</h1>
-
         <!-- Cart Items -->
-        <div class="col-sm-8">
-            <div class="card">
-                <div class="card-body">
-                    <h3>Cart</h3>
-                    {% if cart_items %}
-                        {% for cart_item in cart_items %}
-                        <div class="row mb-3">
-                            <div class="col-sm-2 text-center align-self-center">
-                                <img src="{{ cart_item.product.image.url }}" alt="{{ cart_item.product.title|title }}"
-                                     class="img-fluid img-thumbnail shadow-sm">
-                            </div>
-                            <div class="col-sm-10">
-                                <h5>{{ cart_item.product.title|title }}</h5>
-                                <p class="mb-2 text-muted small">Description: {{ cart_item.product.description }}</p>
-                                
-                                <!-- Quantity Form -->
-                                <div class="my-3 d-flex align-items-center">
-                                    <form method="post" action="{% url 'qty-inc-dec' %}">
-                                        {% csrf_token %}
-                                        <input type="hidden" name="product-id" value="{{ cart_item.id }}">
-
-                                        <!-- Decrease -->
-                                        <button type="submit" name="action" value="dec" class="btn btn-sm btn-outline-secondary">
-                                            <i class="fa fa-minus"></i>
-                                        </button>
-
-                                        <span class="mx-2">{{ cart_item.quantity }}</span>
-
-                                        <!-- Increase -->
-                                        <button type="submit" name="action" value="inc" class="btn btn-sm btn-outline-secondary">
-                                            <i class="fa fa-plus"></i>
-                                        </button>
-                                    </form>
-                                </div>
-
-                                <!-- Remove Item -->
-                                <div class="d-flex justify-content-between">
-                                    <form method="post" action="">
-                                        {% csrf_token %}
-                                        <button type="submit" class="btn btn-sm btn-danger text-white">
-                                            Remove item
-                                        </button>
-                                    </form>
-                                    <p class="mb-0"><strong>Tk. {{ cart_item.subtotal }}</strong></p>
-                                </div>
-                            </div>
+        <div class="col-md-8">
+            <div class="card p-3">
+                {% for item in cart_items %}
+                <div class="row align-items-center mb-3 cart-item" data-id="{{ item.id }}">
+                    <div class="col-3">
+                        <img src="{{ item.product.image.url }}" alt="{{ item.product.title }}" class="img-fluid">
+                    </div>
+                    <div class="col-6">
+                        <h5>{{ item.product.title|title }}</h5>
+                        <p class="small text-muted">{{ item.product.description }}</p>
+                        <div class="d-flex align-items-center">
+                            <button class="btn btn-sm btn-outline-secondary qty-btn" data-action="dec">-</button>
+                            <span class="mx-2 quantity">{{ item.quantity }}</span>
+                            <button class="btn btn-sm btn-outline-secondary qty-btn" data-action="inc">+</button>
                         </div>
-                        <hr class="text-muted">
-                        {% endfor %}
-                    {% else %}
-                        <p>Your cart is empty.</p>
-                    {% endif %}
+                    </div>
+                    <div class="col-3 text-end">
+                        <button class="btn btn-sm btn-danger remove-item">Remove</button>
+                        <p class="mt-2">Tk. <span class="subtotal">{{ item.subtotal|floatformat:2 }}</span></p>
+                    </div>
                 </div>
+                <hr>
+                {% endfor %}
             </div>
         </div>
 
         <!-- Cart Summary -->
-        <div class="col-sm-4">
-            <div class="card">
-                <div class="card-body">
-                    <h3>The Total Amount</h3>
-                    <ul class="list-group">
-                        <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
-                            Amount <span>Tk. {{ cart_total }}</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-                            Shipping <span>Tk. {{ shipping_cost }}</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
-                            <div>
-                                <strong>Total</strong> <small>(including VAT)</small>
-                            </div>
-                            <span><strong>Tk. {{  }}</strong></span>
-                        </li>
-                    </ul>
-                    <div class="d-grid">
-                        <a href="{% url 'checkout' %}" class="btn btn-success">Place Order</a>
-                    </div>
-                </div>
+        <div class="col-md-4">
+            <div class="card p-3">
+                <h4>Summary</h4>
+                <ul class="list-group mb-3">
+                    <li class="list-group-item d-flex justify-content-between">
+                        Amount <span id="cart-total">{{ cart_total|floatformat:2 }}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        Shipping <span id="shipping-cost">{{ shipping_cost|floatformat:2 }}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <strong>Grand Total</strong>
+                        <strong id="grand-total">{{ grand_total|floatformat:2 }}</strong>
+                    </li>
+                </ul>
+                <a href="{% url 'checkout' %}" class="btn btn-success w-100">Place Order</a>
             </div>
         </div>
-
     </div>
+    {% else %}
+    <div class="text-center my-5">
+        <p>Your cart is empty.</p>
+        <a href="{% url 'home' %}" class="btn btn-primary">Continue Shopping</a>
+    </div>
+    {% endif %}
 </div>
-{% endblock main_content %}
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    $(document).ready(function(){
+        // CSRF token setup
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let cookie of cookies) {
+                    cookie = cookie.trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        const csrftoken = getCookie('csrftoken');
+
+        // Quantity increment/decrement
+        $('.qty-btn').click(function(){
+            const btn = $(this);
+            const parent = btn.closest('.cart-item');
+            const cartId = parent.data('id');
+            const action = btn.data('action');
+
+            $.ajax({
+                url: "{% url 'qty-inc-dec' %}",
+                type: "POST",
+                headers: {"X-CSRFToken": csrftoken},
+                data: { 'cart-id': cartId, 'action': action },
+                success: function(response){
+                    if(response.status === "success"){
+                        parent.find('.quantity').text(response.quantity);
+
+                        // Update subtotal
+                        const pricePerUnit = parseFloat(parent.find('.subtotal').text()) / (response.quantity || 1);
+                        parent.find('.subtotal').text((pricePerUnit * response.quantity).toFixed(2));
+
+                        // Update cart totals
+                        $('#cart-total').text(response.cart_total.toFixed(2));
+                        $('#grand-total').text(response.grand_total.toFixed(2));
+                    } else {
+                        alert(response.message);
+                    }
+                }
+            });
+        });
+
+        // Remove item
+        $('.remove-item').click(function(){
+            const btn = $(this);
+            const parent = btn.closest('.cart-item');
+            const cartId = parent.data('id');
+
+            $.ajax({
+                url: "{% url 'cart-remove-item' %}",
+                type: "POST",
+                headers: {"X-CSRFToken": csrftoken},
+                data: { 'cart-id': cartId },
+                success: function(response){
+                    if(response.status === "success"){
+                        parent.remove();
+                        $('#cart-total').text(response.cart_total.toFixed(2));
+                        $('#grand-total').text(response.grand_total.toFixed(2));
+                    }
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}
