@@ -43,7 +43,8 @@
                     <!-- Quantity Input -->
                     <div class="mb-3" style="max-width: 120px;">
                         <input type="number" 
-                               name="quantity" 
+                               name="quantity"
+                               id="quantity"  
                                class="form-control text-center" 
                                value="1" 
                                min="1" 
@@ -73,6 +74,50 @@
             </ul>
         </div>
     </div>
-    {% include "alert.html" %}
 </div>
 {% endblock main_content %}
+{% block extra_scripts %}
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+$(document).ready(function() {
+    $("form[action='{% url 'add-to-cart' %}']").on("submit", function(e) {
+        e.preventDefault(); // Prevent default form submit
+
+        var $form = $(this);
+        var formData = new FormData(this);
+
+        $.ajax({
+            url: $form.attr("action"),
+            type: "POST",
+            data: formData,
+            processData: false,
+            contentType: false,
+            headers: {
+                "X-CSRFToken": formData.get("csrfmiddlewaretoken")
+            },
+            success: function(data) {
+                if(data.status === "success") {
+                    alert(data.message);
+
+                    // Update cart totals
+                    if($("#cart-total-items").length)
+                        $("#cart-total-items").text(data.cart_total_items);
+
+                    if($("#cart-total-price").length)
+                        $("#cart-total-price").text(parseFloat(data.cart_total_price).toFixed(2));
+
+                    // Reset quantity input
+                    $("#quantity").val(1);
+                } else {
+                    alert(data.message);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("AJAX Error:", error);
+                alert("Something went wrong. Please try again.");
+            }
+        });
+    });
+});
+</script>
+{% endblock extra_scripts %}
