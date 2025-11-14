@@ -96,10 +96,10 @@ $(document).ready(function() {
             success: function(data) {
                 if(data.status === "success") {
                     alert(data.message);
-
+                    console.log(data)
                     // Update cart totals dynamically (if elements exist)
                     if($("#cart-total-items").length)
-                        $("#cart-total-items").text(data.cart_total_items);
+                        $("#cart-count").text(data.cart_count);
 
                     if($("#cart-total-price").length)
                         $("#cart-total-price").text(parseFloat(data.cart_total_price).toFixed(2));
