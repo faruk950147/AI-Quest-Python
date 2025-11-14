@@ -98,11 +98,8 @@
                 data: { 'cart-id': cartId, 'action': action },
                 success: function(response){
                     if(response.status === "success"){
-                        $('.quantity').text(response.quantity);
-                        console.log(response)
-
-                        // Update subtotal
-                        $('.subtotal').text(response.subtotal.toFixed(2));
+                        parent.find('.quantity').text(response.quantity);
+                        parent.find('.subtotal').text(response.subtotal.toFixed(2));
 
                         // Update cart totals
                         $('#cart-total').text(response.cart_total.toFixed(2));

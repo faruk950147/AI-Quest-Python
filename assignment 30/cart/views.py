@@ -53,7 +53,6 @@ class AddToCartView(LoginRequiredMixin, generic.View):
 
         cart_items = Cart.objects.filter(user=request.user, paid=False)
         summary = cart_items.aggregate(
-            total_items=Sum("quantity"),
             total_price=Sum(F("quantity") * F("product__sale_price"))
         )
 
@@ -67,6 +66,7 @@ class AddToCartView(LoginRequiredMixin, generic.View):
             "product_image": product.image.url if product.image else "",
             "product_price": float(product.sale_price),
         })
+
 
 
 @method_decorator(never_cache, name='dispatch')
@@ -93,6 +93,7 @@ class CartDetailView(LoginRequiredMixin, generic.View):
         return render(request, 'cart/cart-detail.html', context)
 
 
+
 @method_decorator(never_cache, name="dispatch")
 class QuantityIncDec(LoginRequiredMixin, generic.View):
     login_url = reverse_lazy('sign-in')
@@ -103,33 +104,39 @@ class QuantityIncDec(LoginRequiredMixin, generic.View):
 
         cart_item = get_object_or_404(Cart, id=cart_id, user=request.user, paid=False)
 
+        # Increase
         if action == "inc":
             if cart_item.quantity < cart_item.product.available_stock:
                 cart_item.quantity = F("quantity") + 1
                 cart_item.save()
                 cart_item.refresh_from_db()
 
+        # Decrease
         elif action == "dec":
             if cart_item.quantity > 1:
                 cart_item.quantity = F("quantity") - 1
                 cart_item.save()
                 cart_item.refresh_from_db()
 
+        # Single item subtotal
+        item_subtotal = float(cart_item.quantity * cart_item.product.sale_price)
+
+        # Total cart summary
         cart_items = Cart.objects.filter(user=request.user, paid=False)
         summary = cart_items.aggregate(
-            total_items=Sum("quantity"),
             total_price=Sum(F("quantity") * F("product__sale_price"))
         )
 
         shipping_cost = 50
+        cart_total = float(summary["total_price"] or 0)
+        grand_total = cart_total + shipping_cost
 
         return JsonResponse({
             "status": "success",
             "quantity": cart_item.quantity,
-            "cart_count": cart_items.count() or 0,
-            "subtotal": round(float(summary["total_price"] or 0), 2),
-            "cart_total": round(float(summary["total_price"] or 0), 2),
-            "grand_total": round(float(summary["total_price"] or 0) + shipping_cost, 2),
+            "item_subtotal": round(item_subtotal, 2),      # ✔ per-item subtotal
+            "cart_total": round(cart_total, 2),       # ✔ updated total
+            "grand_total": round(grand_total, 2),     # ✔ updated grand total
         })
 
 
@@ -145,13 +152,16 @@ class CartRemoveView(LoginRequiredMixin, generic.View):
 
         cart_items = Cart.objects.filter(user=request.user, paid=False)
         summary = cart_items.aggregate(
-            total_items=Sum("quantity"),
             total_price=Sum(F("quantity") * F("product__sale_price"))
         )
 
+        cart_total = float(summary["total_price"] or 0)
+        grand_total = cart_total + 50
+
         return JsonResponse({
             "status": "success",
-            "message": "product removed!",
+            "message": "Product removed!",
             "cart_count": cart_items.count() or 0,
-            "cart_total_price": float(summary["total_price"] or 0)
+            "cart_total": round(cart_total, 2),
+            "grand_total": round(grand_total, 2),
         })
