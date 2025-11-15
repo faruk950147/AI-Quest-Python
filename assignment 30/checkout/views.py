@@ -7,10 +7,10 @@ from django.views import generic
 @method_decorator(never_cache, name='dispatch')
 class CheckoutView(generic.View):
     def get(self, request):
-        return render(request, 'order/checkout.html')
+        return render(request, 'checkout/checkout.html')
     
 @method_decorator(never_cache, name='dispatch')
-class OrderView(generic.View):
+class CheckoutListView(generic.View):
     def get(self, request):
-        return render(request, 'order/order.html')
+        return render(request, 'checkout/checkout_list.html')
 
