@@ -86,3 +86,7 @@ class CategoryProductView(generic.View):
             return JsonResponse({'html': html})
 
         return render(request, "store/category-product.html", context)
+
+class SearchProductView(generic.View):
+    def post(self, request):
+        return JsonResponse()
