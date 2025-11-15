@@ -86,12 +86,3 @@ class CategoryProductView(generic.View):
             return JsonResponse({'html': html})
 
         return render(request, "store/category-product.html", context)
-
-@method_decorator(never_cache, name='dispatch')
-class ProductsListView(generic.View):
-    def get(self, request):
-        products = Product.objects.filter(status='ACTIVE')
-        context = {
-            'products': products,
-        }
-        return render(request, "store/products-list.html", context)
