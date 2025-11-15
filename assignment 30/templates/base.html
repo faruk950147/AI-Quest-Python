@@ -76,7 +76,8 @@
                 </ul>
 
                 <!-- SEARCH -->
-                <form class="d-flex me-3" method="get" action="{% url 'search-product' %}">
+                <form class="d-flex me-3" method="POST" action="{% url 'search-product' %}">
+                    {% csrf_token %}
                     <input class="form-control me-2" type="search" name="q" placeholder="Search">
                     <button class="btn btn-warning" type="submit">Search</button>
                 </form>

@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import never_cache
@@ -87,6 +87,11 @@ class CategoryProductView(generic.View):
 
         return render(request, "store/category-product.html", context)
 
+
 class SearchProductView(generic.View):
+    def get(self, request):
+        return render(request, 'store/search-results.html')
     def post(self, request):
-        return JsonResponse()
+        q = request.POST.get('q', '')
+        products = Product.objects.filter(title__icontains=q)  
+        return render(request, 'store/search-results.html')
