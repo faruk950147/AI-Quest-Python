@@ -89,9 +89,10 @@ class CategoryProductView(generic.View):
 
 
 class SearchProductView(generic.View):
-    def get(self, request):
-        return render(request, 'store/search-results.html')
     def post(self, request):
-        q = request.POST.get('q', '')
-        products = Product.objects.filter(title__icontains=q)  
-        return render(request, 'store/search-results.html')
+        q = request.POST.get('q', '')  
+        products = Product.objects.filter(title__icontains=q) if q else []
+        return render(request, 'store/search-results.html', {
+            'products': products,
+            'count_products':products.count()
+            })

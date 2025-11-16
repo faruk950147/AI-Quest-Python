@@ -3,17 +3,131 @@
 
 {% block main_content %}
 <div class="container my-5">
+
     <div class="row">
 
+        <!-- Sidebar -->
+        <div class="col-lg-3 col-md-4 mb-4">
+            <div class="card shadow-sm border-0 rounded-3">
+
+                <div class="card-header bg-white fw-semibold py-3 border-0 fs-6">
+                    <i class="bi bi-funnel"></i> Filters
+                </div>
+
+                <div class="card-body">
+
+                    <!-- Category -->
+                    <h6 class="fw-bold mb-2">Category</h6>
+                    <ul class="list-group list-group-flush mb-4">
+                        <li class="list-group-item px-0 py-1 border-0">
+                            <a href="#" class="text-dark text-decoration-none">Electronics</a>
+                        </li>
+                        <li class="list-group-item px-0 py-1 border-0">
+                            <a href="#" class="text-dark text-decoration-none">Fashion</a>
+                        </li>
+                        <li class="list-group-item px-0 py-1 border-0">
+                            <a href="#" class="text-dark text-decoration-none">Grocery</a>
+                        </li>
+                    </ul>
+
+                    <!-- Brand -->
+                    <h6 class="fw-bold mb-2">Brand</h6>
+                    <ul class="list-group list-group-flush mb-4">
+                        <li class="list-group-item px-0 py-1 border-0">
+                            <input type="checkbox"> Samsung
+                        </li>
+                        <li class="list-group-item px-0 py-1 border-0">
+                            <input type="checkbox"> Apple
+                        </li>
+                        <li class="list-group-item px-0 py-1 border-0">
+                            <input type="checkbox"> Xiaomi
+                        </li>
+                    </ul>
+
+                    <!-- Price Range -->
+                    <h6 class="fw-bold mb-2">Price Range</h6>
+                    <div class="mb-4">
+                        <input type="range" class="form-range">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Grid -->
+        <div class="col-lg-9 col-md-8">
+            <div class="row">
+                {% for product in products %}
+                <div class="col-lg-4 col-md-6 col-sm-6 mb-4">
+
+                    <div class="card h-100 shadow-sm border-0 hover-card rounded-3">
+
+                        <a href="{% url 'single-product' product.slug product.id %}">
+                            <img src="{{ product.image.url }}"
+                                 class="card-img-top rounded-top-3"
+                                 style="height:230px; object-fit:cover;">
+                        </a>
+
+                        <div class="card-body p-3">
+
+                            <h6 class="card-title fw-semibold mb-1">
+                                {{ product.title|truncatechars:28 }}
+                            </h6>
+
+                            <p class="text-success fw-bold mb-2">
+                                Tk. {{ product.sale_price }}
+                                {% if product.old_price %}
+                                <small class="text-muted text-decoration-line-through">
+                                    Tk. {{ product.old_price }}
+                                </small>
+                                {% endif %}
+                            </p>
+
+                            <p class="text-muted mb-0" style="font-size:14px;">
+                                Brand: {{ product.brand.title }}
+                            </p>
+
+                        </div>
+                    </div>
+
+                </div>
+                {% empty %}
+                <div class="text-center mt-4">
+                    No products available for selected filters.
+                </div>
+                {% endfor %}
+            </div>
+        </div>
     </div>
 </div>
+
+<style>
+/* Premium Hover Effect */
+.hover-card {
+    transition: all .25s ease;
+}
+
+.hover-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0,0,0,.12) !important;
+}
+
+/* Smooth list styling */
+.list-group-item:hover {
+    background: #f8f9fa;
+    cursor: pointer;
+}
+
+.card {
+    border-radius: 10px !important;
+}
+</style>
+
 {% endblock main_content %}
+
 
 {% block extra_scripts %}
 <script>
 $(document).ready(function() {
-
-
 
 });
 </script>
