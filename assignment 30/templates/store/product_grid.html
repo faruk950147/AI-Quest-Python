@@ -12,7 +12,7 @@
                         <small class="text-muted text-decoration-line-through">Tk. {{ product.old_price }}</small>
                     {% endif %}
                 </p>
-                <p class="mb-0" style="font-size: 14px;">Brand: {{ product.brand.title }}</p>
+                <p class="mb-0" style="font-size: 14px;">Brand: {{ product.brand.title|title }}</p>
             </div>
         </div>
     </div>
