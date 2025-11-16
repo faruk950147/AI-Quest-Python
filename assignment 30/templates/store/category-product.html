@@ -5,9 +5,9 @@
 <div class="container my-5">
     <div class="row">
         <!-- Sidebar -->
-
-        {% include "store/get-filters.html" %}
-
+        <div class="col-lg-3 col-md-4 mb-4">
+            {% include "store/get-filters.html" %}
+        </div>
         <!-- Product Grid -->
         <div class="col-lg-9 col-md-8" id="product-grid">
             {% include 'store/product_grid.html' %}
