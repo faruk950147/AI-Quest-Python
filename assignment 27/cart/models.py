@@ -1,0 +1,35 @@
+from django.db import models
+from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
+from django.db.models import F
+from store.models import Product
+
+class Cart(models.Model):
+    """
+    Shopping cart item model for a user.
+    Tracks product, quantity, and payment status.
+    """
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=1)
+    paid = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['id']
+        verbose_name_plural = '01. Carts'
+        unique_together = ('user', 'product')  # Prevent duplicates
+
+    @property
+    def subtotal(self):
+        return round(self.product.sale_price * self.quantity, 2)
+
+    def clean(self):
+        if self.quantity > self.product.available_stock:
+            raise ValidationError(
+                f"Cannot add more than {self.product.available_stock} units of {self.product.title}."
+            )
+
+    def __str__(self):
+        return f'{self.user.username} - {self.product.title} ({self.quantity})'

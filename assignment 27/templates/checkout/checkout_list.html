@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Order Details{% endblock %}
+
+{% block main_content %}
+<div class="container my-5">
+    <div class="row">
+        <h3>Welcome aiQuest</h3>
+        <div class="col-sm-2 border-end">
+            <ul class="list-unstyled">
+                <li class="d-grid"><a href="{% url 'checkout-list' %}" class="btn btn-success">Checkout List</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-9 offset-sm-1">
+            <div class="row">
+                <div class="col-sm-6">Checkout 1</div>
+                <div class="col-sm-6">Checkout 2</div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock main_content %}
