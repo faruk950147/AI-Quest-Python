@@ -80,8 +80,8 @@ class CategoryProductView(generic.View):
 
         # AJAX request
         if request.headers.get('x-requested-with') == 'XMLHttpRequest':
-            products_html = render_to_string('store/product_grid.html', context)
-            return JsonResponse({'products_html': products_html})
+            html = render_to_string('store/product_grid.html', context)
+            return JsonResponse({'html': html})
 
         return render(request, 'store/category-product.html', context)
     

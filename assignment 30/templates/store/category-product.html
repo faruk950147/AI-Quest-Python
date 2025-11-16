@@ -28,7 +28,7 @@ $(document).ready(function() {
             method: 'GET',
             headers: { 'X-Requested-With': 'XMLHttpRequest' },
             success: function(response) {
-                $('#product-grid').html(response.products_html);
+                $('#product-grid').html(response.html);
                 window.history.pushState({}, '', url);
             }
         });
