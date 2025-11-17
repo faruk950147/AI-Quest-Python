@@ -59,26 +59,37 @@ class CategoryProductView(generic.View):
         category = get_object_or_404(Category, slug=slug, id=id)
         products = Product.objects.filter(category=category, status='ACTIVE')
         brands = Brand.objects.filter(product__category=category).distinct()
-        
+
         context = {
-            'products': products,
             'category': category,
+            'products': products,
             'brands': brands,
         }
         return render(request, 'store/category-product.html', context)
-    
+
+
 @method_decorator(never_cache, name='dispatch')
 class GetFilterProductsView(generic.View):
     def post(self, request):
-        brands = request.POST.getlist('brand[]')
+        category_id = request.POST.get('category_id')
+        category_slug = request.POST.get('category_slug')
+        category = get_object_or_404(Category, id=category_id, slug=category_slug)
 
-        products = Product.objects.filter(status='ACTIVE')
+        products = Product.objects.filter(category=category, status='ACTIVE')
 
-        if len(brands) > 0:
-            products = products.filter(brand__title__in=brands)
+        # Brand filter
+        brand_ids = request.POST.getlist('brand[]')
+        if brand_ids:
+            products = products.filter(brand_id__in=brand_ids)
+
+        # Price filter
+        max_price = request.POST.get('max_price')
+        if max_price:
+            products = products.filter(sale_price__lte=max_price)
 
         html = render_to_string('store/product_grid.html', {'products': products})
-        return JsonResponse({'html': html}) 
+        return JsonResponse({'html': html})
+
     
 @method_decorator(never_cache, name='dispatch')
 class SearchProductView(generic.View):

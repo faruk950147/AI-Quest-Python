@@ -18,26 +18,58 @@
 {% block extra_scripts %}
 <script>
 $(document).ready(function(){
-	$(".filter-checkbox").on('click', function(){
-		var filter_object={};
-		$(".filter-checkbox").each(function(index,ele){
-			var filter_value=$(this).val();
-			var filter_key=$(this).data('filter');
-			console.log(filter_key,filter_value);
-			filter_object[filter_key]=Array.from(document.querySelectorAll('input[data-filter='+filter_key+']:checked')).map(function(el){
-			 	return el.value;
-			});
-		});
-		$.ajax({
-			url:'{% url 'get-filter-products' %}',
-            method:'POST',
-			data:filter_object,
-			dataType:'json',			
-			success:function(res){				
-				$("#product-grid").html(res.html);				
-			}
-		});
-	});
+
+    function applyFilters() {
+        let filter_object = {};
+
+        // Brand filters
+        let filters = [...document.querySelectorAll(".filter-checkbox[data-filter]")];
+        let filter_keys = [...new Set(filters.map(el => el.dataset.filter))];
+
+        filter_keys.forEach(function(key){
+            filter_object[key] = [...document.querySelectorAll(
+                "input[data-filter='" + key + "']:checked"
+            )].map(el => el.value);
+        });
+
+        // Category info
+        filter_object['category_id'] = "{{ category.id }}";
+        filter_object['category_slug'] = "{{ category.slug }}";
+
+        // Price slider
+        if ($("#priceRange").length){
+            filter_object['max_price'] = $("#priceRange").val();
+        }
+
+        console.log("Sending filter:", filter_object); // debug
+
+        $.ajax({
+            url: "{% url 'get-filter-products' %}",
+            method: "POST",
+            headers: {"X-CSRFToken": "{{ csrf_token }}"},
+            data: filter_object,
+            dataType: "json",
+            success: function(res){
+                $("#product-grid").html(res.html);
+            }
+        });
+    }
+
+    // Trigger on checkbox change
+    $(".filter-checkbox").on("change", applyFilters);
+
+    // Trigger on price slider change
+    $("#priceRange").on("input", function(){
+        $("#priceValue").text("৳" + $(this).val());
+        applyFilters();
+    });
+
+    // All Filters checkbox
+    $("#all-filters").on("change", function(){
+        $(".filter-checkbox[data-filter]").prop("checked", this.checked).trigger("change");
+    });
+
 });
 </script>
-{% endblock extra_scripts %}
+{% endblock %}
+
