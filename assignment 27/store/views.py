@@ -61,8 +61,7 @@ class CategoryProductView(generic.View):
         products = Product.objects.filter(category=category, status='ACTIVE')
         brands = Brand.objects.filter(product__category=category).distinct()
 
-        max_price_data = products.aggregate(Max('sale_price'))
-        max_price = max_price_data['sale_price__max']
+        max_price = products.aggregate(Max('sale_price'))['sale_price__max']
         min_price = products.aggregate(Min('sale_price'))['sale_price__min']
 
         context = {
