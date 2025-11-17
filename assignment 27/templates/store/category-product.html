@@ -1,7 +1,13 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block title %}Category Products{% endblock title %}
+
 {% block main_content %}
 <div class="container my-5">
     <div class="row g-3">
+        <input type="hidden" id="id" value="{{ category.id }}">
+        <input type="hidden" id="slug" value="{{ category.slug }}">
+
         <!-- Sidebar -->
         <div class="col-lg-3 col-md-4 mb-4">
             {% include "store/get-filters.html" %}
@@ -17,21 +23,58 @@
 
 {% block extra_scripts %}
 <script>
-$(document).ready(function(){
-    ('.filter-checkbox, #priceRange').on('change', function(e){
+$(document).ready(function() {
+
+    // All Filters — Select/Unselect all
+    $("#all-filters").on('change', function() {
+        let isChecked = $(this).is(":checked");
+        $(".filter-checkbox").prop("checked", isChecked);
+        $("#priceRange").trigger("change");
+    });
+
+    // Apply AJAX when checkbox or price changes
+    $('.filter-checkbox, #priceRange').on('change', function(e){
         e.preventDefault();
+
         let filter_object = {};
+        let id = $("#id").val();
+        let slug = $("#slug").val();
+
+        // Get selected filters
+        $('.filter-checkbox:checked').each(function(){
+            let key = $(this).data('filter');
+            let value = $(this).val();
+
+            if (!filter_object[key]) {
+                filter_object[key] = [];
+            }
+            filter_object[key].push(value);
+        });
+
+        // Category info
+        filter_object['id'] = id;
+        filter_object['slug'] = slug;
+
+        // Price range
+        filter_object['priceRange'] = $("#priceRange").val();
+
+        console.log(filter_object);
+
+        // AJAX Call
         $.ajax({
-        url: "{% url 'get-filter-products' %}",
-        method: "POST",
-        headers: {"X-CSRFToken": "{{ csrf_token }}"},
-        data: filter_object,
-        dataType: "json",
-        success: function(res){
-            $("#product-grid").html(res.html);
-        }
+            url: "{% url 'get-filter-products' %}",
+            method: "POST",
+            data: {
+                ...filter_object,
+                csrfmiddlewaretoken: "{{ csrf_token }}"
+            },
+            dataType: "json",
+            success: function(res){
+                $("#product-grid").html(res.html);
+            }
+        });
     });
-    });
+
 });
 </script>
 {% endblock %}
