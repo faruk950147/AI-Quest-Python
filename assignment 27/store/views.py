@@ -4,6 +4,7 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.cache import never_cache
 from django.template.loader import render_to_string
 from django.http import JsonResponse
+from django.db.models import Max
 from store.models import Category, Brand, Product, Slider
 
 
@@ -60,20 +61,23 @@ class CategoryProductView(generic.View):
         products = Product.objects.filter(category=category, status='ACTIVE')
         brands = Brand.objects.filter(product__category=category).distinct()
 
+        max_price_data = products.aggregate(Max('sale_price'))
+        max_price = max_price_data['sale_price__max'] or 5000
+
         context = {
             'category': category,
             'products': products,
             'brands': brands,
+            'max_price': max_price,
         }
         return render(request, 'store/category-product.html', context)
-
 
 @method_decorator(never_cache, name='dispatch')
 class GetFilterProductsView(generic.View):
     def post(self, request):
-        category_id = request.POST.get('category_id')
-        category_slug = request.POST.get('category_slug')
-        category = get_object_or_404(Category, id=category_id, slug=category_slug)
+        id = request.POST.get('category_id')
+        slug = request.POST.get('category_slug')
+        category = get_object_or_404(Category, id=id, slug=slug)
 
         products = Product.objects.filter(category=category, status='ACTIVE')
 
@@ -89,7 +93,6 @@ class GetFilterProductsView(generic.View):
 
         html = render_to_string('store/product_grid.html', {'products': products})
         return JsonResponse({'html': html})
-
     
 @method_decorator(never_cache, name='dispatch')
 class SearchProductView(generic.View):
