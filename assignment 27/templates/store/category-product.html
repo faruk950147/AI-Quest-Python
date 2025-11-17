@@ -56,7 +56,9 @@ $(document).ready(function() {
         filter_object['slug'] = slug;
 
         // Price range
-        filter_object['priceRange'] = $("#priceRange").val();
+        filter_object['minPrice'] = $("#minPrice").val();
+        filter_object['maxPrice'] = $("#priceRange").val();
+
 
         console.log(filter_object);
 
