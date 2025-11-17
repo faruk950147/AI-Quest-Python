@@ -60,30 +60,25 @@ class CategoryProductView(generic.View):
         products = Product.objects.filter(category=category, status='ACTIVE')
         brands = Brand.objects.filter(product__category=category).distinct()
         
-        selected_brand = request.GET.get('brand')
-        price_filter = request.GET.get('price')
-
-        if selected_brand:
-            products = products.filter(brand__id=selected_brand)
-        if price_filter == 'below_20k':
-            products = products.filter(sale_price__lt=20000)
-        elif price_filter == 'above_20k':
-            products = products.filter(sale_price__gte=20000)
-
         context = {
             'products': products,
             'category': category,
             'brands': brands,
-            'selected_brand': int(selected_brand) if selected_brand else None,
-            'price_filter': price_filter,
         }
-
-        # AJAX request
-        if request.headers.get('x-requested-with') == 'XMLHttpRequest':
-            html = render_to_string('store/product_grid.html', context)
-            return JsonResponse({'html': html})
-
         return render(request, 'store/category-product.html', context)
+    
+@method_decorator(never_cache, name='dispatch')
+class GetFilterProductsView(generic.View):
+    def post(self, request):
+        brands = request.POST.getlist('brand[]')
+
+        products = Product.objects.filter(status='ACTIVE')
+
+        if len(brands) > 0:
+            products = products.filter(brand__title__in=brands)
+
+        html = render_to_string('store/product_grid.html', {'products': products})
+        return JsonResponse({'html': html}) 
     
 @method_decorator(never_cache, name='dispatch')
 class SearchProductView(generic.View):

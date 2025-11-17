@@ -1,6 +1,4 @@
 {% extends 'base.html' %}
-{% block title %}Category Products{% endblock %}
-
 {% block main_content %}
 <div class="container my-5">
     <div class="row g-3">
@@ -8,6 +6,7 @@
         <div class="col-lg-3 col-md-4 mb-4">
             {% include "store/get-filters.html" %}
         </div>
+
         <!-- Product Grid -->
         <div class="col-lg-9 col-md-8" id="product-grid">
             {% include "store/product_grid.html" %}
@@ -18,21 +17,27 @@
 
 {% block extra_scripts %}
 <script>
-$(document).ready(function() {
-    $('.filter-link').on('click', function(e) {
-        e.preventDefault();
-        let url = $(this).attr('href');
-
-        $.ajax({
-            url: url,
-            method: 'GET',
-            headers: { 'X-Requested-With': 'XMLHttpRequest' },
-            success: function(response) {
-                $('#product-grid').html(response.html);
-                window.history.pushState({}, '', url);
-            }
-        });
-    });
+$(document).ready(function(){
+	$(".filter-checkbox").on('click', function(){
+		var filter_object={};
+		$(".filter-checkbox").each(function(index,ele){
+			var filter_value=$(this).val();
+			var filter_key=$(this).data('filter');
+			console.log(filter_key,filter_value);
+			filter_object[filter_key]=Array.from(document.querySelectorAll('input[data-filter='+filter_key+']:checked')).map(function(el){
+			 	return el.value;
+			});
+		});
+		$.ajax({
+			url:'{% url 'get-filter-products' %}',
+            method:'POST',
+			data:filter_object,
+			dataType:'json',			
+			success:function(res){				
+				$("#product-grid").html(res.html);				
+			}
+		});
+	});
 });
 </script>
 {% endblock extra_scripts %}
