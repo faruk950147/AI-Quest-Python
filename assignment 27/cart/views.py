@@ -5,6 +5,7 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.cache import never_cache
 from django.http import JsonResponse
 from django.db.models import F, Sum
+from django.db import transaction
 from django.urls import reverse_lazy
 from store.models import Product
 from cart.models import Cart
@@ -18,23 +19,27 @@ class AddToCartView(LoginRequiredMixin, generic.View):
 
     def post(self, request):
         product_id = request.POST.get("product-id")
-        quantity = request.POST.get("quantity", "0")
+        quantity = int(request.POST.get("quantity", 1))
 
-        if not product_id or not quantity.isdigit() or int(quantity) < 1:
-            return JsonResponse({"status": "error", "message": "Invalid request input."})
+        # Minimum quantity check
+        if quantity < 1:
+            return JsonResponse({
+                "status": "error",
+                "message": "Quantity must be at least 1."
+            })
 
-        quantity = int(quantity)
+        # Product load + latest stock load
         product = get_object_or_404(Product, id=product_id)
-
-        # Always load latest stock
         product.refresh_from_db(fields=["available_stock"])
 
+        # Stock check
         if quantity > product.available_stock:
             return JsonResponse({
                 "status": "error",
                 "message": f"Only {product.available_stock} units available."
             })
 
+        # Add or update cart
         cart_item, created = Cart.objects.get_or_create(
             user=request.user,
             product=product,
@@ -42,33 +47,36 @@ class AddToCartView(LoginRequiredMixin, generic.View):
             defaults={"quantity": quantity}
         )
 
+        # If already exists → update using pure Python
         if not created:
-            # Reload stock before update
             product.refresh_from_db(fields=["available_stock"])
+            new_quantity = cart_item.quantity + quantity
 
-            if cart_item.quantity + quantity > product.available_stock:
+            if new_quantity > product.available_stock:
                 return JsonResponse({
                     "status": "error",
                     "message": f"Cannot exceed available stock ({product.available_stock})."
                 })
 
-            cart_item.quantity = F("quantity") + quantity
+            cart_item.quantity = new_quantity
             cart_item.save()
-            cart_item.refresh_from_db()
 
         # Summary
-        cart_items = Cart.objects.filter(user=request.user, paid=False)
-        summary = cart_items.aggregate(total_price=Sum(F("quantity") * F("product__sale_price")))
+        cart_items = Cart.objects.filter(user=request.user, paid=False).select_related("product")
+        cart_count = cart_items.count()
+        summary = cart_items.aggregate(
+            total_price=Sum(F("quantity") * F("product__sale_price"))
+        )
 
         return JsonResponse({
             "status": "success",
             "message": "Product added to cart.",
             "quantity": cart_item.quantity,
-            "cart_count": cart_items.count(),
-            "cart_total_price": float(summary["total_price"] or 0),
+            "cart_count": cart_count,
+            "cart_total_price": summary["total_price"] or 0,
             "product_title": product.title,
             "product_image": product.image.url if product.image else "",
-            "product_price": float(product.sale_price),
+            "product_price": product.sale_price,
         })
 
 
@@ -78,7 +86,7 @@ class CartDetailView(LoginRequiredMixin, generic.View):
     login_url = reverse_lazy('sign-in')
 
     def get(self, request):
-        cart_items = Cart.objects.filter(user=request.user, paid=False)
+        cart_items = Cart.objects.filter(user=request.user, paid=False).select_related("product")
         summary = cart_items.aggregate(total_price=Sum(F("quantity") * F("product__sale_price")))
 
         cart_total = float(summary["total_price"] or 0)
@@ -92,8 +100,7 @@ class CartDetailView(LoginRequiredMixin, generic.View):
             "grand_total": grand_total,
         })
 
-
-# Quantity Increase / Decrease
+# Increase/Decrease Quantity
 @method_decorator(never_cache, name="dispatch")
 class QuantityIncDec(LoginRequiredMixin, generic.View):
     login_url = reverse_lazy('sign-in')
@@ -103,65 +110,63 @@ class QuantityIncDec(LoginRequiredMixin, generic.View):
         action = request.POST.get("action")
 
         cart_item = get_object_or_404(Cart, id=cart_id, user=request.user, paid=False)
-
-        # Always refresh latest stock
         cart_item.product.refresh_from_db(fields=["available_stock"])
 
-        # Increase
-        if action == "inc":
-            if cart_item.quantity < cart_item.product.available_stock:
+        # Use atomic transaction
+        with transaction.atomic():
+            # Increase
+            if action == "inc" and cart_item.quantity < cart_item.product.available_stock:
                 cart_item.quantity = F("quantity") + 1
                 cart_item.save()
                 cart_item.refresh_from_db()
 
-        # Decrease
-        elif action == "dec" and cart_item.quantity > 1:
-            cart_item.quantity = F("quantity") - 1
-            cart_item.save()
-            cart_item.refresh_from_db()
+            # Decrease
+            elif action == "dec" and cart_item.quantity > 1:
+                cart_item.quantity = F("quantity") - 1
+                cart_item.save()
+                cart_item.refresh_from_db()
 
         # Item subtotal
-        item_subtotal = float(cart_item.quantity * cart_item.product.sale_price)
+        item_subtotal = cart_item.quantity * cart_item.product.sale_price
 
-        # Cart Summary
-        cart_items = Cart.objects.filter(user=request.user, paid=False)
+        # Cart summary
+        cart_items = Cart.objects.filter(user=request.user, paid=False).select_related("product")
         summary = cart_items.aggregate(total_price=Sum(F("quantity") * F("product__sale_price")))
-        cart_total = float(summary["total_price"] or 0)
+        cart_total = summary["total_price"] or 0
         shipping_cost = 50
         grand_total = cart_total + shipping_cost
 
         return JsonResponse({
             "status": "success",
             "quantity": cart_item.quantity,
-            "item_subtotal": round(item_subtotal, 2),
-            "cart_total": round(cart_total, 2),
-            "grand_total": round(grand_total, 2),
+            "item_subtotal": float(round(item_subtotal, 2)),
+            "cart_total": float(round(cart_total, 2)),
+            "grand_total": float(round(grand_total, 2)),
         })
 
-
 # Remove From Cart
-@method_decorator(never_cache, name="dispatch")
+@method_decorator(never_cache, name='dispatch')
 class CartRemoveView(LoginRequiredMixin, generic.View):
     login_url = reverse_lazy('sign-in')
 
     def post(self, request):
         cart_id = request.POST.get("cart-id")
 
-        cart_item = get_object_or_404(Cart, id=cart_id, user=request.user, paid=False)
-        cart_item.delete()
+        with transaction.atomic():
+            cart_item = get_object_or_404(Cart, id=cart_id, user=request.user, paid=False)
+            cart_item.delete()
 
-        # Summary
-        cart_items = Cart.objects.filter(user=request.user, paid=False)
-        summary = cart_items.aggregate(total_price=Sum(F("quantity") * F("product__sale_price")))
-
-        cart_total = float(summary["total_price"] or 0)
-        shipping_cost = 50
-        grand_total = cart_total + shipping_cost
+            cart_items = Cart.objects.filter(user=request.user, paid=False).select_related("product")
+            summary = cart_items.aggregate(total_price=Sum(F("quantity") * F("product__sale_price")))
+            cart_total = summary["total_price"] or 0
+            shipping_cost = 50
+            grand_total = cart_total + shipping_cost
+            cart_count = cart_items.count()
 
         return JsonResponse({
             "status": "success",
             "message": "Product removed from cart.",
-            "cart_count": cart_items.count(),
-            "cart_total": round(cart_total, 2),
-            "grand_total": round(grand_total, 2),
+            "cart_count": cart_count,
+            "cart_total": float(round(cart_total, 2)),
+            "grand_total": float(round(grand_total, 2)),
         })
