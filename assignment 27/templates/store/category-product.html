@@ -29,11 +29,11 @@ $(document).ready(function() {
     $("#all-filters").on('change', function() {
         let isChecked = $(this).is(":checked");
         $(".filter-checkbox").prop("checked", isChecked);
-        $("#priceRange").trigger("change");
+        $("#maxPrice").trigger("change");
     });
 
     // Apply AJAX when checkbox or price changes
-    $('.filter-checkbox, #priceRange').on('change', function(e){
+    $('.filter-checkbox, #maxPrice').on('change', function(e){
         e.preventDefault();
 
         let filter_object = {};
@@ -56,8 +56,7 @@ $(document).ready(function() {
         filter_object['slug'] = slug;
 
         // Price range
-        filter_object['minPrice'] = $("#minPrice").val();
-        filter_object['maxPrice'] = $("#priceRange").val();
+        filter_object['maxPrice'] = $("#maxPrice").val();
 
 
         console.log(filter_object);

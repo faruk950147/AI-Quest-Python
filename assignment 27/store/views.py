@@ -87,12 +87,8 @@ class GetFilterProductsView(generic.View):
         if brand_ids:
             products = products.filter(brand_id__in=brand_ids)
 
-        # Price filter (min & max)
-        min_price = request.POST.get('minPrice')
+        # Price filter
         max_price = request.POST.get('maxPrice')
-
-        if min_price:
-            products = products.filter(sale_price__gte=min_price)
         if max_price:
             products = products.filter(sale_price__lte=max_price)
 
