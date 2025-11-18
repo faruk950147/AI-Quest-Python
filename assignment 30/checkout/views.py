@@ -9,6 +9,7 @@ from django.db.models import Sum, F
 User = get_user_model()
 from accounts.models import Profile
 from cart.models import Cart
+from checkout.models import Checkout
 
 @method_decorator(never_cache, name='dispatch')
 class CheckoutView(LoginRequiredMixin, generic.View):
@@ -30,12 +31,39 @@ class CheckoutView(LoginRequiredMixin, generic.View):
     
 class CheckoutSuccessView(LoginRequiredMixin, generic.View):
     login_url = reverse_lazy('sign-in')
-    def get(self, request):
-        address_id = request.GET.get('address-id')
-        print('======================',address_id)
-        user_profiles = Profile.objects.filter(user=request.user)
-        cart = Cart.objects.filter(user=request.user, paid=False)
-        return redirect('home')
+
+    def post(self, request):
+        # always use POST here
+        address_id = request.POST.get('address-id')
+        print("ADDRESS ID =>", address_id)
+
+        if not address_id:
+            return redirect('checkout')
+
+        # fetch correct profile
+        profile = Profile.objects.get(id=address_id, user=request.user)
+
+        # cart items
+        cart_items = Cart.objects.filter(user=request.user, paid=False)
+
+        for item in cart_items:
+            Checkout.objects.create(
+                user=request.user,
+                profile=profile,
+                product=item.product,
+                quantity=item.quantity,
+                status='Pending'
+            )
+
+        # mark cart as paid
+        cart_items.update(paid=True)
+
+        # remove cart
+        cart_items.delete()
+
+        return redirect('checkout-list')
+
+
     
 @method_decorator(never_cache, name='dispatch')
 class CheckoutListView(LoginRequiredMixin, generic.View):

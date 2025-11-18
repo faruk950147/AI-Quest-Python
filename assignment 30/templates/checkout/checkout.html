@@ -28,7 +28,8 @@
         <div class="col-sm-4 offset-sm-1">
             <h4>Select Shipping Address</h4>
             <hr>
-            <form action="{% url "checkout-success" %}">
+            <form action="{% url "checkout-success" %}" method="post">
+                {% csrf_token %}
                 {% if profiles %}
                 {% for profile in profiles %}
                 <div class="card">
