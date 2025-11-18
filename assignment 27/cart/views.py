@@ -80,7 +80,6 @@ class AddToCartView(LoginRequiredMixin, generic.View):
             "product_price": product.sale_price,
         })
 
-
 # Cart Detail Page
 @method_decorator(never_cache, name='dispatch')
 class CartDetailView(LoginRequiredMixin, generic.View):
