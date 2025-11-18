@@ -4,27 +4,32 @@
 {% block main_content %}
 <div class="container">
     <div class="row mt-5">
+        {% if checkout_items %}
         <div class="col-sm-6">
             <h4>Checkout Summary</h4>
             <hr>
+            {% for item in checkout_items %}
             <div class="card mb-2">
                 <div class="card-body">
-                    <h5>Product: Product 1</h5>
-                    <p>Quantity: 4</p>
-                    <p class="fw-bold">Price: 7500.00</p>
+                    <h5>Product: {{item.product.title|title}}</h5>
+                    <p>Quantity: {{item.quantity}}</p>
+                    <p class="fw-bold">Price: {{item.product.sale_price}}</p>
                 </div>
             </div>
-            <small>Term and Condition: Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, ullam saepe!
-                Iure optio repellat dolor velit, minus rem. Facilis cumque neque numquam laboriosam, accusantium
-                adipisci nisi nihil in et quis?</small>
+            {% empty %}
+            <p>No items to checkout.</p>
+            {% endfor %}
         </div>
+        {% endif %}
         <div class="col-sm-4 offset-sm-1">
             <h4>Select Shipping Address</h4>
             <hr>
             <form action="">
+                {% if profiles %}
+                {% for profile in profiles %}
                 <div class="card">
                     <div class="card-body">
-                        <h5>Ripon Mia</h5>
+                        <h5>{{profile.name|title}}</h5>
                         <p>152/2k, Green Road, Dhaka, 1205</p>
                     </div>
                 </div>
@@ -36,6 +41,10 @@
                 <div class="text-end">
                     <button type="submit" class="btn btn-warning mt-3 px-5 fw-bold">Continue</button>
                 </div>
+                {% empty %}
+                <p>No saved addresses found.</p>
+                {% endfor %}
+                {% endif %}
             </form>
         </div>
     </div>
