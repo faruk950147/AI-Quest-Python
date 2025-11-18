@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import never_cache
 from django.views import generic
@@ -27,47 +27,53 @@ class CheckoutView(LoginRequiredMixin, generic.View):
             "profiles": profiles,
         }
         return render(request, 'checkout/checkout.html', context)
-    
-    
+
+@method_decorator(never_cache, name='dispatch')
 class CheckoutSuccessView(LoginRequiredMixin, generic.View):
     login_url = reverse_lazy('sign-in')
 
     def post(self, request):
-        # always use POST here
+        # fetch address/profile
         address_id = request.POST.get('address-id')
-        print("ADDRESS ID =>", address_id)
 
         if not address_id:
             return redirect('checkout')
 
-        # fetch correct profile
-        profile = Profile.objects.get(id=address_id, user=request.user)
+        # get profile
+        profile = get_object_or_404(Profile, id=address_id, user=request.user)
 
         # cart items
         cart_items = Cart.objects.filter(user=request.user, paid=False)
 
+        # save checkout orders
         for item in cart_items:
             Checkout.objects.create(
                 user=request.user,
                 profile=profile,
                 product=item.product,
                 quantity=item.quantity,
-                status='Pending'
+                status='Pending',
+                is_ordered=True
             )
 
         # mark cart as paid
         cart_items.update(paid=True)
 
-        # remove cart
+        # delete cart items
         cart_items.delete()
 
         return redirect('checkout-list')
-
-
-    
+ 
 @method_decorator(never_cache, name='dispatch')
 class CheckoutListView(LoginRequiredMixin, generic.View):
     login_url = reverse_lazy('sign-in')
-    def get(self, request):
-        return render(request, 'checkout/checkout_list.html')
 
+    def get(self, request):
+        checkout_confirm_items = Checkout.objects.filter(
+            user=request.user,
+            is_ordered=True
+        ).order_by('-ordered_date').select_related('product', 'profile')
+
+        return render(request, 'checkout/checkout_list.html', {
+            'checkout_confirm_items': checkout_confirm_items
+        })
