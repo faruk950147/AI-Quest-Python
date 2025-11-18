@@ -39,12 +39,12 @@
                     <label class="form-check-label fw-bold" for="">
                         Address: {{forloop.counter}} </label>
                 </div>
-                <div class="text-end">
-                    <button type="submit" class="btn btn-warning mt-3 px-5 fw-bold">Continue</button>
-                </div>
                 {% empty %}
                 <p>No saved addresses found.</p>
                 {% endfor %}
+                <div class="text-end">
+                    <button type="submit" class="btn btn-warning mt-3 px-5 fw-bold">Continue</button>
+                </div>
                 {% endif %}
             </form>
         </div>
