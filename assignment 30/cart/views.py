@@ -90,7 +90,7 @@ class CartDetailView(LoginRequiredMixin, generic.View):
         summary = cart_items.aggregate(total_price=Sum(F("quantity") * F("product__sale_price")))
 
         cart_total = float(summary["total_price"] or 0)
-        shipping_cost = 50
+        shipping_cost = 120
         grand_total = cart_total + shipping_cost
 
         return render(request, 'cart/cart-detail.html', {
