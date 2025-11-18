@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import never_cache
 from django.views import generic
+from accounts.mixing import LoginRequiredMixin
 from django.contrib.auth import get_user_model
 from django.urls import reverse_lazy
 from django.db.models import Sum, F
@@ -10,7 +11,7 @@ from accounts.models import Profile
 from cart.models import Cart
 
 @method_decorator(never_cache, name='dispatch')
-class CheckoutView(generic.View):
+class CheckoutView(LoginRequiredMixin, generic.View):
     login_url = reverse_lazy('sign-in')
     def get(self, request):
         checkout_items = Cart.objects.filter(user=request.user, paid=False).select_related("product")
@@ -26,8 +27,15 @@ class CheckoutView(generic.View):
         }
         return render(request, 'checkout/checkout.html', context)
     
+    
+class CheckoutSuccessView(LoginRequiredMixin, generic.View):
+    login_url = reverse_lazy('sign-in')
+    def get(self, request):
+        return redirect('home')
+    
 @method_decorator(never_cache, name='dispatch')
-class CheckoutListView(generic.View):
+class CheckoutListView(LoginRequiredMixin, generic.View):
+    login_url = reverse_lazy('sign-in')
     def get(self, request):
         return render(request, 'checkout/checkout_list.html')
 
