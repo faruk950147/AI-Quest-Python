@@ -15,11 +15,14 @@
                     <p>Quantity: {{item.quantity}}</p>
                     <p class="fw-bold">Price: {{item.product.sale_price}}</p>
                 </div>
-                <p class="fw-bold">Subtotal: {{item.subtotal}}</p>
+                <p class="text-end me-3">Subtotal: {{item.subtotal}}</p>
             </div>
             {% empty %}
             <p>No items to checkout.</p>
             {% endfor %}
+            <p class="text-end me-3d">Shipping Cost: {{shipping_cost}}</p>
+            <p class="text-end me-3">Grand Total: {{grand_total}}</p>
+            <hr>
         </div>
         {% endif %}
         <div class="col-sm-4 offset-sm-1">
