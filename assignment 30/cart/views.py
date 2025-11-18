@@ -70,7 +70,7 @@ class AddToCartView(LoginRequiredMixin, generic.View):
 
         return JsonResponse({
             "status": "success",
-            "message": "Product added to cart.",
+            "message": "Product added to cart successful.",
             "quantity": cart_item.quantity,
             "cart_count": cart_count,
             "cart_total_price": summary["total_price"] or 0,

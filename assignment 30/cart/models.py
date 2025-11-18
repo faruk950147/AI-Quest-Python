@@ -1,9 +1,9 @@
 from django.db import models
-from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.db.models import F
+from django.contrib.auth import get_user_model
 from store.models import Product
-
+User = get_user_model()
 class Cart(models.Model):
     """
     Shopping cart item model for a user.
