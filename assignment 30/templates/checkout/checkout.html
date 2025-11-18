@@ -29,14 +29,15 @@
                 {% for profile in profiles %}
                 <div class="card">
                     <div class="card-body">
-                        <h5>{{profile.name|title}}</h5>
-                        <p>152/2k, Green Road, Dhaka, 1205</p>
+                        <h6>{{profile.name|title}}</h6>
+                        <h6>{{profile.phone}}</h6>
+                        <p>{{profile.villorroad}}, {{profile.thana|title}}, {{profile.district|title}}, {{profile.division|title}}, {{profile.zipcode}}</p>
                     </div>
                 </div>
                 <div class="form-check mt-2 mb-5">
                     <input class="form-check-input" type="radio" value="">
                     <label class="form-check-label fw-bold" for="">
-                        Address: 1 </label>
+                        Address: {{forloop.counter}} </label>
                 </div>
                 <div class="text-end">
                     <button type="submit" class="btn btn-warning mt-3 px-5 fw-bold">Continue</button>
