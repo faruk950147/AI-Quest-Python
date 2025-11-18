@@ -31,6 +31,10 @@ class CheckoutView(LoginRequiredMixin, generic.View):
 class CheckoutSuccessView(LoginRequiredMixin, generic.View):
     login_url = reverse_lazy('sign-in')
     def get(self, request):
+        address_id = request.GET.get('address-id')
+        print('======================',address_id)
+        user_profiles = Profile.objects.filter(user=request.user)
+        cart = Cart.objects.filter(user=request.user, paid=False)
         return redirect('home')
     
 @method_decorator(never_cache, name='dispatch')
