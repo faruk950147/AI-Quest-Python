@@ -20,7 +20,6 @@ class Cart(models.Model):
     class Meta:
         ordering = ['id']
         verbose_name_plural = '01. Carts'
-        unique_together = ('user', 'product', 'paid')  # Prevent duplicates
 
     @property
     def subtotal(self):
