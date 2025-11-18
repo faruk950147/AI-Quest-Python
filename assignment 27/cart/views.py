@@ -28,7 +28,7 @@ class AddToCartView(LoginRequiredMixin, generic.View):
                 "message": "Quantity must be at least 1."
             })
 
-        # Product load + latest stock load
+        # Load product and refresh stock
         product = get_object_or_404(Product, id=product_id)
         product.refresh_from_db(fields=["available_stock"])
 
@@ -39,38 +39,39 @@ class AddToCartView(LoginRequiredMixin, generic.View):
                 "message": f"Only {product.available_stock} units available."
             })
 
-        # Add or update cart
-        cart_item, created = Cart.objects.get_or_create(
-            user=request.user,
-            product=product,
-            paid=False,
-            defaults={"quantity": quantity}
-        )
+        # Safe atomic block
+        with transaction.atomic():
+            # Check for existing unpaid cart items
+            cart_items = Cart.objects.filter(user=request.user, product=product, paid=False)
 
-        # If already exists → update using pure Python
-        if not created:
-            product.refresh_from_db(fields=["available_stock"])
-            new_quantity = cart_item.quantity + quantity
+            if cart_items.exists():
+                cart_item = cart_items[0]  
+                new_quantity = cart_item.quantity + quantity
 
-            if new_quantity > product.available_stock:
-                return JsonResponse({
-                    "status": "error",
-                    "message": f"Cannot exceed available stock ({product.available_stock})."
-                })
+                if new_quantity > product.available_stock:
+                    return JsonResponse({
+                        "status": "error",
+                        "message": f"Cannot exceed available stock ({product.available_stock})."
+                    })
 
-            cart_item.quantity = new_quantity
-            cart_item.save()
+                cart_item.quantity = new_quantity
+                cart_item.save()
+            else:
+                cart_item = Cart.objects.create(
+                    user=request.user,
+                    product=product,
+                    quantity=quantity,
+                    paid=False
+                )
 
-        # Summary
+        # Cart summary
         cart_items = Cart.objects.filter(user=request.user, paid=False).select_related("product")
         cart_count = cart_items.count()
-        summary = cart_items.aggregate(
-            total_price=Sum(F("quantity") * F("product__sale_price"))
-        )
+        summary = cart_items.aggregate(total_price=Sum(F("quantity") * F("product__sale_price")))
 
         return JsonResponse({
             "status": "success",
-            "message": "Product added to cart.",
+            "message": "Product added to cart successfully.",
             "quantity": cart_item.quantity,
             "cart_count": cart_count,
             "cart_total_price": summary["total_price"] or 0,
