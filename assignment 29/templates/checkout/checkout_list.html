@@ -31,6 +31,7 @@
                             <p class="mb-1">Product Title: {{ checkout_item.product.title }}</p>
                             <p class="mb-1">Quantity: {{ checkout_item.quantity }}</p>
                             <p class="mb-1">Price: ${{ checkout_item.total_cost|floatformat:2 }}</p>
+                            <p class="mb-1">Checkout On: {{ checkout_item.ordered_date|date:"F j, Y, g:i a" }}</p>
                         </div>
 
                         <div class="col-sm-3 fw-bold">
@@ -68,7 +69,7 @@
 
                 {% endfor %}
             {% else %}
-                <h4>No Orders Found</h4>
+                <h4>No Checkout Found</h4>
             {% endif %}
 
         </div>
