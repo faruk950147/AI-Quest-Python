@@ -76,13 +76,10 @@ class CheckoutListView(LoginRequiredMixin, generic.View):
     login_url = reverse_lazy('sign-in')
 
     def get(self, request):
-        checkout_items = Checkout.objects.filter(
-            user=request.user,
-            is_ordered=True
-        ).order_by('-ordered_date').select_related('product', 'profile')
+        checkout_items = Checkout.objects.filter(user=request.user, is_ordered=True).order_by('-ordered_date').select_related('product', 'profile')
+        grand_total = checkout_items.aggregate(total_price=Sum(F("quantity") * F("product__sale_price")))['total_price'] or 0
 
         logger.info(f"User {request.user.username} visited checkout list page. Orders count: {checkout_items.count()}")
-
         return render(request, 'checkout/checkout_list.html', {
             'checkout_items': checkout_items
         })

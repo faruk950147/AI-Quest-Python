@@ -400,3 +400,96 @@ NameError: name 'checkout_confirm_items' is not defined
 ERROR 2025-11-19 17:18:55,015 django.server basehttp "GET /checkout/checkout-list/ HTTP/1.1" 500 110692
 INFO 2025-11-19 17:19:44,665 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\checkout\views.py changed, reloading.
 INFO 2025-11-19 17:19:45,653 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-19 17:20:42,491 project views User admin visited checkout list page. Orders count: 2
+INFO 2025-11-19 17:20:42,998 django.server basehttp "GET /checkout/checkout-list/ HTTP/1.1" 200 8562
+INFO 2025-11-19 17:33:06,080 project views User admin visited checkout list page. Orders count: 2
+INFO 2025-11-19 17:33:06,139 django.server basehttp "GET /checkout/checkout-list/ HTTP/1.1" 200 10171
+INFO 2025-11-19 17:33:06,295 django.server basehttp "GET /media/products/2025/11/18/art_34.jpg HTTP/1.1" 200 25773
+INFO 2025-11-19 17:35:05,338 project views User admin visited checkout list page. Orders count: 2
+INFO 2025-11-19 17:35:05,367 django.server basehttp "GET /checkout/checkout-list/ HTTP/1.1" 200 10135
+INFO 2025-11-19 17:35:43,810 project views User admin visited checkout list page. Orders count: 2
+INFO 2025-11-19 17:35:43,834 django.server basehttp "GET /checkout/checkout-list/ HTTP/1.1" 200 10353
+INFO 2025-11-19 17:37:20,634 project views User admin visited checkout list page. Orders count: 2
+INFO 2025-11-19 17:37:20,650 django.server basehttp "GET /checkout/checkout-list/ HTTP/1.1" 200 10359
+INFO 2025-11-19 17:43:16,794 project views User admin visited checkout list page. Orders count: 2
+INFO 2025-11-19 17:43:16,821 django.server basehttp "GET /checkout/checkout-list/ HTTP/1.1" 200 10369
+INFO 2025-11-19 17:48:45,899 project views User admin visited checkout list page. Orders count: 2
+INFO 2025-11-19 17:48:45,924 django.server basehttp "GET /checkout/checkout-list/ HTTP/1.1" 200 10825
+INFO 2025-11-19 17:49:50,265 project views User admin visited checkout list page. Orders count: 2
+INFO 2025-11-19 17:49:50,291 django.server basehttp "GET /checkout/checkout-list/ HTTP/1.1" 200 10791
+INFO 2025-11-19 17:59:14,883 project views User admin visited checkout list page. Orders count: 2
+INFO 2025-11-19 17:59:14,915 django.server basehttp "GET /checkout/checkout-list/ HTTP/1.1" 200 11012
+INFO 2025-11-19 18:00:29,445 project views User admin visited checkout list page. Orders count: 2
+INFO 2025-11-19 18:00:29,471 django.server basehttp "GET /checkout/checkout-list/ HTTP/1.1" 200 11016
+INFO 2025-11-19 18:05:03,691 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\checkout\models.py changed, reloading.
+INFO 2025-11-19 18:05:07,549 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-19 18:05:11,281 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\checkout\models.py changed, reloading.
+INFO 2025-11-19 18:05:12,020 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-19 18:06:20,890 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\checkout\models.py changed, reloading.
+INFO 2025-11-19 18:06:21,694 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-19 18:06:24,212 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\checkout\models.py changed, reloading.
+INFO 2025-11-19 18:06:24,988 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-19 18:06:26,455 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\checkout\models.py changed, reloading.
+INFO 2025-11-19 18:06:27,503 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-19 18:06:30,953 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\checkout\models.py changed, reloading.
+INFO 2025-11-19 18:06:31,625 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-19 18:06:33,966 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\checkout\models.py changed, reloading.
+INFO 2025-11-19 18:06:34,673 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-19 18:06:37,000 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\checkout\models.py changed, reloading.
+INFO 2025-11-19 18:06:37,761 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-19 18:06:39,082 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\checkout\models.py changed, reloading.
+INFO 2025-11-19 18:06:39,868 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-19 18:06:43,223 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\checkout\models.py changed, reloading.
+INFO 2025-11-19 18:06:44,067 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-19 18:06:48,566 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\checkout\models.py changed, reloading.
+INFO 2025-11-19 18:06:49,323 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-19 18:08:14,687 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\checkout\models.py changed, reloading.
+INFO 2025-11-19 18:08:15,641 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-19 18:08:51,155 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\checkout\models.py changed, reloading.
+INFO 2025-11-19 18:08:52,055 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-19 18:09:27,983 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\checkout\views.py changed, reloading.
+INFO 2025-11-19 18:09:28,905 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-19 18:09:40,748 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\checkout\views.py changed, reloading.
+INFO 2025-11-19 18:09:41,537 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-19 18:09:45,090 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\checkout\views.py changed, reloading.
+INFO 2025-11-19 18:09:45,807 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-19 18:09:50,323 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\checkout\views.py changed, reloading.
+INFO 2025-11-19 18:09:51,087 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-19 18:09:53,646 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\checkout\views.py changed, reloading.
+INFO 2025-11-19 18:09:54,846 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-19 18:09:57,571 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\checkout\views.py changed, reloading.
+INFO 2025-11-19 18:09:59,257 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-19 18:10:05,068 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\checkout\views.py changed, reloading.
+INFO 2025-11-19 18:10:06,176 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-19 18:10:07,781 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\checkout\views.py changed, reloading.
+INFO 2025-11-19 18:10:09,007 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-19 18:10:11,872 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\checkout\views.py changed, reloading.
+INFO 2025-11-19 18:10:13,362 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-19 18:10:16,250 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\checkout\views.py changed, reloading.
+INFO 2025-11-19 18:10:17,356 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-19 18:10:19,939 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\checkout\views.py changed, reloading.
+INFO 2025-11-19 18:10:20,869 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-19 18:10:27,345 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\checkout\views.py changed, reloading.
+INFO 2025-11-19 18:10:28,175 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-19 18:10:34,854 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\checkout\views.py changed, reloading.
+INFO 2025-11-19 18:10:35,764 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-19 18:10:49,898 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\checkout\views.py changed, reloading.
+INFO 2025-11-19 18:10:51,043 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-19 18:10:57,815 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\checkout\views.py changed, reloading.
+INFO 2025-11-19 18:10:58,863 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-19 18:11:35,642 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\checkout\models.py changed, reloading.
+INFO 2025-11-19 18:11:36,598 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-19 18:11:38,047 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\checkout\models.py changed, reloading.
+INFO 2025-11-19 18:11:38,762 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-19 18:11:42,278 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\checkout\models.py changed, reloading.
+INFO 2025-11-19 18:11:43,100 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-19 18:12:26,817 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\checkout\models.py changed, reloading.
+INFO 2025-11-19 18:12:27,502 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-19 18:12:30,998 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\checkout\models.py changed, reloading.
+INFO 2025-11-19 18:12:31,798 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-19 18:12:38,367 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\checkout\models.py changed, reloading.
+INFO 2025-11-19 18:12:39,160 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-19 18:12:40,675 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\checkout\models.py changed, reloading.
+INFO 2025-11-19 18:12:41,402 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-19 18:12:51,192 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\checkout\models.py changed, reloading.
+INFO 2025-11-19 18:12:51,997 django.utils.autoreload autoreload Watching for file changes with StatReloader
