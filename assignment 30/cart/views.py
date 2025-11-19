@@ -9,8 +9,8 @@ from django.db import transaction
 from django.urls import reverse_lazy
 from store.models import Product
 from cart.models import Cart
-
-
+import logging
+logger = logging.getLogger('project')
 
 # Add To Cart
 @method_decorator(never_cache, name='dispatch')
@@ -20,35 +20,32 @@ class AddToCartView(LoginRequiredMixin, generic.View):
         product_id = request.POST.get("product-id")
         quantity = int(request.POST.get("quantity", 1))
 
-        # Quantity validation
         if quantity < 1:
+            logger.warning(f"User {request.user.username} tried to add invalid quantity: {quantity}")
             return JsonResponse({"status": "error", "message": "Quantity must be at least 1."})
 
-        # Load product & refresh stock
         product = get_object_or_404(Product, id=product_id)
         product.refresh_from_db(fields=["available_stock"])
 
-        # Stock check
         if quantity > product.available_stock:
+            logger.warning(f"User {request.user.username} tried to add {quantity} units of Product {product.id} exceeding stock {product.available_stock}")
             return JsonResponse({"status": "error", "message": f"Only {product.available_stock} units available."})
 
-        # Atomic block
         with transaction.atomic():
-            # Existing cart check
             cart_items = Cart.objects.filter(user=request.user, product=product, paid=False)
             if cart_items.exists():
                 cart_item = cart_items[0]
                 new_quantity = cart_item.quantity + quantity
-
-                # Stock validation again
                 if new_quantity > product.available_stock:
-                    return JsonResponse({ "status": "error", "message": f"Cannot exceed available stock ({product.available_stock})."})
+                    logger.warning(f"User {request.user.username} tried to exceed stock for Product {product.id}")
+                    return JsonResponse({"status": "error", "message": f"Cannot exceed available stock ({product.available_stock})."})
                 cart_item.quantity = new_quantity
                 cart_item.save()
+                logger.info(f"User {request.user.username} updated Product {product.id} quantity to {new_quantity} in cart.")
             else:
                 cart_item = Cart.objects.create(user=request.user, product=product, quantity=quantity, paid=False)
+                logger.info(f"User {request.user.username} added Product {product.id} - {product.title} to cart, quantity: {quantity}.")
 
-        # Cart summary
         cart_items = Cart.objects.filter(user=request.user, paid=False).select_related("product")
         cart_count = cart_items.count()
         summary = cart_items.aggregate(total_price=Sum(F("quantity") * F("product__sale_price")))
@@ -64,26 +61,6 @@ class AddToCartView(LoginRequiredMixin, generic.View):
             "product_price": product.sale_price,
         })
 
-# Cart Detail Page
-@method_decorator(never_cache, name='dispatch')
-class CartDetailView(LoginRequiredMixin, generic.View):
-    login_url = reverse_lazy('sign-in')
-
-    def get(self, request):
-        cart_items = Cart.objects.filter(user=request.user, paid=False).select_related("product")
-        summary = cart_items.aggregate(total_price=Sum(F("quantity") * F("product__sale_price")))
-
-        cart_total = float(summary["total_price"] or 0)
-        shipping_cost = 120
-        grand_total = cart_total + shipping_cost
-
-        return render(request, 'cart/cart-detail.html', {
-            "cart_items": cart_items,
-            "cart_total": cart_total,
-            "shipping_cost": shipping_cost,
-            "grand_total": grand_total,
-        })
-
 # Increase/Decrease Quantity
 @method_decorator(never_cache, name="dispatch")
 class QuantityIncDec(LoginRequiredMixin, generic.View):
@@ -92,28 +69,22 @@ class QuantityIncDec(LoginRequiredMixin, generic.View):
     def post(self, request):
         cart_id = request.POST.get("cart-id")
         action = request.POST.get("action")
-
         cart_item = get_object_or_404(Cart, id=cart_id, user=request.user, paid=False)
         cart_item.product.refresh_from_db(fields=["available_stock"])
 
-        # Use atomic transaction
         with transaction.atomic():
-            # Increase
             if action == "inc" and cart_item.quantity < cart_item.product.available_stock:
                 cart_item.quantity = F("quantity") + 1
                 cart_item.save()
                 cart_item.refresh_from_db()
-
-            # Decrease
+                logger.info(f"User {request.user.username} increased quantity of Product {cart_item.product.id} to {cart_item.quantity}")
             elif action == "dec" and cart_item.quantity > 1:
                 cart_item.quantity = F("quantity") - 1
                 cart_item.save()
                 cart_item.refresh_from_db()
+                logger.info(f"User {request.user.username} decreased quantity of Product {cart_item.product.id} to {cart_item.quantity}")
 
-        # Item subtotal
         item_subtotal = cart_item.quantity * cart_item.product.sale_price
-
-        # Cart summary
         cart_items = Cart.objects.filter(user=request.user, paid=False).select_related("product")
         summary = cart_items.aggregate(total_price=Sum(F("quantity") * F("product__sale_price")))
         cart_total = summary["total_price"] or 0
@@ -138,6 +109,7 @@ class CartRemoveView(LoginRequiredMixin, generic.View):
 
         with transaction.atomic():
             cart_item = get_object_or_404(Cart, id=cart_id, user=request.user, paid=False)
+            logger.info(f"User {request.user.username} removed Product {cart_item.product.id} from cart.")
             cart_item.delete()
 
             cart_items = Cart.objects.filter(user=request.user, paid=False).select_related("product")

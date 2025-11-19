@@ -7,8 +7,9 @@ from django.http import JsonResponse
 from django.db.models import Max, Min
 from store.models import Category, Brand, Product, Slider
 
+import logging
+logger = logging.getLogger('project')
 
-# Create your views here.
 @method_decorator(never_cache, name='dispatch')
 class HomeView(generic.View):
     """
@@ -37,6 +38,8 @@ class HomeView(generic.View):
         borkhas = Product.objects.filter(category__title__contains='BORKHA', status='ACTIVE')
         baby_fashions = Product.objects.filter(category__title__contains='BABY FASHION', status='ACTIVE')
 
+        logger.info(f"User {request.user if request.user.is_authenticated else 'Anonymous'} visited Home page. Sliders: {sliders.count()}, Gents Pants: {gents_pants.count()}, Borkhas: {borkhas.count()}, Baby Fashions: {baby_fashions.count()}")
+
         context = {
             'sliders': sliders, 
             'gents_pants': gents_pants, 
@@ -45,14 +48,17 @@ class HomeView(generic.View):
         }
         return render(request, "store/home.html", context)
 
+
 @method_decorator(never_cache, name='dispatch')
 class SingleProductView(generic.View):
     def get(self, request, slug, id):
         product = get_object_or_404(Product, slug=slug, id=id)
+        logger.info(f"User {request.user if request.user.is_authenticated else 'Anonymous'} viewed Product {product.id} - {product.title}")
         context = {
             'product': product,
         }
         return render(request, "store/single-product.html", context)
+
 
 @method_decorator(never_cache, name='dispatch')
 class CategoryProductView(generic.View):
@@ -60,9 +66,10 @@ class CategoryProductView(generic.View):
         category = get_object_or_404(Category, slug=slug, id=id)
         products = Product.objects.filter(category=category, status='ACTIVE')
         brands = Brand.objects.filter(product__category=category).distinct()
-
         max_price = products.aggregate(Max('sale_price'))['sale_price__max']
         min_price = products.aggregate(Min('sale_price'))['sale_price__min']
+
+        logger.info(f"User {request.user if request.user.is_authenticated else 'Anonymous'} viewed Category {category.id} - {category.title}. Products count: {products.count()}")
 
         context = {
             'category': category,
@@ -73,6 +80,7 @@ class CategoryProductView(generic.View):
         }
         return render(request, 'store/category-product.html', context)
 
+
 @method_decorator(never_cache, name='dispatch')
 class GetFilterProductsView(generic.View):
     def post(self, request):
@@ -82,19 +90,20 @@ class GetFilterProductsView(generic.View):
 
         products = Product.objects.filter(category=category, status='ACTIVE')
 
-        # Brand filter
         brand_ids = request.POST.getlist('brand[]')
         if brand_ids:
             products = products.filter(brand_id__in=brand_ids)
 
-        # Price filter
         max_price = request.POST.get('maxPrice')
         if max_price:
             products = products.filter(sale_price__lte=max_price)
 
+        logger.info(f"User {request.user if request.user.is_authenticated else 'Anonymous'} filtered Category {category.id} - {category.title}. Filtered products count: {products.count()}")
+
         html = render_to_string('store/product_grid.html', {'products': products})
         return JsonResponse({'html': html})
     
+
 @method_decorator(never_cache, name='dispatch')
 class SearchProductView(generic.View):
     def post(self, request):
@@ -102,11 +111,12 @@ class SearchProductView(generic.View):
 
         if q:
             products = Product.objects.filter(title__icontains=q)
+            logger.info(f"User {request.user if request.user.is_authenticated else 'Anonymous'} searched for '{q}'. Found products count: {products.count()}")
         else:
             products = Product.objects.none()
+            logger.info(f"User {request.user if request.user.is_authenticated else 'Anonymous'} performed empty search.")
 
         return render(request, 'store/search-results.html', {
             'products': products,
             'count_products': products.count(),
         })
-    
