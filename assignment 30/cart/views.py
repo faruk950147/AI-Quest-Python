@@ -61,6 +61,25 @@ class AddToCartView(LoginRequiredMixin, generic.View):
             "product_price": product.sale_price,
         })
 
+# Cart Detail Page
+@method_decorator(never_cache, name='dispatch')
+class CartDetailView(LoginRequiredMixin, generic.View):
+    login_url = reverse_lazy('sign-in')
+
+    def get(self, request):
+        cart_items = Cart.objects.filter(user=request.user, paid=False).select_related("product")
+        summary = cart_items.aggregate(total_price=Sum(F("quantity") * F("product__sale_price")))
+        cart_total = float(summary["total_price"] or 0)
+        shipping_cost = 120
+        grand_total = cart_total + shipping_cost
+        logger.info(f"User {request.user.username} viewed cart with {cart_items.count()} items, total: {cart_total}")
+        return render(request, 'cart/cart-detail.html', {
+            "cart_items": cart_items,
+            "cart_total": cart_total,
+            "shipping_cost": shipping_cost,
+            "grand_total": grand_total,
+        })
+
 # Increase/Decrease Quantity
 @method_decorator(never_cache, name="dispatch")
 class QuantityIncDec(LoginRequiredMixin, generic.View):
