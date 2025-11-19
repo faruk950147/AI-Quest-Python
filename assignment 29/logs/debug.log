@@ -198,3 +198,13 @@ INFO 2025-11-19 18:48:54,166 django.server basehttp "GET /checkout/checkout-list
 INFO 2025-11-19 18:51:17,327 django.utils.autoreload autoreload Watching for file changes with StatReloader
 INFO 2025-11-19 18:52:22,749 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 29\checkout\migrations\0001_initial.py changed, reloading.
 INFO 2025-11-19 18:52:25,132 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-19 18:54:08,947 project views User admin visited checkout list page. Orders count: 4
+INFO 2025-11-19 18:54:09,161 django.server basehttp "GET /checkout/checkout-list/ HTTP/1.1" 200 13866
+INFO 2025-11-19 18:55:01,091 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 29\checkout\admin.py changed, reloading.
+INFO 2025-11-19 18:55:01,896 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-19 18:55:04,605 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 29\checkout\admin.py changed, reloading.
+INFO 2025-11-19 18:55:05,765 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-19 18:55:07,371 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 29\checkout\admin.py changed, reloading.
+INFO 2025-11-19 18:55:08,208 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-19 18:55:10,560 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 29\checkout\admin.py changed, reloading.
+INFO 2025-11-19 18:55:11,472 django.utils.autoreload autoreload Watching for file changes with StatReloader
