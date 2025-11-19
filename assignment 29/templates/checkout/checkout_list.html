@@ -62,8 +62,12 @@
                                     <div class="progress-bar bg-success text-center"
                                          style="width: 100%;">Delivered</div>
                                 </div>
+                            {% elif checkout_item.status == 'Cancel' %}
+                                <div class="progress mb-1">
+                                    <div class="progress-bar bg-danger text-center"
+                                         style="width: 100%;">Cancel</div>
+                                </div>
                             {% endif %}
-
                         </div>
                     </div>
 
