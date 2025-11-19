@@ -76,7 +76,7 @@ class CheckoutListView(LoginRequiredMixin, generic.View):
     login_url = reverse_lazy('sign-in')
 
     def get(self, request):
-        checkout_confirm_items = Checkout.objects.filter(
+        checkout_items = Checkout.objects.filter(
             user=request.user,
             is_ordered=True
         ).order_by('-ordered_date').select_related('product', 'profile')
@@ -84,5 +84,5 @@ class CheckoutListView(LoginRequiredMixin, generic.View):
         logger.info(f"User {request.user.username} visited checkout list page. Orders count: {checkout_confirm_items.count()}")
 
         return render(request, 'checkout/checkout_list.html', {
-            'checkout_confirm_items': checkout_confirm_items
+            'checkout_items': checkout_items
         })

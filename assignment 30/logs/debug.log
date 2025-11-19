@@ -217,3 +217,22 @@ INFO 2025-11-19 15:38:16,588 project views User admin visited checkout list page
 INFO 2025-11-19 15:38:16,594 django.server basehttp "GET /checkout/checkout-list/ HTTP/1.1" 200 8564
 INFO 2025-11-19 15:38:17,162 project views User admin visited checkout list page. Orders count: 2
 INFO 2025-11-19 15:38:17,170 django.server basehttp "GET /checkout/checkout-list/ HTTP/1.1" 200 8564
+INFO 2025-11-19 17:11:28,266 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-19 17:11:45,788 project views User admin visited checkout list page. Orders count: 2
+INFO 2025-11-19 17:11:45,971 django.server basehttp "GET /checkout/checkout-list/ HTTP/1.1" 200 8649
+INFO 2025-11-19 17:11:46,372 django.server basehttp "GET /static/assets/css/style.css HTTP/1.1" 200 299
+INFO 2025-11-19 17:11:46,425 django.server basehttp "GET /static/assets/css/main.css HTTP/1.1" 200 891
+INFO 2025-11-19 17:11:46,457 django.server basehttp "GET /static/assets/css/owl.carousel.min.css HTTP/1.1" 200 3356
+INFO 2025-11-19 17:11:46,504 django.server basehttp "GET /static/assets/images/paymentlogo.png HTTP/1.1" 200 7075
+INFO 2025-11-19 17:11:46,510 django.server basehttp "GET /static/assets/js/owl.carousel.min.js HTTP/1.1" 200 44348
+INFO 2025-11-19 17:11:46,606 django.server basehttp "GET /static/assets/js/main.js HTTP/1.1" 200 1480
+INFO 2025-11-19 17:11:46,677 django.server basehttp "GET /static/assets/js/script.js HTTP/1.1" 200 384
+INFO 2025-11-19 17:11:46,713 django.server basehttp "GET /static/assets/js/all.min.js HTTP/1.1" 200 1194964
+WARNING 2025-11-19 17:11:46,993 django.request log Not Found: /favicon.ico
+WARNING 2025-11-19 17:11:46,994 django.server basehttp "GET /favicon.ico HTTP/1.1" 404 4407
+INFO 2025-11-19 17:15:04,993 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\checkout\views.py changed, reloading.
+INFO 2025-11-19 17:15:08,732 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-19 17:15:16,760 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\checkout\views.py changed, reloading.
+INFO 2025-11-19 17:15:18,870 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-19 17:15:29,612 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\checkout\views.py changed, reloading.
+INFO 2025-11-19 17:15:30,678 django.utils.autoreload autoreload Watching for file changes with StatReloader
