@@ -1,0 +1,6 @@
+INFO 2025-11-19 18:41:00,583 project views User admin visited checkout list page. Orders count: 2
+INFO 2025-11-19 18:41:00,593 django.server basehttp "GET /checkout/checkout-list/ HTTP/1.1" 200 11016
+INFO 2025-11-19 18:42:38,455 project views User admin visited checkout list page. Orders count: 2
+INFO 2025-11-19 18:42:38,479 django.server basehttp "GET /checkout/checkout-list/ HTTP/1.1" 200 11196
+INFO 2025-11-19 18:43:21,046 project views User admin visited Home page. Sliders: 4, Gents Pants: 5, Borkhas: 5, Baby Fashions: 5
+INFO 2025-11-19 18:43:21,088 django.server basehttp "GET / HTTP/1.1" 200 27222
