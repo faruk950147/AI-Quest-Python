@@ -83,6 +83,7 @@ class SignOutView(LoginRequiredMixin, generic.View):
         return redirect('sign-in')
 
 # Password Change View
+"""
 @method_decorator(never_cache, name='dispatch')
 class PasswordChangeView(LoginRequiredMixin, generic.View):
     login_url = reverse_lazy('sign-in')
@@ -102,7 +103,7 @@ class PasswordChangeView(LoginRequiredMixin, generic.View):
         logger.warning(f"Password change form errors for user '{request.user}': {form.errors.as_json()}")
         messages.error(request, 'Please correct the errors below.')
         return render(request, 'accounts/password-change.html', {'form': form})
-
+ """
 # Profile View
 @method_decorator(never_cache, name='dispatch')
 class ProfileView(LoginRequiredMixin, generic.View):
