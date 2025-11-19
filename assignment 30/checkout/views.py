@@ -3,10 +3,14 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import never_cache
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth import get_user_model
 from django.views import generic
 from django.urls import reverse_lazy
 from django.db.models import Sum, F
-
+from checkout.models import Checkout
+from cart.models import Cart
+from accounts.models import Profile
+User = get_user_model()
 logger = logging.getLogger('project')
 
 @method_decorator(never_cache, name='dispatch')
