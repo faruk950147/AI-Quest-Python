@@ -23,13 +23,7 @@ class Cart(models.Model):
 
     def clean(self):
         if self.quantity > self.product.available_stock:
-            raise ValidationError(
-                f"Cannot add more than {self.product.available_stock} units of {self.product.title}."
-            )
-
-    def save(self, *args, **kwargs):
-        self.clean()   
-        super().save(*args, **kwargs)
+            raise ValidationError(f"Cannot add more than {self.product.available_stock} units of {self.product.title}.")
 
     def __str__(self):
         return f'{self.user.username} - {self.product.title} ({self.quantity})'
