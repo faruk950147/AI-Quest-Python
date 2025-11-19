@@ -89,3 +89,69 @@ INFO 2025-11-19 14:05:54,868 django.server basehttp "GET /checkout/checkout-list
 INFO 2025-11-19 14:05:58,555 project views User admin visited Home page. Sliders: 4, Gents Pants: 5, Borkhas: 5, Baby Fashions: 5
 INFO 2025-11-19 14:05:58,592 django.server basehttp "GET / HTTP/1.1" 200 27222
 INFO 2025-11-19 14:07:05,430 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-19 14:07:25,864 project views User admin viewed Category 1 - LEHENGA. Products count: 5
+INFO 2025-11-19 14:07:26,073 django.server basehttp "GET /category-product/lehenga/1/ HTTP/1.1" 200 16248
+INFO 2025-11-19 14:07:26,409 django.server basehttp "GET /media/products/2025/11/18/lehenga_4.jpg HTTP/1.1" 200 343410
+INFO 2025-11-19 14:07:26,425 django.server basehttp "GET /media/products/2025/11/18/lehenga_3.jpg HTTP/1.1" 200 12865
+INFO 2025-11-19 14:07:26,445 django.server basehttp "GET /media/products/2025/11/18/lehenga_5.jpg HTTP/1.1" 200 93922
+INFO 2025-11-19 14:07:26,697 django.server basehttp "GET /media/products/2025/11/18/lehenga_1.jpg HTTP/1.1" 200 1037580
+INFO 2025-11-19 14:07:26,699 django.server basehttp "GET /media/products/2025/11/18/lehenga_2.jpg HTTP/1.1" 200 2690322
+INFO 2025-11-19 14:07:31,070 project views User admin filtered Category 1 - LEHENGA. Filtered products count: 3
+INFO 2025-11-19 14:07:31,075 django.server basehttp "POST /get-filter-products/ HTTP/1.1" 200 2598
+INFO 2025-11-19 14:07:32,588 project views User admin filtered Category 1 - LEHENGA. Filtered products count: 3
+INFO 2025-11-19 14:07:32,592 django.server basehttp "POST /get-filter-products/ HTTP/1.1" 200 2598
+INFO 2025-11-19 14:07:35,900 project views User admin filtered Category 1 - LEHENGA. Filtered products count: 3
+INFO 2025-11-19 14:07:35,905 django.server basehttp "POST /get-filter-products/ HTTP/1.1" 200 2598
+INFO 2025-11-19 14:07:37,235 project views User admin filtered Category 1 - LEHENGA. Filtered products count: 2
+INFO 2025-11-19 14:07:37,240 django.server basehttp "POST /get-filter-products/ HTTP/1.1" 200 1778
+INFO 2025-11-19 14:07:39,459 project views User admin filtered Category 1 - LEHENGA. Filtered products count: 3
+INFO 2025-11-19 14:07:39,463 django.server basehttp "POST /get-filter-products/ HTTP/1.1" 200 2598
+INFO 2025-11-19 14:07:40,779 project views User admin filtered Category 1 - LEHENGA. Filtered products count: 3
+INFO 2025-11-19 14:07:40,783 django.server basehttp "POST /get-filter-products/ HTTP/1.1" 200 2598
+INFO 2025-11-19 14:07:42,163 project views User admin filtered Category 1 - LEHENGA. Filtered products count: 3
+INFO 2025-11-19 14:07:42,167 django.server basehttp "POST /get-filter-products/ HTTP/1.1" 200 2598
+INFO 2025-11-19 14:07:43,243 project views User admin filtered Category 1 - LEHENGA. Filtered products count: 3
+INFO 2025-11-19 14:07:43,247 django.server basehttp "POST /get-filter-products/ HTTP/1.1" 200 2598
+INFO 2025-11-19 14:07:44,174 project views User admin filtered Category 1 - LEHENGA. Filtered products count: 5
+INFO 2025-11-19 14:07:44,181 django.server basehttp "POST /get-filter-products/ HTTP/1.1" 200 4290
+INFO 2025-11-19 14:07:48,209 project views User admin filtered Category 1 - LEHENGA. Filtered products count: 3
+INFO 2025-11-19 14:07:48,213 django.server basehttp "POST /get-filter-products/ HTTP/1.1" 200 2598
+INFO 2025-11-19 14:08:09,306 project views User admin viewed Category 1 - LEHENGA. Products count: 5
+INFO 2025-11-19 14:08:09,322 django.server basehttp "GET /category-product/lehenga/1/ HTTP/1.1" 200 16248
+INFO 2025-11-19 14:08:11,851 project views User admin filtered Category 1 - LEHENGA. Filtered products count: 5
+INFO 2025-11-19 14:08:11,852 project views User admin filtered Category 1 - LEHENGA. Filtered products count: 5
+INFO 2025-11-19 14:08:11,861 django.server basehttp "POST /get-filter-products/ HTTP/1.1" 200 4290
+INFO 2025-11-19 14:08:11,864 django.server basehttp "POST /get-filter-products/ HTTP/1.1" 200 4290
+INFO 2025-11-19 14:08:12,584 project views User admin filtered Category 1 - LEHENGA. Filtered products count: 5
+INFO 2025-11-19 14:08:12,584 project views User admin filtered Category 1 - LEHENGA. Filtered products count: 5
+INFO 2025-11-19 14:08:12,596 django.server basehttp "POST /get-filter-products/ HTTP/1.1" 200 4290
+INFO 2025-11-19 14:08:12,598 django.server basehttp "POST /get-filter-products/ HTTP/1.1" 200 4290
+INFO 2025-11-19 14:08:14,172 project views User admin filtered Category 1 - LEHENGA. Filtered products count: 2
+INFO 2025-11-19 14:08:14,175 django.server basehttp "POST /get-filter-products/ HTTP/1.1" 200 1743
+INFO 2025-11-19 14:08:17,123 project views User admin filtered Category 1 - LEHENGA. Filtered products count: 4
+INFO 2025-11-19 14:08:17,128 django.server basehttp "POST /get-filter-products/ HTTP/1.1" 200 3391
+INFO 2025-11-19 14:08:20,340 project views User admin filtered Category 1 - LEHENGA. Filtered products count: 5
+INFO 2025-11-19 14:08:20,347 django.server basehttp "POST /get-filter-products/ HTTP/1.1" 200 4290
+INFO 2025-11-19 14:08:22,763 project views User admin filtered Category 1 - LEHENGA. Filtered products count: 3
+INFO 2025-11-19 14:08:22,768 django.server basehttp "POST /get-filter-products/ HTTP/1.1" 200 2598
+INFO 2025-11-19 14:08:24,067 project views User admin filtered Category 1 - LEHENGA. Filtered products count: 1
+INFO 2025-11-19 14:08:24,071 django.server basehttp "POST /get-filter-products/ HTTP/1.1" 200 950
+INFO 2025-11-19 14:08:27,661 project views User admin filtered Category 1 - LEHENGA. Filtered products count: 5
+INFO 2025-11-19 14:08:27,666 django.server basehttp "POST /get-filter-products/ HTTP/1.1" 200 4290
+INFO 2025-11-19 14:08:29,271 project views User admin filtered Category 1 - LEHENGA. Filtered products count: 5
+INFO 2025-11-19 14:08:29,272 project views User admin filtered Category 1 - LEHENGA. Filtered products count: 5
+INFO 2025-11-19 14:08:29,282 django.server basehttp "POST /get-filter-products/ HTTP/1.1" 200 4290
+INFO 2025-11-19 14:08:29,282 django.server basehttp "POST /get-filter-products/ HTTP/1.1" 200 4290
+INFO 2025-11-19 14:08:31,107 project views User admin filtered Category 1 - LEHENGA. Filtered products count: 3
+INFO 2025-11-19 14:08:31,111 django.server basehttp "POST /get-filter-products/ HTTP/1.1" 200 2598
+INFO 2025-11-19 14:08:33,308 project views User admin filtered Category 1 - LEHENGA. Filtered products count: 1
+INFO 2025-11-19 14:08:33,311 django.server basehttp "POST /get-filter-products/ HTTP/1.1" 200 950
+INFO 2025-11-19 14:08:40,724 project views User admin filtered Category 1 - LEHENGA. Filtered products count: 3
+INFO 2025-11-19 14:08:40,728 django.server basehttp "POST /get-filter-products/ HTTP/1.1" 200 2642
+INFO 2025-11-19 14:09:14,415 project views User admin viewed Category 2 - SHAREE. Products count: 5
+INFO 2025-11-19 14:09:14,431 django.server basehttp "GET /category-product/sharee/2/ HTTP/1.1" 200 16320
+INFO 2025-11-19 14:09:14,860 django.server basehttp "GET /media/products/2025/11/18/sharee_1.jpg HTTP/1.1" 200 79441
+INFO 2025-11-19 14:09:14,929 django.server basehttp "GET /media/products/2025/11/18/sharee_4.jpg HTTP/1.1" 200 37059
+INFO 2025-11-19 14:09:14,929 django.server basehttp "GET /media/products/2025/11/18/sharee_3.jpg HTTP/1.1" 200 63636
+INFO 2025-11-19 14:09:14,933 django.server basehttp "GET /media/products/2025/11/18/sharee_2.jpg HTTP/1.1" 200 95165
+INFO 2025-11-19 14:09:14,936 django.server basehttp "GET /media/products/2025/11/18/sharee_6.jpg HTTP/1.1" 200 80913
