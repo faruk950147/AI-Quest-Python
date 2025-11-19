@@ -4,6 +4,7 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.cache import never_cache
 from django.template.loader import render_to_string
 from django.http import JsonResponse
+from django.db.models import Max, Min
 from store.models import Category, Brand, Product, Slider
 
 
@@ -59,31 +60,40 @@ class CategoryProductView(generic.View):
         category = get_object_or_404(Category, slug=slug, id=id)
         products = Product.objects.filter(category=category, status='ACTIVE')
         brands = Brand.objects.filter(product__category=category).distinct()
-        
-        selected_brand = request.GET.get('brand')
-        price_filter = request.GET.get('price')
 
-        if selected_brand:
-            products = products.filter(brand__id=selected_brand)
-        if price_filter == 'below_20k':
-            products = products.filter(sale_price__lt=20000)
-        elif price_filter == 'above_20k':
-            products = products.filter(sale_price__gte=20000)
+        max_price = products.aggregate(Max('sale_price'))['sale_price__max']
+        min_price = products.aggregate(Min('sale_price'))['sale_price__min']
 
         context = {
-            'products': products,
             'category': category,
+            'products': products,
             'brands': brands,
-            'selected_brand': int(selected_brand) if selected_brand else None,
-            'price_filter': price_filter,
+            'max_price': max_price,
+            'min_price': min_price,
         }
-
-        # AJAX request
-        if request.headers.get('x-requested-with') == 'XMLHttpRequest':
-            html = render_to_string('store/product_grid.html', context)
-            return JsonResponse({'html': html})
-
         return render(request, 'store/category-product.html', context)
+
+@method_decorator(never_cache, name='dispatch')
+class GetFilterProductsView(generic.View):
+    def post(self, request):
+        id = request.POST.get('id')
+        slug = request.POST.get('slug')
+        category = get_object_or_404(Category, id=id, slug=slug)
+
+        products = Product.objects.filter(category=category, status='ACTIVE')
+
+        # Brand filter
+        brand_ids = request.POST.getlist('brand[]')
+        if brand_ids:
+            products = products.filter(brand_id__in=brand_ids)
+
+        # Price filter
+        max_price = request.POST.get('maxPrice')
+        if max_price:
+            products = products.filter(sale_price__lte=max_price)
+
+        html = render_to_string('store/product_grid.html', {'products': products})
+        return JsonResponse({'html': html})
     
 @method_decorator(never_cache, name='dispatch')
 class SearchProductView(generic.View):
