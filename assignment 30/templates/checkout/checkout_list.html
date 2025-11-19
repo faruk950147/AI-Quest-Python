@@ -12,13 +12,15 @@
             </ul>
         </div>
         <div class="col-sm-9 offset-sm-1">
-            {% if checkout_items %}
-            {% for checkout_item in checkout_items %}
-            <div class="row">Checkout 1</div>
-            {% empty %}
-            <div class="row">No checkout items found.</div>
-            {% endfor %}
-            {% endif %}
+            <div class="row">
+                {% if checkout_items %}
+                    {% for checkout_item in checkout_items %}
+                        <div class="col-sm-6">Checkout 1</div>
+                    {% empty %}
+                        <div class="col-sm-12">No checkout items found.</div>
+                    {% endfor %}
+                {% endif %}
+            </div>
         </div>
     </div>
 </div>
