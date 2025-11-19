@@ -1,14 +1,11 @@
 from django.db import models
 from django.core.exceptions import ValidationError
-from django.db.models import F
 from django.contrib.auth import get_user_model
 from store.models import Product
+
 User = get_user_model()
+
 class Cart(models.Model):
-    """
-    Shopping cart item model for a user.
-    Tracks product, quantity, and payment status.
-    """
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
@@ -29,6 +26,10 @@ class Cart(models.Model):
             raise ValidationError(
                 f"Cannot add more than {self.product.available_stock} units of {self.product.title}."
             )
+
+    def save(self, *args, **kwargs):
+        self.clean()   
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f'{self.user.username} - {self.product.title} ({self.quantity})'
