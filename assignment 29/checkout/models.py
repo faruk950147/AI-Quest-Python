@@ -23,7 +23,7 @@ class Checkout(models.Model):
 
     status = models.CharField(max_length=50, choices=STATUS_CHOICE, default='Pending')
 
-    is_ordered = models.BooleanField(default=False)    # improved name
+    is_ordered = models.BooleanField(default=False)    
 
     ordered_date = models.DateTimeField(auto_now_add=True)
 
