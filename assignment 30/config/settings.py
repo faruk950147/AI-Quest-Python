@@ -141,3 +141,63 @@ EMAIL_PORT = 587
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# ============================= logging =================================
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+
+    # ---------- FORMATTERS ----------
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {name} {module} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname}: {message}',
+            'style': '{',
+        },
+    },
+
+    # ---------- HANDLERS ----------
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'level': 'DEBUG',
+            'formatter': 'simple',
+        },
+
+        'file_debug': {
+            'class': 'logging.handlers.RotatingFileHandler',
+            'level': 'DEBUG',
+            'filename': os.path.join(BASE_DIR, 'logs/debug.log'),
+            'maxBytes': 1024 * 1024 * 5,  # 5 MB
+            'backupCount': 5,
+            'formatter': 'verbose',
+        },
+
+        'file_error': {
+            'class': 'logging.FileHandler',
+            'level': 'ERROR',
+            'filename': os.path.join(BASE_DIR, 'logs/error.log'),
+            'formatter': 'verbose',
+        },
+    },
+
+    # ---------- LOGGERS ----------
+    'loggers': {
+        # Django internal logs
+        'django': {
+            'handlers': ['console', 'file_debug', 'file_error'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+
+        # Custom project logger
+        'project': {
+            'handlers': ['console', 'file_debug', 'file_error'],
+            'level': 'DEBUG',
+            'propagate': False,
+        },
+    }
+}
