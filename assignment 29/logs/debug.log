@@ -153,3 +153,48 @@ INFO 2025-11-19 13:58:45,180 django.server basehttp "GET /single-product/new-sty
 INFO 2025-11-19 13:59:02,468 project views User admin visited Home page
 INFO 2025-11-19 13:59:02,511 django.server basehttp "GET / HTTP/1.1" 200 27222
 INFO 2025-11-19 18:46:24,362 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-19 18:46:34,170 project views User Anonymous visited Home page
+INFO 2025-11-19 18:46:34,396 django.server basehttp "GET / HTTP/1.1" 200 26298
+INFO 2025-11-19 18:46:41,086 django.server basehttp "GET /accounts/sign-in/ HTTP/1.1" 200 8972
+INFO 2025-11-19 18:46:43,853 django.server basehttp "POST /accounts/sign-in/ HTTP/1.1" 302 0
+INFO 2025-11-19 18:46:43,911 django.server basehttp "GET /accounts/profile/ HTTP/1.1" 200 11459
+INFO 2025-11-19 18:46:49,516 project views User admin visited Home page
+INFO 2025-11-19 18:46:49,553 django.server basehttp "GET / HTTP/1.1" 200 27222
+INFO 2025-11-19 18:47:09,879 django.server basehttp "GET /accounts/profile/ HTTP/1.1" 200 11459
+INFO 2025-11-19 18:47:11,979 project views User 'admin' accessed address view. 2 profiles found.
+INFO 2025-11-19 18:47:12,022 django.server basehttp "GET /accounts/address/ HTTP/1.1" 200 10603
+INFO 2025-11-19 18:47:14,658 django.server basehttp "GET /accounts/profile/ HTTP/1.1" 200 11459
+INFO 2025-11-19 18:47:21,229 project views User admin visited checkout list page. Orders count: 3
+INFO 2025-11-19 18:47:21,253 django.server basehttp "GET /checkout/checkout-list/ HTTP/1.1" 200 8516
+INFO 2025-11-19 18:47:38,029 project views User admin visited Home page
+INFO 2025-11-19 18:47:38,068 django.server basehttp "GET / HTTP/1.1" 200 27222
+INFO 2025-11-19 18:47:50,609 project views User admin viewed product 6 - New Stylish Denim Jeans Pant For Men by fashion johan
+INFO 2025-11-19 18:47:50,631 django.server basehttp "GET /single-product/new-stylish-denim-jeans-pant-for-men-by-fashion-johan/6/ HTTP/1.1" 200 12569
+INFO 2025-11-19 18:48:02,941 project views User admin added 3 units of product 6 to cart (CartItem ID: 7)
+INFO 2025-11-19 18:48:02,950 django.server basehttp "POST /cart/add-to-cart/ HTTP/1.1" 200 295
+INFO 2025-11-19 18:48:11,212 project views User admin added 1 units of product 6 to cart (CartItem ID: 7)
+INFO 2025-11-19 18:48:11,223 django.server basehttp "POST /cart/add-to-cart/ HTTP/1.1" 200 296
+INFO 2025-11-19 18:48:14,694 project views User admin viewed cart. Total items: 1, Total price: 1200000.0
+INFO 2025-11-19 18:48:14,725 django.server basehttp "GET /cart/cart-detail/ HTTP/1.1" 200 13082
+INFO 2025-11-19 18:48:18,536 project views User admin decreased quantity of CartItem 7 to 3
+INFO 2025-11-19 18:48:18,691 django.server basehttp "POST /cart/qty-inc-dec/ HTTP/1.1" 200 112
+INFO 2025-11-19 18:48:19,592 project views User admin decreased quantity of CartItem 7 to 2
+INFO 2025-11-19 18:48:19,645 django.server basehttp "POST /cart/qty-inc-dec/ HTTP/1.1" 200 112
+INFO 2025-11-19 18:48:22,129 project views User admin decreased quantity of CartItem 7 to 1
+INFO 2025-11-19 18:48:22,261 django.server basehttp "POST /cart/qty-inc-dec/ HTTP/1.1" 200 112
+INFO 2025-11-19 18:48:23,632 project views User admin increased quantity of CartItem 7 to 2
+INFO 2025-11-19 18:48:23,793 django.server basehttp "POST /cart/qty-inc-dec/ HTTP/1.1" 200 112
+INFO 2025-11-19 18:48:24,480 project views User admin increased quantity of CartItem 7 to 3
+INFO 2025-11-19 18:48:24,531 django.server basehttp "POST /cart/qty-inc-dec/ HTTP/1.1" 200 112
+INFO 2025-11-19 18:48:34,552 project views User admin visited checkout page. Items count: 1, Grand total: 900120
+INFO 2025-11-19 18:48:34,587 django.server basehttp "GET /checkout/checkout/ HTTP/1.1" 200 10981
+INFO 2025-11-19 18:48:49,362 project views User admin ordered Product 6 - New Stylish Denim Jeans Pant For Men by fashion johan, quantity: 3
+INFO 2025-11-19 18:48:49,426 project views User admin completed checkout successfully. Total items: 0
+INFO 2025-11-19 18:48:49,427 django.server basehttp "POST /checkout/checkout-success/ HTTP/1.1" 302 0
+INFO 2025-11-19 18:48:49,443 project views User admin visited checkout list page. Orders count: 4
+INFO 2025-11-19 18:48:49,452 django.server basehttp "GET /checkout/checkout-list/ HTTP/1.1" 200 8516
+INFO 2025-11-19 18:48:54,159 project views User admin visited checkout list page. Orders count: 4
+INFO 2025-11-19 18:48:54,166 django.server basehttp "GET /checkout/checkout-list/ HTTP/1.1" 200 8516
+INFO 2025-11-19 18:51:17,327 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-19 18:52:22,749 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 29\checkout\migrations\0001_initial.py changed, reloading.
+INFO 2025-11-19 18:52:25,132 django.utils.autoreload autoreload Watching for file changes with StatReloader
