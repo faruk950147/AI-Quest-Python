@@ -182,6 +182,24 @@ LOGGING = {
             'filename': os.path.join(BASE_DIR, 'logs/error.log'),
             'formatter': 'verbose',
         },
+        'file_info': {
+            'class': 'logging.FileHandler',
+            'level': 'INFO',
+            'filename': os.path.join(BASE_DIR, 'logs/info.log'),
+            'formatter': 'verbose',
+        },
+        'file_warning': {
+            'class': 'logging.FileHandler',
+            'level': 'WARNING',
+            'filename': os.path.join(BASE_DIR, 'logs/warning.log'),
+            'formatter': 'verbose',
+        },
+        'file_critical': {
+            'class': 'logging.FileHandler',
+            'level': 'CRITICAL',
+            'filename': os.path.join(BASE_DIR, 'logs/critical.log'),
+            'formatter': 'verbose',
+        },
     },
 
     # ---------- LOGGERS ----------
