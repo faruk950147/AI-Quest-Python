@@ -116,17 +116,16 @@ class ProfileView(LoginRequiredMixin, generic.View):
     def post(self, request):
         form = ProfileForm(request.POST)
         if form.is_valid():
-            Profile.objects.update_or_create(
+            # update_or_create profile
+            Profile.objects.create(
                 user=request.user,
-                defaults={
-                    'name': form.cleaned_data['name'],
-                    'division': form.cleaned_data['division'],
-                    'district': form.cleaned_data['district'],
-                    'thana': form.cleaned_data['thana'],
-                    'villorroad': form.cleaned_data['villorroad'],
-                    'phone': form.cleaned_data['phone'],
-                    'zipcode': form.cleaned_data['zipcode'],
-                }
+                name=form.cleaned_data['name'],
+                division=form.cleaned_data['division'],
+                district=form.cleaned_data['district'],
+                thana=form.cleaned_data['thana'],
+                villorroad=form.cleaned_data['villorroad'],
+                phone=form.cleaned_data['phone'],
+                zipcode=form.cleaned_data['zipcode'],
             )
             logger.info(f"Profile updated for user '{request.user}'.")
             messages.success(request, 'Profile successfully updated')
