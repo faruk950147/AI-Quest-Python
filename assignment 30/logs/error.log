@@ -1,0 +1,161 @@
+ERROR 2025-11-19 17:16:20,275 django.request log Internal Server Error: /checkout/checkout-list/
+Traceback (most recent call last):
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\env\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\env\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\env\Lib\site-packages\django\views\decorators\cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\env\Lib\site-packages\django\contrib\auth\mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\env\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\checkout\views.py", line 84, in get
+    logger.info(f"User {request.user.username} visited checkout list page. Orders count: {checkout_confirm_items.count()}")
+                                                                                          ^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'checkout_confirm_items' is not defined
+ERROR 2025-11-19 17:16:20,282 django.server basehttp "GET /checkout/checkout-list/ HTTP/1.1" 500 110692
+ERROR 2025-11-19 17:16:40,063 django.request log Internal Server Error: /checkout/checkout-list/
+Traceback (most recent call last):
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\env\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\env\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\env\Lib\site-packages\django\views\decorators\cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\env\Lib\site-packages\django\contrib\auth\mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\env\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\checkout\views.py", line 84, in get
+    logger.info(f"User {request.user.username} visited checkout list page. Orders count: {checkout_confirm_items.count()}")
+                                                                                          ^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'checkout_confirm_items' is not defined
+ERROR 2025-11-19 17:16:40,160 django.server basehttp "GET /checkout/checkout-list/ HTTP/1.1" 500 110692
+ERROR 2025-11-19 17:16:43,679 django.request log Internal Server Error: /checkout/checkout-list/
+Traceback (most recent call last):
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\env\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\env\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\env\Lib\site-packages\django\views\decorators\cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\env\Lib\site-packages\django\contrib\auth\mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\env\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\checkout\views.py", line 84, in get
+    logger.info(f"User {request.user.username} visited checkout list page. Orders count: {checkout_confirm_items.count()}")
+                                                                                          ^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'checkout_confirm_items' is not defined
+ERROR 2025-11-19 17:16:43,684 django.server basehttp "GET /checkout/checkout-list/ HTTP/1.1" 500 110692
+ERROR 2025-11-19 17:17:41,526 django.request log Internal Server Error: /checkout/checkout-list/
+Traceback (most recent call last):
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\env\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\env\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\env\Lib\site-packages\django\views\decorators\cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\env\Lib\site-packages\django\contrib\auth\mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\env\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\checkout\views.py", line 84, in get
+    logger.info(f"User {request.user.username} visited checkout list page. Orders count: {checkout_confirm_items.count()}")
+                                                                                          ^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'checkout_confirm_items' is not defined
+ERROR 2025-11-19 17:17:41,530 django.server basehttp "GET /checkout/checkout-list/ HTTP/1.1" 500 110692
+ERROR 2025-11-19 17:17:43,073 django.request log Internal Server Error: /checkout/checkout-list/
+Traceback (most recent call last):
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\env\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\env\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\env\Lib\site-packages\django\views\decorators\cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\env\Lib\site-packages\django\contrib\auth\mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\env\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\checkout\views.py", line 84, in get
+    logger.info(f"User {request.user.username} visited checkout list page. Orders count: {checkout_confirm_items.count()}")
+                                                                                          ^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'checkout_confirm_items' is not defined
+ERROR 2025-11-19 17:17:43,077 django.server basehttp "GET /checkout/checkout-list/ HTTP/1.1" 500 110692
+ERROR 2025-11-19 17:17:44,293 django.request log Internal Server Error: /checkout/checkout-list/
+Traceback (most recent call last):
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\env\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\env\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\env\Lib\site-packages\django\views\decorators\cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\env\Lib\site-packages\django\contrib\auth\mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\env\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\checkout\views.py", line 84, in get
+    logger.info(f"User {request.user.username} visited checkout list page. Orders count: {checkout_confirm_items.count()}")
+                                                                                          ^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'checkout_confirm_items' is not defined
+ERROR 2025-11-19 17:17:44,301 django.server basehttp "GET /checkout/checkout-list/ HTTP/1.1" 500 110692
+ERROR 2025-11-19 17:18:54,991 django.request log Internal Server Error: /checkout/checkout-list/
+Traceback (most recent call last):
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\env\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\env\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\env\Lib\site-packages\django\views\decorators\cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\env\Lib\site-packages\django\contrib\auth\mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\env\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 30\checkout\views.py", line 84, in get
+    logger.info(f"User {request.user.username} visited checkout list page. Orders count: {checkout_confirm_items.count()}")
+                                                                                          ^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'checkout_confirm_items' is not defined
+ERROR 2025-11-19 17:18:55,015 django.server basehttp "GET /checkout/checkout-list/ HTTP/1.1" 500 110692

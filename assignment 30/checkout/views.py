@@ -81,7 +81,7 @@ class CheckoutListView(LoginRequiredMixin, generic.View):
             is_ordered=True
         ).order_by('-ordered_date').select_related('product', 'profile')
 
-        logger.info(f"User {request.user.username} visited checkout list page. Orders count: {checkout_confirm_items.count()}")
+        logger.info(f"User {request.user.username} visited checkout list page. Orders count: {checkout_items.count()}")
 
         return render(request, 'checkout/checkout_list.html', {
             'checkout_items': checkout_items
