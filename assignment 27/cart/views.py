@@ -16,53 +16,37 @@ from cart.models import Cart
 @method_decorator(never_cache, name='dispatch')
 class AddToCartView(LoginRequiredMixin, generic.View):
     login_url = reverse_lazy('sign-in')
-
     def post(self, request):
         product_id = request.POST.get("product-id")
         quantity = int(request.POST.get("quantity", 1))
 
-        # Minimum quantity check
+        # Quantity validation
         if quantity < 1:
-            return JsonResponse({
-                "status": "error",
-                "message": "Quantity must be at least 1."
-            })
+            return JsonResponse({"status": "error", "message": "Quantity must be at least 1."})
 
-        # Load product and refresh stock
+        # Load product & refresh stock
         product = get_object_or_404(Product, id=product_id)
         product.refresh_from_db(fields=["available_stock"])
 
         # Stock check
         if quantity > product.available_stock:
-            return JsonResponse({
-                "status": "error",
-                "message": f"Only {product.available_stock} units available."
-            })
+            return JsonResponse({"status": "error", "message": f"Only {product.available_stock} units available."})
 
-        # Safe atomic block
+        # Atomic block
         with transaction.atomic():
-            # Check for existing unpaid cart items
+            # Existing cart check
             cart_items = Cart.objects.filter(user=request.user, product=product, paid=False)
-
             if cart_items.exists():
-                cart_item = cart_items[0]  
+                cart_item = cart_items[0]
                 new_quantity = cart_item.quantity + quantity
 
+                # Stock validation again
                 if new_quantity > product.available_stock:
-                    return JsonResponse({
-                        "status": "error",
-                        "message": f"Cannot exceed available stock ({product.available_stock})."
-                    })
-
+                    return JsonResponse({ "status": "error", "message": f"Cannot exceed available stock ({product.available_stock})."})
                 cart_item.quantity = new_quantity
                 cart_item.save()
             else:
-                cart_item = Cart.objects.create(
-                    user=request.user,
-                    product=product,
-                    quantity=quantity,
-                    paid=False
-                )
+                cart_item = Cart.objects.create(user=request.user, product=product, quantity=quantity, paid=False)
 
         # Cart summary
         cart_items = Cart.objects.filter(user=request.user, paid=False).select_related("product")
