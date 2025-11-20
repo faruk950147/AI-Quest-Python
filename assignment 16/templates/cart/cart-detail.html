@@ -20,13 +20,13 @@
                         <h5>{{ item.product.title|title }}</h5>
                         <p class="small text-muted">{{ item.product.description }}</p>
                         <div class="d-flex align-items-center">
-                            <button class="btn btn-sm btn-outline-secondary qty-btn" data-action="dec">-</button>
+                            <button class="btn btn-sm qty-btn" data-action="dec"> <i class="fa fa-minus"></i> </button>
                             <span class="mx-2 quantity">{{ item.quantity }}</span>
-                            <button class="btn btn-sm btn-outline-secondary qty-btn" data-action="inc">+</button>
+                            <button class="btn btn-sm qty-btn" data-action="inc"> <i class="fa fa-plus"></i> </button>
                         </div>
                     </div>
                     <div class="col-3 text-end">
-                        <button class="btn btn-sm btn-danger remove-item"><i class="bi bi-trash"></i></button>
+                        <button class="btn btn-sm btn-danger remove-item"><i class="fa fa-trash"></i></button>
                         <p class="mt-2">Tk. <span class="subtotal">{{ item.subtotal|floatformat:2 }}</span></p>
                     </div>
                 </div>
