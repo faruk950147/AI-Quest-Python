@@ -14,19 +14,27 @@
                 {% for item in cart_items %}
                 <div class="row align-items-center mb-3 cart-item" data-id="{{ item.id }}">
                     <div class="col-3">
-                        <img src="{{ item.product.image.url }}" alt="{{ item.product.title }}" class="img-fluid" style="width: 100px; height: 100px;">
+                        <img src="{{ item.product.image.url|default:'/static/images/default.png' }}" 
+                             alt="{{ item.product.title }}" 
+                             class="img-fluid" style="width: 100px; height: 100px;">
                     </div>
                     <div class="col-6">
                         <h5>{{ item.product.title|title }}</h5>
                         <p class="small text-muted">{{ item.product.description }}</p>
                         <div class="d-flex align-items-center">
-                            <button class="btn btn-sm qty-btn" data-action="dec"> <i class="fa fa-minus"></i> </button>
+                            <button class="btn btn-sm qty-btn" data-action="dec">
+                                <i class="fa fa-minus"></i>
+                            </button>
                             <span class="mx-2 quantity">{{ item.quantity }}</span>
-                            <button class="btn btn-sm qty-btn" data-action="inc"> <i class="fa fa-plus"></i> </button>
+                            <button class="btn btn-sm qty-btn" data-action="inc">
+                                <i class="fa fa-plus"></i>
+                            </button>
                         </div>
                     </div>
                     <div class="col-3 text-end">
-                        <button class="btn btn-sm btn-danger remove-item"><i class="fa fa-trash"></i></button>
+                        <button class="btn btn-sm btn-danger remove-item">
+                            <i class="fa fa-trash"></i>
+                        </button>
                         <p class="mt-2">Tk. <span class="subtotal">{{ item.subtotal|floatformat:2 }}</span></p>
                     </div>
                 </div>
@@ -51,7 +59,7 @@
                         <strong id="grand-total">{{ grand_total|floatformat:2 }}</strong>
                     </li>
                 </ul>
-                <a href="{% url 'checkout' %}" class="btn btn-success w-100">Process to checkout</a>
+                <a href="{% url 'checkout' %}" class="btn btn-success w-100">Proceed to checkout</a>
             </div>
         </div>
     </div>
@@ -66,77 +74,93 @@
 
 {% block extra_scripts %}
 <script>
-    $(document).ready(function(){
-        // CSRF token setup
-        function getCookie(name) {
-            let cookieValue = null;
-            if (document.cookie && document.cookie !== '') {
-                const cookies = document.cookie.split(';');
-                for (let cookie of cookies) {
-                    cookie = cookie.trim();
-                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                        break;
-                    }
+$(document).ready(function(){
+    // CSRF Token
+    function getCookie(name){
+        let cookieValue = null;
+        if(document.cookie && document.cookie !== ''){
+            const cookies = document.cookie.split(';');
+            for(let cookie of cookies){
+                cookie = cookie.trim();
+                if(cookie.startsWith(name + '=')){
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
                 }
             }
-            return cookieValue;
         }
-        const csrftoken = getCookie('csrftoken');
+        return cookieValue;
+    }
+    const csrftoken = getCookie('csrftoken');
 
-        // Quantity increment/decrement
-        $('.qty-btn').click(function(){
-            const btn = $(this);
-            console.log("BTN", btn);
-            const parent = btn.closest('.cart-item');
-            console.log("Parent", parent);
-            const cartId = parent.data('id');
-            console.log("ID", cartId);
-            const action = btn.data('action');
-            console.log("Actions", action);
+    // Quantity increment/decrement
+    $('.qty-btn').click(function(){
+        let parent = $(this).closest('.cart-item');
+        let cartId = parent.data('id');
+        let action = $(this).data('action');
 
-            $.ajax({
-                url: "{% url 'qty-inc-dec' %}",
-                type: "POST",
-                headers: {"X-CSRFToken": csrftoken},
-                data: { 'cart-id': cartId, 'action': action },
-                success: function(response){
-                    if(response.status === "success"){
+        $.ajax({
+            url: "{% url 'qty-inc-dec' %}",
+            type: "POST",
+            headers: { "X-CSRFToken": csrftoken },
+            data: { 'cart-id': cartId, 'action': action },
+            success: function(response){
+                if(response.status === 'success'){
+                    if(response.quantity <= 0){
+                        parent.remove();
+                    } else {
                         parent.find('.quantity').text(response.quantity);
                         parent.find('.subtotal').text(response.item_subtotal.toFixed(2));
-
-                        // Update cart totals
-                        $('#cart-total').text(response.cart_total.toFixed(2));
-                        $('#grand-total').text(response.grand_total.toFixed(2));
-
-                    
-                    } else {
-                        alert(response.message);
                     }
-                }
-            });
-        });
 
-        // Remove item
-        $('.remove-item').click(function(){
-            const btn = $(this);
-            const parent = btn.closest('.cart-item');
-            const cartId = parent.data('id');
+                    $('#cart-total').text(response.cart_total.toFixed(2));
+                    $('#grand-total').text(response.grand_total.toFixed(2));
 
-            $.ajax({
-                url: "{% url 'cart-remove-item' %}",
-                type: "POST",
-                headers: {"X-CSRFToken": csrftoken},
-                data: { 'cart-id': cartId },
-                success: function(response){
-                    if(response.status === "success"){
-                        parent.remove();
-                        $('#cart-total').text(response.cart_total.toFixed(2));
-                        $('#grand-total').text(response.grand_total.toFixed(2));
+                    if(response.cart_total == 0){
+                        $('.container').html(`
+                            <div class="text-center my-5">
+                                <p>Your cart is empty.</p>
+                                <a href="{% url 'home' %}" class="btn btn-success">Continue Shopping</a>
+                            </div>
+                        `);
                     }
+                } else {
+                    alert(response.message);
                 }
-            });
+            }
         });
     });
+
+    // Remove item
+    $('.remove-item').click(function(){
+        let parent = $(this).closest('.cart-item');
+        let cartId = parent.data('id');
+
+        $.ajax({
+            url: "{% url 'cart-remove-item' %}",
+            type: "POST",
+            headers: { "X-CSRFToken": csrftoken },
+            data: { 'cart-id': cartId },
+            success: function(response){
+                if(response.status === 'success'){
+                    parent.remove();
+                    $('#cart-total').text(response.cart_total.toFixed(2));
+                    $('#grand-total').text(response.grand_total.toFixed(2));
+
+                    if(response.cart_total == 0){
+                        $('.container').html(`
+                            <div class="text-center my-5">
+                                <p>Your cart is empty.</p>
+                                <a href="{% url 'home' %}" class="btn btn-success">Continue Shopping</a>
+                            </div>
+                        `);
+                    }
+                } else {
+                    alert(response.message);
+                }
+            }
+        });
+    });
+
+});
 </script>
 {% endblock %}
