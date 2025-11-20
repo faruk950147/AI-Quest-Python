@@ -54,13 +54,14 @@ class HomeView(generic.View):
 class SingleProductView(generic.View):
     def get(self, request, slug, id):
         product = get_object_or_404(Product, slug=slug, id=id)
-        product_already_in_cart = False
-        if request.user.is_authenticated:
-            product_already_in_cart = Cart.objects.filter(Q(user=request.user) & Q(product=product.id)).exists()
-        logger.info(f"User {request.user if request.user.is_authenticated else 'Anonymous'} viewed Product {product.id} - {product.title}")
+        product_already_in_cart = Cart.objects.filter(user=request.user, product=product.id).exists() if request.user.is_authenticated else False
+
+        username = request.user.username if request.user.is_authenticated else 'Anonymous'
+        logger.info(f"User {username} viewed product {product.id} - {product.title}")
+
         context = {
             'product': product,
-            'product_already_in_cart': product_already_in_cart,
+            'product_already_in_cart': product_already_in_cart
         }
         return render(request, "store/single-product.html", context)
 
