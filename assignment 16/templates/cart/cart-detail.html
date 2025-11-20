@@ -87,13 +87,13 @@
         // Quantity increment/decrement
         $('.qty-btn').click(function(){
             const btn = $(this);
-            console.log(btn);
+            console.log("BTN", btn);
             const parent = btn.closest('.cart-item');
-            console.log(parent);
+            console.log("Parent", parent);
             const cartId = parent.data('id');
-            console.log(cartId);
+            console.log("ID", cartId);
             const action = btn.data('action');
-            console.log(action);
+            console.log("Actions", action);
 
             $.ajax({
                 url: "{% url 'qty-inc-dec' %}",
