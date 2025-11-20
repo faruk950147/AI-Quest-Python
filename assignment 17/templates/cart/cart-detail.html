@@ -7,7 +7,7 @@
     <h1 class="text-center mb-5">Shopping Cart</h1>
 
     {% if cart_items %}
-    <div class="row">
+    <div class="row wrapper">
         <!-- Cart Items -->
         <div class="col-md-8">
             <div class="card p-3">
@@ -111,12 +111,12 @@ $(document).ready(function(){
                         parent.find('.quantity').text(response.quantity);
                         parent.find('.subtotal').text(response.item_subtotal.toFixed(2));
                     }
-
+                    $('#cart-count').text(response.cart_count);
                     $('#cart-total').text(response.cart_total.toFixed(2));
                     $('#grand-total').text(response.grand_total.toFixed(2));
 
                     if(response.cart_total == 0){
-                        $('.container').html(`
+                        $('.wrapper').html(`
                             <div class="text-center my-5">
                                 <p>Your cart is empty.</p>
                                 <a href="{% url 'home' %}" class="btn btn-success">Continue Shopping</a>
@@ -143,11 +143,12 @@ $(document).ready(function(){
             success: function(response){
                 if(response.status === 'success'){
                     parent.remove();
+                    $('#cart-count').text(response.cart_count);
                     $('#cart-total').text(response.cart_total.toFixed(2));
                     $('#grand-total').text(response.grand_total.toFixed(2));
 
                     if(response.cart_total == 0){
-                        $('.container').html(`
+                        $('.wrapper').html(`
                             <div class="text-center my-5">
                                 <p>Your cart is empty.</p>
                                 <a href="{% url 'home' %}" class="btn btn-success">Continue Shopping</a>
