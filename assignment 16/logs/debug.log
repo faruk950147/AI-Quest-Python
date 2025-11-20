@@ -53,3 +53,10 @@ INFO 2025-11-20 15:25:23,494 project views User admin increased quantity of Cart
 INFO 2025-11-20 15:25:23,640 django.server basehttp "POST /cart/qty-inc-dec/ HTTP/1.1" 200 112
 INFO 2025-11-20 15:25:27,176 project views User admin decreased quantity of CartItem 10 to 1
 INFO 2025-11-20 15:25:27,269 django.server basehttp "POST /cart/qty-inc-dec/ HTTP/1.1" 200 112
+INFO 2025-11-20 15:28:09,180 project views User admin viewed cart. Total items: 1, Total price: 350000.0
+INFO 2025-11-20 15:28:09,194 django.server basehttp "GET /cart/cart-detail/ HTTP/1.1" 200 13416
+WARNING 2025-11-20 15:28:09,250 django.request log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-11-20 15:28:09,251 django.server basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 4237
+INFO 2025-11-20 15:28:11,350 django.server basehttp "POST /cart/qty-inc-dec/ HTTP/1.1" 200 112
+INFO 2025-11-20 15:28:27,032 project views User admin increased quantity of CartItem 10 to 2
+INFO 2025-11-20 15:28:27,183 django.server basehttp "POST /cart/qty-inc-dec/ HTTP/1.1" 200 112
