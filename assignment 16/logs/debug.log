@@ -61,3 +61,9 @@ INFO 2025-11-20 15:28:11,350 django.server basehttp "POST /cart/qty-inc-dec/ HTT
 INFO 2025-11-20 15:28:27,032 project views User admin increased quantity of CartItem 10 to 2
 INFO 2025-11-20 15:28:27,183 django.server basehttp "POST /cart/qty-inc-dec/ HTTP/1.1" 200 112
 INFO 2025-11-20 15:34:47,832 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 15:34:54,675 project views User admin viewed cart. Total items: 1, Total price: 700000.0
+INFO 2025-11-20 15:34:54,976 django.server basehttp "GET /cart/cart-detail/ HTTP/1.1" 200 13450
+WARNING 2025-11-20 15:34:55,065 django.request log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-11-20 15:34:55,074 django.server basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 4237
+INFO 2025-11-20 15:35:01,484 project views User admin decreased quantity of CartItem 10 to 1
+INFO 2025-11-20 15:35:01,624 django.server basehttp "POST /cart/qty-inc-dec/ HTTP/1.1" 200 112
