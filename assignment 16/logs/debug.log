@@ -579,3 +579,4 @@ INFO 2025-11-19 19:19:58,289 project views User admin visited Home page
 INFO 2025-11-19 19:19:58,325 django.server basehttp "GET / HTTP/1.1" 200 27222
 INFO 2025-11-19 19:20:04,135 project views User admin visited checkout list page. Orders count: 6
 INFO 2025-11-19 19:20:04,147 django.server basehttp "GET /checkout/checkout-list/ HTTP/1.1" 200 16432
+INFO 2025-11-20 14:18:15,686 django.utils.autoreload autoreload Watching for file changes with StatReloader
