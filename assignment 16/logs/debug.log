@@ -60,3 +60,4 @@ WARNING 2025-11-20 15:28:09,251 django.server basehttp "GET /.well-known/appspec
 INFO 2025-11-20 15:28:11,350 django.server basehttp "POST /cart/qty-inc-dec/ HTTP/1.1" 200 112
 INFO 2025-11-20 15:28:27,032 project views User admin increased quantity of CartItem 10 to 2
 INFO 2025-11-20 15:28:27,183 django.server basehttp "POST /cart/qty-inc-dec/ HTTP/1.1" 200 112
+INFO 2025-11-20 15:34:47,832 django.utils.autoreload autoreload Watching for file changes with StatReloader
