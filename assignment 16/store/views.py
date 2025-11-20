@@ -4,7 +4,9 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.cache import never_cache
 from django.template.loader import render_to_string
 from django.http import JsonResponse
+from django.db.models import Q
 from store.models import Category, Brand, Product, Slider
+from cart.models import Cart
 import logging
 
 logger = logging.getLogger('project')
@@ -33,8 +35,13 @@ class HomeView(generic.View):
 class SingleProductView(generic.View):
     def get(self, request, slug, id):
         product = get_object_or_404(Product, slug=slug, id=id)
+        product_already_in_cart = False
+        if request.user.is_authenticated:
+            product_already_in_cart = Cart.objects.filter(Q(user=request.user) & Q(product=product.id)).exists()
         logger.info(f"User {request.user if request.user.is_authenticated else 'Anonymous'} viewed product {product.id} - {product.title}")
-        context = {'product': product}
+        context = {'product': product, 
+                   'product_already_in_cart': product_already_in_cart
+                   }
         return render(request, "store/single-product.html", context)
 
 

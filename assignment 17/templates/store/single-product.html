@@ -63,13 +63,17 @@
 
                         <input type="hidden" name="product-id" value="{{ product.id }}">
                     </div>
-
+                    {% if product_already_in_cart %}
+                        <a href="{% url "cart-detail" %}" class="btn btn-success fw-semibold shadow-sm me-2">
+                            <i class="bi bi-cart-check me-1"></i> Already in Cart
+                        </a>
+                    {% else %}
                     <!-- Buttons -->
                     <button type="submit" 
                             class="btn btn-success fw-semibold shadow-sm me-2">
                         <i class="bi bi-cart-plus me-1"></i> Add To Cart
                     </button>
-
+                    {% endif %}
                     <a href="#" class="btn btn-danger fw-semibold shadow-sm">
                         <i class="bi bi-lightning-charge me-1"></i> Buy Now
                     </a>

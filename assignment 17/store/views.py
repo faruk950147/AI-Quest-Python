@@ -56,7 +56,7 @@ class SingleProductView(generic.View):
         product = get_object_or_404(Product, slug=slug, id=id)
         product_already_in_cart = False
         if request.user.is_authenticated:
-            product_already_in_cart = Cart.objects.filter(Q(user=request.user) & Q(product=product)).exists()
+            product_already_in_cart = Cart.objects.filter(Q(user=request.user) & Q(product=product.id)).exists()
         logger.info(f"User {request.user if request.user.is_authenticated else 'Anonymous'} viewed Product {product.id} - {product.title}")
         context = {
             'product': product,

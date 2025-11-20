@@ -189,3 +189,101 @@ INFO 2025-11-20 13:34:49,918 django.utils.autoreload autoreload L:\Programming\P
 INFO 2025-11-20 13:34:51,019 django.utils.autoreload autoreload Watching for file changes with StatReloader
 INFO 2025-11-20 13:34:53,376 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 17\store\views.py changed, reloading.
 INFO 2025-11-20 13:34:54,467 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 13:38:00,024 project views User admin viewed Product 17 - Exclusive Design Readymade Georgette Embroidered Party Dress02
+INFO 2025-11-20 13:38:00,069 django.server basehttp "GET /single-product/exclusive-design-readymade-georgette-embroidered-party-dress02/17/ HTTP/1.1" 200 12580
+INFO 2025-11-20 13:38:03,001 project views User admin viewed cart with 1 items, total: 450000.0
+INFO 2025-11-20 13:38:03,011 django.server basehttp "GET /cart/cart-detail/ HTTP/1.1" 200 13100
+INFO 2025-11-20 13:38:06,909 project views User admin viewed cart with 1 items, total: 450000.0
+INFO 2025-11-20 13:38:06,918 django.server basehttp "GET /cart/cart-detail/ HTTP/1.1" 200 13100
+INFO 2025-11-20 13:38:12,053 project views User admin viewed Product 17 - Exclusive Design Readymade Georgette Embroidered Party Dress02
+INFO 2025-11-20 13:38:12,060 django.server basehttp "GET /single-product/exclusive-design-readymade-georgette-embroidered-party-dress02/17/ HTTP/1.1" 200 12580
+WARNING 2025-11-20 13:38:18,656 project views User admin tried to exceed stock for Product 17
+INFO 2025-11-20 13:38:18,657 django.server basehttp "POST /cart/add-to-cart/ HTTP/1.1" 200 69
+INFO 2025-11-20 13:38:27,303 project views User admin updated Product 17 quantity to 10 in cart.
+INFO 2025-11-20 13:38:27,445 django.server basehttp "POST /cart/add-to-cart/ HTTP/1.1" 200 309
+INFO 2025-11-20 13:38:36,791 project views User admin viewed Product 17 - Exclusive Design Readymade Georgette Embroidered Party Dress02
+INFO 2025-11-20 13:38:36,806 django.server basehttp "GET /single-product/exclusive-design-readymade-georgette-embroidered-party-dress02/17/ HTTP/1.1" 200 12580
+INFO 2025-11-20 13:38:38,129 project views User admin viewed cart with 1 items, total: 4500000.0
+INFO 2025-11-20 13:38:38,138 django.server basehttp "GET /cart/cart-detail/ HTTP/1.1" 200 13104
+INFO 2025-11-20 13:39:58,976 project views User admin viewed cart with 1 items, total: 4500000.0
+INFO 2025-11-20 13:39:59,030 django.server basehttp "GET /cart/cart-detail/ HTTP/1.1" 200 13060
+INFO 2025-11-20 13:43:44,033 project views User admin viewed cart with 1 items, total: 4500000.0
+INFO 2025-11-20 13:43:44,084 django.server basehttp "GET /cart/cart-detail/ HTTP/1.1" 200 13115
+INFO 2025-11-20 13:43:49,639 django.server basehttp "POST /cart/qty-inc-dec/ HTTP/1.1" 200 116
+INFO 2025-11-20 13:43:50,910 project views User admin decreased quantity of Product 17 to 9
+INFO 2025-11-20 13:43:51,045 django.server basehttp "POST /cart/qty-inc-dec/ HTTP/1.1" 200 115
+INFO 2025-11-20 13:43:52,216 project views User admin decreased quantity of Product 17 to 8
+INFO 2025-11-20 13:43:52,278 django.server basehttp "POST /cart/qty-inc-dec/ HTTP/1.1" 200 115
+INFO 2025-11-20 13:43:53,223 project views User admin decreased quantity of Product 17 to 7
+INFO 2025-11-20 13:43:53,274 django.server basehttp "POST /cart/qty-inc-dec/ HTTP/1.1" 200 115
+INFO 2025-11-20 13:43:54,256 project views User admin decreased quantity of Product 17 to 6
+INFO 2025-11-20 13:43:54,325 django.server basehttp "POST /cart/qty-inc-dec/ HTTP/1.1" 200 115
+INFO 2025-11-20 13:43:55,432 project views User admin increased quantity of Product 17 to 7
+INFO 2025-11-20 13:43:55,509 django.server basehttp "POST /cart/qty-inc-dec/ HTTP/1.1" 200 115
+INFO 2025-11-20 13:43:56,100 project views User admin increased quantity of Product 17 to 8
+INFO 2025-11-20 13:43:56,154 django.server basehttp "POST /cart/qty-inc-dec/ HTTP/1.1" 200 115
+INFO 2025-11-20 13:43:56,878 project views User admin increased quantity of Product 17 to 9
+INFO 2025-11-20 13:43:56,940 django.server basehttp "POST /cart/qty-inc-dec/ HTTP/1.1" 200 115
+INFO 2025-11-20 13:43:58,016 project views User admin decreased quantity of Product 17 to 8
+INFO 2025-11-20 13:43:58,074 django.server basehttp "POST /cart/qty-inc-dec/ HTTP/1.1" 200 115
+INFO 2025-11-20 13:43:59,552 project views User admin decreased quantity of Product 17 to 7
+INFO 2025-11-20 13:43:59,609 django.server basehttp "POST /cart/qty-inc-dec/ HTTP/1.1" 200 115
+INFO 2025-11-20 13:44:00,016 project views User admin decreased quantity of Product 17 to 6
+INFO 2025-11-20 13:44:00,077 django.server basehttp "POST /cart/qty-inc-dec/ HTTP/1.1" 200 115
+INFO 2025-11-20 13:44:00,775 project views User admin decreased quantity of Product 17 to 5
+INFO 2025-11-20 13:44:00,833 django.server basehttp "POST /cart/qty-inc-dec/ HTTP/1.1" 200 115
+INFO 2025-11-20 13:44:01,231 project views User admin decreased quantity of Product 17 to 4
+INFO 2025-11-20 13:44:01,289 django.server basehttp "POST /cart/qty-inc-dec/ HTTP/1.1" 200 115
+INFO 2025-11-20 13:44:02,000 project views User admin decreased quantity of Product 17 to 3
+INFO 2025-11-20 13:44:02,405 django.server basehttp "POST /cart/qty-inc-dec/ HTTP/1.1" 200 115
+INFO 2025-11-20 13:44:02,477 project views User admin decreased quantity of Product 17 to 2
+INFO 2025-11-20 13:44:02,528 django.server basehttp "POST /cart/qty-inc-dec/ HTTP/1.1" 200 112
+INFO 2025-11-20 13:44:02,999 project views User admin decreased quantity of Product 17 to 1
+INFO 2025-11-20 13:44:03,052 django.server basehttp "POST /cart/qty-inc-dec/ HTTP/1.1" 200 112
+INFO 2025-11-20 13:44:03,703 django.server basehttp "POST /cart/qty-inc-dec/ HTTP/1.1" 200 112
+INFO 2025-11-20 13:47:10,749 project views User admin viewed cart with 1 items, total: 450000.0
+INFO 2025-11-20 13:47:10,795 django.server basehttp "GET /cart/cart-detail/ HTTP/1.1" 200 13110
+INFO 2025-11-20 13:47:18,630 django.server basehttp "POST /cart/qty-inc-dec/ HTTP/1.1" 200 112
+INFO 2025-11-20 13:47:20,014 project views User admin increased quantity of Product 17 to 2
+INFO 2025-11-20 13:47:20,074 django.server basehttp "POST /cart/qty-inc-dec/ HTTP/1.1" 200 112
+INFO 2025-11-20 13:47:20,577 project views User admin increased quantity of Product 17 to 3
+INFO 2025-11-20 13:47:20,630 django.server basehttp "POST /cart/qty-inc-dec/ HTTP/1.1" 200 115
+INFO 2025-11-20 13:47:21,071 project views User admin increased quantity of Product 17 to 4
+INFO 2025-11-20 13:47:21,133 django.server basehttp "POST /cart/qty-inc-dec/ HTTP/1.1" 200 115
+INFO 2025-11-20 13:48:11,039 project views User admin viewed cart with 1 items, total: 1800000.0
+INFO 2025-11-20 13:48:11,078 django.server basehttp "GET /cart/cart-detail/ HTTP/1.1" 200 13114
+INFO 2025-11-20 13:48:14,655 project views User admin decreased quantity of Product 17 to 3
+INFO 2025-11-20 13:48:14,805 django.server basehttp "POST /cart/qty-inc-dec/ HTTP/1.1" 200 115
+INFO 2025-11-20 13:48:15,071 project views User admin decreased quantity of Product 17 to 2
+INFO 2025-11-20 13:48:15,126 django.server basehttp "POST /cart/qty-inc-dec/ HTTP/1.1" 200 112
+INFO 2025-11-20 13:48:15,791 project views User admin decreased quantity of Product 17 to 1
+INFO 2025-11-20 13:48:15,854 django.server basehttp "POST /cart/qty-inc-dec/ HTTP/1.1" 200 112
+INFO 2025-11-20 13:48:16,166 django.server basehttp "POST /cart/qty-inc-dec/ HTTP/1.1" 200 112
+INFO 2025-11-20 13:48:16,595 django.server basehttp "POST /cart/qty-inc-dec/ HTTP/1.1" 200 112
+INFO 2025-11-20 13:48:17,052 django.server basehttp "POST /cart/qty-inc-dec/ HTTP/1.1" 200 112
+INFO 2025-11-20 13:48:18,559 project views User admin increased quantity of Product 17 to 2
+INFO 2025-11-20 13:48:18,702 django.server basehttp "POST /cart/qty-inc-dec/ HTTP/1.1" 200 112
+INFO 2025-11-20 13:48:20,207 project views User admin decreased quantity of Product 17 to 1
+INFO 2025-11-20 13:48:20,260 django.server basehttp "POST /cart/qty-inc-dec/ HTTP/1.1" 200 112
+INFO 2025-11-20 13:48:24,154 project views User admin viewed cart with 1 items, total: 450000.0
+INFO 2025-11-20 13:48:24,162 django.server basehttp "GET /cart/cart-detail/ HTTP/1.1" 200 13111
+INFO 2025-11-20 13:48:26,428 project views User admin visited Home page. Sliders: 4, Gents Pants: 5, Borkhas: 5, Baby Fashions: 5
+INFO 2025-11-20 13:48:26,596 django.server basehttp "GET / HTTP/1.1" 200 27222
+INFO 2025-11-20 13:48:36,317 project views User admin viewed Category 1 - LEHENGA. Products count: 5
+INFO 2025-11-20 13:48:36,444 django.server basehttp "GET /category-product/lehenga/1/ HTTP/1.1" 200 16248
+INFO 2025-11-20 14:03:48,659 project views User admin viewed Product 16 - Semi-stitched Georgette Embroidery Free Size Designer - Gown For Women
+INFO 2025-11-20 14:03:48,708 django.server basehttp "GET /single-product/semi-stitched-georgette-embroidery-free-size-designer-gown-for-women/16/ HTTP/1.1" 200 12350
+INFO 2025-11-20 14:04:32,833 project views User admin viewed Product 16 - Semi-stitched Georgette Embroidery Free Size Designer - Gown For Women
+INFO 2025-11-20 14:04:32,875 django.server basehttp "GET /single-product/semi-stitched-georgette-embroidery-free-size-designer-gown-for-women/16/ HTTP/1.1" 200 12634
+INFO 2025-11-20 14:06:35,319 project views User admin viewed Product 16 - Semi-stitched Georgette Embroidery Free Size Designer - Gown For Women
+INFO 2025-11-20 14:06:35,360 django.server basehttp "GET /single-product/semi-stitched-georgette-embroidery-free-size-designer-gown-for-women/16/ HTTP/1.1" 200 12634
+INFO 2025-11-20 14:06:38,152 project views User admin viewed Product 16 - Semi-stitched Georgette Embroidery Free Size Designer - Gown For Women
+INFO 2025-11-20 14:06:38,159 django.server basehttp "GET /single-product/semi-stitched-georgette-embroidery-free-size-designer-gown-for-women/16/ HTTP/1.1" 200 12634
+INFO 2025-11-20 14:06:38,664 project views User admin viewed Product 16 - Semi-stitched Georgette Embroidery Free Size Designer - Gown For Women
+INFO 2025-11-20 14:06:38,671 django.server basehttp "GET /single-product/semi-stitched-georgette-embroidery-free-size-designer-gown-for-women/16/ HTTP/1.1" 200 12634
+INFO 2025-11-20 14:06:39,017 project views User admin viewed Product 16 - Semi-stitched Georgette Embroidery Free Size Designer - Gown For Women
+INFO 2025-11-20 14:06:39,023 django.server basehttp "GET /single-product/semi-stitched-georgette-embroidery-free-size-designer-gown-for-women/16/ HTTP/1.1" 200 12634
+INFO 2025-11-20 14:06:39,474 project views User admin viewed Product 16 - Semi-stitched Georgette Embroidery Free Size Designer - Gown For Women
+INFO 2025-11-20 14:06:39,481 django.server basehttp "GET /single-product/semi-stitched-georgette-embroidery-free-size-designer-gown-for-women/16/ HTTP/1.1" 200 12634
+INFO 2025-11-20 14:08:49,131 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 17\store\views.py changed, reloading.
+INFO 2025-11-20 14:08:50,546 django.utils.autoreload autoreload Watching for file changes with StatReloader
