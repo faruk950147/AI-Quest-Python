@@ -20,9 +20,9 @@
                         <h5>{{ item.product.title|title }}</h5>
                         <p class="small text-muted">{{ item.product.description }}</p>
                         <div class="d-flex align-items-center">
-                            <button class="btn btn-sm btn-outline-secondary qty-btn" data-action="dec">-</button>
+                            <button class="btn btn-sm qty-btn" data-action="dec"> <i class="bi bi-dash"></i> </button>
                             <span class="mx-2 quantity">{{ item.quantity }}</span>
-                            <button class="btn btn-sm btn-outline-secondary qty-btn" data-action="inc">+</button>
+                            <button class="btn btn-sm qty-btn" data-action="inc"> <i class="bi bi-plus"></i> </button>
                         </div>
                     </div>
                     <div class="col-3 text-end">
