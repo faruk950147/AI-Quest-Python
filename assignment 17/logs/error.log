@@ -1,0 +1,22 @@
+ERROR 2025-11-20 13:18:26,139 django.request log Internal Server Error: /single-product/exclusive-design-readymade-georgette-embroidered-party-dress02/17/
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Python 3.13.5\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python 3.13.5\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python 3.13.5\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Python 3.13.5\Lib\site-packages\django\views\decorators\cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "C:\Python 3.13.5\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 17\store\views.py", line 58, in get
+    product_already_in_cart = request.user.cart_items.filter(product=product).exists()
+                              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python 3.13.5\Lib\site-packages\django\utils\functional.py", line 253, in inner
+    return func(_wrapped, *args)
+AttributeError: 'User' object has no attribute 'cart_items'
+ERROR 2025-11-20 13:18:26,145 django.server basehttp "GET /single-product/exclusive-design-readymade-georgette-embroidered-party-dress02/17/ HTTP/1.1" 500 110934
