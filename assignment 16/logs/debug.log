@@ -168,3 +168,54 @@ INFO 2025-11-20 17:25:41,058 django.utils.autoreload autoreload L:\Programming\P
 INFO 2025-11-20 17:25:42,795 django.utils.autoreload autoreload Watching for file changes with StatReloader
 INFO 2025-11-20 17:25:45,594 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\views.py changed, reloading.
 INFO 2025-11-20 17:25:47,443 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 17:30:26,071 project views User admin viewed cart. Total items: 0, Total price: 0.0
+INFO 2025-11-20 17:30:26,109 django.server basehttp "GET /cart/cart-detail/ HTTP/1.1" 200 11589
+INFO 2025-11-20 17:30:29,333 project views viewed product 6 - New Stylish Denim Jeans Pant For Men by fashion johan
+INFO 2025-11-20 17:30:29,386 django.server basehttp "GET /single-product/new-stylish-denim-jeans-pant-for-men-by-fashion-johan/6/ HTTP/1.1" 200 12567
+INFO 2025-11-20 17:30:31,908 project views User admin added 1 units of product 6 to cart (CartItem ID: 15)
+INFO 2025-11-20 17:30:31,917 django.server basehttp "POST /cart/add-to-cart/ HTTP/1.1" 200 295
+INFO 2025-11-20 17:30:40,259 django.server basehttp "GET /accounts/profile/ HTTP/1.1" 200 11459
+INFO 2025-11-20 17:30:42,309 project views User admin viewed cart. Total items: 1, Total price: 300000.0
+INFO 2025-11-20 17:30:42,320 django.server basehttp "GET /cart/cart-detail/ HTTP/1.1" 200 14060
+INFO 2025-11-20 17:30:45,147 project views User admin increased quantity of CartItem 15 to 2
+INFO 2025-11-20 17:30:45,405 django.server basehttp "POST /cart/qty-inc-dec/ HTTP/1.1" 200 112
+INFO 2025-11-20 17:30:46,874 project views User admin decreased quantity of CartItem 15 to 1
+INFO 2025-11-20 17:30:47,312 django.server basehttp "POST /cart/qty-inc-dec/ HTTP/1.1" 200 112
+INFO 2025-11-20 17:30:49,803 project views User admin removed CartItem 15 from cart
+INFO 2025-11-20 17:30:49,940 django.server basehttp "POST /cart/cart-remove-item/ HTTP/1.1" 200 120
+INFO 2025-11-20 17:30:51,983 project views User admin visited Home page
+INFO 2025-11-20 17:30:52,025 django.server basehttp "GET / HTTP/1.1" 200 27222
+INFO 2025-11-20 17:31:00,452 project views User admin viewed category 1 with brand=None and price_filter=None
+INFO 2025-11-20 17:31:00,628 django.server basehttp "GET /category-product/lehenga/1/ HTTP/1.1" 200 14630
+INFO 2025-11-20 17:31:00,883 django.server basehttp "GET /media/products/2025/11/18/lehenga_3.jpg HTTP/1.1" 200 12865
+INFO 2025-11-20 17:31:00,973 django.server basehttp "GET /media/products/2025/11/18/lehenga_4.jpg HTTP/1.1" 200 343410
+INFO 2025-11-20 17:31:00,993 django.server basehttp "GET /media/products/2025/11/18/lehenga_1.jpg HTTP/1.1" 200 1037580
+INFO 2025-11-20 17:31:01,029 django.server basehttp "GET /media/products/2025/11/18/lehenga_5.jpg HTTP/1.1" 200 93922
+INFO 2025-11-20 17:31:01,041 django.server basehttp "GET /media/products/2025/11/18/lehenga_2.jpg HTTP/1.1" 200 2690322
+INFO 2025-11-20 17:31:02,488 project views User admin viewed category 1 with brand=None and price_filter=None
+INFO 2025-11-20 17:31:02,494 django.server basehttp "GET /category-product/lehenga/1/ HTTP/1.1" 200 4290
+INFO 2025-11-20 17:31:04,158 project views User admin viewed category 1 with brand=2 and price_filter=None
+INFO 2025-11-20 17:31:04,161 django.server basehttp "GET /category-product/lehenga/1/?brand=2 HTTP/1.1" 200 1699
+INFO 2025-11-20 17:31:06,614 project views User admin viewed category 1 with brand=1 and price_filter=None
+INFO 2025-11-20 17:31:06,618 django.server basehttp "GET /category-product/lehenga/1/?brand=1 HTTP/1.1" 200 1743
+INFO 2025-11-20 17:31:08,727 project views User admin viewed category 1 with brand=4 and price_filter=None
+INFO 2025-11-20 17:31:08,729 django.server basehttp "GET /category-product/lehenga/1/?brand=4 HTTP/1.1" 200 950
+INFO 2025-11-20 17:31:09,951 project views User admin viewed category 1 with brand=None and price_filter=below_20k
+INFO 2025-11-20 17:31:09,955 django.server basehttp "GET /category-product/lehenga/1/?price=below_20k HTTP/1.1" 200 2598
+INFO 2025-11-20 17:31:12,214 project views User admin viewed category 1 with brand=None and price_filter=above_20k
+INFO 2025-11-20 17:31:12,218 django.server basehttp "GET /category-product/lehenga/1/?price=above_20k HTTP/1.1" 200 1743
+INFO 2025-11-20 17:31:15,756 project views User admin visited Home page
+INFO 2025-11-20 17:31:15,793 django.server basehttp "GET / HTTP/1.1" 200 27222
+INFO 2025-11-20 17:31:21,970 project views viewed product 8 - New Export Quality Stylish Slim Fit Denim Jeans Pant For Men
+INFO 2025-11-20 17:31:21,983 django.server basehttp "GET /single-product/new-export-quality-stylish-slim-fit-denim-jeans-pant-for-men/8/ HTTP/1.1" 200 12570
+INFO 2025-11-20 17:31:23,581 project views User admin added 1 units of product 8 to cart (CartItem ID: 16)
+INFO 2025-11-20 17:31:23,584 django.server basehttp "POST /cart/add-to-cart/ HTTP/1.1" 200 298
+INFO 2025-11-20 17:31:26,793 project views User admin viewed cart. Total items: 1, Total price: 4000.0
+INFO 2025-11-20 17:31:26,802 django.server basehttp "GET /cart/cart-detail/ HTTP/1.1" 200 14068
+INFO 2025-11-20 17:31:30,197 project views User admin visited checkout page. Items count: 1, Grand total: 4120
+INFO 2025-11-20 17:31:30,240 django.server basehttp "GET /checkout/checkout/ HTTP/1.1" 200 10989
+INFO 2025-11-20 17:31:36,054 project views User admin ordered Product 8 - New Export Quality Stylish Slim Fit Denim Jeans Pant For Men, quantity: 1
+INFO 2025-11-20 17:31:36,106 project views User admin completed checkout successfully. Total items: 0
+INFO 2025-11-20 17:31:36,107 django.server basehttp "POST /checkout/checkout-success/ HTTP/1.1" 302 0
+INFO 2025-11-20 17:31:36,119 project views User admin visited checkout list page. Orders count: 7
+INFO 2025-11-20 17:31:36,199 django.server basehttp "GET /checkout/checkout-list/ HTTP/1.1" 200 17771
