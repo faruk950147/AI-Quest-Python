@@ -136,3 +136,35 @@ INFO 2025-11-20 16:41:55,149 project views User admin removed CartItem 14 from c
 INFO 2025-11-20 16:41:55,208 django.server basehttp "POST /cart/cart-remove-item/ HTTP/1.1" 200 124
 INFO 2025-11-20 16:41:58,028 project views User admin removed CartItem 13 from cart
 INFO 2025-11-20 16:41:58,165 django.server basehttp "POST /cart/cart-remove-item/ HTTP/1.1" 200 120
+INFO 2025-11-20 17:02:54,518 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 17:22:52,835 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 17:23:02,819 project views User admin viewed cart. Total items: 0, Total price: 0.0
+INFO 2025-11-20 17:23:02,967 django.server basehttp "GET /cart/cart-detail/ HTTP/1.1" 200 11589
+WARNING 2025-11-20 17:23:03,228 django.request log Not Found: /favicon.ico
+WARNING 2025-11-20 17:23:03,228 django.server basehttp "GET /favicon.ico HTTP/1.1" 404 4126
+INFO 2025-11-20 17:23:08,318 project views User admin visited Home page
+INFO 2025-11-20 17:23:08,373 django.server basehttp "GET / HTTP/1.1" 200 27222
+INFO 2025-11-20 17:23:11,393 project views User admin viewed product 6 - New Stylish Denim Jeans Pant For Men by fashion johan
+INFO 2025-11-20 17:23:11,504 django.server basehttp "GET /single-product/new-stylish-denim-jeans-pant-for-men-by-fashion-johan/6/ HTTP/1.1" 200 12562
+INFO 2025-11-20 17:23:16,545 project views User admin viewed cart. Total items: 0, Total price: 0.0
+INFO 2025-11-20 17:23:16,553 django.server basehttp "GET /cart/cart-detail/ HTTP/1.1" 200 11589
+INFO 2025-11-20 17:23:42,243 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\views.py changed, reloading.
+INFO 2025-11-20 17:23:43,365 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 17:23:51,262 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\views.py changed, reloading.
+INFO 2025-11-20 17:23:52,669 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 17:24:04,730 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\views.py changed, reloading.
+INFO 2025-11-20 17:24:06,004 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 17:24:07,936 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\views.py changed, reloading.
+INFO 2025-11-20 17:24:08,994 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 17:24:10,775 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\views.py changed, reloading.
+INFO 2025-11-20 17:24:11,937 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 17:24:14,787 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\views.py changed, reloading.
+INFO 2025-11-20 17:24:16,101 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 17:24:41,722 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\views.py changed, reloading.
+INFO 2025-11-20 17:24:42,592 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 17:25:32,254 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\views.py changed, reloading.
+INFO 2025-11-20 17:25:33,235 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 17:25:41,058 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\views.py changed, reloading.
+INFO 2025-11-20 17:25:42,795 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 17:25:45,594 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\views.py changed, reloading.
+INFO 2025-11-20 17:25:47,443 django.utils.autoreload autoreload Watching for file changes with StatReloader
