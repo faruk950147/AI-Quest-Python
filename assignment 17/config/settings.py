@@ -10,8 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
-from pathlib import Path
 import os
+from pathlib import Path
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-yfs5d1o5b^9zewtt6+rb-q3w3y%kzh529&60xs@3fki4^p81@f'
+SECRET_KEY = 'django-insecure-_4l+jjkd9orx9(h(a$0j+ajgegpi6a7j5aot^7$-p@6fdgf4jd'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,11 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # custom apps
-    'accounts.apps.AccountsConfig',
+    'account.apps.AccountConfig',
     'store.apps.StoreConfig',
-    'cart.apps.CartConfig',
-    'checkout.apps.CheckoutConfig',
 ]
 
 MIDDLEWARE = [
@@ -66,9 +64,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                #custom context processors
-                'store.context_processors.get_filters',
-                'cart.context_processors.get_filters',
             ],
         },
     },
@@ -127,7 +122,11 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR / 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR / 'staticfiles')
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR / 'media')
-LOGOUT_REDIRECT_URL = 'sign-in'
+AUTH_USER_MODEL = "account.User"
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend",
+    "account.authentication.EmailAuthBackend",
+]
 # Email send # settings.py
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 EMAIL_USE_TLS = True
@@ -142,80 +141,3 @@ EMAIL_PORT = 587
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# ============================= logging =================================
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-
-    # ---------- FORMATTERS ----------
-    'formatters': {
-        'verbose': {
-            'format': '{levelname} {asctime} {name} {module} {message}',
-            'style': '{',
-        },
-        'simple': {
-            'format': '{levelname}: {message}',
-            'style': '{',
-        },
-    },
-
-    # ---------- HANDLERS ----------
-    'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
-            'level': 'DEBUG',
-            'formatter': 'simple',
-        },
-
-        'file_debug': {
-            'class': 'logging.handlers.RotatingFileHandler',
-            'level': 'DEBUG',
-            'filename': os.path.join(BASE_DIR, 'logs/debug.log'),
-            'maxBytes': 1024 * 1024 * 5,  # 5 MB
-            'backupCount': 5,
-            'formatter': 'verbose',
-        },
-
-        'file_error': {
-            'class': 'logging.FileHandler',
-            'level': 'ERROR',
-            'filename': os.path.join(BASE_DIR, 'logs/error.log'),
-            'formatter': 'verbose',
-        },
-        'file_info': {
-            'class': 'logging.FileHandler',
-            'level': 'INFO',
-            'filename': os.path.join(BASE_DIR, 'logs/info.log'),
-            'formatter': 'verbose',
-        },
-        'file_warning': {
-            'class': 'logging.FileHandler',
-            'level': 'WARNING',
-            'filename': os.path.join(BASE_DIR, 'logs/warning.log'),
-            'formatter': 'verbose',
-        },
-        'file_critical': {
-            'class': 'logging.FileHandler',
-            'level': 'CRITICAL',
-            'filename': os.path.join(BASE_DIR, 'logs/critical.log'),
-            'formatter': 'verbose',
-        },
-    },
-
-    # ---------- LOGGERS ----------
-    'loggers': {
-        # Django internal logs
-        'django': {
-            'handlers': ['console', 'file_debug', 'file_error'],
-            'level': 'INFO',
-            'propagate': True,
-        },
-
-        # Custom project logger
-        'project': {
-            'handlers': ['console', 'file_debug', 'file_error'],
-            'level': 'DEBUG',
-            'propagate': False,
-        },
-    }
-}

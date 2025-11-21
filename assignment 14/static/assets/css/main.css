@@ -1,14 +1,21 @@
-.eye-add{
-    position: relative;
+/* Highlight active nav-link */
+.navbar .nav-link.active {
+    background-color: #198754; /* Bootstrap success shade */
+    border-radius: 0.25rem;
 }
-.eye-add-style{
-    position: absolute;
-    top: 8px;
-    right: 5px;
-    cursor: pointer;
-    background-color: #FFFFFF;
-    color: #5bc0de;
+
+/* Highlight active dropdown-item */
+.dropdown-menu .dropdown-item.active {
+    background-color: #198754;
+    color: #fff;
 }
-.eyer-style-cursor{
-    cursor: pointer;
+.navbar .nav-link:hover {
+    background-color: #198754; /* Bootstrap success shade */
+    border-radius: 0.25rem;
+}
+
+/* Highlight active dropdown-item */
+.dropdown-menu .dropdown-item:hover {
+    background-color: #198754;
+    color: #fff;
 }

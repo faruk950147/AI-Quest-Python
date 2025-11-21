@@ -4,16 +4,35 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.cache import never_cache
 from django.template.loader import render_to_string
 from django.http import JsonResponse
-from django.db.models import Q
+from django.db.models import Max, Min, Q
 from store.models import Category, Brand, Product, Slider, LiveSales
 from cart.models import Cart
+
 import logging
-
 logger = logging.getLogger('project')
-
 
 @method_decorator(never_cache, name='dispatch')
 class HomeView(generic.View):
+    """
+    # 1. Case-insensitive substring search 
+    # Example: "Pant", "pant", "PANT" — all will match
+    products = Product.objects.filter(category__title__icontains='pant')
+
+    # 2. Case-sensitive substring search
+    # Example: only "pant" will match; "PANT" or "Pant" will not
+    products = Product.objects.filter(category__title__contains='pant')
+
+    # 3. Case-insensitive exact match 
+    # Example: "pant", "PANT", "Pant" — all will match, 
+    # but "pants" or "pant123" will not
+    products = Product.objects.filter(category__title__iexact='pant')
+
+    # 4. Multiple match using 'in' lookup
+    # This returns all products whose category title is either 
+    # 'pant', 'shirt', or 'howdy'
+    products = Product.objects.filter(category__title__in=['pant', 'shirt', 'howdy'])        
+    shirts = Product.objects.filter(category__title__in="SHIRT", status='ACTIVE').select_related('category')
+    """
     def get(self, request):
         sliders = Slider.objects.filter(status='ACTIVE')
         live_sales = LiveSales.objects.filter(status='ACTIVE')
@@ -21,7 +40,7 @@ class HomeView(generic.View):
         borkhas = Product.objects.filter(category__title__contains='BORKHA', status='ACTIVE')
         baby_fashions = Product.objects.filter(category__title__contains='BABY FASHION', status='ACTIVE')
 
-        logger.info(f"User {request.user if request.user.is_authenticated else 'Anonymous'} visited Home page")
+        logger.info(f"User {request.user if request.user.is_authenticated else 'Anonymous'} visited Home page. Sliders: {sliders.count()}, Gents Pants: {gents_pants.count()}, Borkhas: {borkhas.count()}, Baby Fashions: {baby_fashions.count()}")
 
         context = {
             'sliders': sliders, 
@@ -31,6 +50,7 @@ class HomeView(generic.View):
             'baby_fashions': baby_fashions,
         }
         return render(request, "store/home.html", context)
+
 
 @method_decorator(never_cache, name='dispatch')
 class SingleProductView(generic.View):
@@ -50,35 +70,44 @@ class CategoryProductView(generic.View):
         category = get_object_or_404(Category, slug=slug, id=id)
         products = Product.objects.filter(category=category, status='ACTIVE')
         brands = Brand.objects.filter(product__category=category).distinct()
-        
-        selected_brand = request.GET.get('brand')
-        price_filter = request.GET.get('price')
+        max_price = products.aggregate(Max('sale_price'))['sale_price__max']
+        min_price = products.aggregate(Min('sale_price'))['sale_price__min']
 
-        if selected_brand:
-            products = products.filter(brand__id=selected_brand)
-        if price_filter == 'below_20k':
-            products = products.filter(sale_price__lt=20000)
-        elif price_filter == 'above_20k':
-            products = products.filter(sale_price__gte=20000)
-
-        logger.info(
-            f"User {request.user if request.user.is_authenticated else 'Anonymous'} viewed category {category.id} with brand={selected_brand} and price_filter={price_filter}"
-        )
+        logger.info(f"User {request.user if request.user.is_authenticated else 'Anonymous'} viewed Category {category.id} - {category.title}. Products count: {products.count()}")
 
         context = {
-            'products': products,
             'category': category,
+            'products': products,
             'brands': brands,
-            'selected_brand': int(selected_brand) if selected_brand else None,
-            'price_filter': price_filter,
+            'max_price': max_price,
+            'min_price': min_price,
         }
-
-        if request.headers.get('x-requested-with') == 'XMLHttpRequest':
-            html = render_to_string('store/product_grid.html', context)
-            return JsonResponse({'html': html})
-
         return render(request, 'store/category-product.html', context)
+
+
+@method_decorator(never_cache, name='dispatch')
+class GetFilterProductsView(generic.View):
+    def post(self, request):
+        id = request.POST.get('id')
+        slug = request.POST.get('slug')
+        category = get_object_or_404(Category, id=id, slug=slug)
+
+        products = Product.objects.filter(category=category, status='ACTIVE')
+
+        brand_ids = request.POST.getlist('brand[]')
+        if brand_ids:
+            products = products.filter(brand_id__in=brand_ids)
+
+        max_price = request.POST.get('maxPrice')
+        if max_price:
+            products = products.filter(sale_price__lte=max_price)
+
+        logger.info(f"User {request.user if request.user.is_authenticated else 'Anonymous'} filtered Category {category.id} - {category.title}. Filtered products count: {products.count()}")
+
+        html = render_to_string('store/product_grid.html', {'products': products})
+        return JsonResponse({'html': html})
     
+
 @method_decorator(never_cache, name='dispatch')
 class SearchProductView(generic.View):
     def post(self, request):
@@ -86,12 +115,10 @@ class SearchProductView(generic.View):
 
         if q:
             products = Product.objects.filter(title__icontains=q)
+            logger.info(f"User {request.user if request.user.is_authenticated else 'Anonymous'} searched for '{q}'. Found products count: {products.count()}")
         else:
             products = Product.objects.none()
-
-        logger.info(
-            f"User {request.user if request.user.is_authenticated else 'Anonymous'} searched for '{q}' and found {products.count()} products"
-        )
+            logger.info(f"User {request.user if request.user.is_authenticated else 'Anonymous'} performed empty search.")
 
         return render(request, 'store/search-results.html', {
             'products': products,

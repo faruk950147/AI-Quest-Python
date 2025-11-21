@@ -1,357 +1,63 @@
-INFO 2025-11-20 16:22:37,402 django.utils.autoreload autoreload Watching for file changes with StatReloader
-INFO 2025-11-20 16:26:48,910 django.utils.autoreload autoreload Watching for file changes with StatReloader
-INFO 2025-11-20 16:26:56,313 project views User admin viewed cart. Total items: 1, Total price: 700000.0
-INFO 2025-11-20 16:26:56,401 django.server basehttp "GET /cart/cart-detail/ HTTP/1.1" 200 14125
-WARNING 2025-11-20 16:26:56,484 django.request log Not Found: /.well-known/appspecific/com.chrome.devtools.json
-WARNING 2025-11-20 16:26:56,485 django.server basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 4237
-INFO 2025-11-20 16:27:09,969 project views User admin decreased quantity of CartItem 10 to 1
-INFO 2025-11-20 16:27:10,137 django.server basehttp "POST /cart/qty-inc-dec/ HTTP/1.1" 200 112
-INFO 2025-11-20 16:27:18,570 project views User admin increased quantity of CartItem 10 to 2
-INFO 2025-11-20 16:27:18,646 django.server basehttp "POST /cart/qty-inc-dec/ HTTP/1.1" 200 112
-INFO 2025-11-20 16:27:39,638 project views User admin decreased quantity of CartItem 10 to 1
-INFO 2025-11-20 16:27:39,786 django.server basehttp "POST /cart/qty-inc-dec/ HTTP/1.1" 200 112
-INFO 2025-11-20 16:27:45,006 project views User admin increased quantity of CartItem 10 to 2
-INFO 2025-11-20 16:27:45,154 django.server basehttp "POST /cart/qty-inc-dec/ HTTP/1.1" 200 112
-INFO 2025-11-20 16:27:48,116 project views User admin removed CartItem 10 from cart
-INFO 2025-11-20 16:27:48,254 django.server basehttp "POST /cart/cart-remove-item/ HTTP/1.1" 200 120
-INFO 2025-11-20 16:27:52,687 project views User admin viewed cart. Total items: 0, Total price: 0.0
-INFO 2025-11-20 16:27:52,699 django.server basehttp "GET /cart/cart-detail/ HTTP/1.1" 200 11466
-INFO 2025-11-20 16:31:05,467 project views User admin viewed cart. Total items: 0, Total price: 0.0
-INFO 2025-11-20 16:31:05,521 django.server basehttp "GET /cart/cart-detail/ HTTP/1.1" 200 11464
-INFO 2025-11-20 16:31:08,513 project views User admin visited Home page
-INFO 2025-11-20 16:31:08,648 django.server basehttp "GET / HTTP/1.1" 200 27222
-INFO 2025-11-20 16:31:11,037 project views User admin viewed product 7 - NEW STYLISH EXPORT OUALITY TRANDING JEANS PANT FOR MEN _MEN"S JEANS
-INFO 2025-11-20 16:31:11,058 django.server basehttp "GET /single-product/new-stylish-export-ouality-tranding-jeans-pant-for-men-_mens-jeans/7/ HTTP/1.1" 200 12600
-INFO 2025-11-20 16:31:12,347 project views User admin viewed cart. Total items: 0, Total price: 0.0
-INFO 2025-11-20 16:31:12,354 django.server basehttp "GET /cart/cart-detail/ HTTP/1.1" 200 11464
-INFO 2025-11-20 16:31:19,565 project views User admin viewed product 7 - NEW STYLISH EXPORT OUALITY TRANDING JEANS PANT FOR MEN _MEN"S JEANS
-INFO 2025-11-20 16:31:19,573 django.server basehttp "GET /single-product/new-stylish-export-ouality-tranding-jeans-pant-for-men-_mens-jeans/7/ HTTP/1.1" 200 12600
-INFO 2025-11-20 16:31:25,381 project views User admin viewed product 7 - NEW STYLISH EXPORT OUALITY TRANDING JEANS PANT FOR MEN _MEN"S JEANS
-INFO 2025-11-20 16:31:25,389 django.server basehttp "GET /single-product/new-stylish-export-ouality-tranding-jeans-pant-for-men-_mens-jeans/7/ HTTP/1.1" 200 12600
-INFO 2025-11-20 16:31:28,641 project views User admin viewed cart. Total items: 0, Total price: 0.0
-INFO 2025-11-20 16:31:28,647 django.server basehttp "GET /cart/cart-detail/ HTTP/1.1" 200 11464
-INFO 2025-11-20 16:31:32,334 project views User admin viewed cart. Total items: 0, Total price: 0.0
-INFO 2025-11-20 16:31:32,347 django.server basehttp "GET /cart/cart-detail/ HTTP/1.1" 200 11464
-INFO 2025-11-20 16:31:40,543 project views User admin visited Home page
-INFO 2025-11-20 16:31:40,584 django.server basehttp "GET / HTTP/1.1" 200 27222
-INFO 2025-11-20 16:31:51,225 project views User admin visited Home page
-INFO 2025-11-20 16:31:51,268 django.server basehttp "GET / HTTP/1.1" 200 27222
-INFO 2025-11-20 16:31:51,515 django.server basehttp "GET /static/assets/css/style.css HTTP/1.1" 200 299
-INFO 2025-11-20 16:31:51,619 django.server basehttp "GET /static/assets/css/main.css HTTP/1.1" 200 891
-INFO 2025-11-20 16:31:51,711 django.server basehttp "GET /media/sliders/2025/11/18/b3.jpg HTTP/1.1" 200 927670
-INFO 2025-11-20 16:31:51,712 django.server basehttp "GET /media/products/2025/11/18/art_32.jpg HTTP/1.1" 200 21007
-INFO 2025-11-20 16:31:51,798 django.server basehttp "GET /media/sliders/2025/11/18/b1.jpg HTTP/1.1" 200 1477283
-INFO 2025-11-20 16:31:51,802 django.server basehttp "GET /static/assets/js/script.js HTTP/1.1" 200 384
-INFO 2025-11-20 16:31:51,815 django.server basehttp "GET /static/assets/js/main.js HTTP/1.1" 200 1480
-INFO 2025-11-20 16:31:51,816 django.server basehttp "GET /static/assets/css/owl.carousel.min.css HTTP/1.1" 200 3356
-INFO 2025-11-20 16:31:51,823 django.server basehttp "GET /static/assets/js/owl.carousel.min.js HTTP/1.1" 200 44348
-INFO 2025-11-20 16:31:51,839 django.server basehttp "GET /media/products/2025/11/18/art_50.jpg HTTP/1.1" 200 25847
-INFO 2025-11-20 16:31:51,852 django.server basehttp "GET /media/products/2025/11/18/art_34.jpg HTTP/1.1" 200 25773
-INFO 2025-11-20 16:31:51,876 django.server basehttp "GET /static/assets/js/all.min.js HTTP/1.1" 200 1194964
-INFO 2025-11-20 16:31:51,883 django.server basehttp "GET /media/products/2025/11/18/art_38.jpg HTTP/1.1" 200 25444
-INFO 2025-11-20 16:31:51,937 django.server basehttp "GET /media/products/2025/11/18/art_47.jpg HTTP/1.1" 200 12814
-INFO 2025-11-20 16:31:51,941 django.server basehttp "GET /static/assets/images/payavail/aq.jpg HTTP/1.1" 200 21391
-INFO 2025-11-20 16:31:51,943 django.server basehttp "GET /media/products/2025/11/18/borkha.jpg_4.jpg HTTP/1.1" 200 96469
-INFO 2025-11-20 16:31:51,953 django.server basehttp "GET /media/products/2025/11/18/borkha.jpg_7.jpg HTTP/1.1" 200 46250
-INFO 2025-11-20 16:31:52,006 django.server basehttp "GET /media/sliders/2025/11/18/b4.jpg HTTP/1.1" 200 1591255
-INFO 2025-11-20 16:31:52,008 django.server basehttp "GET /media/sliders/2025/11/18/b2.jpg HTTP/1.1" 200 1739559
-INFO 2025-11-20 16:31:52,023 django.server basehttp "GET /media/products/2025/11/18/borkha.jpg_2.jpg HTTP/1.1" 200 42964
-INFO 2025-11-20 16:31:52,024 django.server basehttp "GET /media/products/2025/11/18/baby_1.jpg HTTP/1.1" 200 6662
-INFO 2025-11-20 16:31:52,077 django.server basehttp "GET /media/products/2025/11/18/baby_5.jpg HTTP/1.1" 200 4097
-INFO 2025-11-20 16:31:52,079 django.server basehttp "GET /media/products/2025/11/18/baby_2.jpg HTTP/1.1" 200 12252
-INFO 2025-11-20 16:31:52,087 django.server basehttp "GET /media/products/2025/11/18/baby_4.jpg HTTP/1.1" 200 12120
-INFO 2025-11-20 16:31:52,095 django.server basehttp "GET /static/assets/images/paymentlogo.png HTTP/1.1" 200 7075
-INFO 2025-11-20 16:31:52,118 django.server basehttp "GET /media/products/2025/11/18/baby5.jpg HTTP/1.1" 200 30064
-INFO 2025-11-20 16:31:52,121 django.server basehttp "GET /media/products/2025/11/18/borkha.jpg HTTP/1.1" 200 92570
-INFO 2025-11-20 16:31:52,125 django.server basehttp "GET /media/products/2025/11/18/borkha.jpg_5.jpg HTTP/1.1" 200 30058
-INFO 2025-11-20 16:31:52,138 django.server basehttp "GET /static/assets/images/payavail/cc.jpg HTTP/1.1" 200 74962
-INFO 2025-11-20 16:31:55,796 project views User admin viewed product 6 - New Stylish Denim Jeans Pant For Men by fashion johan
-INFO 2025-11-20 16:31:55,805 django.server basehttp "GET /single-product/new-stylish-denim-jeans-pant-for-men-by-fashion-johan/6/ HTTP/1.1" 200 12562
-INFO 2025-11-20 16:32:58,483 project views User admin visited Home page
-INFO 2025-11-20 16:32:58,525 django.server basehttp "GET / HTTP/1.1" 200 27222
-INFO 2025-11-20 16:33:05,131 project views User admin viewed product 7 - NEW STYLISH EXPORT OUALITY TRANDING JEANS PANT FOR MEN _MEN"S JEANS
-INFO 2025-11-20 16:33:05,142 django.server basehttp "GET /single-product/new-stylish-export-ouality-tranding-jeans-pant-for-men-_mens-jeans/7/ HTTP/1.1" 200 12600
-INFO 2025-11-20 16:33:09,080 project views User admin visited Home page
-INFO 2025-11-20 16:33:09,118 django.server basehttp "GET / HTTP/1.1" 200 27222
-INFO 2025-11-20 16:33:14,571 project views User admin viewed product 5 - New Zarifah Embroidery Dubai cherry Fabrics Borka
-INFO 2025-11-20 16:33:14,585 django.server basehttp "GET /single-product/new-zarifah-embroidery-dubai-cherry-fabrics-borka/5/ HTTP/1.1" 200 12548
-INFO 2025-11-20 16:33:19,071 project views User admin visited Home page
-INFO 2025-11-20 16:33:19,115 django.server basehttp "GET / HTTP/1.1" 200 27222
-INFO 2025-11-20 16:33:32,359 project views User admin visited Home page
-INFO 2025-11-20 16:33:32,400 django.server basehttp "GET / HTTP/1.1" 200 27222
-INFO 2025-11-20 16:33:32,440 django.server basehttp "GET /static/assets/css/owl.carousel.min.css HTTP/1.1" 200 3356
-INFO 2025-11-20 16:33:32,442 django.server basehttp "GET /static/assets/css/style.css HTTP/1.1" 200 299
-INFO 2025-11-20 16:33:32,443 django.server basehttp "GET /static/assets/css/main.css HTTP/1.1" 200 891
-INFO 2025-11-20 16:33:32,450 django.server basehttp "GET /media/sliders/2025/11/18/b3.jpg HTTP/1.1" 200 927670
-INFO 2025-11-20 16:33:32,452 django.server basehttp "GET /media/sliders/2025/11/18/b1.jpg HTTP/1.1" 200 1477283
-INFO 2025-11-20 16:33:32,458 django.server basehttp "GET /media/products/2025/11/18/art_32.jpg HTTP/1.1" 200 21007
-INFO 2025-11-20 16:33:32,459 django.server basehttp "GET /media/sliders/2025/11/18/b2.jpg HTTP/1.1" 200 1739559
-INFO 2025-11-20 16:33:32,460 django.server basehttp "GET /static/assets/js/owl.carousel.min.js HTTP/1.1" 200 44348
-INFO 2025-11-20 16:33:32,469 django.server basehttp "GET /media/sliders/2025/11/18/b4.jpg HTTP/1.1" 200 1591255
-INFO 2025-11-20 16:33:32,488 django.server basehttp "GET /static/assets/js/script.js HTTP/1.1" 200 384
-INFO 2025-11-20 16:33:32,493 django.server basehttp "GET /static/assets/js/all.min.js HTTP/1.1" 200 1194964
-INFO 2025-11-20 16:33:32,502 django.server basehttp "GET /static/assets/js/main.js HTTP/1.1" 200 1480
-INFO 2025-11-20 16:33:32,507 django.server basehttp "GET /media/products/2025/11/18/art_34.jpg HTTP/1.1" 200 25773
-INFO 2025-11-20 16:33:32,526 django.server basehttp "GET /media/products/2025/11/18/art_50.jpg HTTP/1.1" 200 25847
-INFO 2025-11-20 16:33:32,542 django.server basehttp "GET /media/products/2025/11/18/art_38.jpg HTTP/1.1" 200 25444
-INFO 2025-11-20 16:33:32,543 django.server basehttp "GET /media/products/2025/11/18/art_47.jpg HTTP/1.1" 200 12814
-INFO 2025-11-20 16:33:32,586 django.server basehttp "GET /static/assets/images/payavail/aq.jpg HTTP/1.1" 200 21391
-INFO 2025-11-20 16:33:32,591 django.server basehttp "GET /media/products/2025/11/18/borkha.jpg_2.jpg HTTP/1.1" 200 42964
-INFO 2025-11-20 16:33:32,596 django.server basehttp "GET /media/products/2025/11/18/borkha.jpg_4.jpg HTTP/1.1" 200 96469
-INFO 2025-11-20 16:33:32,602 django.server basehttp "GET /media/products/2025/11/18/borkha.jpg HTTP/1.1" 200 92570
-INFO 2025-11-20 16:33:32,602 django.server basehttp "GET /media/products/2025/11/18/borkha.jpg_7.jpg HTTP/1.1" 200 46250
-INFO 2025-11-20 16:33:32,613 django.server basehttp "GET /media/products/2025/11/18/borkha.jpg_5.jpg HTTP/1.1" 200 30058
-INFO 2025-11-20 16:33:32,642 django.server basehttp "GET /media/products/2025/11/18/baby_1.jpg HTTP/1.1" 200 6662
-INFO 2025-11-20 16:33:32,645 django.server basehttp "GET /static/assets/images/payavail/cc.jpg HTTP/1.1" 200 74962
-INFO 2025-11-20 16:33:32,655 django.server basehttp "GET /media/products/2025/11/18/baby_2.jpg HTTP/1.1" 200 12252
-INFO 2025-11-20 16:33:32,659 django.server basehttp "GET /media/products/2025/11/18/baby_4.jpg HTTP/1.1" 200 12120
-INFO 2025-11-20 16:33:32,668 django.server basehttp "GET /media/products/2025/11/18/baby5.jpg HTTP/1.1" 200 30064
-INFO 2025-11-20 16:33:32,674 django.server basehttp "GET /media/products/2025/11/18/baby_5.jpg HTTP/1.1" 200 4097
-INFO 2025-11-20 16:33:32,689 django.server basehttp "GET /static/assets/images/paymentlogo.png HTTP/1.1" 200 7075
-INFO 2025-11-20 16:33:34,422 project views User admin viewed product 11 - Baby Boys; Girls; Winter Collection; Boys/Girls Dress Winter Collection set; Toddler; Kids; Children; Stylish And Premium quality jacket And Pant Com
-INFO 2025-11-20 16:33:34,432 django.server basehttp "GET /single-product/baby-boys-girls-winter-collection-boysgirls-dress-winter-collection-set-toddler-kids-children-stylish-and-premium-quality-jacket-and-pant-com/11/ HTTP/1.1" 200 12794
-INFO 2025-11-20 16:33:37,255 project views User admin added 1 units of product 11 to cart (CartItem ID: 12)
-INFO 2025-11-20 16:33:37,258 django.server basehttp "POST /cart/add-to-cart/ HTTP/1.1" 200 391
-INFO 2025-11-20 16:33:43,107 project views User admin viewed cart. Total items: 1, Total price: 400000.0
-INFO 2025-11-20 16:33:43,116 django.server basehttp "GET /cart/cart-detail/ HTTP/1.1" 200 14127
-INFO 2025-11-20 16:33:51,710 project views User admin removed CartItem 12 from cart
-INFO 2025-11-20 16:33:51,856 django.server basehttp "POST /cart/cart-remove-item/ HTTP/1.1" 200 120
-INFO 2025-11-20 16:41:29,004 project views User admin viewed cart. Total items: 0, Total price: 0.0
-INFO 2025-11-20 16:41:29,070 django.server basehttp "GET /cart/cart-detail/ HTTP/1.1" 200 11589
-INFO 2025-11-20 16:41:30,742 project views User admin visited Home page
-INFO 2025-11-20 16:41:30,785 django.server basehttp "GET / HTTP/1.1" 200 27222
-INFO 2025-11-20 16:41:33,443 project views User admin viewed product 8 - New Export Quality Stylish Slim Fit Denim Jeans Pant For Men
-INFO 2025-11-20 16:41:33,455 django.server basehttp "GET /single-product/new-export-quality-stylish-slim-fit-denim-jeans-pant-for-men/8/ HTTP/1.1" 200 12612
-INFO 2025-11-20 16:41:35,389 project views User admin added 1 units of product 8 to cart (CartItem ID: 13)
-INFO 2025-11-20 16:41:35,392 django.server basehttp "POST /cart/add-to-cart/ HTTP/1.1" 200 298
-INFO 2025-11-20 16:41:42,343 project views User admin visited Home page
-INFO 2025-11-20 16:41:42,385 django.server basehttp "GET / HTTP/1.1" 200 27222
-INFO 2025-11-20 16:41:44,859 project views User admin viewed product 10 - Export Quality New Style Slim Fit Denim Jeans Pants For Men
-INFO 2025-11-20 16:41:44,872 django.server basehttp "GET /single-product/export-quality-new-style-slim-fit-denim-jeans-pants-for-men/10/ HTTP/1.1" 200 12606
-INFO 2025-11-20 16:41:46,535 project views User admin added 1 units of product 10 to cart (CartItem ID: 14)
-INFO 2025-11-20 16:41:46,539 django.server basehttp "POST /cart/add-to-cart/ HTTP/1.1" 200 296
-INFO 2025-11-20 16:41:50,896 project views User admin viewed cart. Total items: 2, Total price: 4500.0
-INFO 2025-11-20 16:41:50,903 django.server basehttp "GET /cart/cart-detail/ HTTP/1.1" 200 15597
-INFO 2025-11-20 16:41:55,149 project views User admin removed CartItem 14 from cart
-INFO 2025-11-20 16:41:55,208 django.server basehttp "POST /cart/cart-remove-item/ HTTP/1.1" 200 124
-INFO 2025-11-20 16:41:58,028 project views User admin removed CartItem 13 from cart
-INFO 2025-11-20 16:41:58,165 django.server basehttp "POST /cart/cart-remove-item/ HTTP/1.1" 200 120
-INFO 2025-11-20 17:02:54,518 django.utils.autoreload autoreload Watching for file changes with StatReloader
-INFO 2025-11-20 17:22:52,835 django.utils.autoreload autoreload Watching for file changes with StatReloader
-INFO 2025-11-20 17:23:02,819 project views User admin viewed cart. Total items: 0, Total price: 0.0
-INFO 2025-11-20 17:23:02,967 django.server basehttp "GET /cart/cart-detail/ HTTP/1.1" 200 11589
-WARNING 2025-11-20 17:23:03,228 django.request log Not Found: /favicon.ico
-WARNING 2025-11-20 17:23:03,228 django.server basehttp "GET /favicon.ico HTTP/1.1" 404 4126
-INFO 2025-11-20 17:23:08,318 project views User admin visited Home page
-INFO 2025-11-20 17:23:08,373 django.server basehttp "GET / HTTP/1.1" 200 27222
-INFO 2025-11-20 17:23:11,393 project views User admin viewed product 6 - New Stylish Denim Jeans Pant For Men by fashion johan
-INFO 2025-11-20 17:23:11,504 django.server basehttp "GET /single-product/new-stylish-denim-jeans-pant-for-men-by-fashion-johan/6/ HTTP/1.1" 200 12562
-INFO 2025-11-20 17:23:16,545 project views User admin viewed cart. Total items: 0, Total price: 0.0
-INFO 2025-11-20 17:23:16,553 django.server basehttp "GET /cart/cart-detail/ HTTP/1.1" 200 11589
-INFO 2025-11-20 17:23:42,243 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\views.py changed, reloading.
-INFO 2025-11-20 17:23:43,365 django.utils.autoreload autoreload Watching for file changes with StatReloader
-INFO 2025-11-20 17:23:51,262 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\views.py changed, reloading.
-INFO 2025-11-20 17:23:52,669 django.utils.autoreload autoreload Watching for file changes with StatReloader
-INFO 2025-11-20 17:24:04,730 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\views.py changed, reloading.
-INFO 2025-11-20 17:24:06,004 django.utils.autoreload autoreload Watching for file changes with StatReloader
-INFO 2025-11-20 17:24:07,936 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\views.py changed, reloading.
-INFO 2025-11-20 17:24:08,994 django.utils.autoreload autoreload Watching for file changes with StatReloader
-INFO 2025-11-20 17:24:10,775 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\views.py changed, reloading.
-INFO 2025-11-20 17:24:11,937 django.utils.autoreload autoreload Watching for file changes with StatReloader
-INFO 2025-11-20 17:24:14,787 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\views.py changed, reloading.
-INFO 2025-11-20 17:24:16,101 django.utils.autoreload autoreload Watching for file changes with StatReloader
-INFO 2025-11-20 17:24:41,722 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\views.py changed, reloading.
-INFO 2025-11-20 17:24:42,592 django.utils.autoreload autoreload Watching for file changes with StatReloader
-INFO 2025-11-20 17:25:32,254 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\views.py changed, reloading.
-INFO 2025-11-20 17:25:33,235 django.utils.autoreload autoreload Watching for file changes with StatReloader
-INFO 2025-11-20 17:25:41,058 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\views.py changed, reloading.
-INFO 2025-11-20 17:25:42,795 django.utils.autoreload autoreload Watching for file changes with StatReloader
-INFO 2025-11-20 17:25:45,594 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\views.py changed, reloading.
-INFO 2025-11-20 17:25:47,443 django.utils.autoreload autoreload Watching for file changes with StatReloader
-INFO 2025-11-20 17:30:26,071 project views User admin viewed cart. Total items: 0, Total price: 0.0
-INFO 2025-11-20 17:30:26,109 django.server basehttp "GET /cart/cart-detail/ HTTP/1.1" 200 11589
-INFO 2025-11-20 17:30:29,333 project views viewed product 6 - New Stylish Denim Jeans Pant For Men by fashion johan
-INFO 2025-11-20 17:30:29,386 django.server basehttp "GET /single-product/new-stylish-denim-jeans-pant-for-men-by-fashion-johan/6/ HTTP/1.1" 200 12567
-INFO 2025-11-20 17:30:31,908 project views User admin added 1 units of product 6 to cart (CartItem ID: 15)
-INFO 2025-11-20 17:30:31,917 django.server basehttp "POST /cart/add-to-cart/ HTTP/1.1" 200 295
-INFO 2025-11-20 17:30:40,259 django.server basehttp "GET /accounts/profile/ HTTP/1.1" 200 11459
-INFO 2025-11-20 17:30:42,309 project views User admin viewed cart. Total items: 1, Total price: 300000.0
-INFO 2025-11-20 17:30:42,320 django.server basehttp "GET /cart/cart-detail/ HTTP/1.1" 200 14060
-INFO 2025-11-20 17:30:45,147 project views User admin increased quantity of CartItem 15 to 2
-INFO 2025-11-20 17:30:45,405 django.server basehttp "POST /cart/qty-inc-dec/ HTTP/1.1" 200 112
-INFO 2025-11-20 17:30:46,874 project views User admin decreased quantity of CartItem 15 to 1
-INFO 2025-11-20 17:30:47,312 django.server basehttp "POST /cart/qty-inc-dec/ HTTP/1.1" 200 112
-INFO 2025-11-20 17:30:49,803 project views User admin removed CartItem 15 from cart
-INFO 2025-11-20 17:30:49,940 django.server basehttp "POST /cart/cart-remove-item/ HTTP/1.1" 200 120
-INFO 2025-11-20 17:30:51,983 project views User admin visited Home page
-INFO 2025-11-20 17:30:52,025 django.server basehttp "GET / HTTP/1.1" 200 27222
-INFO 2025-11-20 17:31:00,452 project views User admin viewed category 1 with brand=None and price_filter=None
-INFO 2025-11-20 17:31:00,628 django.server basehttp "GET /category-product/lehenga/1/ HTTP/1.1" 200 14630
-INFO 2025-11-20 17:31:00,883 django.server basehttp "GET /media/products/2025/11/18/lehenga_3.jpg HTTP/1.1" 200 12865
-INFO 2025-11-20 17:31:00,973 django.server basehttp "GET /media/products/2025/11/18/lehenga_4.jpg HTTP/1.1" 200 343410
-INFO 2025-11-20 17:31:00,993 django.server basehttp "GET /media/products/2025/11/18/lehenga_1.jpg HTTP/1.1" 200 1037580
-INFO 2025-11-20 17:31:01,029 django.server basehttp "GET /media/products/2025/11/18/lehenga_5.jpg HTTP/1.1" 200 93922
-INFO 2025-11-20 17:31:01,041 django.server basehttp "GET /media/products/2025/11/18/lehenga_2.jpg HTTP/1.1" 200 2690322
-INFO 2025-11-20 17:31:02,488 project views User admin viewed category 1 with brand=None and price_filter=None
-INFO 2025-11-20 17:31:02,494 django.server basehttp "GET /category-product/lehenga/1/ HTTP/1.1" 200 4290
-INFO 2025-11-20 17:31:04,158 project views User admin viewed category 1 with brand=2 and price_filter=None
-INFO 2025-11-20 17:31:04,161 django.server basehttp "GET /category-product/lehenga/1/?brand=2 HTTP/1.1" 200 1699
-INFO 2025-11-20 17:31:06,614 project views User admin viewed category 1 with brand=1 and price_filter=None
-INFO 2025-11-20 17:31:06,618 django.server basehttp "GET /category-product/lehenga/1/?brand=1 HTTP/1.1" 200 1743
-INFO 2025-11-20 17:31:08,727 project views User admin viewed category 1 with brand=4 and price_filter=None
-INFO 2025-11-20 17:31:08,729 django.server basehttp "GET /category-product/lehenga/1/?brand=4 HTTP/1.1" 200 950
-INFO 2025-11-20 17:31:09,951 project views User admin viewed category 1 with brand=None and price_filter=below_20k
-INFO 2025-11-20 17:31:09,955 django.server basehttp "GET /category-product/lehenga/1/?price=below_20k HTTP/1.1" 200 2598
-INFO 2025-11-20 17:31:12,214 project views User admin viewed category 1 with brand=None and price_filter=above_20k
-INFO 2025-11-20 17:31:12,218 django.server basehttp "GET /category-product/lehenga/1/?price=above_20k HTTP/1.1" 200 1743
-INFO 2025-11-20 17:31:15,756 project views User admin visited Home page
-INFO 2025-11-20 17:31:15,793 django.server basehttp "GET / HTTP/1.1" 200 27222
-INFO 2025-11-20 17:31:21,970 project views viewed product 8 - New Export Quality Stylish Slim Fit Denim Jeans Pant For Men
-INFO 2025-11-20 17:31:21,983 django.server basehttp "GET /single-product/new-export-quality-stylish-slim-fit-denim-jeans-pant-for-men/8/ HTTP/1.1" 200 12570
-INFO 2025-11-20 17:31:23,581 project views User admin added 1 units of product 8 to cart (CartItem ID: 16)
-INFO 2025-11-20 17:31:23,584 django.server basehttp "POST /cart/add-to-cart/ HTTP/1.1" 200 298
-INFO 2025-11-20 17:31:26,793 project views User admin viewed cart. Total items: 1, Total price: 4000.0
-INFO 2025-11-20 17:31:26,802 django.server basehttp "GET /cart/cart-detail/ HTTP/1.1" 200 14068
-INFO 2025-11-20 17:31:30,197 project views User admin visited checkout page. Items count: 1, Grand total: 4120
-INFO 2025-11-20 17:31:30,240 django.server basehttp "GET /checkout/checkout/ HTTP/1.1" 200 10989
-INFO 2025-11-20 17:31:36,054 project views User admin ordered Product 8 - New Export Quality Stylish Slim Fit Denim Jeans Pant For Men, quantity: 1
-INFO 2025-11-20 17:31:36,106 project views User admin completed checkout successfully. Total items: 0
-INFO 2025-11-20 17:31:36,107 django.server basehttp "POST /checkout/checkout-success/ HTTP/1.1" 302 0
-INFO 2025-11-20 17:31:36,119 project views User admin visited checkout list page. Orders count: 7
-INFO 2025-11-20 17:31:36,199 django.server basehttp "GET /checkout/checkout-list/ HTTP/1.1" 200 17771
-INFO 2025-11-21 08:35:47,040 django.utils.autoreload autoreload Watching for file changes with StatReloader
-INFO 2025-11-21 08:43:12,064 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\models.py changed, reloading.
-INFO 2025-11-21 08:43:13,088 django.utils.autoreload autoreload Watching for file changes with StatReloader
-INFO 2025-11-21 08:43:18,734 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\models.py changed, reloading.
-INFO 2025-11-21 08:43:21,078 django.utils.autoreload autoreload Watching for file changes with StatReloader
-INFO 2025-11-21 08:43:26,820 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\models.py changed, reloading.
-INFO 2025-11-21 08:43:28,201 django.utils.autoreload autoreload Watching for file changes with StatReloader
-INFO 2025-11-21 08:44:48,019 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\models.py changed, reloading.
-INFO 2025-11-21 08:44:50,099 django.utils.autoreload autoreload Watching for file changes with StatReloader
-INFO 2025-11-21 08:44:52,568 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\models.py changed, reloading.
-INFO 2025-11-21 08:44:53,473 django.utils.autoreload autoreload Watching for file changes with StatReloader
-INFO 2025-11-21 08:44:59,184 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\models.py changed, reloading.
-INFO 2025-11-21 08:45:00,258 django.utils.autoreload autoreload Watching for file changes with StatReloader
-INFO 2025-11-21 08:45:20,535 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\models.py changed, reloading.
-INFO 2025-11-21 08:45:21,835 django.utils.autoreload autoreload Watching for file changes with StatReloader
-INFO 2025-11-21 08:45:24,486 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\models.py changed, reloading.
-INFO 2025-11-21 08:45:25,646 django.utils.autoreload autoreload Watching for file changes with StatReloader
-INFO 2025-11-21 08:45:27,455 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\models.py changed, reloading.
-INFO 2025-11-21 08:45:28,529 django.utils.autoreload autoreload Watching for file changes with StatReloader
-INFO 2025-11-21 08:45:32,167 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\models.py changed, reloading.
-INFO 2025-11-21 08:45:33,331 django.utils.autoreload autoreload Watching for file changes with StatReloader
-INFO 2025-11-21 08:45:34,990 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\models.py changed, reloading.
-INFO 2025-11-21 08:45:36,029 django.utils.autoreload autoreload Watching for file changes with StatReloader
-INFO 2025-11-21 08:47:55,629 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\models.py changed, reloading.
-INFO 2025-11-21 08:47:56,525 django.utils.autoreload autoreload Watching for file changes with StatReloader
-INFO 2025-11-21 08:48:07,541 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\models.py changed, reloading.
-INFO 2025-11-21 08:48:08,516 django.utils.autoreload autoreload Watching for file changes with StatReloader
-INFO 2025-11-21 08:48:13,182 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\models.py changed, reloading.
-INFO 2025-11-21 08:48:14,148 django.utils.autoreload autoreload Watching for file changes with StatReloader
-INFO 2025-11-21 09:05:24,747 django.utils.autoreload autoreload Watching for file changes with StatReloader
-INFO 2025-11-21 09:06:35,447 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\views.py changed, reloading.
-INFO 2025-11-21 09:06:36,246 django.utils.autoreload autoreload Watching for file changes with StatReloader
-INFO 2025-11-21 09:06:39,866 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\views.py changed, reloading.
-INFO 2025-11-21 09:06:41,289 django.utils.autoreload autoreload Watching for file changes with StatReloader
-INFO 2025-11-21 09:06:43,115 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\views.py changed, reloading.
-INFO 2025-11-21 09:06:44,323 django.utils.autoreload autoreload Watching for file changes with StatReloader
-INFO 2025-11-21 09:06:50,151 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\views.py changed, reloading.
-INFO 2025-11-21 09:06:51,029 django.utils.autoreload autoreload Watching for file changes with StatReloader
-INFO 2025-11-21 09:06:52,809 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\views.py changed, reloading.
-INFO 2025-11-21 09:06:54,572 django.utils.autoreload autoreload Watching for file changes with StatReloader
-INFO 2025-11-21 09:07:01,323 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\views.py changed, reloading.
-INFO 2025-11-21 09:07:02,178 django.utils.autoreload autoreload Watching for file changes with StatReloader
-INFO 2025-11-21 09:07:10,027 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\views.py changed, reloading.
-INFO 2025-11-21 09:07:11,167 django.utils.autoreload autoreload Watching for file changes with StatReloader
-INFO 2025-11-21 09:07:28,490 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\views.py changed, reloading.
-INFO 2025-11-21 09:07:29,341 django.utils.autoreload autoreload Watching for file changes with StatReloader
-INFO 2025-11-21 09:07:31,743 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\views.py changed, reloading.
-INFO 2025-11-21 09:07:32,541 django.utils.autoreload autoreload Watching for file changes with StatReloader
-INFO 2025-11-21 09:07:34,872 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\views.py changed, reloading.
-INFO 2025-11-21 09:07:36,096 django.utils.autoreload autoreload Watching for file changes with StatReloader
-INFO 2025-11-21 09:07:49,203 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\views.py changed, reloading.
-INFO 2025-11-21 09:07:50,786 django.utils.autoreload autoreload Watching for file changes with StatReloader
-INFO 2025-11-21 09:08:21,455 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\views.py changed, reloading.
-INFO 2025-11-21 09:08:22,391 django.utils.autoreload autoreload Watching for file changes with StatReloader
-INFO 2025-11-21 09:08:23,970 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\views.py changed, reloading.
-INFO 2025-11-21 09:08:24,948 django.utils.autoreload autoreload Watching for file changes with StatReloader
-INFO 2025-11-21 09:08:26,655 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\views.py changed, reloading.
-INFO 2025-11-21 09:08:28,329 django.utils.autoreload autoreload Watching for file changes with StatReloader
-INFO 2025-11-21 09:15:36,842 django.utils.autoreload autoreload Watching for file changes with StatReloader
-INFO 2025-11-21 09:16:05,839 project views User Anonymous visited Home page
-INFO 2025-11-21 09:16:06,344 django.server basehttp "GET / HTTP/1.1" 200 25953
-INFO 2025-11-21 09:16:06,750 django.server basehttp "GET /static/assets/css/style.css HTTP/1.1" 200 299
-INFO 2025-11-21 09:16:06,808 django.server basehttp "GET /static/assets/css/main.css HTTP/1.1" 200 891
-INFO 2025-11-21 09:16:06,808 django.server basehttp "GET /static/assets/css/owl.carousel.min.css HTTP/1.1" 200 3356
-INFO 2025-11-21 09:16:06,828 django.server basehttp "GET /media/sliders/2025/11/18/b3.jpg HTTP/1.1" 200 927670
-INFO 2025-11-21 09:16:06,968 django.server basehttp "GET /media/sliders/2025/11/18/b4.jpg HTTP/1.1" 200 1591255
-INFO 2025-11-21 09:16:07,018 django.server basehttp "GET /static/assets/js/owl.carousel.min.js HTTP/1.1" 200 44348
-INFO 2025-11-21 09:16:07,035 django.server basehttp "GET /media/sliders/2025/11/18/b1.jpg HTTP/1.1" 200 1477283
-INFO 2025-11-21 09:16:07,043 django.server basehttp "GET /media/products/2025/11/18/art_32.jpg HTTP/1.1" 200 21007
-INFO 2025-11-21 09:16:07,117 django.server basehttp "GET /static/assets/images/payavail/aq.jpg HTTP/1.1" 200 21391
-INFO 2025-11-21 09:16:07,179 django.server basehttp "GET /static/assets/images/paymentlogo.png HTTP/1.1" 200 7075
-INFO 2025-11-21 09:16:07,210 django.server basehttp "GET /media/sliders/2025/11/18/b2.jpg HTTP/1.1" 200 1739559
-INFO 2025-11-21 09:16:07,219 django.server basehttp "GET /static/assets/js/all.min.js HTTP/1.1" 200 1194964
-INFO 2025-11-21 09:16:07,237 django.server basehttp "GET /static/assets/images/payavail/cc.jpg HTTP/1.1" 200 74962
-INFO 2025-11-21 09:16:07,242 django.server basehttp "GET /static/assets/js/main.js HTTP/1.1" 200 1480
-INFO 2025-11-21 09:16:07,358 django.server basehttp "GET /static/assets/js/script.js HTTP/1.1" 200 384
-INFO 2025-11-21 09:16:07,361 django.server basehttp "GET /media/products/2025/11/18/art_34.jpg HTTP/1.1" 200 25773
-INFO 2025-11-21 09:16:07,434 django.server basehttp "GET /media/products/2025/11/18/art_38.jpg HTTP/1.1" 200 25444
-INFO 2025-11-21 09:16:07,434 django.server basehttp "GET /media/products/2025/11/18/borkha.jpg_2.jpg HTTP/1.1" 200 42964
-INFO 2025-11-21 09:16:07,448 django.server basehttp "GET /media/products/2025/11/18/art_50.jpg HTTP/1.1" 200 25847
-INFO 2025-11-21 09:16:07,514 django.server basehttp "GET /media/products/2025/11/18/art_47.jpg HTTP/1.1" 200 12814
-INFO 2025-11-21 09:16:07,579 django.server basehttp "GET /media/products/2025/11/18/borkha.jpg_4.jpg HTTP/1.1" 200 96469
-INFO 2025-11-21 09:16:07,615 django.server basehttp "GET /media/products/2025/11/18/borkha.jpg_7.jpg HTTP/1.1" 200 46250
-INFO 2025-11-21 09:16:07,616 django.server basehttp "GET /media/products/2025/11/18/borkha.jpg HTTP/1.1" 200 92570
-INFO 2025-11-21 09:16:07,647 django.server basehttp "GET /media/products/2025/11/18/borkha.jpg_5.jpg HTTP/1.1" 200 30058
-INFO 2025-11-21 09:16:07,664 django.server basehttp "GET /media/products/2025/11/18/baby_1.jpg HTTP/1.1" 200 6662
-INFO 2025-11-21 09:16:07,684 django.server basehttp "GET /media/products/2025/11/18/baby_2.jpg HTTP/1.1" 200 12252
-INFO 2025-11-21 09:16:07,697 django.server basehttp "GET /media/products/2025/11/18/baby_4.jpg HTTP/1.1" 200 12120
-INFO 2025-11-21 09:16:07,706 django.server basehttp "GET /media/products/2025/11/18/baby_5.jpg HTTP/1.1" 200 4097
-INFO 2025-11-21 09:16:07,708 django.server basehttp "GET /media/products/2025/11/18/baby5.jpg HTTP/1.1" 200 30064
-WARNING 2025-11-21 09:16:07,866 django.request log Not Found: /favicon.ico
-WARNING 2025-11-21 09:16:07,868 django.server basehttp "GET /favicon.ico HTTP/1.1" 404 4126
-INFO 2025-11-21 09:16:19,155 django.server basehttp "GET /admin/ HTTP/1.1" 302 0
-INFO 2025-11-21 09:16:19,364 django.server basehttp "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4173
-INFO 2025-11-21 09:16:19,627 django.server basehttp "GET /static/admin/css/base.css HTTP/1.1" 200 22120
-INFO 2025-11-21 09:16:19,630 django.server basehttp "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
-INFO 2025-11-21 09:16:19,640 django.server basehttp "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
-INFO 2025-11-21 09:16:19,643 django.server basehttp "GET /static/admin/css/login.css HTTP/1.1" 200 951
-INFO 2025-11-21 09:16:19,646 django.server basehttp "GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
-INFO 2025-11-21 09:16:19,653 django.server basehttp "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
-INFO 2025-11-21 09:16:19,709 django.server basehttp "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
-INFO 2025-11-21 09:16:23,166 django.server basehttp "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
-INFO 2025-11-21 09:16:23,238 django.server basehttp "GET /admin/ HTTP/1.1" 200 16394
-INFO 2025-11-21 09:16:23,291 django.server basehttp "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
-INFO 2025-11-21 09:16:23,325 django.server basehttp "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
-INFO 2025-11-21 09:16:23,325 django.server basehttp "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
-INFO 2025-11-21 09:16:32,562 django.server basehttp "GET /admin/store/livesales/ HTTP/1.1" 200 12662
-INFO 2025-11-21 09:16:32,631 django.server basehttp "GET /static/admin/css/changelists.css HTTP/1.1" 200 6878
-INFO 2025-11-21 09:16:32,635 django.server basehttp "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
-INFO 2025-11-21 09:16:32,638 django.server basehttp "GET /static/admin/js/core.js HTTP/1.1" 200 6208
-INFO 2025-11-21 09:16:32,639 django.server basehttp "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9777
-INFO 2025-11-21 09:16:32,692 django.server basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
-INFO 2025-11-21 09:16:32,694 django.server basehttp "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
-INFO 2025-11-21 09:16:32,695 django.server basehttp "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
-INFO 2025-11-21 09:16:32,697 django.server basehttp "GET /static/admin/js/actions.js HTTP/1.1" 200 8076
-INFO 2025-11-21 09:16:32,715 django.server basehttp "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
-INFO 2025-11-21 09:16:32,778 django.server basehttp "GET /static/admin/js/filters.js HTTP/1.1" 200 978
-INFO 2025-11-21 09:16:32,866 django.server basehttp "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
-INFO 2025-11-21 09:16:32,911 django.server basehttp "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
-INFO 2025-11-21 09:16:36,882 django.server basehttp "GET /admin/store/livesales/add/ HTTP/1.1" 200 15492
-INFO 2025-11-21 09:16:36,922 django.server basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
-INFO 2025-11-21 09:16:36,932 django.server basehttp "GET /static/admin/css/forms.css HTTP/1.1" 200 8525
-INFO 2025-11-21 09:16:36,946 django.server basehttp "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
-INFO 2025-11-21 09:16:36,965 django.server basehttp "GET /static/admin/css/widgets.css HTTP/1.1" 200 11973
-INFO 2025-11-21 09:16:36,973 django.server basehttp "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
-INFO 2025-11-21 09:18:39,241 django.server basehttp "POST /admin/store/livesales/add/ HTTP/1.1" 200 15768
-INFO 2025-11-21 09:18:39,287 django.server basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
-INFO 2025-11-21 09:19:53,028 django.server basehttp "POST /admin/store/livesales/add/ HTTP/1.1" 302 0
-INFO 2025-11-21 09:19:53,115 django.server basehttp "GET /admin/store/livesales/ HTTP/1.1" 200 15689
-INFO 2025-11-21 09:19:53,159 django.server basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
-INFO 2025-11-21 09:19:53,198 django.server basehttp "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
-INFO 2025-11-21 09:19:53,233 django.server basehttp "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 200 1097
-INFO 2025-11-21 09:23:23,387 project views User admin visited Home page
-INFO 2025-11-21 09:23:23,442 django.server basehttp "GET / HTTP/1.1" 200 27294
-INFO 2025-11-21 09:24:03,145 project views User admin visited Home page
-INFO 2025-11-21 09:24:03,206 django.server basehttp "GET / HTTP/1.1" 200 27299
+INFO 2025-11-20 17:33:04,377 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 17:33:12,183 project views User Anonymous visited Home page. Sliders: 4, Gents Pants: 5, Borkhas: 5, Baby Fashions: 5
+INFO 2025-11-20 17:33:12,417 django.server basehttp "GET / HTTP/1.1" 200 26298
+INFO 2025-11-20 17:33:12,610 django.server basehttp "GET /static/assets/css/style.css HTTP/1.1" 200 299
+INFO 2025-11-20 17:33:12,628 django.server basehttp "GET /static/assets/css/owl.carousel.min.css HTTP/1.1" 200 3356
+INFO 2025-11-20 17:33:12,708 django.server basehttp "GET /media/products/2025/11/18/art_32.jpg HTTP/1.1" 200 21007
+INFO 2025-11-20 17:33:12,715 django.server basehttp "GET /media/sliders/2025/11/18/b4.jpg HTTP/1.1" 200 1591255
+INFO 2025-11-20 17:33:12,722 django.server basehttp "GET /static/assets/css/main.css HTTP/1.1" 200 891
+INFO 2025-11-20 17:33:12,796 django.server basehttp "GET /static/assets/js/script.js HTTP/1.1" 200 384
+INFO 2025-11-20 17:33:12,842 django.server basehttp "GET /media/sliders/2025/11/18/b3.jpg HTTP/1.1" 200 927670
+INFO 2025-11-20 17:33:12,844 django.server basehttp "GET /static/assets/js/owl.carousel.min.js HTTP/1.1" 200 44348
+INFO 2025-11-20 17:33:12,853 django.server basehttp "GET /media/sliders/2025/11/18/b1.jpg HTTP/1.1" 200 1477283
+INFO 2025-11-20 17:33:12,864 django.server basehttp "GET /static/assets/images/payavail/aq.jpg HTTP/1.1" 200 21391
+INFO 2025-11-20 17:33:12,924 django.server basehttp "GET /static/assets/images/payavail/cc.jpg HTTP/1.1" 200 74962
+INFO 2025-11-20 17:33:12,957 django.server basehttp "GET /media/products/2025/11/18/art_34.jpg HTTP/1.1" 200 25773
+INFO 2025-11-20 17:33:12,960 django.server basehttp "GET /media/products/2025/11/18/art_50.jpg HTTP/1.1" 200 25847
+INFO 2025-11-20 17:33:12,966 django.server basehttp "GET /static/assets/js/main.js HTTP/1.1" 200 1480
+INFO 2025-11-20 17:33:12,969 django.server basehttp "GET /media/sliders/2025/11/18/b2.jpg HTTP/1.1" 200 1739559
+INFO 2025-11-20 17:33:13,006 django.server basehttp "GET /media/products/2025/11/18/art_38.jpg HTTP/1.1" 200 25444
+INFO 2025-11-20 17:33:13,010 django.server basehttp "GET /static/assets/js/all.min.js HTTP/1.1" 200 1194964
+INFO 2025-11-20 17:33:13,047 django.server basehttp "GET /media/products/2025/11/18/art_47.jpg HTTP/1.1" 200 12814
+INFO 2025-11-20 17:33:13,053 django.server basehttp "GET /media/products/2025/11/18/borkha.jpg_4.jpg HTTP/1.1" 200 96469
+INFO 2025-11-20 17:33:13,087 django.server basehttp "GET /media/products/2025/11/18/borkha.jpg_2.jpg HTTP/1.1" 200 42964
+INFO 2025-11-20 17:33:13,139 django.server basehttp "GET /media/products/2025/11/18/borkha.jpg_7.jpg HTTP/1.1" 200 46250
+INFO 2025-11-20 17:33:13,145 django.server basehttp "GET /media/products/2025/11/18/baby_4.jpg HTTP/1.1" 200 12120
+INFO 2025-11-20 17:33:13,171 django.server basehttp "GET /media/products/2025/11/18/baby_5.jpg HTTP/1.1" 200 4097
+INFO 2025-11-20 17:33:13,185 django.server basehttp "GET /media/products/2025/11/18/baby5.jpg HTTP/1.1" 200 30064
+INFO 2025-11-20 17:33:13,191 django.server basehttp "GET /media/products/2025/11/18/baby_2.jpg HTTP/1.1" 200 12252
+INFO 2025-11-20 17:33:13,193 django.server basehttp "GET /media/products/2025/11/18/borkha.jpg_5.jpg HTTP/1.1" 200 30058
+INFO 2025-11-20 17:33:13,193 django.server basehttp "GET /media/products/2025/11/18/baby_1.jpg HTTP/1.1" 200 6662
+INFO 2025-11-20 17:33:13,226 django.server basehttp "GET /static/assets/images/paymentlogo.png HTTP/1.1" 200 7075
+INFO 2025-11-20 17:33:13,239 django.server basehttp "GET /media/products/2025/11/18/borkha.jpg HTTP/1.1" 200 92570
+INFO 2025-11-20 17:33:16,726 project views viewed product 6 - New Stylish Denim Jeans Pant For Men by fashion johan
+INFO 2025-11-20 17:33:16,845 django.server basehttp "GET /single-product/new-stylish-denim-jeans-pant-for-men-by-fashion-johan/6/ HTTP/1.1" 200 11643
+INFO 2025-11-20 17:33:20,270 django.server basehttp "POST /cart/add-to-cart/ HTTP/1.1" 302 0
+INFO 2025-11-20 17:33:20,308 django.server basehttp "GET /accounts/sign-in/?next=/cart/add-to-cart/ HTTP/1.1" 200 8972
+INFO 2025-11-20 17:33:31,765 django.server basehttp "POST /cart/add-to-cart/ HTTP/1.1" 302 0
+INFO 2025-11-20 17:33:31,771 django.server basehttp "GET /accounts/sign-in/?next=/cart/add-to-cart/ HTTP/1.1" 200 8972
+INFO 2025-11-20 17:33:45,747 project views viewed product 6 - New Stylish Denim Jeans Pant For Men by fashion johan
+INFO 2025-11-20 17:33:45,753 django.server basehttp "GET /single-product/new-stylish-denim-jeans-pant-for-men-by-fashion-johan/6/ HTTP/1.1" 200 11643
+INFO 2025-11-20 17:33:51,303 django.server basehttp "GET /accounts/sign-in/ HTTP/1.1" 200 8972
+INFO 2025-11-20 17:33:59,128 django.server basehttp "POST /accounts/sign-in/ HTTP/1.1" 302 0
+INFO 2025-11-20 17:33:59,151 django.server basehttp "GET /accounts/profile/ HTTP/1.1" 200 11459
+INFO 2025-11-20 17:34:03,101 project views User admin viewed cart with 1 items, total: 450000.0
+INFO 2025-11-20 17:34:03,216 django.server basehttp "GET /cart/cart-detail/ HTTP/1.1" 200 14080
+INFO 2025-11-20 17:34:03,317 django.server basehttp "GET /media/products/2025/11/18/lehenga_2.jpg HTTP/1.1" 200 2690322
+INFO 2025-11-20 17:34:12,666 project views User admin viewed Category 1 - LEHENGA. Products count: 5
+INFO 2025-11-20 17:34:12,755 django.server basehttp "GET /category-product/lehenga/1/ HTTP/1.1" 200 16248
+INFO 2025-11-20 17:34:12,873 django.server basehttp "GET /media/products/2025/11/18/lehenga_5.jpg HTTP/1.1" 200 93922
+INFO 2025-11-20 17:34:12,883 django.server basehttp "GET /media/products/2025/11/18/lehenga_1.jpg HTTP/1.1" 200 1037580
+INFO 2025-11-20 17:34:12,905 django.server basehttp "GET /media/products/2025/11/18/lehenga_3.jpg HTTP/1.1" 200 12865
+INFO 2025-11-20 17:34:12,912 django.server basehttp "GET /media/products/2025/11/18/lehenga_4.jpg HTTP/1.1" 200 343410
+INFO 2025-11-20 17:34:15,765 project views viewed product 17 - Exclusive Design Readymade Georgette Embroidered Party Dress02
+INFO 2025-11-20 17:34:15,773 django.server basehttp "GET /single-product/exclusive-design-readymade-georgette-embroidered-party-dress02/17/ HTTP/1.1" 200 12578
+INFO 2025-11-20 17:34:18,914 project views User admin updated Product 17 quantity to 2 in cart.
+INFO 2025-11-20 17:34:18,970 django.server basehttp "POST /cart/add-to-cart/ HTTP/1.1" 200 307
+INFO 2025-11-20 17:34:22,592 project views User admin viewed cart with 1 items, total: 900000.0
+INFO 2025-11-20 17:34:22,601 django.server basehttp "GET /cart/cart-detail/ HTTP/1.1" 200 14080
+INFO 2025-11-20 17:34:26,211 project views User admin decreased quantity of Product 17 to 1
+INFO 2025-11-20 17:34:26,355 django.server basehttp "POST /cart/qty-inc-dec/ HTTP/1.1" 200 112
+INFO 2025-11-21 09:29:54,967 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-21 09:30:00,385 project views User admin visited Home page. Sliders: 4, Gents Pants: 5, Borkhas: 5, Baby Fashions: 5
+INFO 2025-11-21 09:30:00,597 django.server basehttp "GET / HTTP/1.1" 200 27299

@@ -33,13 +33,17 @@
 {% block live_sale %} 
 <!-- Live Sale Section -->
 <div class="container">
-
-    <div class="row text-center p-5 text-white border-bottom shadow" style="background-color: violet;">
-        <h1>Welcome to aiQuest Fashion</h1>
-        <span>10% Instant Discount above 10,000 TK's product buy</span>
-        <small class="fw-lighter">Term and Condition Applied (For details visit 'https://www.aiquest.org/'))</small>
-    </div>
-
+    {% if live_sales %}
+        {% for live_sale in live_sales %}
+            <div class="row text-center mt-2 p-5 text-white border-bottom shadow" style="background-color: violet;">
+                <h1>{{live_sale.title|title}}</h1>
+                <span>{{live_sale.subtitle|title}}</span>
+                <small class="fw-lighter">Term and Condition Applied (For details visit {{live_sale.url}} )</small>
+            </div>
+            {% empty %}
+            <h3> No live sale available </h3>
+        {% endfor %}
+    {% endif %}
 </div>
 <!-- End Live Sale Section -->
 {% endblock live_sale %}

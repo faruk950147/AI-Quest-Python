@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'store.apps.StoreConfig',
     'cart.apps.CartConfig',
-    'order.apps.OrderConfig',
+    'checkout.apps.CheckoutConfig',
 ]
 
 MIDDLEWARE = [
@@ -68,6 +68,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 #custom context processors
                 'store.context_processors.get_filters',
+                'cart.context_processors.get_filters',
             ],
         },
     },
@@ -140,3 +141,81 @@ EMAIL_PORT = 587
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# ============================= logging =================================
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+
+    # ---------- FORMATTERS ----------
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {name} {module} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname}: {message}',
+            'style': '{',
+        },
+    },
+
+    # ---------- HANDLERS ----------
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'level': 'DEBUG',
+            'formatter': 'simple',
+        },
+
+        'file_debug': {
+            'class': 'logging.handlers.RotatingFileHandler',
+            'level': 'DEBUG',
+            'filename': os.path.join(BASE_DIR, 'logs/debug.log'),
+            'maxBytes': 1024 * 1024 * 5,  # 5 MB
+            'backupCount': 5,
+            'formatter': 'verbose',
+        },
+
+        'file_error': {
+            'class': 'logging.FileHandler',
+            'level': 'ERROR',
+            'filename': os.path.join(BASE_DIR, 'logs/error.log'),
+            'formatter': 'verbose',
+        },
+        'file_info': {
+            'class': 'logging.FileHandler',
+            'level': 'INFO',
+            'filename': os.path.join(BASE_DIR, 'logs/info.log'),
+            'formatter': 'verbose',
+        },
+        'file_warning': {
+            'class': 'logging.FileHandler',
+            'level': 'WARNING',
+            'filename': os.path.join(BASE_DIR, 'logs/warning.log'),
+            'formatter': 'verbose',
+        },
+        'file_critical': {
+            'class': 'logging.FileHandler',
+            'level': 'CRITICAL',
+            'filename': os.path.join(BASE_DIR, 'logs/critical.log'),
+            'formatter': 'verbose',
+        },
+    },
+
+    # ---------- LOGGERS ----------
+    'loggers': {
+        # Django internal logs
+        'django': {
+            'handlers': ['console', 'file_debug', 'file_error'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+
+        # Custom project logger
+        'project': {
+            'handlers': ['console', 'file_debug', 'file_error'],
+            'level': 'DEBUG',
+            'propagate': False,
+        },
+    }
+}
