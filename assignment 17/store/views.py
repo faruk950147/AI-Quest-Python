@@ -5,7 +5,7 @@ from django.views.decorators.cache import never_cache
 from django.template.loader import render_to_string
 from django.http import JsonResponse
 from django.db.models import Max, Min, Q
-from store.models import Category, Brand, Product, Slider
+from store.models import Category, Brand, Product, Slider, LiveSales
 from cart.models import Cart
 
 import logging
@@ -35,6 +35,7 @@ class HomeView(generic.View):
     """
     def get(self, request):
         sliders = Slider.objects.filter(status='ACTIVE')
+        live_sales = LiveSales.objects.filter(status='ACTIVE')
         gents_pants = Product.objects.filter(category__title__contains='GENT PANTS', status='ACTIVE')
         borkhas = Product.objects.filter(category__title__contains='BORKHA', status='ACTIVE')
         baby_fashions = Product.objects.filter(category__title__contains='BABY FASHION', status='ACTIVE')
@@ -43,6 +44,7 @@ class HomeView(generic.View):
 
         context = {
             'sliders': sliders, 
+            'live_sales': live_sales,
             'gents_pants': gents_pants, 
             'borkhas': borkhas, 
             'baby_fashions': baby_fashions,
