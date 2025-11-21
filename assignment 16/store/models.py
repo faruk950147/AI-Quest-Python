@@ -133,3 +133,25 @@ class Slider(models.Model):
 
     def __str__(self):
         return f'{self.title} - {"Active" if self.status == "ACTIVE" else "Inactive"}'
+
+
+class LiveSales(models.Model):
+    title = models.CharField(max_length=150, unique=True)
+    subtitle = models.CharField(max_length=250, default='N/A')
+    url = models.URLField(max_length=200, default='http://google.com')
+    
+    STATUS_CHOICES = (
+        ('ACTIVE', 'Active'),
+        ('INACTIVE', 'Inactive')
+    )
+    status = models.CharField(max_length=8, choices=STATUS_CHOICES, default='ACTIVE')
+    
+    created_date = models.DateTimeField(auto_now_add=True)
+    updated_date = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['id']
+        verbose_name_plural = '05. Live Sales'
+
+    def __str__(self):
+        return f'{self.title} - {"Active" if self.status == "ACTIVE" else "Inactive"}'
