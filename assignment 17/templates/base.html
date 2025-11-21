@@ -18,6 +18,8 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}">
 
+    <script src="https://cdn.jsdelivr.net/npm/yt-player@latest/dist/yt-player.min.js"></script>
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
 
@@ -39,31 +41,48 @@
 
 </head>
 <body class="js">
-
-    <!-- Your content goes here -->
+    {% block main_content %}
+    
+    {% endblock main_content %}
 <!-- jQuery and Plugins -->
-<script src="{% static 'js/jquery.min.js' %}"></script>
-<script src="{% static 'js/jquery-migrate-3.0.0.js' %}"></script>
-<script src="{% static 'js/jquery-ui.min.js' %}"></script>
+  <script src="https://unpkg.com/yt-player@latest/dist/yt-player.min.js"></script>
 
-<!-- Popper and Bootstrap JS -->
-<script src="{% static 'js/popper.min.js' %}"></script>
-<script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static "js/jquery.min.js" %}"></script>
+  <script src="{% static "js/jquery-migrate-3.0.0.js" %}"></script>
+	<script src="{% static "js/jquery-ui.min.js" %}"></script>
+	<!-- Popper JS -->
+	<script src="{% static "js/popper.min.js" %}"></script>
+	<!-- Bootstrap JS -->
+	<script src="{% static "js/bootstrap.min.js" %}"></script>
+	<!-- Color JS -->
+	<script src="{% static "js/colors.js" %}"></script>
+	<!-- Slicknav JS -->
+	<script src="{% static "js/slicknav.min.js" %}"></script>
+	<!-- Owl Carousel JS -->
+	<script src="{% static "js/owl-carousel.js" %}"></script>
+	<!-- Magnific Popup JS -->
+	<script src="{% static "js/magnific-popup.js" %}"></script>
+	<!-- Fancybox JS -->
+	<script src="{% static "js/facnybox.min.js" %}"></script>
+	<!-- Waypoints JS -->
+	<script src="{% static "js/waypoints.min.js" %}"></script>
+	<!-- Countdown JS -->
+	<script src="{% static "js/finalcountdown.min.js" %}"></script>
+	<!-- Nice Select JS -->
+	<script src="{% static "js/nicesellect.js" %}"></script>
+	<!-- Flex Slider JS -->
+	<script src="{% static "js/flex-slider.js" %}"></script>
+	<!-- ScrollUp JS -->
+	<script src="{% static "js/scrollup.js" %}"></script>
+	<!-- Onepage Nav JS -->
+	<script src="{% static "js/onepage-nav.min.js" %}"></script>
+	<!-- Easing JS -->
+	<script src="{% static "js/easing.js" %}"></script>
+	<!-- Active JS -->
+	<script src="{% static "js/active.js" %}"></script>
 
-<!-- Theme and Plugin JS -->
-<script src="{% static 'js/colors.js' %}"></script>
-<script src="{% static 'js/slicknav.min.js' %}"></script>
-<script src="{% static 'js/owl-carousel.js' %}"></script>
-<script src="{% static 'js/magnific-popup.js' %}"></script>
-<script src="{% static 'js/fancybox.js' %}"></script>
-<script src="{% static 'js/waypoints.min.js' %}"></script>
-<script src="{% static 'js/finalcountdown.min.js' %}"></script>
-<script src="{% static 'js/nicesellect.js' %}"></script>
-<script src="{% static 'js/ytplayer.min.js' %}"></script>
-<script src="{% static 'js/flex-slider.js' %}"></script>
-<script src="{% static 'js/scrollup.js' %}"></script>
-<script src="{% static 'js/onepage-nav.min.js' %}"></script>
-<script src="{% static 'js/easing.js' %}"></script>
-<script src="{% static 'js/active.js' %}"></script>
+  {% block extra_js %}
+  
+  {% endblock extra_js %}
 </body>
 </html>
