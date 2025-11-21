@@ -277,3 +277,4 @@ INFO 2025-11-21 09:08:23,970 django.utils.autoreload autoreload L:\Programming\P
 INFO 2025-11-21 09:08:24,948 django.utils.autoreload autoreload Watching for file changes with StatReloader
 INFO 2025-11-21 09:08:26,655 django.utils.autoreload autoreload L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\views.py changed, reloading.
 INFO 2025-11-21 09:08:28,329 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-21 09:15:36,842 django.utils.autoreload autoreload Watching for file changes with StatReloader
