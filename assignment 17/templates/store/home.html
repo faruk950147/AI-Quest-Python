@@ -2,7 +2,13 @@
 {% load static %} 
 {% block title %}Home{% endblock title %} 
 {% block main_content %}
-<!-- offcanvas area start -->
-{% include 'store/offcanvas.html' %}
-<!-- offcanvas area end -->
+
+    <!-- off_canvas area start -->
+    {% include 'store/off-canvas.html' %}
+    <!-- off_canvas area end -->
+
+    <!-- slider-area-start -->
+    {% include "store/slider.html" %}
+
+
 {% endblock main_content %}
