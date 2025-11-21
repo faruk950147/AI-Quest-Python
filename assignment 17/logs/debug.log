@@ -59,3 +59,5 @@ INFO 2025-11-20 17:34:22,601 django.server basehttp "GET /cart/cart-detail/ HTTP
 INFO 2025-11-20 17:34:26,211 project views User admin decreased quantity of Product 17 to 1
 INFO 2025-11-20 17:34:26,355 django.server basehttp "POST /cart/qty-inc-dec/ HTTP/1.1" 200 112
 INFO 2025-11-21 09:29:54,967 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-21 09:30:00,385 project views User admin visited Home page. Sliders: 4, Gents Pants: 5, Borkhas: 5, Baby Fashions: 5
+INFO 2025-11-21 09:30:00,597 django.server basehttp "GET / HTTP/1.1" 200 27299
