@@ -239,8 +239,15 @@
                         <div class="main-menu d-none d-lg-block">
                             <nav>
                                 <ul>
-                                    <li><a href="" class="active">Home</a></li>
-                                    <li><a href="">Shop</a></li>
+                                    <li>
+                                        <a href="{% url 'home' %}" class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">Home</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'shop' %}" class="{% if request.resolver_match.url_name == 'shop' %}active{% endif %}">Shop</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'product-detail' %}" class="{% if request.resolver_match.url_name == 'details' %}active{% endif %}">Details</a>
+                                    </li>
                                 </ul>
                             </nav>
                         </div>

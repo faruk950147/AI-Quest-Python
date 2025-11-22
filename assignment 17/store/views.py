@@ -8,3 +8,12 @@ from django.views.decorators.cache import never_cache
 class HomeView(generic.View):
     def get(self, request):
         return render(request, 'store/home.html')
+
+class ProductDetailView(generic.View):
+    def get(self, request):
+        return render(request, 'store/product-detail.html')
+ 
+@method_decorator(never_cache, name='dispatch')
+class ShopView(generic.View):
+    def get(self, request):
+        return render(request, 'store/shop.html')
