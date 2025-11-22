@@ -1,14 +1,12 @@
 {% extends 'base.html' %} 
 {% load static %} 
 {% block title %}Home{% endblock title %} 
+
+{% block slider %}
+    {% include 'store/slider.html' %}
+{% endblock slider %}
+
 {% block main_content %}
-
-    <!-- off_canvas area start -->
     {% include 'store/off-canvas.html' %}
-    <!-- off_canvas area end -->
-
-    <!-- slider-area-start -->
-    {% include "store/slider.html" %}
-
 
 {% endblock main_content %}

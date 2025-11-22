@@ -28,6 +28,8 @@
    <body>
      <!-- preloader start -->
       {% include "preloader.html" %}
+      <!-- preloader end -->
+
     <!-- header-start -->
      <header class="header d-blue-bg">
         <div class="header-top">
@@ -541,8 +543,14 @@
      </header>
      <!-- header-end -->
 
+    {% block slider %}
+    
+    {% endblock slider %}
+
     {% block main_content %}
+    
     {% endblock main_content %}
+
     <!-- footer-start -->
     <footer>
         <div class="fotter-area d-ddark-bg">
