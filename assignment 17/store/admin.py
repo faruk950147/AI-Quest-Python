@@ -1,12 +1,12 @@
 from django.contrib import admin
 from store.models import (
-    Category, CategoryTranslation,
-    Brand, BrandTranslation,
-    Product, ProductTranslation,
-    Color, ColorTranslation,
-    Size, SizeTranslation,
-    Slider, SliderTranslation,
-    Review, ReviewTranslation,
+    Category,
+    Brand,
+    Product,
+    Color,
+    Size,
+    Slider,
+    Review,
     ImageGallery
 )
 
@@ -48,6 +48,7 @@ class ImageGalleryAdmin(admin.ModelAdmin):
     list_display = ('id', 'product', 'image_tag', 'created_date')
     readonly_fields = ('image_tag',)
     search_fields = ('product__title',)
+    list_filter = ('product', 'created_date')
 
 # ---------------- COLOR ----------------
 @admin.register(Color)
@@ -55,12 +56,14 @@ class ColorAdmin(admin.ModelAdmin):
     list_display = ('id', 'title', 'code', 'color_tag', 'created_date')
     readonly_fields = ('color_tag',)
     search_fields = ('title', 'code')
+    list_filter = ('created_date',)
 
 # ---------------- SIZE ----------------
 @admin.register(Size)
 class SizeAdmin(admin.ModelAdmin):
     list_display = ('id', 'title', 'code', 'created_date')
     search_fields = ('title', 'code')
+    list_filter = ('created_date',)
 
 # ---------------- SLIDER ----------------
 @admin.register(Slider)
