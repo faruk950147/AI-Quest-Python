@@ -9,6 +9,7 @@ class HomeView(generic.View):
     def get(self, request):
         return render(request, 'store/home.html')
 
+@method_decorator(never_cache, name='dispatch')
 class ProductDetailView(generic.View):
     def get(self, request):
         return render(request, 'store/product-detail.html')
