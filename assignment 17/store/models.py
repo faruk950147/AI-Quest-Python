@@ -197,7 +197,7 @@ class ProductTranslation(models.Model):
 # ---------------- IMAGE GALLERY ----------------
 class ImageGallery(models.Model):
     product = models.ForeignKey(Product, related_name='images', on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='products/%Y/%m/%d/', blank=True, null=True)
+    image = models.ImageField(upload_to='galleries/%Y/%m/%d/', blank=True, null=True)
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
 
