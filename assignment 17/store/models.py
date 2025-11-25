@@ -113,7 +113,8 @@ class Product(models.Model):
     description = models.TextField(default='N/A')
     image = models.ImageField(upload_to='products/%Y/%m/%d/')
     deadline = models.DateTimeField(blank=True, null=True)
-    is_timeline = models.CharField(max_length=8, choices=STATUS_CHOICES, default='active')
+    is_deadline = models.CharField(max_length=8, choices=STATUS_CHOICES, default='active')
+    is_featured = models.CharField(max_length=8, choices=STATUS_CHOICES, default='active')
     status = models.CharField(max_length=8, choices=STATUS_CHOICES, default='active')
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
@@ -148,7 +149,7 @@ class Product(models.Model):
 
     @property
     def remaining(self):
-        if self.deadline and self.is_timeline == 'active':
+        if self.deadline and self.is_deadline == 'active':
             remaining = self.deadline - timezone.now()
             return max(0, int(remaining.total_seconds()))
         return 0
@@ -330,6 +331,7 @@ class Advancement(models.Model):
 class AcceptancePayment(models.Model):
     title = models.CharField(max_length=150)
     subtitle = models.CharField(max_length=150, blank=True, null=True)
+    image = models.ImageField(upload_to='acceptance_payments/%Y/%m/%d/')
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     status = models.CharField(max_length=8, choices=STATUS_CHOICES, default='active')
     created_date = models.DateTimeField(auto_now_add=True)
@@ -338,6 +340,12 @@ class AcceptancePayment(models.Model):
     class Meta:
         ordering = ['id']
         verbose_name_plural = '11. Acceptance Payments'
+    
+    @property
+    def image_tag(self):
+        if self.image and hasattr(self.image, 'url'):
+            return mark_safe(f'<img src="{self.image.url}" alt="{self.title}" style="max-width:50px; max-height:50px;"/>')
+        return mark_safe('<span>No Image</span>')
 
     def __str__(self):
         return f"{self.title} ({self.get_status_display()})"

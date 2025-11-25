@@ -40,7 +40,7 @@ class ProductVariantInline(admin.TabularInline):
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('title', 'category', 'brand', 'sale_price', 'old_price', 'status', 'remaining', 'image_tag')
-    list_filter = ('status', 'category', 'brand', 'is_timeline')
+    list_filter = ('status', 'category', 'brand', 'is_deadline', 'is_featured')
     search_fields = ('title', 'keyword', 'description')
     prepopulated_fields = {'slug': ('title',)}
     inlines = [ImageGalleryInline, ProductVariantInline]
@@ -109,5 +109,6 @@ class AdvancementAdmin(admin.ModelAdmin):
 # =========================================================
 @admin.register(AcceptancePayment)
 class AcceptancePaymentAdmin(admin.ModelAdmin):
-    list_display = ('title', 'amount', 'status', 'created_date')
+    list_display = ('title', 'amount', 'status', 'image_tag', 'created_date', 'updated_date')
     list_filter = ('status',)
+    readonly_fields = ('image_tag',)
