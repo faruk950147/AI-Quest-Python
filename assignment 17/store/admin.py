@@ -13,7 +13,8 @@ class CategoryAdmin(admin.ModelAdmin):
     list_filter = ('status', 'parent')
     search_fields = ('title', 'slug', 'keyword', 'description')
     readonly_fields = ('id', 'image_tag', 'created_date', 'updated_date')
-    fields = ('parent', 'title', 'slug', 'keyword', 'description', 'image', 'image_tag', 'status')
+    fields = ('parent', 'title', 'slug', 'keyword', 'description', 'image', 'image_tag', 'status', 'is_featured')
+    prepopulated_fields = {'slug': ('title',)}
 
 # =========================================================
 # 02. BRAND ADMIN
@@ -24,7 +25,8 @@ class BrandAdmin(admin.ModelAdmin):
     list_filter = ('status',)
     search_fields = ('title', 'slug', 'keyword', 'description')
     readonly_fields = ('id', 'image_tag', 'created_date', 'updated_date')
-    fields = ('title', 'slug', 'keyword', 'description', 'image', 'image_tag', 'status')
+    fields = ('title', 'slug', 'keyword', 'description', 'image', 'image_tag', 'status', 'is_featured')
+    prepopulated_fields = {'slug': ('title',)}
 
 # =========================================================
 # 03. IMAGE GALLERY INLINE
@@ -51,7 +53,7 @@ class AdvancementInline(admin.TabularInline):
     model = Advancement
     extra = 1
     readonly_fields = ('image_tag', 'created_date', 'updated_date')
-    fields = ('advancement_type', 'product', 'title', 'subtitle', 'image', 'image_tag', 'status', 'created_date', 'updated_date')
+    fields = ('advancement_type', 'product', 'title', 'subtitle', 'image', 'image_tag', 'status', 'is_featured', 'created_date', 'updated_date')
 
 # =========================================================
 # 06. PRODUCT ADMIN
@@ -64,6 +66,7 @@ class ProductAdmin(admin.ModelAdmin):
     readonly_fields = ('id', 'image_tag', 'created_date', 'updated_date')
     inlines = [ImageGalleryInline, ProductVariantInline, AdvancementInline]
     fields = ('category', 'brand', 'title', 'slug', 'old_price', 'sale_price', 'discount_percent', 'available_stock', 'keyword', 'description', 'image', 'image_tag', 'deadline', 'is_deadline', 'is_featured', 'status')
+    prepopulated_fields = {'slug': ('title',)}
 
 # =========================================================
 # 07. COLOR ADMIN
@@ -116,7 +119,7 @@ class AdvancementAdmin(admin.ModelAdmin):
     list_filter = ('status', 'advancement_type')
     search_fields = ('title', 'subtitle')
     readonly_fields = ('id', 'image_tag', 'created_date', 'updated_date')
-    fields = ('advancement_type', 'product', 'title', 'subtitle', 'image', 'image_tag', 'status')
+    fields = ('advancement_type', 'product', 'title', 'subtitle', 'image', 'image_tag', 'status', 'is_featured')
 
 # =========================================================
 # 12. ACCEPTANCE PAYMENT ADMIN
@@ -127,4 +130,4 @@ class AcceptancePaymentAdmin(admin.ModelAdmin):
     list_filter = ('status',)
     search_fields = ('title', 'subtitle')
     readonly_fields = ('id', 'image_tag', 'created_date', 'updated_date')
-    fields = ('title', 'subtitle', 'image', 'image_tag', 'amount', 'status')
+    fields = ('title', 'subtitle', 'image', 'image_tag', 'amount', 'status', 'is_featured')
