@@ -659,3 +659,864 @@ DEBUG 2025-11-27 11:17:22,269 django.utils.autoreload autoreload File L:\Program
 DEBUG 2025-11-27 11:17:22,269 django.utils.autoreload autoreload File L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\templates\store\product_grid.html first seen with mtime 1763321945.8789928
 DEBUG 2025-11-27 11:17:22,273 django.utils.autoreload autoreload File L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\templates\store\search-results.html first seen with mtime 1763318158.366458
 DEBUG 2025-11-27 11:17:22,274 django.utils.autoreload autoreload File L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\templates\store\single-product.html first seen with mtime 1763638078.881716
+DEBUG 2025-11-27 11:17:23,537 django.utils.autoreload autoreload File L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\migrations\__init__.py first seen with mtime 1763318158.3584785
+DEBUG 2025-11-27 11:17:23,540 django.utils.autoreload autoreload File C:\Python 3.13.5\Lib\site-packages\django\contrib\sessions\migrations\__init__.py first seen with mtime 1764220577.8832989
+DEBUG 2025-11-27 11:17:23,541 django.utils.autoreload autoreload File C:\Python 3.13.5\Lib\site-packages\django\contrib\auth\migrations\0010_alter_group_name_max_length.py first seen with mtime 1764220574.740863
+DEBUG 2025-11-27 11:17:23,542 django.utils.autoreload autoreload File C:\Python 3.13.5\Lib\site-packages\django\contrib\admin\migrations\0001_initial.py first seen with mtime 1764220573.6896472
+DEBUG 2025-11-27 11:17:23,543 django.utils.autoreload autoreload File L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\checkout\migrations\__init__.py first seen with mtime 1763318158.232572
+DEBUG 2025-11-27 11:17:23,546 django.utils.autoreload autoreload File C:\Python 3.13.5\Lib\site-packages\django\views\csrf.py first seen with mtime 1764220578.9278696
+DEBUG 2025-11-27 11:17:23,547 django.utils.autoreload autoreload File L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\cart\migrations\__init__.py first seen with mtime 1763318158.230572
+DEBUG 2025-11-27 11:17:23,548 django.utils.autoreload autoreload File C:\Python 3.13.5\Lib\site-packages\django\contrib\admin\migrations\0003_logentry_add_action_flag_choices.py first seen with mtime 1764220573.6916456
+DEBUG 2025-11-27 11:17:23,548 django.utils.autoreload autoreload File C:\Python 3.13.5\Lib\site-packages\django\contrib\auth\migrations\0009_alter_user_last_name_max_length.py first seen with mtime 1764220574.7388673
+DEBUG 2025-11-27 11:17:23,551 django.utils.autoreload autoreload File L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\accounts\migrations\__init__.py first seen with mtime 1763318158.2265825
+DEBUG 2025-11-27 11:17:23,553 django.utils.autoreload autoreload File C:\Python 3.13.5\Lib\site-packages\PIL\_deprecate.py first seen with mtime 1764220568.9504876
+DEBUG 2025-11-27 11:17:23,555 django.utils.autoreload autoreload File C:\Python 3.13.5\Lib\site-packages\django\contrib\auth\migrations\0003_alter_user_email_max_length.py first seen with mtime 1764220574.7313747
+DEBUG 2025-11-27 11:17:23,557 django.utils.autoreload autoreload File C:\Python 3.13.5\Lib\site-packages\django\contrib\admin\migrations\0002_logentry_remove_auto_add.py first seen with mtime 1764220573.6907525
+DEBUG 2025-11-27 11:17:23,559 django.utils.autoreload autoreload File C:\Python 3.13.5\Lib\site-packages\PIL\_util.py first seen with mtime 1764220569.021112
+DEBUG 2025-11-27 11:17:23,562 django.utils.autoreload autoreload File C:\Python 3.13.5\Lib\site-packages\django\contrib\auth\migrations\0005_alter_user_last_login_null.py first seen with mtime 1764220574.7343657
+DEBUG 2025-11-27 11:17:23,563 django.utils.autoreload autoreload File C:\Python 3.13.5\Lib\site-packages\django\contrib\auth\migrations\0008_alter_user_username_max_length.py first seen with mtime 1764220574.7378707
+DEBUG 2025-11-27 11:17:23,565 django.utils.autoreload autoreload File C:\Python 3.13.5\Lib\site-packages\django\contrib\sessions\migrations\0001_initial.py first seen with mtime 1764220577.8832989
+DEBUG 2025-11-27 11:17:23,567 django.utils.autoreload autoreload File C:\Python 3.13.5\Lib\stringprep.py first seen with mtime 1749643768.0
+DEBUG 2025-11-27 11:17:23,568 django.utils.autoreload autoreload File C:\Python 3.13.5\Lib\site-packages\PIL\_imaging.cp313-win_amd64.pyd first seen with mtime 1764220568.9765692
+DEBUG 2025-11-27 11:17:23,582 django.utils.autoreload autoreload File C:\Python 3.13.5\Lib\site-packages\django\contrib\auth\migrations\0004_alter_user_username_opts.py first seen with mtime 1764220574.732371
+DEBUG 2025-11-27 11:17:23,596 django.utils.autoreload autoreload File C:\Python 3.13.5\Lib\site-packages\django\contrib\auth\migrations\0007_alter_validators_add_error_messages.py first seen with mtime 1764220574.7368722
+DEBUG 2025-11-27 11:17:23,601 django.utils.autoreload autoreload File L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\cart\migrations\0001_initial.py first seen with mtime 1763518885.7847848
+DEBUG 2025-11-27 11:17:23,749 django.utils.autoreload autoreload File L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\accounts\migrations\0001_initial.py first seen with mtime 1763488563.6510546
+DEBUG 2025-11-27 11:17:23,880 django.utils.autoreload autoreload File C:\Python 3.13.5\Lib\site-packages\django\contrib\admin\migrations\__init__.py first seen with mtime 1764220573.6922576
+DEBUG 2025-11-27 11:17:23,942 django.utils.autoreload autoreload File C:\Python 3.13.5\Lib\site-packages\django\contrib\auth\migrations\0002_alter_permission_name_max_length.py first seen with mtime 1764220574.7303765
+DEBUG 2025-11-27 11:17:23,952 django.utils.autoreload autoreload File C:\Python 3.13.5\Lib\site-packages\django\contrib\contenttypes\migrations\0001_initial.py first seen with mtime 1764220575.128813
+DEBUG 2025-11-27 11:17:23,966 django.utils.autoreload autoreload File C:\Python 3.13.5\Lib\encodings\idna.py first seen with mtime 1749643768.0
+DEBUG 2025-11-27 11:17:23,978 django.utils.autoreload autoreload File C:\Python 3.13.5\Lib\site-packages\django\contrib\sessions\backends\db.py first seen with mtime 1764220577.4958618
+DEBUG 2025-11-27 11:17:23,983 django.utils.autoreload autoreload File L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\migrations\0002_livesales.py first seen with mtime 1763694298.052262
+DEBUG 2025-11-27 11:17:23,985 django.utils.autoreload autoreload File C:\Python 3.13.5\Lib\site-packages\django\contrib\auth\migrations\0006_require_contenttypes_0002.py first seen with mtime 1764220574.7348933
+DEBUG 2025-11-27 11:17:23,996 django.utils.autoreload autoreload File C:\Python 3.13.5\Lib\site-packages\django\contrib\auth\migrations\0001_initial.py first seen with mtime 1764220574.7293787
+DEBUG 2025-11-27 11:17:24,012 django.utils.autoreload autoreload File C:\Python 3.13.5\Lib\site-packages\django\db\models\sql\compiler.py first seen with mtime 1764220578.5487347
+DEBUG 2025-11-27 11:17:24,018 django.utils.autoreload autoreload File L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\checkout\migrations\0001_initial.py first seen with mtime 1763479803.781084
+DEBUG 2025-11-27 11:17:24,030 django.utils.autoreload autoreload File C:\Python 3.13.5\Lib\site-packages\django\contrib\contenttypes\migrations\0002_remove_content_type_name.py first seen with mtime 1764220575.1298094
+DEBUG 2025-11-27 11:17:24,038 django.utils.autoreload autoreload File C:\Python 3.13.5\Lib\site-packages\django\contrib\contenttypes\migrations\__init__.py first seen with mtime 1764220575.1308067
+DEBUG 2025-11-27 11:17:24,042 django.utils.autoreload autoreload File C:\Python 3.13.5\Lib\site-packages\django\contrib\auth\migrations\0011_update_proxy_permissions.py first seen with mtime 1764220574.7420244
+DEBUG 2025-11-27 11:17:24,044 django.utils.autoreload autoreload File C:\Python 3.13.5\Lib\site-packages\django\contrib\auth\migrations\0012_alter_user_first_name_max_length.py first seen with mtime 1764220574.7430253
+DEBUG 2025-11-27 11:17:24,047 django.utils.autoreload autoreload File L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\migrations\0001_initial.py first seen with mtime 1763488563.6540468
+DEBUG 2025-11-27 11:17:24,049 django.utils.autoreload autoreload File L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\config\wsgi.py first seen with mtime 1763318158.2355587
+DEBUG 2025-11-27 11:17:24,052 django.utils.autoreload autoreload File C:\Python 3.13.5\Lib\site-packages\django\contrib\auth\migrations\__init__.py first seen with mtime 1764220574.7440195
+DEBUG 2025-11-27 11:17:27,089 django.db.backends utils (0.000) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > '2025-11-27 05:17:27.084913' AND "django_session"."session_key" = 'eg295anr1uweyvewnxn8kvheu34r6x08') LIMIT 21; args=('2025-11-27 05:17:27.084913', 'eg295anr1uweyvewnxn8kvheu34r6x08'); alias=default
+DEBUG 2025-11-27 11:17:27,092 django.db.backends utils (0.000) SELECT COUNT(*) AS "__count" FROM "store_slider" WHERE "store_slider"."status" = 'ACTIVE'; args=('ACTIVE',); alias=default
+DEBUG 2025-11-27 11:17:27,093 django.db.backends utils (0.000) SELECT COUNT(*) AS "__count" FROM "store_product" INNER JOIN "store_category" ON ("store_product"."category_id" = "store_category"."id") WHERE ("store_category"."title" LIKE '%GENT PANTS%' ESCAPE '\' AND "store_product"."status" = 'ACTIVE'); args=('%GENT PANTS%', 'ACTIVE'); alias=default
+DEBUG 2025-11-27 11:17:27,095 django.db.backends utils (0.000) SELECT COUNT(*) AS "__count" FROM "store_product" INNER JOIN "store_category" ON ("store_product"."category_id" = "store_category"."id") WHERE ("store_category"."title" LIKE '%BORKHA%' ESCAPE '\' AND "store_product"."status" = 'ACTIVE'); args=('%BORKHA%', 'ACTIVE'); alias=default
+DEBUG 2025-11-27 11:17:27,097 django.db.backends utils (0.000) SELECT COUNT(*) AS "__count" FROM "store_product" INNER JOIN "store_category" ON ("store_product"."category_id" = "store_category"."id") WHERE ("store_category"."title" LIKE '%BABY FASHION%' ESCAPE '\' AND "store_product"."status" = 'ACTIVE'); args=('%BABY FASHION%', 'ACTIVE'); alias=default
+INFO 2025-11-27 11:17:27,097 project views User Anonymous visited Home page. Sliders: 4, Gents Pants: 5, Borkhas: 5, Baby Fashions: 5
+DEBUG 2025-11-27 11:17:27,202 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."status" = 'ACTIVE' ORDER BY "store_category"."id" ASC; args=('ACTIVE',); alias=default
+DEBUG 2025-11-27 11:17:27,204 django.template base Exception while resolving variable 'id' in template 'store/home.html'.
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    current = current[bit]
+              ~~~~~~~^^^^^
+KeyError: 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 901, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 907, in _resolve_lookup
+    current = current[int(bit)]
+                      ~~~^^^^^
+ValueError: invalid literal for int() with base 10: 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 914, in _resolve_lookup
+    raise VariableDoesNotExist(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+    )  # missing attribute
+    ^
+django.template.base.VariableDoesNotExist: Failed lookup for key [id] in {}
+DEBUG 2025-11-27 11:17:27,216 django.template base Exception while resolving variable 'id' in template 'store/home.html'.
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    current = current[bit]
+              ~~~~~~~^^^^^
+KeyError: 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 901, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 907, in _resolve_lookup
+    current = current[int(bit)]
+                      ~~~^^^^^
+ValueError: invalid literal for int() with base 10: 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 914, in _resolve_lookup
+    raise VariableDoesNotExist(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+    )  # missing attribute
+    ^
+django.template.base.VariableDoesNotExist: Failed lookup for key [id] in {}
+DEBUG 2025-11-27 11:17:27,233 django.template base Exception while resolving variable 'id' in template 'store/home.html'.
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    current = current[bit]
+              ~~~~~~~^^^^^
+KeyError: 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 901, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 907, in _resolve_lookup
+    current = current[int(bit)]
+                      ~~~^^^^^
+ValueError: invalid literal for int() with base 10: 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 914, in _resolve_lookup
+    raise VariableDoesNotExist(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+    )  # missing attribute
+    ^
+django.template.base.VariableDoesNotExist: Failed lookup for key [id] in {}
+DEBUG 2025-11-27 11:17:27,249 django.template base Exception while resolving variable 'id' in template 'store/home.html'.
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    current = current[bit]
+              ~~~~~~~^^^^^
+KeyError: 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 901, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 907, in _resolve_lookup
+    current = current[int(bit)]
+                      ~~~^^^^^
+ValueError: invalid literal for int() with base 10: 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 914, in _resolve_lookup
+    raise VariableDoesNotExist(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+    )  # missing attribute
+    ^
+django.template.base.VariableDoesNotExist: Failed lookup for key [id] in {}
+DEBUG 2025-11-27 11:17:27,264 django.template base Exception while resolving variable 'id' in template 'store/home.html'.
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    current = current[bit]
+              ~~~~~~~^^^^^
+KeyError: 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 901, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 907, in _resolve_lookup
+    current = current[int(bit)]
+                      ~~~^^^^^
+ValueError: invalid literal for int() with base 10: 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 914, in _resolve_lookup
+    raise VariableDoesNotExist(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+    )  # missing attribute
+    ^
+django.template.base.VariableDoesNotExist: Failed lookup for key [id] in {}
+DEBUG 2025-11-27 11:17:27,284 django.db.backends utils (0.000) SELECT "store_slider"."id", "store_slider"."title", "store_slider"."image", "store_slider"."status", "store_slider"."created_date", "store_slider"."updated_date" FROM "store_slider" WHERE "store_slider"."status" = 'ACTIVE' ORDER BY "store_slider"."id" ASC; args=('ACTIVE',); alias=default
+DEBUG 2025-11-27 11:17:27,292 django.db.backends utils (0.001) SELECT "store_livesales"."id", "store_livesales"."title", "store_livesales"."subtitle", "store_livesales"."url", "store_livesales"."status", "store_livesales"."created_date", "store_livesales"."updated_date" FROM "store_livesales" WHERE "store_livesales"."status" = 'ACTIVE' ORDER BY "store_livesales"."id" ASC; args=('ACTIVE',); alias=default
+DEBUG 2025-11-27 11:17:27,297 django.db.backends utils (0.001) SELECT "store_product"."id", "store_product"."category_id", "store_product"."brand_id", "store_product"."title", "store_product"."slug", "store_product"."old_price", "store_product"."sale_price", "store_product"."available_stock", "store_product"."discount_percent", "store_product"."keyword", "store_product"."description", "store_product"."image", "store_product"."status", "store_product"."created_date", "store_product"."updated_date" FROM "store_product" INNER JOIN "store_category" ON ("store_product"."category_id" = "store_category"."id") WHERE ("store_category"."title" LIKE '%GENT PANTS%' ESCAPE '\' AND "store_product"."status" = 'ACTIVE') ORDER BY "store_product"."id" ASC; args=('%GENT PANTS%', 'ACTIVE'); alias=default
+DEBUG 2025-11-27 11:17:27,314 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 3 LIMIT 21; args=(3,); alias=default
+DEBUG 2025-11-27 11:17:27,319 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 3 LIMIT 21; args=(3,); alias=default
+DEBUG 2025-11-27 11:17:27,331 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 3 LIMIT 21; args=(3,); alias=default
+DEBUG 2025-11-27 11:17:27,334 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 3 LIMIT 21; args=(3,); alias=default
+DEBUG 2025-11-27 11:17:27,340 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 3 LIMIT 21; args=(3,); alias=default
+DEBUG 2025-11-27 11:17:27,350 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 2 LIMIT 21; args=(2,); alias=default
+DEBUG 2025-11-27 11:17:27,356 django.db.backends utils (0.001) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 3 LIMIT 21; args=(3,); alias=default
+DEBUG 2025-11-27 11:17:27,361 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 2 LIMIT 21; args=(2,); alias=default
+DEBUG 2025-11-27 11:17:27,364 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 3 LIMIT 21; args=(3,); alias=default
+DEBUG 2025-11-27 11:17:27,369 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 4 LIMIT 21; args=(4,); alias=default
+DEBUG 2025-11-27 11:17:27,382 django.db.backends utils (0.000) SELECT "store_product"."id", "store_product"."category_id", "store_product"."brand_id", "store_product"."title", "store_product"."slug", "store_product"."old_price", "store_product"."sale_price", "store_product"."available_stock", "store_product"."discount_percent", "store_product"."keyword", "store_product"."description", "store_product"."image", "store_product"."status", "store_product"."created_date", "store_product"."updated_date" FROM "store_product" INNER JOIN "store_category" ON ("store_product"."category_id" = "store_category"."id") WHERE ("store_category"."title" LIKE '%BORKHA%' ESCAPE '\' AND "store_product"."status" = 'ACTIVE') ORDER BY "store_product"."id" ASC; args=('%BORKHA%', 'ACTIVE'); alias=default
+DEBUG 2025-11-27 11:17:27,390 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 4 LIMIT 21; args=(4,); alias=default
+DEBUG 2025-11-27 11:17:27,400 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 1 LIMIT 21; args=(1,); alias=default
+DEBUG 2025-11-27 11:17:27,408 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 4 LIMIT 21; args=(4,); alias=default
+DEBUG 2025-11-27 11:17:27,415 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 1 LIMIT 21; args=(1,); alias=default
+DEBUG 2025-11-27 11:17:27,421 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 4 LIMIT 21; args=(4,); alias=default
+DEBUG 2025-11-27 11:17:27,433 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 2 LIMIT 21; args=(2,); alias=default
+DEBUG 2025-11-27 11:17:27,447 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 4 LIMIT 21; args=(4,); alias=default
+DEBUG 2025-11-27 11:17:27,459 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 2 LIMIT 21; args=(2,); alias=default
+DEBUG 2025-11-27 11:17:27,465 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 4 LIMIT 21; args=(4,); alias=default
+DEBUG 2025-11-27 11:17:27,469 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 4 LIMIT 21; args=(4,); alias=default
+DEBUG 2025-11-27 11:17:27,478 django.db.backends utils (0.000) SELECT "store_product"."id", "store_product"."category_id", "store_product"."brand_id", "store_product"."title", "store_product"."slug", "store_product"."old_price", "store_product"."sale_price", "store_product"."available_stock", "store_product"."discount_percent", "store_product"."keyword", "store_product"."description", "store_product"."image", "store_product"."status", "store_product"."created_date", "store_product"."updated_date" FROM "store_product" INNER JOIN "store_category" ON ("store_product"."category_id" = "store_category"."id") WHERE ("store_category"."title" LIKE '%BABY FASHION%' ESCAPE '\' AND "store_product"."status" = 'ACTIVE') ORDER BY "store_product"."id" ASC; args=('%BABY FASHION%', 'ACTIVE'); alias=default
+DEBUG 2025-11-27 11:17:27,484 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 5 LIMIT 21; args=(5,); alias=default
+DEBUG 2025-11-27 11:17:27,495 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 1 LIMIT 21; args=(1,); alias=default
+DEBUG 2025-11-27 11:17:27,498 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 5 LIMIT 21; args=(5,); alias=default
+DEBUG 2025-11-27 11:17:27,503 django.db.backends utils (0.001) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 1 LIMIT 21; args=(1,); alias=default
+DEBUG 2025-11-27 11:17:27,511 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 5 LIMIT 21; args=(5,); alias=default
+DEBUG 2025-11-27 11:17:27,514 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 2 LIMIT 21; args=(2,); alias=default
+DEBUG 2025-11-27 11:17:27,518 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 5 LIMIT 21; args=(5,); alias=default
+DEBUG 2025-11-27 11:17:27,524 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 2 LIMIT 21; args=(2,); alias=default
+DEBUG 2025-11-27 11:17:27,529 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 5 LIMIT 21; args=(5,); alias=default
+DEBUG 2025-11-27 11:17:27,533 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 4 LIMIT 21; args=(4,); alias=default
+INFO 2025-11-27 11:17:27,541 django.server basehttp "GET / HTTP/1.1" 200 26375
+DEBUG 2025-11-27 11:17:27,915 django.utils.autoreload autoreload File L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\cart\context_processors.py first seen with mtime 1763318158.2295747
+DEBUG 2025-11-27 11:17:27,930 django.utils.autoreload autoreload File C:\Python 3.13.5\Lib\site-packages\django\template\context_processors.py first seen with mtime 1764220578.806203
+DEBUG 2025-11-27 11:17:27,932 django.utils.autoreload autoreload File C:\Python 3.13.5\Lib\site-packages\django\contrib\messages\storage\fallback.py first seen with mtime 1764220576.4494529
+DEBUG 2025-11-27 11:17:27,948 django.utils.autoreload autoreload File C:\Python 3.13.5\Lib\site-packages\django\contrib\messages\storage\cookie.py first seen with mtime 1764220576.4484591
+DEBUG 2025-11-27 11:17:27,967 django.utils.autoreload autoreload File C:\Python 3.13.5\Lib\site-packages\django\contrib\messages\storage\session.py first seen with mtime 1764220576.450449
+DEBUG 2025-11-27 11:17:27,977 django.utils.autoreload autoreload File C:\Python 3.13.5\Lib\site-packages\django\contrib\messages\context_processors.py first seen with mtime 1764220576.438884
+DEBUG 2025-11-27 11:17:27,978 django.utils.autoreload autoreload File C:\Python 3.13.5\Lib\site-packages\django\contrib\auth\context_processors.py first seen with mtime 1764220574.2563133
+DEBUG 2025-11-27 11:17:27,980 django.utils.autoreload autoreload File L:\Programming\Programming\All-Main-Problem-Solving\AI-Quest-Python\assignment 16\store\context_processors.py first seen with mtime 1763318158.357491
+DEBUG 2025-11-27 11:17:27,982 django.utils.autoreload autoreload File C:\Python 3.13.5\Lib\site-packages\django\contrib\sessions\serializers.py first seen with mtime 1764220577.4897163
+DEBUG 2025-11-27 11:17:29,254 django.utils.autoreload autoreload File C:\Python 3.13.5\Lib\site-packages\django\conf\locale\en\__init__.py first seen with mtime 1764220572.3406043
+DEBUG 2025-11-27 11:17:29,280 django.utils.autoreload autoreload File C:\Python 3.13.5\Lib\site-packages\django\contrib\staticfiles\storage.py first seen with mtime 1764220578.249659
+DEBUG 2025-11-27 11:17:29,309 django.utils.autoreload autoreload File C:\Python 3.13.5\Lib\site-packages\django\conf\locale\en\formats.py first seen with mtime 1764220572.3417141
+DEBUG 2025-11-27 11:17:33,425 django.db.backends utils (0.000) SELECT COUNT(*) AS "__count" FROM "store_slider" WHERE "store_slider"."status" = 'ACTIVE'; args=('ACTIVE',); alias=default
+DEBUG 2025-11-27 11:17:33,426 django.db.backends utils (0.000) SELECT COUNT(*) AS "__count" FROM "store_product" INNER JOIN "store_category" ON ("store_product"."category_id" = "store_category"."id") WHERE ("store_category"."title" LIKE '%GENT PANTS%' ESCAPE '\' AND "store_product"."status" = 'ACTIVE'); args=('%GENT PANTS%', 'ACTIVE'); alias=default
+DEBUG 2025-11-27 11:17:33,428 django.db.backends utils (0.000) SELECT COUNT(*) AS "__count" FROM "store_product" INNER JOIN "store_category" ON ("store_product"."category_id" = "store_category"."id") WHERE ("store_category"."title" LIKE '%BORKHA%' ESCAPE '\' AND "store_product"."status" = 'ACTIVE'); args=('%BORKHA%', 'ACTIVE'); alias=default
+DEBUG 2025-11-27 11:17:33,430 django.db.backends utils (0.000) SELECT COUNT(*) AS "__count" FROM "store_product" INNER JOIN "store_category" ON ("store_product"."category_id" = "store_category"."id") WHERE ("store_category"."title" LIKE '%BABY FASHION%' ESCAPE '\' AND "store_product"."status" = 'ACTIVE'); args=('%BABY FASHION%', 'ACTIVE'); alias=default
+INFO 2025-11-27 11:17:33,431 project views User Anonymous visited Home page. Sliders: 4, Gents Pants: 5, Borkhas: 5, Baby Fashions: 5
+DEBUG 2025-11-27 11:17:33,435 django.db.backends utils (0.001) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."status" = 'ACTIVE' ORDER BY "store_category"."id" ASC; args=('ACTIVE',); alias=default
+DEBUG 2025-11-27 11:17:33,445 django.template base Exception while resolving variable 'id' in template 'store/home.html'.
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    current = current[bit]
+              ~~~~~~~^^^^^
+KeyError: 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 901, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 907, in _resolve_lookup
+    current = current[int(bit)]
+                      ~~~^^^^^
+ValueError: invalid literal for int() with base 10: 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 914, in _resolve_lookup
+    raise VariableDoesNotExist(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+    )  # missing attribute
+    ^
+django.template.base.VariableDoesNotExist: Failed lookup for key [id] in {}
+DEBUG 2025-11-27 11:17:33,450 django.template base Exception while resolving variable 'id' in template 'store/home.html'.
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    current = current[bit]
+              ~~~~~~~^^^^^
+KeyError: 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 901, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 907, in _resolve_lookup
+    current = current[int(bit)]
+                      ~~~^^^^^
+ValueError: invalid literal for int() with base 10: 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 914, in _resolve_lookup
+    raise VariableDoesNotExist(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+    )  # missing attribute
+    ^
+django.template.base.VariableDoesNotExist: Failed lookup for key [id] in {}
+DEBUG 2025-11-27 11:17:33,463 django.template base Exception while resolving variable 'id' in template 'store/home.html'.
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    current = current[bit]
+              ~~~~~~~^^^^^
+KeyError: 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 901, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 907, in _resolve_lookup
+    current = current[int(bit)]
+                      ~~~^^^^^
+ValueError: invalid literal for int() with base 10: 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 914, in _resolve_lookup
+    raise VariableDoesNotExist(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+    )  # missing attribute
+    ^
+django.template.base.VariableDoesNotExist: Failed lookup for key [id] in {}
+DEBUG 2025-11-27 11:17:33,472 django.template base Exception while resolving variable 'id' in template 'store/home.html'.
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    current = current[bit]
+              ~~~~~~~^^^^^
+KeyError: 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 901, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 907, in _resolve_lookup
+    current = current[int(bit)]
+                      ~~~^^^^^
+ValueError: invalid literal for int() with base 10: 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 914, in _resolve_lookup
+    raise VariableDoesNotExist(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+    )  # missing attribute
+    ^
+django.template.base.VariableDoesNotExist: Failed lookup for key [id] in {}
+DEBUG 2025-11-27 11:17:33,482 django.template base Exception while resolving variable 'id' in template 'store/home.html'.
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    current = current[bit]
+              ~~~~~~~^^^^^
+KeyError: 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 901, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 907, in _resolve_lookup
+    current = current[int(bit)]
+                      ~~~^^^^^
+ValueError: invalid literal for int() with base 10: 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 914, in _resolve_lookup
+    raise VariableDoesNotExist(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+    )  # missing attribute
+    ^
+django.template.base.VariableDoesNotExist: Failed lookup for key [id] in {}
+DEBUG 2025-11-27 11:17:33,496 django.db.backends utils (0.000) SELECT "store_slider"."id", "store_slider"."title", "store_slider"."image", "store_slider"."status", "store_slider"."created_date", "store_slider"."updated_date" FROM "store_slider" WHERE "store_slider"."status" = 'ACTIVE' ORDER BY "store_slider"."id" ASC; args=('ACTIVE',); alias=default
+DEBUG 2025-11-27 11:17:33,499 django.db.backends utils (0.000) SELECT "store_livesales"."id", "store_livesales"."title", "store_livesales"."subtitle", "store_livesales"."url", "store_livesales"."status", "store_livesales"."created_date", "store_livesales"."updated_date" FROM "store_livesales" WHERE "store_livesales"."status" = 'ACTIVE' ORDER BY "store_livesales"."id" ASC; args=('ACTIVE',); alias=default
+DEBUG 2025-11-27 11:17:33,501 django.db.backends utils (0.000) SELECT "store_product"."id", "store_product"."category_id", "store_product"."brand_id", "store_product"."title", "store_product"."slug", "store_product"."old_price", "store_product"."sale_price", "store_product"."available_stock", "store_product"."discount_percent", "store_product"."keyword", "store_product"."description", "store_product"."image", "store_product"."status", "store_product"."created_date", "store_product"."updated_date" FROM "store_product" INNER JOIN "store_category" ON ("store_product"."category_id" = "store_category"."id") WHERE ("store_category"."title" LIKE '%GENT PANTS%' ESCAPE '\' AND "store_product"."status" = 'ACTIVE') ORDER BY "store_product"."id" ASC; args=('%GENT PANTS%', 'ACTIVE'); alias=default
+DEBUG 2025-11-27 11:17:33,507 django.db.backends utils (0.001) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 3 LIMIT 21; args=(3,); alias=default
+DEBUG 2025-11-27 11:17:33,510 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 3 LIMIT 21; args=(3,); alias=default
+DEBUG 2025-11-27 11:17:33,513 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 3 LIMIT 21; args=(3,); alias=default
+DEBUG 2025-11-27 11:17:33,515 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 3 LIMIT 21; args=(3,); alias=default
+DEBUG 2025-11-27 11:17:33,518 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 3 LIMIT 21; args=(3,); alias=default
+DEBUG 2025-11-27 11:17:33,523 django.db.backends utils (0.001) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 2 LIMIT 21; args=(2,); alias=default
+DEBUG 2025-11-27 11:17:33,528 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 3 LIMIT 21; args=(3,); alias=default
+DEBUG 2025-11-27 11:17:33,531 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 2 LIMIT 21; args=(2,); alias=default
+DEBUG 2025-11-27 11:17:33,533 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 3 LIMIT 21; args=(3,); alias=default
+DEBUG 2025-11-27 11:17:33,535 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 4 LIMIT 21; args=(4,); alias=default
+DEBUG 2025-11-27 11:17:33,541 django.db.backends utils (0.001) SELECT "store_product"."id", "store_product"."category_id", "store_product"."brand_id", "store_product"."title", "store_product"."slug", "store_product"."old_price", "store_product"."sale_price", "store_product"."available_stock", "store_product"."discount_percent", "store_product"."keyword", "store_product"."description", "store_product"."image", "store_product"."status", "store_product"."created_date", "store_product"."updated_date" FROM "store_product" INNER JOIN "store_category" ON ("store_product"."category_id" = "store_category"."id") WHERE ("store_category"."title" LIKE '%BORKHA%' ESCAPE '\' AND "store_product"."status" = 'ACTIVE') ORDER BY "store_product"."id" ASC; args=('%BORKHA%', 'ACTIVE'); alias=default
+DEBUG 2025-11-27 11:17:33,546 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 4 LIMIT 21; args=(4,); alias=default
+DEBUG 2025-11-27 11:17:33,548 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 1 LIMIT 21; args=(1,); alias=default
+DEBUG 2025-11-27 11:17:33,550 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 4 LIMIT 21; args=(4,); alias=default
+DEBUG 2025-11-27 11:17:33,553 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 1 LIMIT 21; args=(1,); alias=default
+DEBUG 2025-11-27 11:17:33,560 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 4 LIMIT 21; args=(4,); alias=default
+DEBUG 2025-11-27 11:17:33,562 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 2 LIMIT 21; args=(2,); alias=default
+DEBUG 2025-11-27 11:17:33,565 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 4 LIMIT 21; args=(4,); alias=default
+DEBUG 2025-11-27 11:17:33,567 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 2 LIMIT 21; args=(2,); alias=default
+DEBUG 2025-11-27 11:17:33,569 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 4 LIMIT 21; args=(4,); alias=default
+DEBUG 2025-11-27 11:17:33,576 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 4 LIMIT 21; args=(4,); alias=default
+DEBUG 2025-11-27 11:17:33,578 django.db.backends utils (0.000) SELECT "store_product"."id", "store_product"."category_id", "store_product"."brand_id", "store_product"."title", "store_product"."slug", "store_product"."old_price", "store_product"."sale_price", "store_product"."available_stock", "store_product"."discount_percent", "store_product"."keyword", "store_product"."description", "store_product"."image", "store_product"."status", "store_product"."created_date", "store_product"."updated_date" FROM "store_product" INNER JOIN "store_category" ON ("store_product"."category_id" = "store_category"."id") WHERE ("store_category"."title" LIKE '%BABY FASHION%' ESCAPE '\' AND "store_product"."status" = 'ACTIVE') ORDER BY "store_product"."id" ASC; args=('%BABY FASHION%', 'ACTIVE'); alias=default
+DEBUG 2025-11-27 11:17:33,582 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 5 LIMIT 21; args=(5,); alias=default
+DEBUG 2025-11-27 11:17:33,585 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 1 LIMIT 21; args=(1,); alias=default
+DEBUG 2025-11-27 11:17:33,594 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 5 LIMIT 21; args=(5,); alias=default
+DEBUG 2025-11-27 11:17:33,597 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 1 LIMIT 21; args=(1,); alias=default
+DEBUG 2025-11-27 11:17:33,600 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 5 LIMIT 21; args=(5,); alias=default
+DEBUG 2025-11-27 11:17:33,601 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 2 LIMIT 21; args=(2,); alias=default
+DEBUG 2025-11-27 11:17:33,607 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 5 LIMIT 21; args=(5,); alias=default
+DEBUG 2025-11-27 11:17:33,610 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 2 LIMIT 21; args=(2,); alias=default
+DEBUG 2025-11-27 11:17:33,614 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 5 LIMIT 21; args=(5,); alias=default
+DEBUG 2025-11-27 11:17:33,616 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 4 LIMIT 21; args=(4,); alias=default
+INFO 2025-11-27 11:17:33,619 django.server basehttp "GET / HTTP/1.1" 200 26375
+DEBUG 2025-11-27 11:17:35,038 django.db.backends utils (0.000) SELECT COUNT(*) AS "__count" FROM "store_slider" WHERE "store_slider"."status" = 'ACTIVE'; args=('ACTIVE',); alias=default
+DEBUG 2025-11-27 11:17:35,040 django.db.backends utils (0.000) SELECT COUNT(*) AS "__count" FROM "store_product" INNER JOIN "store_category" ON ("store_product"."category_id" = "store_category"."id") WHERE ("store_category"."title" LIKE '%GENT PANTS%' ESCAPE '\' AND "store_product"."status" = 'ACTIVE'); args=('%GENT PANTS%', 'ACTIVE'); alias=default
+DEBUG 2025-11-27 11:17:35,041 django.db.backends utils (0.000) SELECT COUNT(*) AS "__count" FROM "store_product" INNER JOIN "store_category" ON ("store_product"."category_id" = "store_category"."id") WHERE ("store_category"."title" LIKE '%BORKHA%' ESCAPE '\' AND "store_product"."status" = 'ACTIVE'); args=('%BORKHA%', 'ACTIVE'); alias=default
+DEBUG 2025-11-27 11:17:35,043 django.db.backends utils (0.000) SELECT COUNT(*) AS "__count" FROM "store_product" INNER JOIN "store_category" ON ("store_product"."category_id" = "store_category"."id") WHERE ("store_category"."title" LIKE '%BABY FASHION%' ESCAPE '\' AND "store_product"."status" = 'ACTIVE'); args=('%BABY FASHION%', 'ACTIVE'); alias=default
+INFO 2025-11-27 11:17:35,044 project views User Anonymous visited Home page. Sliders: 4, Gents Pants: 5, Borkhas: 5, Baby Fashions: 5
+DEBUG 2025-11-27 11:17:35,052 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."status" = 'ACTIVE' ORDER BY "store_category"."id" ASC; args=('ACTIVE',); alias=default
+DEBUG 2025-11-27 11:17:35,056 django.template base Exception while resolving variable 'id' in template 'store/home.html'.
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    current = current[bit]
+              ~~~~~~~^^^^^
+KeyError: 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 901, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 907, in _resolve_lookup
+    current = current[int(bit)]
+                      ~~~^^^^^
+ValueError: invalid literal for int() with base 10: 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 914, in _resolve_lookup
+    raise VariableDoesNotExist(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+    )  # missing attribute
+    ^
+django.template.base.VariableDoesNotExist: Failed lookup for key [id] in {}
+DEBUG 2025-11-27 11:17:35,065 django.template base Exception while resolving variable 'id' in template 'store/home.html'.
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    current = current[bit]
+              ~~~~~~~^^^^^
+KeyError: 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 901, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 907, in _resolve_lookup
+    current = current[int(bit)]
+                      ~~~^^^^^
+ValueError: invalid literal for int() with base 10: 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 914, in _resolve_lookup
+    raise VariableDoesNotExist(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+    )  # missing attribute
+    ^
+django.template.base.VariableDoesNotExist: Failed lookup for key [id] in {}
+DEBUG 2025-11-27 11:17:35,077 django.template base Exception while resolving variable 'id' in template 'store/home.html'.
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    current = current[bit]
+              ~~~~~~~^^^^^
+KeyError: 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 901, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 907, in _resolve_lookup
+    current = current[int(bit)]
+                      ~~~^^^^^
+ValueError: invalid literal for int() with base 10: 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 914, in _resolve_lookup
+    raise VariableDoesNotExist(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+    )  # missing attribute
+    ^
+django.template.base.VariableDoesNotExist: Failed lookup for key [id] in {}
+DEBUG 2025-11-27 11:17:35,083 django.template base Exception while resolving variable 'id' in template 'store/home.html'.
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    current = current[bit]
+              ~~~~~~~^^^^^
+KeyError: 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 901, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 907, in _resolve_lookup
+    current = current[int(bit)]
+                      ~~~^^^^^
+ValueError: invalid literal for int() with base 10: 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 914, in _resolve_lookup
+    raise VariableDoesNotExist(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+    )  # missing attribute
+    ^
+django.template.base.VariableDoesNotExist: Failed lookup for key [id] in {}
+DEBUG 2025-11-27 11:17:35,094 django.template base Exception while resolving variable 'id' in template 'store/home.html'.
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    current = current[bit]
+              ~~~~~~~^^^^^
+KeyError: 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 901, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 907, in _resolve_lookup
+    current = current[int(bit)]
+                      ~~~^^^^^
+ValueError: invalid literal for int() with base 10: 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 914, in _resolve_lookup
+    raise VariableDoesNotExist(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+    )  # missing attribute
+    ^
+django.template.base.VariableDoesNotExist: Failed lookup for key [id] in {}
+DEBUG 2025-11-27 11:17:35,101 django.db.backends utils (0.000) SELECT "store_slider"."id", "store_slider"."title", "store_slider"."image", "store_slider"."status", "store_slider"."created_date", "store_slider"."updated_date" FROM "store_slider" WHERE "store_slider"."status" = 'ACTIVE' ORDER BY "store_slider"."id" ASC; args=('ACTIVE',); alias=default
+DEBUG 2025-11-27 11:17:35,104 django.db.backends utils (0.001) SELECT "store_livesales"."id", "store_livesales"."title", "store_livesales"."subtitle", "store_livesales"."url", "store_livesales"."status", "store_livesales"."created_date", "store_livesales"."updated_date" FROM "store_livesales" WHERE "store_livesales"."status" = 'ACTIVE' ORDER BY "store_livesales"."id" ASC; args=('ACTIVE',); alias=default
+DEBUG 2025-11-27 11:17:35,109 django.db.backends utils (0.000) SELECT "store_product"."id", "store_product"."category_id", "store_product"."brand_id", "store_product"."title", "store_product"."slug", "store_product"."old_price", "store_product"."sale_price", "store_product"."available_stock", "store_product"."discount_percent", "store_product"."keyword", "store_product"."description", "store_product"."image", "store_product"."status", "store_product"."created_date", "store_product"."updated_date" FROM "store_product" INNER JOIN "store_category" ON ("store_product"."category_id" = "store_category"."id") WHERE ("store_category"."title" LIKE '%GENT PANTS%' ESCAPE '\' AND "store_product"."status" = 'ACTIVE') ORDER BY "store_product"."id" ASC; args=('%GENT PANTS%', 'ACTIVE'); alias=default
+DEBUG 2025-11-27 11:17:35,114 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 3 LIMIT 21; args=(3,); alias=default
+DEBUG 2025-11-27 11:17:35,116 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 3 LIMIT 21; args=(3,); alias=default
+DEBUG 2025-11-27 11:17:35,119 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 3 LIMIT 21; args=(3,); alias=default
+DEBUG 2025-11-27 11:17:35,124 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 3 LIMIT 21; args=(3,); alias=default
+DEBUG 2025-11-27 11:17:35,126 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 3 LIMIT 21; args=(3,); alias=default
+DEBUG 2025-11-27 11:17:35,128 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 2 LIMIT 21; args=(2,); alias=default
+DEBUG 2025-11-27 11:17:35,131 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 3 LIMIT 21; args=(3,); alias=default
+DEBUG 2025-11-27 11:17:35,133 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 2 LIMIT 21; args=(2,); alias=default
+DEBUG 2025-11-27 11:17:35,136 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 3 LIMIT 21; args=(3,); alias=default
+DEBUG 2025-11-27 11:17:35,141 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 4 LIMIT 21; args=(4,); alias=default
+DEBUG 2025-11-27 11:17:35,144 django.db.backends utils (0.001) SELECT "store_product"."id", "store_product"."category_id", "store_product"."brand_id", "store_product"."title", "store_product"."slug", "store_product"."old_price", "store_product"."sale_price", "store_product"."available_stock", "store_product"."discount_percent", "store_product"."keyword", "store_product"."description", "store_product"."image", "store_product"."status", "store_product"."created_date", "store_product"."updated_date" FROM "store_product" INNER JOIN "store_category" ON ("store_product"."category_id" = "store_category"."id") WHERE ("store_category"."title" LIKE '%BORKHA%' ESCAPE '\' AND "store_product"."status" = 'ACTIVE') ORDER BY "store_product"."id" ASC; args=('%BORKHA%', 'ACTIVE'); alias=default
+DEBUG 2025-11-27 11:17:35,148 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 4 LIMIT 21; args=(4,); alias=default
+DEBUG 2025-11-27 11:17:35,150 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 1 LIMIT 21; args=(1,); alias=default
+DEBUG 2025-11-27 11:17:35,152 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 4 LIMIT 21; args=(4,); alias=default
+DEBUG 2025-11-27 11:17:35,155 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 1 LIMIT 21; args=(1,); alias=default
+DEBUG 2025-11-27 11:17:35,158 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 4 LIMIT 21; args=(4,); alias=default
+DEBUG 2025-11-27 11:17:35,162 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 2 LIMIT 21; args=(2,); alias=default
+DEBUG 2025-11-27 11:17:35,165 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 4 LIMIT 21; args=(4,); alias=default
+DEBUG 2025-11-27 11:17:35,167 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 2 LIMIT 21; args=(2,); alias=default
+DEBUG 2025-11-27 11:17:35,173 django.db.backends utils (0.001) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 4 LIMIT 21; args=(4,); alias=default
+DEBUG 2025-11-27 11:17:35,176 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 4 LIMIT 21; args=(4,); alias=default
+DEBUG 2025-11-27 11:17:35,178 django.db.backends utils (0.000) SELECT "store_product"."id", "store_product"."category_id", "store_product"."brand_id", "store_product"."title", "store_product"."slug", "store_product"."old_price", "store_product"."sale_price", "store_product"."available_stock", "store_product"."discount_percent", "store_product"."keyword", "store_product"."description", "store_product"."image", "store_product"."status", "store_product"."created_date", "store_product"."updated_date" FROM "store_product" INNER JOIN "store_category" ON ("store_product"."category_id" = "store_category"."id") WHERE ("store_category"."title" LIKE '%BABY FASHION%' ESCAPE '\' AND "store_product"."status" = 'ACTIVE') ORDER BY "store_product"."id" ASC; args=('%BABY FASHION%', 'ACTIVE'); alias=default
+DEBUG 2025-11-27 11:17:35,182 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 5 LIMIT 21; args=(5,); alias=default
+DEBUG 2025-11-27 11:17:35,184 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 1 LIMIT 21; args=(1,); alias=default
+DEBUG 2025-11-27 11:17:35,187 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 5 LIMIT 21; args=(5,); alias=default
+DEBUG 2025-11-27 11:17:35,193 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 1 LIMIT 21; args=(1,); alias=default
+DEBUG 2025-11-27 11:17:35,195 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 5 LIMIT 21; args=(5,); alias=default
+DEBUG 2025-11-27 11:17:35,198 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 2 LIMIT 21; args=(2,); alias=default
+DEBUG 2025-11-27 11:17:35,200 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 5 LIMIT 21; args=(5,); alias=default
+DEBUG 2025-11-27 11:17:35,202 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 2 LIMIT 21; args=(2,); alias=default
+DEBUG 2025-11-27 11:17:35,208 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 5 LIMIT 21; args=(5,); alias=default
+DEBUG 2025-11-27 11:17:35,210 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 4 LIMIT 21; args=(4,); alias=default
+INFO 2025-11-27 11:17:35,213 django.server basehttp "GET / HTTP/1.1" 200 26375
+DEBUG 2025-11-27 11:17:36,158 django.db.backends utils (0.000) SELECT COUNT(*) AS "__count" FROM "store_slider" WHERE "store_slider"."status" = 'ACTIVE'; args=('ACTIVE',); alias=default
+DEBUG 2025-11-27 11:17:36,159 django.db.backends utils (0.000) SELECT COUNT(*) AS "__count" FROM "store_product" INNER JOIN "store_category" ON ("store_product"."category_id" = "store_category"."id") WHERE ("store_category"."title" LIKE '%GENT PANTS%' ESCAPE '\' AND "store_product"."status" = 'ACTIVE'); args=('%GENT PANTS%', 'ACTIVE'); alias=default
+DEBUG 2025-11-27 11:17:36,161 django.db.backends utils (0.000) SELECT COUNT(*) AS "__count" FROM "store_product" INNER JOIN "store_category" ON ("store_product"."category_id" = "store_category"."id") WHERE ("store_category"."title" LIKE '%BORKHA%' ESCAPE '\' AND "store_product"."status" = 'ACTIVE'); args=('%BORKHA%', 'ACTIVE'); alias=default
+DEBUG 2025-11-27 11:17:36,163 django.db.backends utils (0.000) SELECT COUNT(*) AS "__count" FROM "store_product" INNER JOIN "store_category" ON ("store_product"."category_id" = "store_category"."id") WHERE ("store_category"."title" LIKE '%BABY FASHION%' ESCAPE '\' AND "store_product"."status" = 'ACTIVE'); args=('%BABY FASHION%', 'ACTIVE'); alias=default
+INFO 2025-11-27 11:17:36,164 project views User Anonymous visited Home page. Sliders: 4, Gents Pants: 5, Borkhas: 5, Baby Fashions: 5
+DEBUG 2025-11-27 11:17:36,169 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."status" = 'ACTIVE' ORDER BY "store_category"."id" ASC; args=('ACTIVE',); alias=default
+DEBUG 2025-11-27 11:17:36,172 django.template base Exception while resolving variable 'id' in template 'store/home.html'.
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    current = current[bit]
+              ~~~~~~~^^^^^
+KeyError: 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 901, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 907, in _resolve_lookup
+    current = current[int(bit)]
+                      ~~~^^^^^
+ValueError: invalid literal for int() with base 10: 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 914, in _resolve_lookup
+    raise VariableDoesNotExist(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+    )  # missing attribute
+    ^
+django.template.base.VariableDoesNotExist: Failed lookup for key [id] in {}
+DEBUG 2025-11-27 11:17:36,185 django.template base Exception while resolving variable 'id' in template 'store/home.html'.
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    current = current[bit]
+              ~~~~~~~^^^^^
+KeyError: 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 901, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 907, in _resolve_lookup
+    current = current[int(bit)]
+                      ~~~^^^^^
+ValueError: invalid literal for int() with base 10: 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 914, in _resolve_lookup
+    raise VariableDoesNotExist(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+    )  # missing attribute
+    ^
+django.template.base.VariableDoesNotExist: Failed lookup for key [id] in {}
+DEBUG 2025-11-27 11:17:36,199 django.template base Exception while resolving variable 'id' in template 'store/home.html'.
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    current = current[bit]
+              ~~~~~~~^^^^^
+KeyError: 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 901, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 907, in _resolve_lookup
+    current = current[int(bit)]
+                      ~~~^^^^^
+ValueError: invalid literal for int() with base 10: 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 914, in _resolve_lookup
+    raise VariableDoesNotExist(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+    )  # missing attribute
+    ^
+django.template.base.VariableDoesNotExist: Failed lookup for key [id] in {}
+DEBUG 2025-11-27 11:17:36,212 django.template base Exception while resolving variable 'id' in template 'store/home.html'.
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    current = current[bit]
+              ~~~~~~~^^^^^
+KeyError: 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 901, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 907, in _resolve_lookup
+    current = current[int(bit)]
+                      ~~~^^^^^
+ValueError: invalid literal for int() with base 10: 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 914, in _resolve_lookup
+    raise VariableDoesNotExist(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+    )  # missing attribute
+    ^
+django.template.base.VariableDoesNotExist: Failed lookup for key [id] in {}
+DEBUG 2025-11-27 11:17:36,218 django.template base Exception while resolving variable 'id' in template 'store/home.html'.
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    current = current[bit]
+              ~~~~~~~^^^^^
+KeyError: 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 901, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'dict' object has no attribute 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 907, in _resolve_lookup
+    current = current[int(bit)]
+                      ~~~^^^^^
+ValueError: invalid literal for int() with base 10: 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python 3.13.5\Lib\site-packages\django\template\base.py", line 914, in _resolve_lookup
+    raise VariableDoesNotExist(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+    )  # missing attribute
+    ^
+django.template.base.VariableDoesNotExist: Failed lookup for key [id] in {}
+DEBUG 2025-11-27 11:17:36,229 django.db.backends utils (0.000) SELECT "store_slider"."id", "store_slider"."title", "store_slider"."image", "store_slider"."status", "store_slider"."created_date", "store_slider"."updated_date" FROM "store_slider" WHERE "store_slider"."status" = 'ACTIVE' ORDER BY "store_slider"."id" ASC; args=('ACTIVE',); alias=default
+DEBUG 2025-11-27 11:17:36,232 django.db.backends utils (0.000) SELECT "store_livesales"."id", "store_livesales"."title", "store_livesales"."subtitle", "store_livesales"."url", "store_livesales"."status", "store_livesales"."created_date", "store_livesales"."updated_date" FROM "store_livesales" WHERE "store_livesales"."status" = 'ACTIVE' ORDER BY "store_livesales"."id" ASC; args=('ACTIVE',); alias=default
+DEBUG 2025-11-27 11:17:36,234 django.db.backends utils (0.000) SELECT "store_product"."id", "store_product"."category_id", "store_product"."brand_id", "store_product"."title", "store_product"."slug", "store_product"."old_price", "store_product"."sale_price", "store_product"."available_stock", "store_product"."discount_percent", "store_product"."keyword", "store_product"."description", "store_product"."image", "store_product"."status", "store_product"."created_date", "store_product"."updated_date" FROM "store_product" INNER JOIN "store_category" ON ("store_product"."category_id" = "store_category"."id") WHERE ("store_category"."title" LIKE '%GENT PANTS%' ESCAPE '\' AND "store_product"."status" = 'ACTIVE') ORDER BY "store_product"."id" ASC; args=('%GENT PANTS%', 'ACTIVE'); alias=default
+DEBUG 2025-11-27 11:17:36,241 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 3 LIMIT 21; args=(3,); alias=default
+DEBUG 2025-11-27 11:17:36,244 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 3 LIMIT 21; args=(3,); alias=default
+DEBUG 2025-11-27 11:17:36,247 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 3 LIMIT 21; args=(3,); alias=default
+DEBUG 2025-11-27 11:17:36,249 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 3 LIMIT 21; args=(3,); alias=default
+DEBUG 2025-11-27 11:17:36,251 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 3 LIMIT 21; args=(3,); alias=default
+DEBUG 2025-11-27 11:17:36,257 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 2 LIMIT 21; args=(2,); alias=default
+DEBUG 2025-11-27 11:17:36,260 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 3 LIMIT 21; args=(3,); alias=default
+DEBUG 2025-11-27 11:17:36,262 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 2 LIMIT 21; args=(2,); alias=default
+DEBUG 2025-11-27 11:17:36,264 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 3 LIMIT 21; args=(3,); alias=default
+DEBUG 2025-11-27 11:17:36,269 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 4 LIMIT 21; args=(4,); alias=default
+DEBUG 2025-11-27 11:17:36,277 django.db.backends utils (0.000) SELECT "store_product"."id", "store_product"."category_id", "store_product"."brand_id", "store_product"."title", "store_product"."slug", "store_product"."old_price", "store_product"."sale_price", "store_product"."available_stock", "store_product"."discount_percent", "store_product"."keyword", "store_product"."description", "store_product"."image", "store_product"."status", "store_product"."created_date", "store_product"."updated_date" FROM "store_product" INNER JOIN "store_category" ON ("store_product"."category_id" = "store_category"."id") WHERE ("store_category"."title" LIKE '%BORKHA%' ESCAPE '\' AND "store_product"."status" = 'ACTIVE') ORDER BY "store_product"."id" ASC; args=('%BORKHA%', 'ACTIVE'); alias=default
+DEBUG 2025-11-27 11:17:36,280 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 4 LIMIT 21; args=(4,); alias=default
+DEBUG 2025-11-27 11:17:36,283 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 1 LIMIT 21; args=(1,); alias=default
+DEBUG 2025-11-27 11:17:36,285 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 4 LIMIT 21; args=(4,); alias=default
+DEBUG 2025-11-27 11:17:36,291 django.db.backends utils (0.001) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 1 LIMIT 21; args=(1,); alias=default
+DEBUG 2025-11-27 11:17:36,335 django.db.backends utils (0.001) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 4 LIMIT 21; args=(4,); alias=default
+DEBUG 2025-11-27 11:17:36,384 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 2 LIMIT 21; args=(2,); alias=default
+DEBUG 2025-11-27 11:17:36,457 django.db.backends utils (0.001) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 4 LIMIT 21; args=(4,); alias=default
+DEBUG 2025-11-27 11:17:36,460 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 2 LIMIT 21; args=(2,); alias=default
+DEBUG 2025-11-27 11:17:36,463 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 4 LIMIT 21; args=(4,); alias=default
+DEBUG 2025-11-27 11:17:36,479 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 4 LIMIT 21; args=(4,); alias=default
+DEBUG 2025-11-27 11:17:36,493 django.db.backends utils (0.000) SELECT "store_product"."id", "store_product"."category_id", "store_product"."brand_id", "store_product"."title", "store_product"."slug", "store_product"."old_price", "store_product"."sale_price", "store_product"."available_stock", "store_product"."discount_percent", "store_product"."keyword", "store_product"."description", "store_product"."image", "store_product"."status", "store_product"."created_date", "store_product"."updated_date" FROM "store_product" INNER JOIN "store_category" ON ("store_product"."category_id" = "store_category"."id") WHERE ("store_category"."title" LIKE '%BABY FASHION%' ESCAPE '\' AND "store_product"."status" = 'ACTIVE') ORDER BY "store_product"."id" ASC; args=('%BABY FASHION%', 'ACTIVE'); alias=default
+DEBUG 2025-11-27 11:17:36,517 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 5 LIMIT 21; args=(5,); alias=default
+DEBUG 2025-11-27 11:17:36,530 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 1 LIMIT 21; args=(1,); alias=default
+DEBUG 2025-11-27 11:17:36,535 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 5 LIMIT 21; args=(5,); alias=default
+DEBUG 2025-11-27 11:17:36,542 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 1 LIMIT 21; args=(1,); alias=default
+DEBUG 2025-11-27 11:17:36,549 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 5 LIMIT 21; args=(5,); alias=default
+DEBUG 2025-11-27 11:17:36,552 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 2 LIMIT 21; args=(2,); alias=default
+DEBUG 2025-11-27 11:17:36,563 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 5 LIMIT 21; args=(5,); alias=default
+DEBUG 2025-11-27 11:17:36,567 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 2 LIMIT 21; args=(2,); alias=default
+DEBUG 2025-11-27 11:17:36,575 django.db.backends utils (0.000) SELECT "store_category"."id", "store_category"."title", "store_category"."slug", "store_category"."keyword", "store_category"."description", "store_category"."image", "store_category"."status", "store_category"."created_date", "store_category"."updated_date" FROM "store_category" WHERE "store_category"."id" = 5 LIMIT 21; args=(5,); alias=default
+DEBUG 2025-11-27 11:17:36,583 django.db.backends utils (0.000) SELECT "store_brand"."id", "store_brand"."title", "store_brand"."slug", "store_brand"."keyword", "store_brand"."description", "store_brand"."image", "store_brand"."status", "store_brand"."created_date", "store_brand"."updated_date" FROM "store_brand" WHERE "store_brand"."id" = 4 LIMIT 21; args=(4,); alias=default
+INFO 2025-11-27 11:17:36,591 django.server basehttp "GET / HTTP/1.1" 200 26375
