@@ -147,7 +147,6 @@ LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
 
-    # ---------- FORMATTERS ----------
     'formatters': {
         'verbose': {
             'format': '{levelname} {asctime} {name} {module} {message}',
@@ -159,7 +158,6 @@ LOGGING = {
         },
     },
 
-    # ---------- HANDLERS ----------
     'handlers': {
         'console': {
             'class': 'logging.StreamHandler',
@@ -171,49 +169,71 @@ LOGGING = {
             'class': 'logging.handlers.RotatingFileHandler',
             'level': 'DEBUG',
             'filename': os.path.join(BASE_DIR, 'logs/debug.log'),
-            'maxBytes': 1024 * 1024 * 5,  # 5 MB
-            'backupCount': 5,
+            'maxBytes': 5 * 1024 * 1024,
+            'backupCount': 3,
+            'formatter': 'verbose',
+        },
+
+        'file_info': {
+            'class': 'logging.handlers.RotatingFileHandler',
+            'level': 'INFO',
+            'filename': os.path.join(BASE_DIR, 'logs/info.log'),
+            'maxBytes': 5 * 1024 * 1024,
+            'backupCount': 3,
+            'formatter': 'verbose',
+        },
+
+        'file_warning': {
+            'class': 'logging.handlers.RotatingFileHandler',
+            'level': 'WARNING',
+            'filename': os.path.join(BASE_DIR, 'logs/warning.log'),
+            'maxBytes': 5 * 1024 * 1024,
+            'backupCount': 3,
             'formatter': 'verbose',
         },
 
         'file_error': {
-            'class': 'logging.FileHandler',
+            'class': 'logging.handlers.RotatingFileHandler',
             'level': 'ERROR',
             'filename': os.path.join(BASE_DIR, 'logs/error.log'),
+            'maxBytes': 5 * 1024 * 1024,
+            'backupCount': 3,
             'formatter': 'verbose',
         },
-        'file_info': {
-            'class': 'logging.FileHandler',
-            'level': 'INFO',
-            'filename': os.path.join(BASE_DIR, 'logs/info.log'),
-            'formatter': 'verbose',
-        },
-        'file_warning': {
-            'class': 'logging.FileHandler',
-            'level': 'WARNING',
-            'filename': os.path.join(BASE_DIR, 'logs/warning.log'),
-            'formatter': 'verbose',
-        },
+
         'file_critical': {
-            'class': 'logging.FileHandler',
+            'class': 'logging.handlers.RotatingFileHandler',
             'level': 'CRITICAL',
             'filename': os.path.join(BASE_DIR, 'logs/critical.log'),
+            'maxBytes': 5 * 1024 * 1024,
+            'backupCount': 3,
             'formatter': 'verbose',
         },
     },
 
-    # ---------- LOGGERS ----------
     'loggers': {
-        # Django internal logs
         'django': {
-            'handlers': ['console', 'file_debug', 'file_error'],
-            'level': 'INFO',
+            'handlers': [
+                'console',
+                'file_debug',
+                'file_info',
+                'file_warning',
+                'file_error',
+                'file_critical',
+            ],
+            'level': 'DEBUG',
             'propagate': True,
         },
 
-        # Custom project logger
         'project': {
-            'handlers': ['console', 'file_debug', 'file_error'],
+            'handlers': [
+                'console',
+                'file_debug',
+                'file_info',
+                'file_warning',
+                'file_error',
+                'file_critical',
+            ],
             'level': 'DEBUG',
             'propagate': False,
         },

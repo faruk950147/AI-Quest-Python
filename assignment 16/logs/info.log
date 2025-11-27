@@ -1,0 +1,9 @@
+INFO 2025-11-27 11:17:21,209 django.utils.autoreload autoreload Watching for file changes with StatReloader
+INFO 2025-11-27 11:17:27,097 project views User Anonymous visited Home page. Sliders: 4, Gents Pants: 5, Borkhas: 5, Baby Fashions: 5
+INFO 2025-11-27 11:17:27,541 django.server basehttp "GET / HTTP/1.1" 200 26375
+INFO 2025-11-27 11:17:33,431 project views User Anonymous visited Home page. Sliders: 4, Gents Pants: 5, Borkhas: 5, Baby Fashions: 5
+INFO 2025-11-27 11:17:33,619 django.server basehttp "GET / HTTP/1.1" 200 26375
+INFO 2025-11-27 11:17:35,044 project views User Anonymous visited Home page. Sliders: 4, Gents Pants: 5, Borkhas: 5, Baby Fashions: 5
+INFO 2025-11-27 11:17:35,213 django.server basehttp "GET / HTTP/1.1" 200 26375
+INFO 2025-11-27 11:17:36,164 project views User Anonymous visited Home page. Sliders: 4, Gents Pants: 5, Borkhas: 5, Baby Fashions: 5
+INFO 2025-11-27 11:17:36,591 django.server basehttp "GET / HTTP/1.1" 200 26375
