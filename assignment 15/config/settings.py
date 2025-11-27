@@ -172,6 +172,8 @@ LOGGING = {
             'maxBytes': 5 * 1024 * 1024,
             'backupCount': 3,
             'formatter': 'verbose',
+            'delay': True,
+            'encoding': 'utf-8',
         },
 
         'file_info': {
@@ -181,6 +183,8 @@ LOGGING = {
             'maxBytes': 5 * 1024 * 1024,
             'backupCount': 3,
             'formatter': 'verbose',
+            'delay': True,
+            'encoding': 'utf-8',
         },
 
         'file_warning': {
@@ -190,6 +194,8 @@ LOGGING = {
             'maxBytes': 5 * 1024 * 1024,
             'backupCount': 3,
             'formatter': 'verbose',
+            'delay': True,
+            'encoding': 'utf-8',
         },
 
         'file_error': {
@@ -199,6 +205,8 @@ LOGGING = {
             'maxBytes': 5 * 1024 * 1024,
             'backupCount': 3,
             'formatter': 'verbose',
+            'delay': True,
+            'encoding': 'utf-8',
         },
 
         'file_critical': {
@@ -208,6 +216,8 @@ LOGGING = {
             'maxBytes': 5 * 1024 * 1024,
             'backupCount': 3,
             'formatter': 'verbose',
+            'delay': True,
+            'encoding': 'utf-8',
         },
     },
 
