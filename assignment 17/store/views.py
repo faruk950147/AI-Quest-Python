@@ -38,7 +38,9 @@ class HomeView(generic.View):
             status='active',
             is_deadline=True,
             deadline__gte=timezone.now()
-        ).annotate(avg_rate=Avg('reviews__rate'))[:5]
+        ).annotate(avg_rate=Avg('reviews__rate')).order_by('deadline')[:5]
+
+        first_top_deal = top_deals.first()
 
         # Featured Products
         featured_products = Product.objects.filter(
@@ -61,10 +63,10 @@ class HomeView(generic.View):
             'cates': cates,
             'top_deals': top_deals,
             'featured_products': featured_products,
+            'first_top_deal': first_top_deal,
         }
         return render(request, 'store/home.html', context)
-
-
+    
 @method_decorator(never_cache, name='dispatch')
 class ProductDetailView(generic.View):
     def get(self, request):
