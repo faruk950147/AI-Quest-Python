@@ -106,20 +106,20 @@
                 <div class="product-slider swiper-container">
                     <div class="swiper-wrapper">
                         {% if top_deals %}
-                        {% for top_deal in top_deals %}
+                        {% for product in top_deals %}
                         <!-- product-1 -->
                         <div class="product__item swiper-slide">
                             <div class="product__thumb fix">
                                 <div class="product-image w-img">
                                     <a href="product-details.html">
-                                        <img src="{{top_deal.image.url}}" alt="{{top_deal.title|title}}" style="width: 260px; height: 300px;">
+                                        <img src="{{product.image.url}}" alt="{{product.title|title}}" style="width: 260px; height: 300px;">
                                     </a>
                                 </div>
-                                {% if top_deal.deadline %}
+                                {% if product.deadline %}
                                 <div class="countdown countdown-small mt-5">
                                     <div class="countdown-inner b-radius"
                                         data-countdown=""
-                                        data-date="{{ top_deal.deadline|date:'c' }}">
+                                        data-date="{{ product.deadline|date:'c' }}">
                                         <ul class="text-center" style="padding:0; list-style:none; display:flex; justify-content:center; gap:10px;">
                                             <li><span data-days="">0</span>d</li>
                                             <li><span data-hours="">0</span>h</li>
@@ -130,7 +130,7 @@
                                 </div>
                                 {% endif %}
                                 <div class="product__offer">
-                                    <span class="discount">-{{top_deal.discount_percent}}%</span>
+                                    <span class="discount">-{{product.discount_percent}}%</span>
                                 </div>
                                 <div class="product-action">
                                     <a href="#" class="icon-box icon-box-1" data-bs-toggle="modal" data-bs-target="#productModalId">
@@ -145,35 +145,35 @@
                                 </div>
                             </div>
                             <div class="product__content">
-                                <h6><a href="product-details.html">{{top_deal.title|title|truncatewords:5}}</a></h6>
+                                <h6><a href="product-details.html">{{product.title|title|truncatewords:5}}</a></h6>
                                 <div class="rating mb-5">
                                     <ul>
-                                        {% with top_deal.avg_rate|default:0|floatformat:0 as rating %}
+                                        {% with product.avg_rate|default:0|floatformat:0 as rating %}
                                             {% for i in "12345"|make_list %}
                                                 {% if forloop.counter <= rating %}
-                                                    <li><i class="fas fa-star"></i></li>
+                                                    <span><i class=" fa-solid fa-star"></i></span>
                                                 {% else %}
-                                                    <li><i class="fal fa-star"></i></li>
+                                                    <span><i class=" fa-solid fa-star"></i></span>
                                                 {% endif %}
                                             {% endfor %}
                                         {% endwith %}
 
                                     </ul>
-                                    <span>({{ top_deal.reviews.count }} review{{ top_deal.reviews.count|pluralize }})</span>
+                                    <span>({{ product.reviews.count }} review{{ product.reviews.count|pluralize }})</span>
 
                                 </div>
                                 <div class="price mb-10"><span>
-                                    {{top_deal.sale_price}}
+                                    {{product.sale_price}}
                                     <del class="text-danger">
-                                    {% if top_deal.old_price %}
-                                        {{top_deal.old_price}}
+                                    {% if product.old_price %}
+                                        {{product.old_price}}
                                     {% endif %}
                                     </del>
                                 </span></div>
                                 <div class="progress mb-5">
                                     <div class="progress-bar bg-danger" style="width:10%"></div>
                                 </div>
-                                <div class="progress-rate"><span>Sold {{top_deal.sold}}</span></div>
+                                <div class="progress-rate"><span>Sold {{product.sold}}</span></div>
                             </div>
                             <div class="product__add-cart text-center">
                                 <button class="cart-btn w-100">Add to Cart</button>
@@ -263,53 +263,6 @@
                                 </button>
                             </li>
 
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link"
-                                        id="samsung-tab"
-                                        data-bs-toggle="tab"
-                                        data-bs-target="#samsung"
-                                        type="button"
-                                        role="tab"
-                                        aria-selected="false">
-                                    samsung
-                                </button>
-                            </li>
-
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link"
-                                        id="htc-tab"
-                                        data-bs-toggle="tab"
-                                        data-bs-target="#htc"
-                                        type="button"
-                                        role="tab"
-                                        aria-selected="false">
-                                    HTC
-                                </button>
-                            </li>
-
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link"
-                                        id="nokia-tab"
-                                        data-bs-toggle="tab"
-                                        data-bs-target="#nokia"
-                                        type="button"
-                                        role="tab"
-                                        aria-selected="false">
-                                    Nokia
-                                </button>
-                            </li>
-
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link"
-                                        id="cell-tab"
-                                        data-bs-toggle="tab"
-                                        data-bs-target="#cell"
-                                        type="button"
-                                        role="tab"
-                                        aria-selected="true">
-                                    Cell Phones
-                                </button>
-                            </li>
                         </ul>
                     </div>
 
@@ -367,11 +320,11 @@
 
                                             <div class="rating mb-5">
                                                 <ul>
-                                                    <li><a href="#"><i class="fal fa-star"></i></a></li>
-                                                    <li><a href="#"><i class="fal fa-star"></i></a></li>
-                                                    <li><a href="#"><i class="fal fa-star"></i></a></li>
-                                                    <li><a href="#"><i class="fal fa-star"></i></a></li>
-                                                    <li><a href="#"><i class="fal fa-star"></i></a></li>
+                                                    <span><i class=" fa-solid fa-star"></i></span>
+                                                    <span><i class=" fa-solid fa-star"></i></span>
+                                                    <span><i class=" fa-solid fa-star"></i></span>
+                                                    <span><i class=" fa-solid fa-star"></i></span>
+                                                    <span><i class=" fa-solid fa-star"></i></span>
                                                 </ul>
                                                 <span>(01 review)</span>
                                             </div>
@@ -463,11 +416,11 @@
                                 </h6>
                                 <div class="rating mb-5">
                                     <ul class="rating-d">
-                                        <li><a href="#"><i class="fal fa-star"></i></a></li>
-                                        <li><a href="#"><i class="fal fa-star"></i></a></li>
-                                        <li><a href="#"><i class="fal fa-star"></i></a></li>
-                                        <li><a href="#"><i class="fal fa-star"></i></a></li>
-                                        <li><a href="#"><i class="fal fa-star"></i></a></li>
+                                        <span><i class=" fa-solid fa-star"></i></span>
+                                        <span><i class=" fa-solid fa-star"></i></span>
+                                        <span><i class=" fa-solid fa-star"></i></span>
+                                        <span><i class=" fa-solid fa-star"></i></span>
+                                        <span><i class=" fa-solid fa-star"></i></span>
                                     </ul>
                                     <span>(01 review)</span>
                                 </div>
@@ -515,14 +468,14 @@
                                         <h6><a href="product-details.html">Epple Watch SE Gold Aluminum</a></h6>
                                         <div class="rating mb-5">
                                             <ul>
-                                                <li><a href="#"><i class="fal fa-star"></i></a></li>
-                                                <li><a href="#"><i class="fal fa-star"></i></a></li>
-                                                <li><a href="#"><i class="fal fa-star"></i></a></li>
-                                                <li><a href="#"><i class="fal fa-star"></i></a></li>
-                                                <li><a href="#"><i class="fal fa-star"></i></a></li>
+                                                <span><i class=" fa-solid fa-star"></i></span>
+                                                <span><i class=" fa-solid fa-star"></i></span>
+                                                <span><i class=" fa-solid fa-star"></i></span>
+                                                <span><i class=" fa-solid fa-star"></i></span>
+                                                <span><i class=" fa-solid fa-star"></i></span>
                                             </ul>
-                                            <span>(01 review)</span>
                                         </div>
+                                        <span>(01 review)</span>
                                         <div class="price d-price">
                                             <span>$307.00 <del>$110</del></span>
                                         </div>
@@ -684,11 +637,11 @@
                                 <h6><a href="product-details.html">Epple iPad Pro 10.5-inch Cellular 64G</a></h6>
                                 <div class="rating mb-5">
                                     <ul>
-                                        <li><a href="#"><i class="fal fa-star"></i></a></li>
-                                        <li><a href="#"><i class="fal fa-star"></i></a></li>
-                                        <li><a href="#"><i class="fal fa-star"></i></a></li>
-                                        <li><a href="#"><i class="fal fa-star"></i></a></li>
-                                        <li><a href="#"><i class="fal fa-star"></i></a></li>
+                                        <span><i class=" fa-solid fa-star"></i></span>
+                                        <span><i class=" fa-solid fa-star"></i></span>
+                                        <span><i class=" fa-solid fa-star"></i></span>
+                                        <span><i class=" fa-solid fa-star"></i></span>
+                                        <span><i class=" fa-solid fa-star"></i></span>
                                     </ul>
                                     <span>(01 review)</span>
                                 </div>
