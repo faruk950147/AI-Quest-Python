@@ -29,50 +29,43 @@
             <!-- Product Images -->
             <div class="col-xl-6">
                 <div class="product__details-nav d-sm-flex align-items-start">
+                    {% if product.images.exists %}
                     <ul class="nav nav-tabs flex-sm-column justify-content-between" id="productThumbTab" role="tablist">
+                        {% for img in product.images.all %}
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="thumbOne-tab" data-bs-toggle="tab" data-bs-target="#thumbOne" type="button" role="tab" aria-controls="thumbOne" aria-selected="true">
-                                <img src="{% static 'assets/img/product/nav/product-nav-1.jpg' %}" alt="">
+                            <button class="nav-link {% if forloop.first %}active{% endif %}" id="thumb{{ img.id }}-tab" data-bs-toggle="tab" data-bs-target="#thumb{{ img.id }}" type="button" role="tab" aria-controls="thumb{{ img.id }}" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}">
+                                <img src="{{ img.image.url }}" alt="{{ product.title|title }}" class="img-fluid" style="width:100px; height:150px; object-fit:cover;">
                             </button>
                         </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="thumbTwo-tab" data-bs-toggle="tab" data-bs-target="#thumbTwo" type="button" role="tab" aria-controls="thumbTwo" aria-selected="false">
-                                <img src="{% static 'assets/img/product/nav/product-nav-2.jpg' %}" alt="">
-                            </button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="thumbThree-tab" data-bs-toggle="tab" data-bs-target="#thumbThree" type="button" role="tab" aria-controls="thumbThree" aria-selected="false">
-                                <img src="{% static 'assets/img/product/nav/product-nav-3.jpg' %}" alt="">
-                            </button>
-                        </li>
+                        {% endfor %}
                     </ul>
+                    {% endif %}
+
 
                     <div class="product__details-thumb">
                         <div class="tab-content" id="productThumbContent">
-                            <div class="tab-pane fade show active" id="thumbOne" role="tabpanel" aria-labelledby="thumbOne-tab">
+                            {% if product.images.exists %}
+                            {% for img in product.images.all %}
+                            <div class="tab-pane fade {% if forloop.first %}show active{% endif %}" 
+                                id="thumb{{ img.id }}" 
+                                role="tabpanel" 
+                                aria-labelledby="thumb{{ img.id }}-tab">
                                 <div class="product__details-nav-thumb w-img">
-                                    <img src="{% static 'assets/img/product/nav/product-nav-big-1.jpg' %}" alt="">
+                                    <img src="{{ img.image.url }}" alt="{{ product.title|title }}" style="width: 350px; height: 500px; object-fit:cover;">
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="thumbTwo" role="tabpanel" aria-labelledby="thumbTwo-tab">
-                                <div class="product__details-nav-thumb w-img">
-                                    <img src="{% static 'assets/img/product/nav/product-nav-big-3.jpg' %}" alt="">
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="thumbThree" role="tabpanel" aria-labelledby="thumbThree-tab">
-                                <div class="product__details-nav-thumb w-img">
-                                    <img src="{% static 'assets/img/product/nav/product-nav-big-2.jpg' %}" alt="">
-                                </div>
-                            </div>
+                            {% endfor %}
+                            {% endif %}
                         </div>
                     </div>
+
                 </div>
             </div>
 
             <!-- Product Details Content -->
             <div class="col-xl-6">
                 <div class="product__details-content">
-                    <h6>Samsung Galaxy A12, 32GB, Black – (Locked)</h6>
+                    <h6>{{product.title|title}}</h6>
 
                     <!-- Rating -->
                     <div class="pd-rating mb-10">
@@ -346,53 +339,87 @@
             <div class="product-bs-slider">
                 <div class="product-slider swiper-container">
                     <div class="swiper-wrapper">
-
+                    {% if related_products %}
+                    {% for product in related_products %}
                         <!-- product-1 -->
                         <div class="product__item swiper-slide">
                             <div class="product__thumb fix">
                                 <div class="product-image w-img">
-                                    <a href="product-details.html">
-                                        <img src="{% static 'assets/img/product/tp-1.jpg' %}" alt="">
+                                    <a href="{% url 'product-detail' product.id %}">
+                                        <img src="{{product.images.first.image.url}}" alt="{{product.title|title}}" style="width: 260px; height: 300px;">
                                     </a>
                                 </div>
+                                {% if product.deadline %}
+                                <div class="countdown countdown-small mt-5">
+                                    <div class="countdown-inner b-radius"
+                                        data-countdown=""
+                                        data-date="{{ product.deadline|date:'c' }}">
+                                        <ul class="text-center" style="padding:0; list-style:none; display:flex; justify-content:center; gap:10px;">
+                                            <li><span data-days="">0</span>d</li>
+                                            <li><span data-hours="">0</span>h</li>
+                                            <li><span data-minutes="">0</span>m</li>
+                                            <li><span data-seconds="">0</span>s</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                {% endif %}
                                 <div class="product__offer">
-                                    <span class="discount">-15%</span>
+                                    <span class="discount">-{{product.discount_percent}}%</span>
                                 </div>
                                 <div class="product-action">
                                     <a href="#" class="icon-box icon-box-1" data-bs-toggle="modal" data-bs-target="#productModalId">
-                                        <i class="fal fa-eye"></i><i class="fal fa-eye"></i>
+                                        <i class="fal fa-eye"></i>
+                                        <i class="fal fa-eye"></i>
                                     </a>
                                     <a href="#" class="icon-box icon-box-1">
-                                        <i class="fal fa-heart"></i><i class="fal fa-heart"></i>
+                                        <i class="fal fa-heart"></i>
+                                        <i class="fal fa-heart"></i>
                                     </a>
                                     <a href="#" class="icon-box icon-box-1">
-                                        <i class="fal fa-layer-group"></i><i class="fal fa-layer-group"></i>
+                                        <i class="fal fa-layer-group"></i>
+                                        <i class="fal fa-layer-group"></i>
                                     </a>
                                 </div>
                             </div>
                             <div class="product__content">
-                                <h6><a href="product-details.html">Epple iPad Pro 10.5-inch Cellular 64G</a></h6>
+                                <h6><a href="{% url 'product-detail' product.id %}">{{product.title|title|truncatewords:5}}</a></h6>
                                 <div class="rating mb-5">
                                     <ul>
-                                        <span><i class=" fa-solid fa-star"></i></span>
-                                        <span><i class=" fa-solid fa-star"></i></span>
-                                        <span><i class=" fa-solid fa-star"></i></span>
-                                        <span><i class=" fa-solid fa-star"></i></span>
-                                        <span><i class=" fa-solid fa-star"></i></span>
+                                        {% with product.avg_rate|default:0|floatformat:0 as rating %}
+                                            {% for i in "12345"|make_list %}
+                                                {% if forloop.counter <= rating %}
+                                                    <span><i class=" fa-solid fa-star"></i></span>
+                                                {% else %}
+                                                    <span><i class=" fa-solid fa-star"></i></span>
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% endwith %}
+
                                     </ul>
-                                    <span>(01 review)</span>
+                                    <span>({{ product.reviews.count }} review{{ product.reviews.count|pluralize }})</span>
+
                                 </div>
-                                <div class="price mb-10"><span>$105-$110</span></div>
+                                <div class="price mb-10"><span>
+                                   $ {{product.sale_price}}
+                                    <del class="text-danger">
+                                    {% if product.old_price %}
+                                       $ {{product.old_price}}
+                                    {% endif %}
+                                    </del>
+                                </span></div>
                                 <div class="progress mb-5">
                                     <div class="progress-bar bg-danger" style="width:10%"></div>
                                 </div>
-                                <div class="progress-rate"><span>Sold:312/1225</span></div>
+                                <div class="progress-rate"><span>Sold {{product.sold}}</span></div>
                             </div>
                             <div class="product__add-cart text-center">
                                 <button class="cart-btn w-100">Add to Cart</button>
                             </div>
                         </div>
-
+                    {% endfor %}
+                    {% else %}
+                    <p>No products found </p>
+                    {% endif %}
                     </div>
                 </div>
 
