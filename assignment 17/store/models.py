@@ -130,7 +130,10 @@ class Product(models.Model):
 
     available_stock = models.PositiveIntegerField(validators=[MaxValueValidator(10000)], default=1)
     discount_percent = models.PositiveIntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], default=20)
-
+    prev_des = models.TextField(default='N/A')
+    add_des = models.TextField(default='N/A')
+    short_des = models.TextField(default='N/A')
+    long_des = models.TextField(default='N/A')
     keyword = models.TextField(default='N/A')
     description = models.TextField(default='N/A')
 
