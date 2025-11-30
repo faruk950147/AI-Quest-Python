@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import (
+from store.models import (
     Category, Brand, Product, ProductVariant, ImageGallery,
     Color, Size, Slider, Review, AcceptancePayment
 )
@@ -80,7 +80,7 @@ admin.site.register(Product, ProductAdmin)
 # 07. IMAGES GALLERIES ADMIN
 # =========================================================
 class ImagesGalleriesAdmin(admin.ModelAdmin):
-    list_display = ('id', 'product', 'image', 'status', 'created_date', 'updated_date')
+    list_display = ('id', 'product', 'image_tag', 'status', 'created_date', 'updated_date')
     readonly_fields = ('created_date', 'updated_date')
     list_filter = ('id', 'product', 'image', 'created_date', 'updated_date')
     search_fields = ('id', 'product')
