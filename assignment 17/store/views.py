@@ -37,16 +37,17 @@ class HomeView(generic.View):
         # Featured Brands
         brands = Brand.objects.filter(status='active', is_featured=True)
 
-        # Featured Categories
+        # Featured Categories (leaf categories)
         cates = Category.objects.filter(status='active', children__isnull=True, is_featured=True).distinct()[:3]
 
         # Top Deals
         top_deals_qs = Product.objects.filter(
             status='active',
+            discount_percent__gt=0,
             is_deadline=True,
             deadline__gte=timezone.now()
         ).select_related('category', 'brand').prefetch_related('reviews') \
-         .annotate(avg_rate=Avg('reviews__rating')).order_by('deadline')[:6]
+         .annotate(avg_rate=Avg('reviews__rating')).order_by('-discount_percent', 'deadline')[:6]
         top_deals = list(top_deals_qs)
         first_top_deal = top_deals[0] if top_deals else None
 
@@ -58,14 +59,12 @@ class HomeView(generic.View):
          .annotate(avg_rate=Avg('reviews__rating'))[:5]
         featured_products = list(featured_products_qs)
 
-        user = request.user.username if request.user.is_authenticated else 'Anonymous'
-        logger.debug(
-            f"User {user} visited Home page. "
-            f"Sliders: {sliders.count()}, Feature Sliders: {feature_sliders.count()}, "
-            f"Add Sliders: {add_sliders.count()}, Promo Sliders: {promo_sliders.count()}, "
-            f"AcceptancePayments: {acceptance_payments.count()}, Categories: {cates.count()}, "
-            f"Brands: {brands.count()}, Top Deals: {len(top_deals)}, Featured Products: {len(featured_products)}"
-        )
+        # Recommended For You
+        recommended_qs = Product.objects.filter(
+            status='active'
+        ).select_related('category', 'brand').prefetch_related('reviews') \
+        .annotate(avg_rate=Avg('reviews__rating'))[:8]
+        recommended_products = list(recommended_qs)
 
         context = {
             'sliders': sliders,
@@ -73,14 +72,14 @@ class HomeView(generic.View):
             'add_sliders': add_sliders,
             'promo_sliders': promo_sliders,
             'acceptance_payments': acceptance_payments,
+            'brands': brands,
             'cates': cates,
             'top_deals': top_deals,
-            'featured_products': featured_products,
             'first_top_deal': first_top_deal,
-            'brands': brands
+            'featured_products': featured_products,
+            'recommended_products': recommended_products,
         }
         return render(request, 'store/home.html', context)
-
 
 # =========================================================
 # PRODUCT DETAIL VIEW
@@ -108,7 +107,6 @@ class ProductDetailView(generic.View):
         }
         return render(request, 'store/product-detail.html', context)
 
-
 # =========================================================
 # SHOP VIEW WITH PAGINATION
 # =========================================================
@@ -126,7 +124,6 @@ class ShopView(generic.View):
             'page_obj': page_obj
         }
         return render(request, 'store/shop.html', context)
-
 
 # =========================================================
 # AJAX: GET PRODUCT VARIANT PRICE / STOCK / IMAGE
@@ -155,3 +152,5 @@ class GetVariantsView(generic.View):
             data = {'variant_price': None, 'available_stock': 0, 'image_url': ''}
 
         return JsonResponse(data)
+
+
