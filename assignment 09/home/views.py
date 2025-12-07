@@ -27,6 +27,7 @@ class RegistrationView(generic.View):
             department = form.cleaned_data['department']
             email = form.cleaned_data['email']
             dob = form.cleaned_data['dob']
+            gender = form.cleaned_data['gender']
             agree = form.cleaned_data['agree']
             context = {
                 'name': name,
@@ -34,6 +35,7 @@ class RegistrationView(generic.View):
                 'department': department,
                 'email': email,
                 'dob': dob,
+                'gender': gender,
                 'agree': agree
             }
             return render(request, 'home/success.html', context)
