@@ -56,6 +56,16 @@ class Registration(forms.Form):
         widget=forms.Select(
             attrs={'id': 'department', 'class': 'form-control'})
     )
+    gender = forms.ChoiceField(
+        choices=[
+            ('Male', 'Male'),
+            ('Female', 'Female'),
+            ('Other', 'Other'),
+        ],
+        widget=forms.RadioSelect(
+            attrs={'class': 'form-check-input'}
+        )
+    )
     agree = forms.BooleanField(
         label='I agree to the terms', initial=False, required=True,
         widget=forms.CheckboxInput(
