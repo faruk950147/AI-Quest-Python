@@ -70,7 +70,7 @@ class Category(BaseModel, ImageTagMixin):
     parent = models.ForeignKey('self', related_name='children', on_delete=models.CASCADE,
                                null=True, blank=True)
     title = models.CharField(max_length=150, unique=True)
-    slug = models.SlugField(max_length=150, unique=True, blank=True)
+    slug = models.SlugField(max_length=150, unique=True, null=True, blank=True)
 
     keyword = models.CharField(max_length=150, default='N/A')
     description = models.CharField(max_length=150, default='N/A')
@@ -95,7 +95,7 @@ class Category(BaseModel, ImageTagMixin):
 # =========================================================
 class Brand(BaseModel, ImageTagMixin):
     title = models.CharField(max_length=150, unique=True)
-    slug = models.SlugField(max_length=150, unique=True, blank=True)
+    slug = models.SlugField(max_length=150, unique=True, null=True, blank=True)
 
     keyword = models.CharField(max_length=150, default='N/A')
     description = models.CharField(max_length=150, default='N/A')
@@ -122,7 +122,7 @@ class Product(BaseModel, ImageTagMixin):
     category = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE)
     brand = models.ForeignKey(Brand, related_name='products', on_delete=models.CASCADE)
     title = models.CharField(max_length=150, unique=True)
-    slug = models.SlugField(max_length=150, unique=True, blank=True)
+    slug = models.SlugField(max_length=150, unique=True, null=True, blank=True)
 
     old_price = models.DecimalField(max_digits=10, decimal_places=2, default=Decimal('0.00'))
     sale_price = models.DecimalField(max_digits=10, decimal_places=2, default=Decimal('0.00'))
