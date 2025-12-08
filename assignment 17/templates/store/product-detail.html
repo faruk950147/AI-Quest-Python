@@ -189,17 +189,17 @@
                     <!-- Tags & SKU -->
                     <div class="product-tag-area mt-15">
                         <div class="product_info">
-<span class="sku_wrapper">
-    <span class="title">SKU:</span>
-{% if variant %}
-    <span class="sku">
-        {% if variant.color %}{{ variant.color.title }}{% endif %}
-        {% if variant.color and variant.size %} - {% endif %}
-        {% if variant.size %}{{ variant.size.title }}{% endif %}
-    </span>
-{% endif %}
+                            <span class="sku_wrapper">
+                                <span class="title">SKU:</span>
+                            {% if variant %}
+                                <span class="sku">
+                                    {% if variant.color %}{{ variant.color.title }}{% endif %}
+                                    {% if variant.color and variant.size %} - {% endif %}
+                                    {% if variant.size %}{{ variant.size.title }}{% endif %}
+                                </span>
+                            {% endif %}
 
-</span>
+                            </span>
 
 
                             <span class="tagged_as">
