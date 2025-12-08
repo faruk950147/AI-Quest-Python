@@ -191,14 +191,14 @@
                         <div class="product_info">
 <span class="sku_wrapper">
     <span class="title">SKU:</span>
-    {% if variant %}
-        {% if variant.color %}
-            <span class="sku">{{ variant.color.title }}</span>
-        {% endif %}
-        {% if variant.size %}
-            <span class="sku">{{ variant.size.title }}</span>
-        {% endif %}
-    {% endif %}
+{% if variant %}
+    <span class="sku">
+        {% if variant.color %}{{ variant.color.title }}{% endif %}
+        {% if variant.color and variant.size %} - {% endif %}
+        {% if variant.size %}{{ variant.size.title }}{% endif %}
+    </span>
+{% endif %}
+
 </span>
 
 
