@@ -1,5 +1,5 @@
 from django import  forms
-from crud.models import Student
+from task.models import Student
 
 class StudentForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):

@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
-from crud.forms import StudentForm
-from crud.models import Student
+from task.forms import StudentForm
+from task.models import Student
 
 class HomeView(View):
     def get(self, request):
