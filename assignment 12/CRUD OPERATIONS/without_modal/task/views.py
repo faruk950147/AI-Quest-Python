@@ -8,6 +8,11 @@ class HomeView(View):
         tasks = Task.objects.all()
         form = TaskForm()
         return render(request, 'home.html', {'tasks': tasks, 'form': form})
+    def post(self, request):
+        form = TaskForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('HomeView')
 
 
 class EditedView(View):
