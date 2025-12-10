@@ -35,9 +35,9 @@
                                 <td>{{ task.department }}</td>
                                 <td>{{ task.phone }}</td>
                                 <td>
-
-
-                                    <a href="{% url 'EditedView' task.id %}" class="btn btn-warning btn-sm">Edit</a>
+                                    <a href="{% url 'EditedView' task.id %}" class="btn btn-warning btn-sm">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
         
                                     <!-- Delete Button -->
                                     <form action="{% url 'DeletedView' task.id %}" method="POST" style="display:inline;">
