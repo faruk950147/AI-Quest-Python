@@ -35,15 +35,14 @@
                                 <td>{{ task.department }}</td>
                                 <td>{{ task.phone }}</td>
                                 <td>
+                                   <!-- Edit Button -->
                                     <a href="{% url 'EditedView' task.id %}" class="btn btn-warning btn-sm">
                                         <i class="fas fa-edit"></i>
                                     </a>
-        
                                     <!-- Delete Button -->
-                                    <form action="{% url 'DeletedView' task.id %}" method="POST" style="display:inline;">
-                                        {% csrf_token %}
-                                        <button class="btn btn-danger btn-sm" type="submit">Delete</button>
-                                    </form>
+                                    <a href="{% url 'DeletedView' task.id %}" class="btn btn-warning btn-sm">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
                                 </td>
                             </tr>
                             {% empty %}

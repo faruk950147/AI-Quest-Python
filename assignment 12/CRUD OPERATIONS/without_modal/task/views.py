@@ -31,7 +31,7 @@ class EditedView(View):
     
     
 class DeletedView(View):
-    def post(self, request, id):
+    def get(self, request, id):
         task = get_object_or_404(Task, id=id)
         task.delete()
         return redirect('HomeView')
