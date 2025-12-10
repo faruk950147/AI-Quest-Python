@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Order Placed</h2>
+<p>Invoice: {{ order.invoice_id }}</p>
+<p>Status: {{ order.get_status_display }}</p>
+<p>Total: {{ order.total }}</p>
+
+<h3>Items:</h3>
+<ul>
+  {% for item in order.items.all %}
+  <li>{{ item.product.title }} {% if item.variant %} - {{ item.variant }} {% endif %} x {{ item.quantity }} = {{ item.subtotal }}</li>
+  {% endfor %}
+</ul>
+{% endblock %}

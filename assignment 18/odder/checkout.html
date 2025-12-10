@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Checkout</h2>
+
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <h3>Your Cart</h3>
+  <table>
+    <thead><tr><th>Product</th><th>Variant</th><th>Qty</th><th>Unit</th><th>Subtotal</th></tr></thead>
+    <tbody>
+      {% for c in carts %}
+      <tr>
+        <td>{{ c.product.title }}</td>
+        <td>{{ c.variant }}</td>
+        <td>{{ c.quantity }}</td>
+        <td>{{ c.unit_price }}</td>
+        <td>{{ c.subtotal }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <p>Subtotal: {{ subtotal }}</p>
+
+  <button type="submit">Place Order</button>
+</form>
+
+<hr>
+<h4>Apply Coupon (AJAX)</h4>
+<input id="coupon_code" type="text" />
+<button id="apply_coupon_btn">Apply</button>
+<div id="coupon_result"></div>
+
+<script>
+document.getElementById('apply_coupon_btn').addEventListener('click', function(){
+  const code = document.getElementById('coupon_code').value;
+  fetch("{% url 'orders:apply_coupon' %}?code="+encodeURIComponent(code))
+    .then(r => r.json()).then(data =>{
+      if(data.ok){
+        document.getElementById('coupon_result').innerText = 'Discount: ' + data.discount + ' New total: ' + data.new_total;
+      } else {
+        document.getElementById('coupon_result').innerText = 'Error: ' + data.error;
+      }
+    })
+});
+</script>
+{% endblock %}
