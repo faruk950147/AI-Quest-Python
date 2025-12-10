@@ -36,11 +36,10 @@
                         {% csrf_token %}
                         {{ form.as_p }}
 
-                        {% comment %} 
+                        <!--
                         <input type="text" name="name" value="{{ student.name }}" class="form-control my-3" placeholder="Name" required>
                         <input type="text" name="department" value="{{ student.department }}" class="form-control my-3" placeholder="Department" required>
-                        <input type="text" name="phone" value="{{ student.phone }}" class="form-control my-3" placeholder="Phone" required>   {% endcomment %}
-                        
+                        <input type="text" name="phone" value="{{ student.phone }}" class="form-control my-3" placeholder="Phone" required>   -->
                         <button type="submit" class="form-control btn btn-success my-3">Edit Student</button>
                         <a href="{% url 'HomeView' %}" class="form-control btn btn-danger my-3">Back</a>
                     </form>
