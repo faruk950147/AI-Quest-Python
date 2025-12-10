@@ -32,7 +32,7 @@
                 <!-- Student Add Form -->
                 <div class="col-lg-4 my-5">
                     <h4 class="text-center">Add Student</h4>
-                    <form action="{% url 'SavedView' %}" method="POST">
+                    <form action="{% url 'HomeView' %}" method="POST">
                         {% csrf_token %}
                         {{ form.as_p }}
                         <button class="btn btn-success w-100 my-2">Add Student</button>
