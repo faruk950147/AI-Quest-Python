@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <title>CRUD</title>
+</head>
+<body> 
+    <header id="header">
+        <div class="header container">
+            <div class="navBar">
+                <div class="brand"><a href="#"><h1><span>O</span>ma<span>r</span> F<span>a</span>ru<span>k</span></h1></a></div>
+                <div class="navList">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Project</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <div id="hero">
+        <div class="container">
+            <div class="row">
+                <!-- Student Add Form -->
+                <div class="col-lg-4 my-5">
+                    <h4 class="text-center">Add Student</h4>
+                    <form action="{% url 'SavedView' %}" method="POST">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button class="btn btn-success w-100 my-2">Add Student</button>
+                    </form>
+                </div>
+        
+                <!-- Student Table -->
+                <div class="col-lg-8 my-5">
+                    <h4 class="text-center">Student List</h4>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Department</th>
+                                <th>Phone</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for student in students %}
+                            <tr>
+                                <td>{{ student.id }}</td>
+                                <td>{{ student.name }}</td>
+                                <td>{{ student.department }}</td>
+                                <td>{{ student.phone }}</td>
+                                <td>
+                                    {% comment %} <!-- Edit Button -->
+                                    <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editModal{{ student.id }}">Edit</button>
+        
+                                    <!-- Edit Modal -->
+                                    <div class="modal fade" id="editModal{{ student.id }}" tabindex="-1">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <form action="{% url 'EditedView' student.id %}" method="POST">
+                                                    {% csrf_token %}
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Edit Student</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <input type="text" name="name" value="{{ student.name }}" class="form-control my-2" placeholder="Name" required>
+                                                        <input type="text" name="department" value="{{ student.department }}" class="form-control my-2" placeholder="Department" required>
+                                                        <input type="text" name="phone" value="{{ student.phone }}" class="form-control my-2" placeholder="Phone" required> 
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button class="btn btn-success form-control" type="submit">Saved Changes</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div> {% endcomment %}
+
+                                    <a href="{% url 'EditedView' student.id %}" class="btn btn-warning btn-sm">Edit</a>
+        
+                                    <!-- Delete Button -->
+                                    <form action="{% url 'DeletedView' student.id %}" method="POST" style="display:inline;">
+                                        {% csrf_token %}
+                                        <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            {% empty %}
+                            <tr><td colspan="5" class="text-center">No students found.</td></tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/js/custom.js' %}"></script>
+</body>
+</html>
