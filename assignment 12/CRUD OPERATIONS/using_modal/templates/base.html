@@ -30,7 +30,31 @@
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="{% url 'HomeView' %}">Home</a>
                             </li>
-
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="modal" data-bs-target="#addModal" style="cursor: pointer;"><i class="fa fa-plus"></i> Add</a>
+                                <!-- Add Modal -->
+                                <div class="modal fade" id="addModal" tabindex="-1">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <form action="{% url 'HomeView' %}" method="POST">
+                                                {% csrf_token %}
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Add Task</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <input type="text" name="name" value="" class="form-control my-2" placeholder="Name" required>
+                                                    <input type="text" name="department" value="" class="form-control my-2" placeholder="Department" required>
+                                                    <input type="text" name="phone" value="" class="form-control my-2" placeholder="Phone" required> 
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button class="btn btn-success form-control" type="submit">Add</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     user
