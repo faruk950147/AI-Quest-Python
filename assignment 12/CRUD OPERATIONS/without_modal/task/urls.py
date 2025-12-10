@@ -1,6 +1,6 @@
 from django.urls import path
 from task.views import (
-    HomeView, SavedView, DeletedView, EditedView
+    HomeView, SavedView, EditedView, DeletedView
 )
 
 urlpatterns = [
