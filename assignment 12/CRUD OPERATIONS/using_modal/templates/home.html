@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock title %}
+{% block main %}
+    <div id="hero">
+        <div class="container">
+            <div class="row">
+                <!-- Student Add Form -->
+                <div class="col-lg-4 my-5">
+                    <h4 class="text-center">Add Task</h4>
+                    <form action="{% url 'HomeView' %}" method="POST">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button class="btn btn-success w-100 my-2">Add Task</button>
+                    </form>
+                </div>
+        
+                <!-- Task Table -->
+                <div class="col-lg-8 my-5">
+                    <h4 class="text-center">Task List</h4>
+                    <table class="table table-bordered table-striped" id="datatable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Department</th>
+                                <th>Phone</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for task in tasks %}
+                            <tr>
+                                <td>{{ task.id }}</td>
+                                <td>{{ task.name }}</td>
+                                <td>{{ task.department }}</td>
+                                <td>{{ task.phone }}</td>
+                                <td>
+                                   <!-- Edit Button -->
+                                    <a href="{% url 'EditedView' task.id %}" class="btn btn-warning btn-sm">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <!-- Delete Button -->
+                                    <a href="{% url 'DeletedView' task.id %}" class="btn btn-warning btn-sm">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            {% empty %}
+                            <tr><td colspan="5" class="text-center">No students found.</td></tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock main %}
