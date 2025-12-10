@@ -1,38 +1,32 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
-from task.forms import StudentForm
-from task.models import Student
+from task.forms import TaskForm
+from task.models import Task
 
 class HomeView(View):
     def get(self, request):
-        students = Student.objects.all()
-        form = StudentForm()
-        return render(request, 'home.html', {'students': students, 'form': form})
+        tasks = Task.objects.all()
+        form = TaskForm()
+        return render(request, 'home.html', {'tasks': tasks, 'form': form})
 
-class SavedView(View):
-    def post(self, request):
-        form = StudentForm(request.POST)
-        if form.is_valid():
-            form.save()
-        return redirect('HomeView')
-    
+
 class EditedView(View):
     def get(self, request, id):
-        student = get_object_or_404(Student, id=id)
-        form = StudentForm(instance=student)
-        return render(request, 'edit.html', {'form': form, 'student': student})
+        task = get_object_or_404(Task, id=id)
+        form = TaskForm(instance=task)
+        return render(request, 'edit.html', {'form': form, 'task': task})
 
     def post(self, request, id):
-        student = get_object_or_404(Student, id=id)
-        form = StudentForm(request.POST, instance=student)
+        task = get_object_or_404(Task, id=id)
+        form = TaskForm(request.POST, instance=task)
         if form.is_valid():
             form.save()
             return redirect('HomeView')
-        return render(request, 'edit.html', {'form': form, 'student': student})
+        return render(request, 'edit.html', {'form': form, 'task': task})
     
     
 class DeletedView(View):
     def get(self, request, id):
-        student = get_object_or_404(Student, id=id)
-        student.delete()
+        task = get_object_or_404(Task, id=id)
+        task.delete()
         return redirect('HomeView')

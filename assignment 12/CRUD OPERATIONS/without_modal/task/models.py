@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-class Student(models.Model):
+class Task(models.Model):
     name = models.CharField(max_length=250)
     department = models.CharField(max_length=250)
     phone = models.CharField(max_length=16)
