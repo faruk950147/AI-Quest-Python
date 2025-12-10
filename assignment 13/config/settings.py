@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
-from django.contrib import messages
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-d^9fkcpnc-!0p4vlnv!emt@wf+5e=0pzej*)f1_$qmtaoma=y&'
+SECRET_KEY = 'django-insecure-yfs5d1o5b^9zewtt6+rb-q3w3y%kzh529&60xs@3fki4^p81@f'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,9 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # custom apps can be added here
-    'account.apps.AccountConfig',
+    # custom apps
+    'accounts.apps.AccountsConfig',
     'store.apps.StoreConfig',
+    'cart.apps.CartConfig',
+    'order.apps.OrderConfig',
 ]
 
 MIDDLEWARE = [
@@ -57,13 +59,15 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [os.path.join(BASE_DIR / 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                #custom context processors
+                'store.context_processors.get_filters',
             ],
         },
     },
@@ -82,15 +86,6 @@ DATABASES = {
     }
 }
 
-#messages configuration
-#https://docs.djangoproject.com/en/5.0/ref/contrib/messages/
-MESSAGE_TAGS = {
-    messages.DEBUG: 'debug',
-    messages.INFO: 'info',
-    messages.SUCCESS: 'success',
-    messages.WARNING: 'warning',
-    messages.ERROR: 'danger',
-}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
@@ -127,18 +122,21 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [BASE_DIR / 'static']
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_DIRS = [os.path.join(BASE_DIR / 'static')]
+STATIC_ROOT = os.path.join(BASE_DIR / 'staticfiles')
 MEDIA_URL = 'media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = os.path.join(BASE_DIR / 'media')
+LOGOUT_REDIRECT_URL = 'sign-in'
+# Email send # settings.py
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
-#Email send management
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_USE_TLS = True
-EMAIL_HOST = "smtp.gmail.com"
-EMAIL_HOST_USER = "md.omarfaruk950147@gmail.com"
-EMAIL_HOST_PASSWORD = "lqsd vtui jcxf mfqm"
-EMAIL_PORT = 587
+
+# EMAIL_USE_TLS = True
+# EMAIL_HOST = "smtp.gmail.com"
+# EMAIL_HOST_USER = "md.omarfaruk950147@gmail.com"
+# EMAIL_HOST_PASSWORD = "lqsd vtui jcxf mfqm"
+# EMAIL_PORT = 587
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
