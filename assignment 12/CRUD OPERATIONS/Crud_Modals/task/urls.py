@@ -1,5 +1,5 @@
 from django.urls import path
-from crud.views import (
+from task.views import (
     HomeView, SavedView, DeletedView, EditedView
 )
 

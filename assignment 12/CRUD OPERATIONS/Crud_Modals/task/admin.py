@@ -1,5 +1,5 @@
 from django.contrib import admin
-from crud.models import Student
+from task.models import Student
 
 # Register your models here.
 class StudentAdmin(admin.ModelAdmin):
