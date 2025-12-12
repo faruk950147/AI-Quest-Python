@@ -34,24 +34,6 @@
 /*----------------------------------------*/
 /*  01. THEME DEFAULT CSS START
 /*----------------------------------------*/
-
-
-/* rating start */
-.star {
-    font-size: 24px;
-    color: #ccc;
-    cursor: pointer;
-}
-
-.star.highlighted {
-    color: #ffff00; /* hover color */
-}
-
-.star.selected {
-    color: #ffff00; /* clicked color */
-}
-/* rating end */
-
 @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&amp;display=swap");
 * {
   margin: 0;
