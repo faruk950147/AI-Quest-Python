@@ -105,7 +105,7 @@
                         <h5>Availability: <span>{{product.available_stock}}</span></h5>
                     </div>
                     <!-- Add To Cart Form using -->
-                    <form method="POST" action="" id="add-to-cart-form">
+                    <form method="POST" action="{% url 'add-to-cart' %}" id="cart-form">
                         <input type="hidden" name="product-id" id="product-id" value="{{product.id}}">
                         <input type="hidden" name="product-slug" id="product-slug" value="{{product.slug}}">
                         {% csrf_token %}
@@ -160,13 +160,11 @@
                         <!-- Add To Cart -->
                         <div class="cart-option mb-15">
                             <div class="product-quantity mr-20">
-                                <div class="cart-plus-minus p-relative">
-                                    <input type="text" value="1">
-                                    <div class="dec qtybutton">-</div>
-                                    <div class="inc qtybutton">+</div>
+                                <div class="cart">
+                                    <input type="number" value="1" min="1" max="{{product.available_stock}}" name="quantity" id="quantity">
                                 </div>
                             </div>
-                            <a href="cart.html" class="cart-btn">Add to Cart</a>
+                            <button type="submit" class="cart-btn">Add to Cart</button>
                         </div>
                     </form>
 
@@ -312,8 +310,8 @@
                                 <div class="comment-input-box">
                                     <form action="#" id="review-form" novalidate>
                                         {% csrf_token %}
-                                        <input type="hidden" name="product_id" value="{{ product.id }}">
                                         <input type="hidden" name="product_slug" value="{{ product.slug }}">
+                                        <input type="hidden" name="product_id" value="{{ product.id }}">
                                         <div class="comment-rating mb-20">
                                             <label>Your Review Ratings</label>
                                             <ul class="rating">
@@ -463,59 +461,5 @@
 {% include 'store/product-modals.html' %}
 <!-- shop modal end -->
 
-<script src="{% static 'assets/js/vendor/jquery.js' %}"></script>
-<script>
-   $(document).ready(function(){
-        // Review form submission via AJAX
-        $('#review-form').on('submit', function (e) {
-            e.preventDefault();
-
-            let form = $(this);
-            let data = new FormData(this);
-
-            // Validation: Check rating
-            if (!$('input[name="rating"]:checked').length) {
-                alertify.error("Please select a rating");
-                return;
-            }
-
-            // Validation: Check subject and comment
-            if (!$('#subject').val().trim() || !$('#comment').val().trim()) {
-                alertify.error("Please fill in subject and comment");
-                return;
-            }
-
-            $.ajax({
-                url: '{% url "product-review" %}',  // Django URL for review submission
-                method: 'POST',
-                headers: {
-                    'X-CSRFToken': '{{ csrf_token }}'  // CSRF token
-                },
-                data: data,
-                processData: false,
-                contentType: false,
-                success: function (res) {
-                    if (res.status === 'success') {
-                        alertify.success(res.message);
-
-                        // Reset form
-                        form[0].reset();
-                        // review_count
-                        $('#review_count').text('Reviews (' + res.review_count + ')');
-
-                        // Append new review HTML to the reviews list
-                        $('#reviews-list').prepend(res.review_html);
-                    } else {
-                        alertify.error(res.message);
-                    }
-                },
-                error: function (xhr, status, error) {
-                    alertify.error("Something went wrong.");
-                    console.log(error);
-                }
-            });
-        });
-    });
-    
-</script> 
+{% include 'ajax/detail_page_ajax.html' %}
 {% endblock main_content %}
