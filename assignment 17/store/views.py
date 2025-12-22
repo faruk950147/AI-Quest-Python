@@ -147,7 +147,7 @@ class ProductReviewView(LoginRequiredMixin, generic.View):
         if not rating or not rating.isdigit() or not subject or not comment:
             return JsonResponse({'status': 'error', 'message': 'All fields are required and rating must be a number'}, status=400)
 
-        rating = int(rating)
+        rating = float(rating)
         if rating < 1 or rating > 5:
             return JsonResponse({'status': 'error', 'message': 'Rating must be between 1 and 5'}, status=400)
 
@@ -163,7 +163,6 @@ class ProductReviewView(LoginRequiredMixin, generic.View):
             rating=rating,
             subject=subject,
             comment=comment,
-            status='active'
         )
 
         review_count = product.reviews.filter(status='active').count()
