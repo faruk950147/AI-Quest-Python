@@ -17,23 +17,11 @@ logger = logging.getLogger('project')
 # ==================================
 # Add To Cart
 # ==================================
-from django.views import generic
-from django.http import JsonResponse
-from django.shortcuts import get_object_or_404
-from django.utils.decorators import method_decorator
-from django.views.decorators.cache import never_cache
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.db import transaction
-import logging
-
-logger = logging.getLogger(__name__)
-
 @method_decorator(never_cache, name='dispatch')
 class AddToCartView(LoginRequiredMixin, generic.View):
     login_url = reverse_lazy('sign-in')
 
     def post(self, request):
-        # fetch data from POST request then validate
         product_slug = request.POST.get("product_slug")
         product_id = request.POST.get("product_id")
         select_color = request.POST.get("color")       # optional
@@ -43,38 +31,61 @@ class AddToCartView(LoginRequiredMixin, generic.View):
         if quantity < 1:
             return JsonResponse({"status": "error", "message": "Quantity must be at least 1."})
 
-        # Fetch active product
+        # Fetch product
         product = get_object_or_404(Product, slug=product_slug, id=product_id, status='active')
         product.refresh_from_db(fields=["available_stock"])
 
-        # Resolve variant safely
-        variant_qs = ProductVariant.objects.filter(product=product)
+        # Convert variant selection to int (if exists)
         if select_color:
-            variant_qs = variant_qs.filter(color_id=select_color)
+            select_color = int(select_color)
         if select_size:
-            variant_qs = variant_qs.filter(size_id=select_size)
-            
-        # There should be at most one variant matching the criteria
-        variant = None
-        if variant_qs.count() > 0:
-            variant = variant_qs[0]
-        elif select_color or select_size:
-            return JsonResponse({"status": "error", "message": "Selected variant does not exist."})
+            select_size = int(select_size)
 
-        # Determine max stock
-        if variant:
-            max_stock = variant.available_stock
-            if max_stock <= 0:
-                return JsonResponse({"status": "error", "message": "Selected variant is out of stock."})
-        else:
-            max_stock = product.available_stock
-            if max_stock <= 0:
-                return JsonResponse({"status": "error", "message": "Product is out of stock."})
-        
+        # Handle variant
+        variant = None
+        if select_color or select_size:
+            filters = {}
+            if select_color:
+                filters["color_id"] = select_color
+            if select_size:
+                filters["size_id"] = select_size
+            variant = ProductVariant.objects.filter(product=product, **filters).first()
+            if not variant:
+                return JsonResponse({"status": "error", "message": "Selected variant does not exist."})
+            variant.refresh_from_db(fields=["available_stock"])
+
+        # Determine available stock
+        max_stock = variant.available_stock if variant else product.available_stock
+        if max_stock <= 0:
+            message = "Selected variant is out of stock." if variant else "Product is out of stock."
+            return JsonResponse({"status": "error", "message": message})
+
+        # Add/update cart in transaction
+        with transaction.atomic():
+            cart_item_qs = Cart.objects.filter(user=request.user, product=product, variant=variant)
+            if cart_item_qs.exists():
+                cart_item = cart_item_qs.select_for_update()[0]  # fix: parentheses added
+                new_quantity = cart_item.quantity + quantity
+                if new_quantity > max_stock:
+                    return JsonResponse({
+                        "status": "error",
+                        "message": f"Cannot add {quantity} more items. Only {max_stock - cart_item.quantity} left in stock."
+                    })
+                cart_item.quantity = new_quantity
+                cart_item.save(update_fields=["quantity"])
+            else:
+                if quantity > max_stock:
+                    return JsonResponse({
+                        "status": "error",
+                        "message": f"Cannot add {quantity} items. Only {max_stock} left in stock."
+                    })
+                Cart.objects.create(user=request.user, product=product, variant=variant, quantity=quantity)
+
         return JsonResponse({
             "status": "success",
-            "message": "Product can be added to cart.",
+            "message": "Product added to cart successfully.",
             "product_title": product.title,
+            "variant_id": variant.id if variant else None,
             "available_stock": max_stock
         })
 
