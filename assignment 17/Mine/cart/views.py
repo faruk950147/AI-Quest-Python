@@ -13,20 +13,6 @@ from cart.models import Coupon, Cart, Wishlist
 # ==================================
 # Add To Cart
 # ==================================
-from django.views import generic
-from django.http import JsonResponse
-from django.shortcuts import get_object_or_404
-from django.db import transaction
-from django.utils.decorators import method_decorator
-from django.views.decorators.cache import never_cache
-from django.urls import reverse_lazy
-from django.contrib.auth.mixins import LoginRequiredMixin
-
-from store.models import Product, ProductVariant
-from cart.models import Cart
-
-# ==================================
-# Add To Cart (Concurrency Safe)
 @method_decorator(never_cache, name='dispatch')
 class AddToCartView(LoginRequiredMixin, generic.View):
     login_url = reverse_lazy('sign-in')
