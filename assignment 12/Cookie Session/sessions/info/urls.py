@@ -1,6 +1,7 @@
 from django.urls import path
 from info import views
+
 urlpatterns = [
-    path('', views.InfoView.as_view(), name='info'),
-    path('info-detail/<int:id>/', views.InfoDetailView.as_view(), name='info-detail'),
+    path('set-session/', views.SetSession.as_view(), name='set-session'),
+    path('get-session/', views.GetSession.as_view(), name='get-session'),
 ]
