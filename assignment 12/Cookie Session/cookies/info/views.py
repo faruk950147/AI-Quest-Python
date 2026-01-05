@@ -1,20 +1,22 @@
 from django.shortcuts import render
 from django.views import generic
-# Create your views here.
 
-class InfoView(generic.View):
-    template_name = 'info/info.html'
 
+class SetCookie(generic.View):
     def get(self, request, *args, **kwargs):
-        return render(request, self.template_name, {
-        
-        })
+        response = render(request, 'info/info.html')
+        response.set_cookie('name', 'Faruk Cse')
+        return response
+
 
 class InfoDetailView(generic.View):
-    template_name = 'info/info-detail.html'
-
     def get(self, request, *args, **kwargs):
         info_id = kwargs.get('id')
-        return render(request, self.template_name, {
-            'info_id': info_id
-        })
+
+        name = request.COOKIES.get('name', 'Guest')
+
+        context = {
+            'info_id': info_id,
+            'name': name,
+        }
+        return render(request, 'info/info-detail.html', context)

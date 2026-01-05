@@ -1,6 +1,7 @@
 from django.urls import path
-from info import views
+from info.views import SetCookie, InfoDetailView
+
 urlpatterns = [
-    path('', views.InfoView.as_view(), name='info'),
-    path('info-detail/<int:id>/', views.InfoDetailView.as_view(), name='info-detail'),
+    path('set-cookie/', SetCookie.as_view(), name='set-cookie'),
+    path('detail/<int:id>/', InfoDetailView.as_view(), name='info-detail'),
 ]
