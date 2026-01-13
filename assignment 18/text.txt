@@ -1,3 +1,57 @@
+objects is a model manager 
+1️ Model Manager কী?
+
+এটা model class-এর জন্য একটা interface, যার মাধ্যমে database query করা হয়।
+
+প্রতিটি Django model-এর ডিফল্ট manager হলো objects।
+
+Manager দিয়ে আমরা query, create, update, delete সব করতে পারি।
+
+2️ উদাহরণ
+from django.contrib.auth.models import User
+
+# objects হল manager
+all_users = User.objects.all()    # সব user পাওয়া
+new_user = User.objects.create(username='faruk')  # নতুন user create করা
+
+3️ Manager + QuerySet
+
+Manager (objects) দিয়ে আমরা QuerySet পাই।
+
+QuerySet হলো actual result container।
+
+qs = User.objects.all()   # qs is a QuerySet
+print(type(qs))           # <class 'django.db.models.query.QuerySet'>
+
+4️ Custom Manager
+
+তুমি চাইলে নিজের manager বানাতে পারো:
+
+from django.db import models
+
+class MyUserManager(models.Manager):
+    def active_users(self):
+        return self.filter(is_active=True)
+
+class MyUser(models.Model):
+    username = models.CharField(max_length=50)
+    is_active = models.BooleanField(default=True)
+
+    objects = MyUserManager()  # custom manager
+
+# ব্যবহার
+active = MyUser.objects.active_users()
+
+
+সংক্ষেপে:
+
+objects = model manager
+
+Manager দিয়ে আমরা query করি → result আসে QuerySet হিসেবে
+
+QuerySet lazy evaluated, iterable, এবং list-like
+
+=============================== Reverse Query ============================
 Reverse Query - Django
 
 1. Reverse Query কী?
