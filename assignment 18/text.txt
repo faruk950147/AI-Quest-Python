@@ -1,0 +1,57 @@
+Reverse Query - Django
+
+1. Reverse Query কী?
+যখন একটি model অন্য model-কে ForeignKey দিয়ে reference করে, তখন উল্টো দিক থেকে related object গুলো access করাকে reverse query বলে।
+
+2. উদাহরণ:
+class Category(models.Model):
+    name = models.CharField(max_length=100)
+
+class Product(models.Model):
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
+
+- Product → Category reference করছে।
+- কিন্তু Category model-এ কোনো Product field নেই।
+
+3. Reverse Query ছাড়া সমস্যা:
+ধরুন জানতে চাও: “এই Category-র সব Product দেখাও”
+- Normal query দিয়ে সম্ভব নয় কারণ Category তে Product field নেই।
+
+4. Django কীভাবে Reverse Query দেয়:
+category = Category.objects.get(id=1)
+products = category.product_set.all()  # default reverse relation
+
+5. related_name ব্যবহার করলে আরও পরিষ্কার হয়:
+class Product(models.Model):
+    category = models.ForeignKey(
+        Category,
+        on_delete=models.CASCADE,
+        related_name='products'
+    )
+
+category = Category.objects.get(id=1)
+products = category.products.all()  # পড়তেও সহজ
+
+6. Reverse Query-এর সুবিধা:
+1. Parent থেকে Child data সহজে আনতে পারো
+   - উদাঃ Category → Products, User → Orders
+2. Database query কমে → performance ভালো হয়
+   Category.objects.prefetch_related('products')
+3. Code clean & readable হয়
+   order.items.all()
+   user.orders.count()
+   product.reviews.exists()
+4. Template-এ ব্যবহার সহজ
+   {% for product in category.products.all %}
+       {{ product.name }}
+   {% endfor %}
+
+7. Reverse Query না থাকলে:
+Product.objects.filter(category=category)
+- বারবার লিখতে হয়
+- Relationship স্পষ্ট নয়
+- Template-এ কোড messy হয়
+
+8. সংক্ষেপে:
+Reverse query লাগে কারণ Parent object থেকে Child objects সহজ, clean, এবং efficient ভাবে access করার জন্য।
