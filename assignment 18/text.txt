@@ -51,6 +51,54 @@ Manager দিয়ে আমরা query করি → result আসে QuerySet 
 
 QuerySet lazy evaluated, iterable, এবং list-like
 
+============================= Forward query =====================
+Forward Query
+
+Child → Parent
+
+ForeignKey বা OneToOneField থেকে parent access করা।
+
+উদাহরণ:
+
+book = Book.objects.get(id=1)
+author = book.author   # forward query
+print(author.name)
+
+2️⃣ Reverse Query
+
+Parent → Child
+
+Parent থেকে তার সব child access করা।
+
+Default related_name না দিলে: <childmodel>_set
+
+related_name দিলে, সেটা ব্যবহার করা যায়।
+
+উদাহরণ:
+
+author = Author.objects.get(id=1)
+books = author.book_set.all()   # reverse query
+for book in books:
+    print(book.title)
+
+
+Optional nicer way (related_name ব্যবহার করে):
+
+class Book(models.Model):
+    title = models.CharField(max_length=100)
+    author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name='books')
+
+author = Author.objects.get(id=1)
+books = author.books.all()      # reverse query with related_name
+
+
+সংক্ষেপে:
+
+Forward query: child → parent
+
+Reverse query: parent → child
+
+
 =============================== Reverse Query ============================
 Reverse Query - Django
 
