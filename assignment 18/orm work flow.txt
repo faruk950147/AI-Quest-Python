@@ -1,3 +1,31 @@
+┌────────────────────┐
+│  Application       │
+│  (Django / Python) │
+│                    │
+│  User.objects.all()│
+└─────────▲──────────┘
+          │  Python code
+          ▼
+┌────────────────────┐
+│        ORM         │
+│ (Python → SQL)     │
+│                    │
+│ SELECT * FROM user │
+└─────────▲──────────┘
+          │  SQL
+          ▼
+┌────────────────────┐
+│ Adapter / Driver   │
+│ (mysqlclient etc.) │
+└─────────▲──────────┘
+          │
+          ▼
+┌────────────────────┐
+│     Database       │
+│   (MySQL/SQLite)   │
+└────────────────────┘
+
+
 Django ORM কীভাবে কাজ করে।
 
 পুরো flow (উপরে থেকে নিচে)
