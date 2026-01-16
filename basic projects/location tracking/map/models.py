@@ -1,11 +1,17 @@
 from django.db import models
 
-class Number(models.Model):
-    number = models.CharField(max_length=15, unique=True)
-
-    def __str__(self):
-        return self.number
+class PhoneSearch(models.Model):
+    number = models.CharField(max_length=20, verbose_name="Phone Number")
+    location = models.CharField(max_length=255, blank=True, null=True)
+    provider = models.CharField(max_length=100, blank=True, null=True)
+    latitude = models.FloatField(blank=True, null=True)
+    longitude = models.FloatField(blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-        verbose_name = "Number"
-        verbose_name_plural = "Numbers"
+        verbose_name = "Phone Search Record"
+        verbose_name_plural = "Phone Search Records"
+
+    def __str__(self):
+        return f"{self.number} ({self.location})"
