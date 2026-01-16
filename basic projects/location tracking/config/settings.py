@@ -103,11 +103,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 #  Auth configuration
-AUTH_USER_MODEL = 'account.User'
-AUTHENTICATION_BACKENDS = [
-    'account.authentication.EmailAuthBackend',
-    'django.contrib.auth.backends.ModelBackend',
-]
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
