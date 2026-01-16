@@ -1,36 +1,45 @@
 {% extends 'base.html' %}
-{% block title %}Tasks{% endblock title %}
+{% block title %}Phone Map Tracker{% endblock title %}
+
 {% block main %}
-    <div class="container">
-        <div id="map" style="max-width: 800px; max-height: 100vh; margin: 0 auto;">
-            <div class="form">
-                <form action="" method="POST", enctype="multipart/form-data">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <button type="submit" class="btn btn-primary form-control">Submit</button>
-                </form>
-            </div>
-            <hr>
-            <div class="location">
-                {% if location %}
-                   <h3> <strong>Location:</strong> {{ location }}</h3> 
-                   <p> <strong>Time Zone:</strong> {{ time_zone }}</p>
-                   <p> <strong>Service Provider:</strong> {{ service_provider }}</p>
-                   <div id="map" style="max-width: 800px; max-height: 100vh; margin: 0 auto;">
-                        {% if map %}
-                            <strong>Map : </strong> {{ map|safe }}
-                        {% else %}
-                            <p>No map available.</p>
-                        {% endif %}
-                   </div>
-                {% else %}
-                    <p>No location available.</p>
-                {% endif %}
-            </div>
+<div class="container mt-4">
+    <h2 class="mb-3">Phone Number Tracker</h2>
+
+    <!-- Form -->
+    <div class="form mb-4">
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary form-control">Submit</button>
+        </form>
+    </div>
+
+    <!-- Messages -->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} mt-2">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+
+    <hr>
+
+    <!-- Phone Info & Map -->
+    {% if location %}
+        <div class="phone-info mt-3">
+            <h4><strong>Location:</strong> {{ location }}</h4>
+            <p><strong>Time Zone:</strong> {{ time_zone }}</p>
+            <p><strong>Service Provider:</strong> {{ service_provider }}</p>
         </div>
 
-    </div>
+        {% if map %}
+            <div id="folium-map" style="max-width: 800px; max-height: 600px; margin: 0 auto;">
+                {{ map|safe }}
+            </div>
+        {% else %}
+            <p>No map available.</p>
+        {% endif %}
+    {% else %}
+        <p>No location available.</p>
+    {% endif %}
+</div>
 {% endblock main %}
-{% block extra_scripts %}
-    
-{% endblock extra_scripts %}

@@ -129,6 +129,9 @@ STATICFILES_DIRS = [
 ]
 # Email management configuration
 
+# OPENCAGE_API_KEY
+OPENCAGE_API_KEY = '2cf51479122a40f3a3e169aaa15eb744'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
