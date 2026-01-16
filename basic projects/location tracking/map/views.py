@@ -1,68 +1,104 @@
 from django.shortcuts import render
 from django.views import View
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 import phonenumbers
+from phonenumbers import geocoder, carrier
+
 import folium
 from opencage.geocoder import OpenCageGeocode
-from phonenumbers import geocoder, carrier
 
 from config import settings
 from map.forms import PhoneSearchForm
-from map.models import PhoneSearch  
+from map.models import PhoneSearch
 
 
-class MapView(View):
+class MapView(LoginRequiredMixin, View):
+
     def get(self, request):
-        return render(request, 'map/map.html', {'form': PhoneSearchForm()})
+        return render(request, 'map/map.html', {
+            'form': PhoneSearchForm(),
+            'phones': PhoneSearch.objects.all()[:5]
+        })
 
     def post(self, request):
         form = PhoneSearchForm(request.POST)
 
         if form.is_valid():
+
             number = form.cleaned_data['number']
-            
-            # Formatting
+
+            # format number
             if not str(number).startswith('+'):
-                number = "+" + str(number)
-            
-            try:
-                # Parsing
-                parsed_number = phonenumbers.parse(number)
-                location = geocoder.description_for_number(parsed_number, "en")
-                service_provider = carrier.name_for_number(parsed_number, "en")
-                
-                # Geocoding
-                geocoder_api = OpenCageGeocode(settings.OPENCAGE_API_KEY)
-                results = geocoder_api.geocode(str(location))
-                
-                if results:
-                    lat = results[0]['geometry']['lat']
-                    lng = results[0]['geometry']['lng']
+                number = '+' + str(number)
 
-                    # --- DB SAVE OPERATION ---
-                    PhoneSearch.objects.create(
-                        number=number,
-                        location=location,
-                        provider=service_provider,
-                        latitude=lat,
-                        longitude=lng
-                    )
+            # invalid number check
+            if not phonenumbers.is_possible_number_string(number, None):
+                messages.error(request, "Invalid phone number format")
+                return render(request, 'map/map.html', {'form': form})
 
-                    # Map Generation
-                    my_map = folium.Map(location=[lat, lng], zoom_start=9)
-                    folium.Marker([lat, lng], popup=f"{location}").add_to(my_map)
-                    map_html = my_map._repr_html_()
-                    
-                    return render(request, 'map/map.html', {
-                        'form': form,
-                        'map': map_html,
-                        'location': location,
-                        'provider': service_provider
-                    })
-                else:
-                    messages.error(request, "Could not geocode the location.")
-            
-            except Exception as e:
-                messages.error(request, f"Error: {str(e)}")
+            parsed_number = phonenumbers.parse(number)
+
+            # invalid parsed number
+            if not phonenumbers.is_valid_number(parsed_number):
+                messages.error(request, "Invalid phone number")
+                return render(request, 'map/map.html', {'form': form})
+
+            location = geocoder.description_for_number(parsed_number, "en")
+            provider = carrier.name_for_number(parsed_number, "en")
+
+            # location empty
+            if not location:
+                messages.error(request, "Location not found")
+                return render(request, 'map/map.html', {'form': form})
+
+            geocoder_api = OpenCageGeocode(settings.OPENCAGE_API_KEY)
+
+            # API key missing
+            if not settings.OPENCAGE_API_KEY:
+                messages.error(request, "Geocoding API key missing")
+                return render(request, 'map/map.html', {'form': form})
+
+            results = geocoder_api.geocode(location)
+
+            # geocoding failed
+            if not results:
+                messages.error(request, "Geocoding failed")
+                return render(request, 'map/map.html', {'form': form})
+
+            lat = results[0]['geometry']['lat']
+            lng = results[0]['geometry']['lng']
+
+            phone, created = PhoneSearch.objects.get_or_create(
+                number=number,
+                location=location,
+                provider=provider,
+                latitude=lat,
+                longitude=lng
+            )
+
+            if created:
+                messages.success(request, "Data successfully saved")
+            else:
+                messages.info(request, "Data already exists")
+
+            my_map = folium.Map(location=[lat, lng], zoom_start=9)
+            folium.Marker(
+                [lat, lng],
+                popup=location
+            ).add_to(my_map)
+
+            map_html = my_map._repr_html_()
+
+            return render(request, 'map/map.html', {
+                'form': form,
+                'map': map_html,
+                'location': location,
+                'provider': provider
+            })
+
+        else:
+            messages.error(request, "Invalid phone number")
 
         return render(request, 'map/map.html', {'form': form})

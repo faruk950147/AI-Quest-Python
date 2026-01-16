@@ -1,7 +1,7 @@
 from django.db import models
 
 class PhoneSearch(models.Model):
-    number = models.CharField(max_length=20, verbose_name="Phone Number")
+    number = models.CharField(max_length=20, unique=True)
     location = models.CharField(max_length=255, blank=True, null=True)
     provider = models.CharField(max_length=100, blank=True, null=True)
     latitude = models.FloatField(blank=True, null=True)
