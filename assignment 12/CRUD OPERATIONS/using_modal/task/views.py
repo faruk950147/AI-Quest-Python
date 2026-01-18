@@ -6,32 +6,41 @@ from task.models import Task
 class HomeView(View):
     def get(self, request):
         tasks = Task.objects.all()
-        form = TaskForm()
-        return render(request, 'home.html', {'tasks': tasks, 'form': form})
+        return render(request, 'home.html', {'tasks': tasks})
+
     def post(self, request):
-        form = TaskForm(request.POST)
-        if form.is_valid():
-            form.save()
+        # Add new task
+        name = request.POST.get('name')
+        department = request.POST.get('department')
+        phone = request.POST.get('phone')
+
+        if name and department and phone:
+            Task.objects.create(name=name, department=department, phone=phone)
+        
         return redirect('HomeView')
 
 
 class EditedView(View):
-    def get(self, request, id):
-        task = get_object_or_404(Task, id=id)
-        form = TaskForm(instance=task)
-        return render(request, 'edit.html', {'form': form, 'task': task})
-
     def post(self, request, id):
+        # Edit existing task
         task = get_object_or_404(Task, id=id)
-        form = TaskForm(request.POST, instance=task)
-        if form.is_valid():
-            form.save()
-            return redirect('HomeView')
-        return render(request, 'edit.html', {'form': form, 'task': task})
-    
-    
+        # form = TaskForm(request.POST, instance=task)
+        name = request.POST.get('name')
+        department = request.POST.get('department')
+        phone = request.POST.get('phone')
+
+        if name and department and phone:
+            task.name = name
+            task.department = department
+            task.phone = phone
+            task.save()
+
+        return redirect('HomeView')
+
+
 class DeletedView(View):
     def get(self, request, id):
+        # Delete task
         task = get_object_or_404(Task, id=id)
         task.delete()
         return redirect('HomeView')
