@@ -1,0 +1,52 @@
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<script>
+// ADD
+$(document).on('submit', '#addForm', function(e){
+    e.preventDefault();
+
+    $.ajax({
+        url: $(this).attr('action'),
+        type: 'POST',
+        data: $(this).serialize(),
+        headers: {'X-Requested-With': 'XMLHttpRequest'},
+        success: function(res){
+            $('#task-table').html(res.html);
+            $('#addModal').modal('hide');
+            $('#addForm')[0].reset();
+        }
+    });
+});
+
+// EDIT
+$(document).on('submit', '.editForm', function(e){
+    e.preventDefault();
+
+    $.ajax({
+        url: $(this).attr('action'),
+        type: 'POST',
+        data: $(this).serialize(),
+        headers: {'X-Requested-With': 'XMLHttpRequest'},
+        success: function(res){
+            $('#task-table').html(res.html);
+            $('.modal').modal('hide');
+        }
+    });
+});
+
+// DELETE
+$(document).on('click', '.delete-btn', function(e){
+    e.preventDefault();
+
+    if(confirm('Are you sure?')){
+        $.ajax({
+            url: $(this).attr('href'),
+            type: 'GET',
+            headers: {'X-Requested-With': 'XMLHttpRequest'},
+            success: function(res){
+                $('#task-table').html(res.html);
+            }
+        });
+    }
+});
+</script>
