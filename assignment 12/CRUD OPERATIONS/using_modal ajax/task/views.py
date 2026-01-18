@@ -11,7 +11,11 @@ class HomeView(View):
 
         # AJAX request
         if request.headers.get('x-requested-with') == 'XMLHttpRequest':
-            html = render_to_string('partials/task_table.html', {'tasks': tasks})
+            html = render_to_string(
+                'partials/task_table.html',
+                {'tasks': tasks},
+                request=request  # CSRF fix
+            )
             return JsonResponse({'html': html})
 
         return render(request, 'home.html', {'tasks': tasks})
@@ -32,10 +36,15 @@ class HomeView(View):
 
         # AJAX response
         if request.headers.get('x-requested-with') == 'XMLHttpRequest':
-            html = render_to_string('partials/task_table.html', {'tasks': tasks})
+            html = render_to_string(
+                'partials/task_table.html',
+                {'tasks': tasks},
+                request=request  # CSRF fix
+            )
             return JsonResponse({'html': html})
 
         return render(request, 'home.html', {'tasks': tasks})
+
 
 class EditedView(View):
     def post(self, request, id):
@@ -52,7 +61,11 @@ class EditedView(View):
             task.save()
 
         tasks = Task.objects.all().order_by('-id')
-        html = render_to_string('partials/task_table.html', {'tasks': tasks})
+        html = render_to_string(
+            'partials/task_table.html',
+            {'tasks': tasks},
+            request=request  # CSRF fix
+        )
         return JsonResponse({'html': html})
 
 
@@ -62,5 +75,9 @@ class DeletedView(View):
         task.delete()
 
         tasks = Task.objects.all().order_by('-id')
-        html = render_to_string('partials/task_table.html', {'tasks': tasks})
+        html = render_to_string(
+            'partials/task_table.html',
+            {'tasks': tasks},
+            request=request  # CSRF fix
+        )
         return JsonResponse({'html': html})
