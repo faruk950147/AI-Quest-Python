@@ -1,0 +1,120 @@
+OAuth2 Flow Diagram (Google Login)
+OAuth2 Authorization Code Flow (সবচেয়ে কমন)
+User
+ │
+ │ 1. Login with Google ক্লিক
+ ▼
+Your Django App
+ │
+ │ 2. Google OAuth URL এ redirect
+ ▼
+Google Authorization Server
+ │
+ │ 3. User Google এ login + permission দেয়
+ ▼
+Google Authorization Server
+ │
+ │ 4. Authorization Code পাঠায়
+ ▼
+Your Django App
+ │
+ │ 5. Code দিয়ে Access Token চায়
+ ▼
+Google Token Endpoint
+ │
+ │ 6. Access Token দেয়
+ ▼
+Your Django App
+ │
+ │ 7. Token দিয়ে User Info নেয়
+ ▼
+Google UserInfo API
+
+============================================= Django-তে Google OAuth2 Implementation ==============================================
+Django-তে Google OAuth2 Implementation
+সবচেয়ে সহজ ও স্ট্যান্ডার্ড উপায়
+
+👉 django-allauth ব্যবহার করা
+
+🔹 Step 1: Install Packages
+pip install django-allauth
+
+🔹 Step 2: settings.py
+INSTALLED_APPS = [
+    'django.contrib.sites',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+]
+
+SITE_ID = 1
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+🔹 Step 3: URLs
+# urls.py
+urlpatterns = [
+    path('accounts/', include('allauth.urls')),
+]
+
+🔹 Step 4: Google Console Config
+
+Google Cloud Console এ গিয়ে:
+
+OAuth Client তৈরি করো
+
+Authorized redirect URI:
+
+http://127.0.0.1:8000/accounts/google/login/callback/
+
+🔹 Step 5: Django Admin
+
+Admin → Social Applications
+
+Provider: Google
+
+Client ID
+
+Secret Key
+
+Sites এ তোমার site add করো
+
+🔹 Step 6: Template Button
+<a href="{% provider_login_url 'google' %}">
+    Login with Google
+</a>
+
+
+✅ এইটুকুই!
+Django নিজে থেকেই:
+
+User create করবে
+
+Login করবে
+
+Session handle করবে
+
+3️⃣ OAuth2 vs JWT (সবচেয়ে Important পার্থক্য)
+বিষয়	OAuth2	JWT
+কী	Authorization framework	Token format
+কাজ	Permission দেয়	Identity বহন করে
+Login system	❌ নিজে না	✅ হ্যাঁ
+Third-party login	✅ Yes	❌ No
+Token store	Server side	Client side
+Expiry control	Strong	Medium
+Example	Google Login	API Auth
+🔥 সহজ ভাষায়
+
+OAuth2 = “এই অ্যাপকে আমার ডাটা ব্যবহার করতে দাও”
+
+JWT = “এই ইউজার কে, তার প্রমাণ”
+
+
+
+
+
