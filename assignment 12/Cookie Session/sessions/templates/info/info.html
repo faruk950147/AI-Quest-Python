@@ -1,15 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Set Session</title>
+    <title>Session Info</title>
 </head>
 <body>
-
-<h2>Session Set Successfully</h2>
-
-<a href="{% url 'info-detail' 1 %}">
-    Go to Info Detail
-</a>
-
+    <h1>Session Data</h1>
+    <p>User Name: {{ user_name }}</p>
+    <p>User ID: {{ user_id }}</p>
 </body>
 </html>

@@ -1,7 +1,8 @@
 from django.urls import path
-from info import views
+from .views import SetSession, GetSession, ClearSession
 
 urlpatterns = [
-    path('set-session/', views.SetSession.as_view(), name='set-session'),
-    path('get-session/', views.GetSession.as_view(), name='get-session'),
+    path('set-session/', SetSession.as_view()),
+    path('get-session/', GetSession.as_view()),
+    path('clear-session/', ClearSession.as_view()),
 ]
