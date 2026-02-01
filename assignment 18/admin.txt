@@ -1,0 +1,105 @@
+from django.contrib import admin
+from .models import (
+    Category, Brand, Color, Size, Product,
+    ProductVariant, ImageGallery, Slider,
+    Review, AcceptancePayment
+)
+
+# =========================================================
+# INLINE MODELS
+# =========================================================
+class ProductVariantInline(admin.TabularInline):
+    model = ProductVariant
+    extra = 1
+    fields = ('title', 'color', 'size', 'sku', 'variant_price', 'available_stock', 'status', 'image_tag')
+    readonly_fields = ('image_tag',)
+    show_change_link = True
+
+class ImageGalleryInline(admin.TabularInline):
+    model = ImageGallery
+    extra = 1
+    fields = ('image', 'status', 'image_tag')
+    readonly_fields = ('image_tag',)
+    show_change_link = True
+
+class ReviewInline(admin.TabularInline):
+    model = Review
+    extra = 0
+    fields = ('user', 'subject', 'comment', 'rating', 'status')
+    readonly_fields = ()
+    show_change_link = True
+
+# =========================================================
+# ADMIN MODELS
+# =========================================================
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('title', 'status', 'is_featured', 'created_at', 'updated_at', 'image_tag')
+    prepopulated_fields = {"slug": ("title",)}
+    readonly_fields = ('image_tag',)
+    search_fields = ('title',)
+    list_filter = ('status', 'is_featured')
+
+@admin.register(Brand)
+class BrandAdmin(admin.ModelAdmin):
+    list_display = ('title', 'status', 'is_featured', 'created_at', 'updated_at', 'image_tag')
+    prepopulated_fields = {"slug": ("title",)}
+    readonly_fields = ('image_tag',)
+    search_fields = ('title',)
+    list_filter = ('status', 'is_featured')
+
+@admin.register(Color)
+class ColorAdmin(admin.ModelAdmin):
+    list_display = ('title', 'code', 'status', 'created_at', 'updated_at', 'color_tag')
+    readonly_fields = ('color_tag',)
+    search_fields = ('title', 'code')
+    list_filter = ('status',)
+
+@admin.register(Size)
+class SizeAdmin(admin.ModelAdmin):
+    list_display = ('title', 'code', 'status', 'created_at', 'updated_at')
+    search_fields = ('title', 'code')
+    list_filter = ('status',)
+
+@admin.register(Product)
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ('title', 'category', 'brand', 'variant', 'sale_price', 'available_stock', 'sold', 'status', 'is_featured', 'created_at', 'updated_at', 'image_tag')
+    prepopulated_fields = {"slug": ("title",)}
+    readonly_fields = ('image_tag', 'sold_percentage', 'total_available_stock', 'average_review', 'count_review', 'remaining_seconds')
+    search_fields = ('title', 'brand__title', 'category__title')
+    list_filter = ('status', 'is_featured', 'variant', 'category', 'brand')
+    inlines = [ProductVariantInline, ImageGalleryInline, ReviewInline]
+
+@admin.register(Slider)
+class SliderAdmin(admin.ModelAdmin):
+    list_display = ('title', 'slider_type', 'product', 'status', 'is_featured', 'created_at', 'updated_at', 'image_tag')
+    readonly_fields = ('image_tag',)
+    search_fields = ('title', 'product__title')
+    list_filter = ('status', 'slider_type')
+
+@admin.register(AcceptancePayment)
+class AcceptancePaymentAdmin(admin.ModelAdmin):
+    list_display = ('title', 'status', 'is_featured', 'help_time', 'created_at', 'updated_at', 'image_tag')
+    readonly_fields = ('image_tag',)
+    search_fields = ('title',)
+    list_filter = ('status', 'is_featured')
+
+@admin.register(ProductVariant)
+class ProductVariantAdmin(admin.ModelAdmin):
+    list_display = ('product', 'title', 'color', 'size', 'sku', 'variant_price', 'available_stock', 'status', 'created_at', 'updated_at', 'image_tag')
+    readonly_fields = ('image_tag',)
+    search_fields = ('product__title', 'title', 'sku')
+    list_filter = ('status', 'color', 'size')
+
+@admin.register(ImageGallery)
+class ImageGalleryAdmin(admin.ModelAdmin):
+    list_display = ('product', 'status', 'created_at', 'updated_at', 'image_tag')
+    readonly_fields = ('image_tag',)
+    search_fields = ('product__title',)
+    list_filter = ('status',)
+
+@admin.register(Review)
+class ReviewAdmin(admin.ModelAdmin):
+    list_display = ('product', 'user', 'subject', 'rating', 'status', 'created_at', 'updated_at')
+    search_fields = ('product__title', 'user__username', 'subject', 'comment')
+    list_filter = ('status', 'rating')
