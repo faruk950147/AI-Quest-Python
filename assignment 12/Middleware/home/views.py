@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views import generic
 from home.forms import Registration
+from django.http import HttpResponse
 # Create your views here.
 class StudentRegistrationPost(generic.View):
     def get(self, request):
@@ -22,4 +23,8 @@ class StudentRegistrationGet(generic.View):
                 form.save()
         context = {'form': Registration()}
         return render(request, 'home.html', context)
+
+class CustomMiddlewareView(generic.View):
+    def get(self, request):
+        return HttpResponse("Custom middleware is working!")
 
