@@ -144,14 +144,6 @@ EMAIL_PORT = 587
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# ============================= CACHES ==========================================
-CACHES = {
-    "default": {
-        "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
-        "LOCATION": "DUKAMARKET-cache",
-    }
-}
-
 # ============================= logging =================================
 LOGGING = {
     'version': 1,
