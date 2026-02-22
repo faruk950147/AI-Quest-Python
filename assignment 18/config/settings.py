@@ -145,17 +145,15 @@ EMAIL_PORT = 587
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # ============================= logging =================================
+LOG_DIR = os.path.join(BASE_DIR, 'logs')
+os.makedirs(LOG_DIR, exist_ok=True)
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
 
     'formatters': {
-        'verbose': {
-            'format': '{levelname} {asctime} {name} {module} {message}',
-            'style': '{',
-        },
-        'simple': {
-            'format': '{levelname}: {message}',
+        'standard': {
+            'format': '[{levelname}] {asctime} {name} - {message}',
             'style': '{',
         },
     },
@@ -163,84 +161,40 @@ LOGGING = {
     'handlers': {
         'console': {
             'class': 'logging.StreamHandler',
-            'level': 'DEBUG',
-            'formatter': 'simple',
-        },
-
-        # Only DEBUG logs
-        'file_debug': {
-            'class': 'logging.handlers.RotatingFileHandler',
-            'level': 'DEBUG',
-            'filename': os.path.join(BASE_DIR, 'logs/debug.log'),
-            'maxBytes': 5*1024*1024,
-            'backupCount': 3,
-            'formatter': 'verbose',
-            'delay': True,
-        },
-
-        # Only INFO logs
-        'file_info': {
-            'class': 'logging.handlers.RotatingFileHandler',
             'level': 'INFO',
-            'filename': os.path.join(BASE_DIR, 'logs/info.log'),
-            'maxBytes': 5*1024*1024,
-            'backupCount': 3,
-            'formatter': 'verbose',
-            'delay': True,
+            'formatter': 'standard',
         },
 
-        # Only WARNING logs
-        'file_warning': {
+        'debug_file': {
             'class': 'logging.handlers.RotatingFileHandler',
-            'level': 'WARNING',
-            'filename': os.path.join(BASE_DIR, 'logs/warning.log'),
+            'level': 'DEBUG',
+            'filename': os.path.join(LOG_DIR, 'debug.log'),
             'maxBytes': 5*1024*1024,
-            'backupCount': 3,
-            'formatter': 'verbose',
-            'delay': True,
+            'backupCount': 5,
+            'formatter': 'standard',
         },
 
-        # Only ERROR logs
-        'file_error': {
+        'error_file': {
             'class': 'logging.handlers.RotatingFileHandler',
             'level': 'ERROR',
-            'filename': os.path.join(BASE_DIR, 'logs/error.log'),
+            'filename': os.path.join(LOG_DIR, 'error.log'),
             'maxBytes': 5*1024*1024,
-            'backupCount': 3,
-            'formatter': 'verbose',
-            'delay': True,
-        },
-
-        # Only CRITICAL logs
-        'file_critical': {
-            'class': 'logging.handlers.RotatingFileHandler',
-            'level': 'CRITICAL',
-            'filename': os.path.join(BASE_DIR, 'logs/critical.log'),
-            'maxBytes': 5*1024*1024,
-            'backupCount': 3,
-            'formatter': 'verbose',
-            'delay': True,
+            'backupCount': 5,
+            'formatter': 'standard',
         },
     },
 
     'loggers': {
         'django': {
-            'handlers': ['console'],
+            'handlers': ['console', 'error_file'],
             'level': 'INFO',
             'propagate': False,
         },
 
         'project': {
-            'handlers': [
-                'console',
-                'file_debug',
-                'file_info',
-                'file_warning',
-                'file_error',
-                'file_critical',
-            ],
+            'handlers': ['console', 'debug_file', 'error_file'],
             'level': 'DEBUG',
             'propagate': False,
         },
-    }
+    },
 }
