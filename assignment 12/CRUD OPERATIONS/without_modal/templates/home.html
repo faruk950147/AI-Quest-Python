@@ -37,9 +37,19 @@
                             <td>{{ task.department }}</td>
                             <td>{{ task.phone }}</td>
                             <td>
-                                <form method="post" action="{% url 'IsCompleteView' task.id %}">
+                                <form action="{% url 'IsCompleteView' task.id %}" method="post">
                                     {% csrf_token %}
-                                    <input type="checkbox" name="is_completed" onchange="this.form.submit()" {% if task.is_completed %}checked{% endif %}>
+
+                                    <button class="btn {% if task.is_completed %}btn-success{% else %}btn-secondary{% endif %}">
+                                        
+                                        {% if task.is_completed %}
+                                            Completed
+                                        {% else %}
+                                            Pending
+                                        {% endif %}
+
+                                    </button>
+
                                 </form>
                             </td>
                             <td>
