@@ -29,6 +29,13 @@ class EditedView(View):
             return redirect('HomeView')
         return render(request, 'edit.html', {'form': form, 'task': task})
     
+class IsCompleteView(View):
+    def post(self, request, id):
+        task = get_object_or_404(Task, id=id)
+        task.is_completed = not task.is_completed
+        task.save()
+        return redirect('HomeView')
+    
     
 class DeletedView(View):
     def get(self, request, id):

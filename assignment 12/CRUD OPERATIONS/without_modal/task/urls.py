@@ -1,10 +1,9 @@
 from django.urls import path
-from task.views import (
-    HomeView, EditedView, DeletedView
-)
+from task.views import HomeView, EditedView, IsCompleteView, DeletedView
 
 urlpatterns = [
-    path("", HomeView.as_view(), name="HomeView"),
-    path("EditedView/<int:id>", EditedView.as_view(), name="EditedView"),
-    path("DeletedView/<int:id>", DeletedView.as_view(), name="DeletedView"),
+    path('', HomeView.as_view(), name='HomeView'),
+    path('edit/<int:id>/', EditedView.as_view(), name='EditedView'),
+    path('delete/<int:id>/', DeletedView.as_view(), name='DeletedView'),
+    path('toggle/<int:id>/', IsCompleteView.as_view(), name='IsCompleteView'),
 ]

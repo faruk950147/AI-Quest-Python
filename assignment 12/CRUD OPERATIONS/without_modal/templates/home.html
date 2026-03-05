@@ -24,6 +24,7 @@
                                 <th>Name</th>
                                 <th>Department</th>
                                 <th>Phone</th>
+                                <th>Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -34,6 +35,14 @@
                                 <td>{{ task.name }}</td>
                                 <td>{{ task.department }}</td>
                                 <td>{{ task.phone }}</td>
+                                <!-- Completed Checkbox -->
+                                <td>
+                                    <form method="post" action="{% url 'IsCompleteView' task.id %}">
+                                        {% csrf_token %}
+                                        <input type="checkbox" name="is_completed" onchange="this.form.submit()" {% if task.is_completed %}checked{% endif %}>
+                                    </form>
+                                </td>
+
                                 <td>
                                    <!-- Edit Button -->
                                     <a href="{% url 'EditedView' task.id %}" class="btn btn-warning btn-sm">
