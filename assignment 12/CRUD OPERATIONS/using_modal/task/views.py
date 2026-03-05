@@ -9,38 +9,28 @@ class HomeView(View):
         return render(request, 'home.html', {'tasks': tasks})
 
     def post(self, request):
-        # Add new task
-        name = request.POST.get('name')
-        department = request.POST.get('department')
-        phone = request.POST.get('phone')
-
-        if name and department and phone:
-            Task.objects.create(name=name, department=department, phone=phone)
-        
+        form = TaskForm(request.POST)
+        if form.is_valid():
+            form.save()
         return redirect('HomeView')
-
 
 class EditedView(View):
     def post(self, request, id):
-        # Edit existing task
         task = get_object_or_404(Task, id=id)
-        # form = TaskForm(request.POST, instance=task)
-        name = request.POST.get('name')
-        department = request.POST.get('department')
-        phone = request.POST.get('phone')
-
-        if name and department and phone:
-            task.name = name
-            task.department = department
-            task.phone = phone
-            task.save()
-
+        form = TaskForm(request.POST, instance=task)
+        if form.is_valid():
+            form.save()
         return redirect('HomeView')
 
+class IsCompleteView(View):
+    def post(self, request, id):
+        task = get_object_or_404(Task, id=id)
+        task.is_completed = not task.is_completed
+        task.save()
+        return redirect('HomeView')
 
 class DeletedView(View):
-    def get(self, request, id):
-        # Delete task
+    def post(self, request, id):
         task = get_object_or_404(Task, id=id)
         task.delete()
         return redirect('HomeView')
