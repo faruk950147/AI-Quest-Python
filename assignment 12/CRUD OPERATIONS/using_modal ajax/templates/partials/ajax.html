@@ -1,52 +1,64 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
 <script>
-// ADD
-$(document).on('submit', '#addForm', function(e){
-    e.preventDefault();
+$(document).ready(function(){
 
-    $.ajax({
-        url: $(this).attr('action'),
-        type: 'POST',
-        data: $(this).serialize(),
-        headers: {'X-Requested-With': 'XMLHttpRequest'},
-        success: function(res){
-            $('#task-table').html(res.html);
-            $('#addModal').modal('hide');
-            $('#addForm')[0].reset();
+    // ADD TASK
+    $(document).on('submit', '#addForm', function(e){
+        e.preventDefault();
+        $.ajax({
+            url: $(this).attr('action'),
+            type: 'POST',
+            data: $(this).serialize(),
+            success: function(res){
+                $('#task-table').html(res.html);
+                $('#addModal').modal('hide');
+                $('#addForm')[0].reset();
+            }
+        });
+    });
+
+    // EDIT TASK
+    $(document).on('submit', '.editForm', function(e){
+        e.preventDefault();
+        $.ajax({
+            url: $(this).attr('action'),
+            type: 'POST',
+            data: $(this).serialize(),
+            success: function(res){
+                $('#task-table').html(res.html);
+                $('.modal').modal('hide');
+            }
+        });
+    });
+
+    // DELETE TASK
+    $(document).on('click', '.delete-btn', function(e){
+        e.preventDefault();
+        if(confirm('Are you sure you want to delete this task?')){
+            $.ajax({
+                url: $(this).attr('href'),
+                type: 'POST',
+                data: {'csrfmiddlewaretoken': '{{ csrf_token }}'},
+                success: function(res){
+                    $('#task-table').html(res.html);
+                }
+            });
         }
     });
-});
 
-// EDIT
-$(document).on('submit', '.editForm', function(e){
-    e.preventDefault();
-
-    $.ajax({
-        url: $(this).attr('action'),
-        type: 'POST',
-        data: $(this).serialize(),
-        headers: {'X-Requested-With': 'XMLHttpRequest'},
-        success: function(res){
-            $('#task-table').html(res.html);
-            $('.modal').modal('hide');
-        }
-    });
-});
-
-// DELETE
-$(document).on('click', '.delete-btn', function(e){
-    e.preventDefault();
-
-    if(confirm('Are you sure?')){
+    // COMPLETE TOGGLE
+    $(document).on('click', '.complete-btn', function(e){
+        e.preventDefault();
         $.ajax({
             url: $(this).attr('href'),
-            type: 'GET',
-            headers: {'X-Requested-With': 'XMLHttpRequest'},
+            type: 'POST',
+            data: {'csrfmiddlewaretoken': '{{ csrf_token }}'},
             success: function(res){
                 $('#task-table').html(res.html);
             }
         });
-    }
+    });
+
 });
 </script>
