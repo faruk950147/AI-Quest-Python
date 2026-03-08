@@ -1,4 +1,5 @@
 # Function-based middleware
+from django.shortcuts import render, HttpResponse
 def first_middleware(get_response):
     print("One time initialization")  # server start a one time print
 
@@ -12,9 +13,21 @@ def first_middleware(get_response):
 
     return middleware_func
 
+def second_middleware(get_response):
+    print("One time initialization")  # server start a one time print
+
+    def middleware_func(request):
+        print("Function Middleware: Before view")
+        # anyone code
+        response = HttpResponse("Second Middleware View")
+        print("Function Middleware: After view")
+        # anyone code
+        return response
+
+    return middleware_func
 
 # Class-based middleware
-class BaseMiddleware:
+class CLSMiddleware:
     def __init__(self, get_response):
         self.get_response = get_response
         print("Class Middleware Initialized")  # server start a one time print
