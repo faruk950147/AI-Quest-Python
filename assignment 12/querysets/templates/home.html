@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %} Home {% endblock %}
+
+{% block content %}
+    <main class="registratin-form">
+        <div class="container">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-6">
+                    <h2>Registration</h2>
+                    <form action="" method="post" novalidate>
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-primary form-control">Submit</button>
+                    </form>
+                </div>
+                <div class="col-6">
+                    <h2>Student List</h2>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Roll</th>
+                                <th>Department</th>
+                                <th>Passed In</th>
+                                <th>Passed Out</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for student in students %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ student.name }}</td>
+                                <td>{{ student.roll }}</td>
+                                <td>{{ student.department }}</td>
+                                <td>{{ student.passed_in_years }}</td>
+                                <td>{{ student.passed_out_years }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+{% endblock %}
