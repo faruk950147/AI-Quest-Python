@@ -1,23 +1,24 @@
-from urllib import response
-
+# Function-based middleware
 def first_middleware(get_response):
-    print("One time initialization")
+    print("One time initialization")  # server start a one time print
 
-    def first_func(request):
-        print("this is before view")
+    def middleware_func(request):
+        print("Function Middleware: Before view")
         response = get_response(request)
-        print("this is after view")
+        print("Function Middleware: After view")
         return response
 
-    return first_func
+    return middleware_func
 
 
+# Class-based middleware
 class BaseMiddleware:
     def __init__(self, get_response):
         self.get_response = get_response
-    
+        print("Class Middleware Initialized")  # server start a one time print
+
     def __call__(self, request):
-        print("this is before view")
+        print("Class Middleware: Before view")
         response = self.get_response(request)
-        print("this is after view")
+        print("Class Middleware: After view")
         return response

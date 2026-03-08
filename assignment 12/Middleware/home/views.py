@@ -1,30 +1,29 @@
-from django.shortcuts import render
-from django.views import generic
-from home.forms import Registration
+
+from django.views import View
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
-# Create your views here.
-class StudentRegistrationPost(generic.View):
+from django.views import View
+from home.forms import Registration
+from home.models import Student
+
+class StudentRegistrationPost(View):
+
     def get(self, request):
-        context = {'form': Registration()}
-        return render(request, 'home.html', context)
-    
+        form = Registration()
+        students = Student.objects.all()
+        return render(request, 'home.html', {'form': form, 'students': students})
+
     def post(self, request):
         form = Registration(request.POST)
         if form.is_valid():
             form.save()
-        context = {'form': Registration()}
-        return render(request, 'home.html', context)
-    
-class StudentRegistrationGet(generic.View):
-    def get(self, request):
-        if request.GET:
-            form = Registration(request.GET)
-            if form.is_valid():
-                form.save()
-        context = {'form': Registration()}
-        return render(request, 'home.html', context)
+            return redirect('StudentRegistrationPost')
+        students = Student.objects.all()
+        return render(request, 'home.html', {'form': form, 'students': students})
 
-class CustomMiddlewareView(generic.View):
+
+class CustomMiddlewareView(View):
     def get(self, request):
+        print("Inside view")
         return HttpResponse("Custom middleware is working!")
 
