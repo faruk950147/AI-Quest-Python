@@ -10,8 +10,7 @@ class Registration(forms.ModelForm):
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control'}),
             'roll': forms.NumberInput(attrs={'class': 'form-control'}),
-            'department': forms.TextInput(attrs={'class': 'form-control'}),
-            'pased_in_years': forms.NumberInput(attrs={'class': 'form-control'}),
-            'pased_out_years': forms.NumberInput(attrs={'class': 'form-control'}),
+            'department': forms.Select(attrs={'class': 'form-control'}),
+            'passed_in_year': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+            'passed_out_year': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
         }
-    

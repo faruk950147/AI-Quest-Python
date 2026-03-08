@@ -1,20 +1,19 @@
-from django.shortcuts import render
-from django.views import generic
+from django.shortcuts import render, redirect
+from django.views import View
 from home.forms import Registration
 from home.models import Student
 
-class StudentRegistrationPost(generic.View):
+class StudentRegistrationPost(View):
 
     def get(self, request):
-        context = {'form': Registration(), 'students': Student.objects.all()}
-        return render(request, 'home.html', context)
+        form = Registration()
+        students = Student.objects.all()
+        return render(request, 'home.html', {'form': form, 'students': students})
 
     def post(self, request):
         form = Registration(request.POST)
-
         if form.is_valid():
             form.save()
-            form = Registration()
-
-        context = {'form': form}
-        return render(request, 'home.html', context)
+            return redirect('StudentRegistrationPost')
+        students = Student.objects.all()
+        return render(request, 'home.html', {'form': form, 'students': students})
