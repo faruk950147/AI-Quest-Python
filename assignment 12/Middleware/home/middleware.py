@@ -4,8 +4,10 @@ def first_middleware(get_response):
 
     def middleware_func(request):
         print("Function Middleware: Before view")
+        # anyone code
         response = get_response(request)
         print("Function Middleware: After view")
+        # anyone code
         return response
 
     return middleware_func
@@ -19,6 +21,8 @@ class BaseMiddleware:
 
     def __call__(self, request):
         print("Class Middleware: Before view")
+        # anyone code
         response = self.get_response(request)
         print("Class Middleware: After view")
+        # anyone code
         return response
