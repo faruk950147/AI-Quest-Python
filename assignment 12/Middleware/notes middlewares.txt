@@ -317,3 +317,113 @@ Security	IP blocking
 Authentication	Login check
 API	Token verification
 Performance	Cache
+
+================================= hooks ===========================================
+Django Middleware Hooks
+
+Middleware Hooks হলো Django middleware-এর special method যেগুলো request-response lifecycle এর বিভিন্ন stage এ run হয়। এগুলোর মাধ্যমে আপনি request, view execution, exception, এবং response control করতে পারেন।
+
+1️⃣ __call__() Hook
+
+এটা middleware-এর main hook। সব request এই method দিয়ে যায়।
+
+Example
+class MyMiddleware:
+
+    def __init__(self, get_response):
+        self.get_response = get_response
+
+    def __call__(self, request):
+
+        print("Before View")
+
+        response = self.get_response(request)
+
+        print("After View")
+
+        return response
+Workflow
+Request → __call__ → View → __call__ → Response
+2️⃣ process_view()
+
+এই hook view execute হওয়ার আগে run হয়।
+
+Example
+class ViewMiddleware:
+
+    def __init__(self, get_response):
+        self.get_response = get_response
+
+    def __call__(self, request):
+        response = self.get_response(request)
+        return response
+
+    def process_view(self, request, view_func, view_args, view_kwargs):
+
+        print("View name:", view_func.__name__)
+Parameters
+Parameter	Description
+request	Current request
+view_func	কোন view run হবে
+view_args	View arguments
+view_kwargs	View keyword arguments
+3️⃣ process_exception()
+
+যখন view এর মধ্যে exception হয়, তখন এই hook run হয়।
+
+Example
+class ExceptionMiddleware:
+
+    def __init__(self, get_response):
+        self.get_response = get_response
+
+    def __call__(self, request):
+        response = self.get_response(request)
+        return response
+
+    def process_exception(self, request, exception):
+
+        print("Exception:", exception)
+
+এটা দিয়ে আপনি error log বা custom error response দিতে পারেন।
+
+4️⃣ process_template_response()
+
+যখন view TemplateResponse return করে, তখন এই hook run হয়।
+
+Example
+class TemplateMiddleware:
+
+    def __init__(self, get_response):
+        self.get_response = get_response
+
+    def __call__(self, request):
+        response = self.get_response(request)
+        return response
+
+    def process_template_response(self, request, response):
+
+        response.context_data["site_name"] = "My Website"
+
+        return response
+
+এটা দিয়ে সব template-এ extra context add করা যায়।
+
+Django Middleware Hooks Flow
+Request
+  ↓
+process_view()
+  ↓
+View
+  ↓
+process_exception() (if error)
+  ↓
+process_template_response()
+  ↓
+Response
+Middleware Hooks Summary
+Hook	কখন run হয়
+__call__	Request ও Response সময়
+process_view	View run হওয়ার আগে
+process_exception	View error হলে
+process_template_response	TemplateResponse return হলে
