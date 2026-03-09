@@ -1,7 +1,19 @@
 from django import forms
-from .models import Student
+from home.models import Teacher, Student
 
-class Registration(forms.ModelForm):
+class TeacherForm(forms.ModelForm):
+    class Meta:
+        model = Teacher
+        fields = '__all__'
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control'}),
+            'subject': forms.TextInput(attrs={'class': 'form-control'}),
+            'department': forms.TextInput(attrs={'class': 'form-control'}),
+            'salary': forms.NumberInput(attrs={'class': 'form-control'}),
+        }
+        
+
+class StudentForm(forms.ModelForm):
 
     class Meta:
         model = Student
