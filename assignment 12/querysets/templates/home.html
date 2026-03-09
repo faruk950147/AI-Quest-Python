@@ -29,6 +29,7 @@
                         <tr>
                             <th>SL</th>
                             <th>Name</th>
+                            <th>Age</th>
                             <th>Roll</th>
                             <th>Department</th>
                             <th>Passed In</th>
@@ -41,6 +42,7 @@
                         <tr>
                             <td>{{ forloop.counter }}</td>
                             <td>{{ student.name }}</td>
+                            <td>{{ student.age }}</td>
                             <td>{{ student.roll }}</td>
                             <td>{{ student.department }}</td>
                             <td>{{ student.passed_in_year|date:"Y-m-d" }}</td>

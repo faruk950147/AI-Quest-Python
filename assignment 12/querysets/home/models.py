@@ -9,6 +9,7 @@ class Student(models.Model):
     ]
 
     name = models.CharField(max_length=200)
+    age = models.PositiveIntegerField()
     roll = models.PositiveIntegerField(unique=True)
     department = models.CharField(max_length=50, choices=DEPARTMENT_CHOICES)
     passed_in_year = models.DateField()
