@@ -60,7 +60,7 @@ class StudentRegistrationPost(View):
 
         # ================== Single Object ==================
         # Get a single student by primary key or 404 if not found
-        student = get_object_or_404(Student, pk=1)
+        # student = get_object_or_404(Student, pk=1)
 
         # ================== Filtering Examples ==================
         # students = Student.objects.filter(roll__lt=10)
@@ -76,7 +76,7 @@ class StudentRegistrationPost(View):
         # students = Student.objects.filter(name__regex=r'^J')
         # students = Student.objects.filter(name__iregex=r'^j')
         # students = Student.objects.filter(roll__range=(101,110))
-        students = Student.objects.filter(id__in=[1, 2, 3])  # Filter by ID
+        # students = Student.objects.filter(id__in=[1, 2, 3])  # Filter by ID
 
         # ================== Aggregation ==================
         # aggregate() returns summary statistics as a dictionary
@@ -111,7 +111,9 @@ class StudentRegistrationPost(View):
         # total_students = Student.objects.filter(passed_out_year__gt=F('passed_in_year'))
         # total_students = Student.objects.filter(age__gt=F('marks')|)
         
-        total_students = Student.objects.filter(Q(age__gt=F('marks')) | Q(marks__lt=50))
+        students = Student.students.all()
+        student = Student.students.get(id=1)
+        total_students = Student.students.filter(Q(age__gt=F('marks')) | Q(marks__lt=50))
         
         
         # ================== Context ==================
