@@ -46,17 +46,29 @@ class StudentRegistrationPost(View):
         # dates
         # students = Student.objects.dates('passed_in_year', 'year', order='DESC')
         
-        teachers = Teacher.objects.all()
-        students = Student.objects.all()
-
+        # get by id
+        # students = Student.objects.get(id=1)
+        # get by name
+        # students = Student.objects.get(name='John')
+        # get by department
+        # students = Student.objects.get(department='BBA')
+        # first by
+        # students = Student.objects.first()
+        # students = Student.objects.order_by('id').first()
+        # last
+        # students = Student.objects.order_by('-id').first()
+        # last by
+        # students = Student.objects.last()
+        # lastest
+        students = Student.objects.latest('created_at')
         
-        print("Values:", students)
-        print("SQL:", students.query)
+        # print("Values:", students)
+        # print("SQL:", students.query)
 
         context = {
             'teacher_form': teacher_form,
             'student_form': student_form,
-            'teachers': teachers,
+            # 'teachers': teachers,
             'students': students
         }
 
@@ -83,7 +95,7 @@ class StudentRegistrationPost(View):
         context = {
             'teacher_form': teacher_form,
             'student_form': student_form,
-            'teachers': teachers,
+            # 'teachers': teachers,
             'students': students
         }
 

@@ -6,7 +6,7 @@ class TeacherAdmin(admin.ModelAdmin):
 admin.site.register(Teacher, TeacherAdmin)
 
 class StudentAdmin(admin.ModelAdmin):
-    list_display = ['id', 'name', 'age', 'roll', 'department', 'passed_in_year', 'passed_out_year']
+    list_display = ['id', 'name', 'age', 'roll', 'department', 'passed_in_year', 'passed_out_year', 'created_at', 'updated_at']
 admin.site.register(Student, StudentAdmin)
 
 
