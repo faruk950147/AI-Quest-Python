@@ -96,6 +96,9 @@ class StudentRegistrationPost(View):
         # ================== Annotate ==================
         # annotate() adds a calculated field to each object in a queryset
         # total_students = Student.objects.annotate(total=Count('id'))
+        # total_students = Student.objects.annotate(total=Count('id'), avg_age=Avg('age'))
+        total_students = Student.objects.annotate(total=Count('id'), avg_age=Avg('age'), max_age=Max('age'), min_age=Min('age'), sum_age=Sum('age'))
+        # total_students = Student.objects.annotate(total=Count('id'), avg_age=Avg('age'), max_age=Max('age'), min_age=Min('age'), sum_age=Sum('age')).filter(total__gt=1)
 
         # ================== Context ==================
         context = {
