@@ -1,2 +1,9 @@
 INFO 2025-11-28 07:16:43,933 project views User admin visited Home page. Sliders: 4, Feature Sliders: 4, AcceptancePayments: 4, Categories: 3, Top Deals: 2, Featured Products: 0
 INFO 2026-03-11 02:59:53,626 project views User Anonymous visited Home page
+INFO 2026-03-11 03:02:08,572 project views User Anonymous viewed category 1 with brand=4 and price_filter=None
+INFO 2026-03-11 03:02:11,603 project views User Anonymous viewed category 1 with brand=1 and price_filter=None
+INFO 2026-03-11 03:02:14,043 project views User Anonymous viewed category 1 with brand=2 and price_filter=None
+INFO 2026-03-11 03:02:15,834 project views User Anonymous viewed category 1 with brand=4 and price_filter=None
+INFO 2026-03-11 03:02:16,628 project views User Anonymous viewed category 1 with brand=2 and price_filter=None
+INFO 2026-03-11 03:02:17,332 project views User Anonymous viewed category 1 with brand=1 and price_filter=None
+INFO 2026-03-11 03:02:18,346 project views User Anonymous viewed category 1 with brand=None and price_filter=None
