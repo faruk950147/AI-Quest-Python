@@ -21,6 +21,40 @@ from store.models import (
 
 logger = logging.getLogger('project')
 
+def get_product_variants(product):
+    """
+    Given a product, returns a dictionary containing:
+    - first active variant
+    - unique sizes
+    - colors available for the first variant's size (if any)
+    """
+    variants = ProductVariant.objects.filter(
+        product=product,
+        status='active',
+        available_stock__gt=0
+    ).select_related('size', 'color').order_by('id')
+
+    if not variants:
+        return {'sizes': [], 'colors': [], 'variant': None}
+
+    # Get the first active variant
+    variant = variants[0]
+
+    # Collect unique sizes
+    sizes, seen_sizes = [], set()
+    for v in variants:
+        if v.size and v.size.id not in seen_sizes:
+            sizes.append({'id': v.size.id, 'code': v.size.title})
+            seen_sizes.add(v.size.id)
+
+    # Get colors for the selected variant
+    if variant.size:
+        colors = [v for v in variants if v.size == variant.size]
+    else:
+        colors = [v for v in variants if v.color]
+
+    return {'sizes': sizes, 'colors': colors, 'variant': variant}
+
 
 # =========================================================
 # HOME VIEW
@@ -125,6 +159,8 @@ class ProductDetailView(generic.View):
 
             # Variant logic
             if product.variant != 'none':
+                # context.update(get_product_variants(product))
+                
                 variants = ProductVariant.objects.filter(
                     product=product,
                     status='active',
