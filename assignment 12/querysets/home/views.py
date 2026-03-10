@@ -95,7 +95,7 @@ class StudentRegistrationPost(View):
 
         # ================== Annotate ==================
         # annotate() adds a calculated field to each object in a queryset
-        total_students = Student.objects.annotate(total=Count('id'))
+        # total_students = Student.objects.annotate(total=Count('id'))
 
         # ================== Context ==================
         context = {
