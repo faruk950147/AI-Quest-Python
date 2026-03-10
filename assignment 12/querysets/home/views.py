@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
 from home.forms import TeacherForm, StudentForm
 from home.models import Student, Teacher
@@ -9,7 +9,8 @@ class StudentRegistrationPost(View):
     def get(self, request):
         teacher_form = TeacherForm()
         student_form = StudentForm()
-        # Get all students from default database
+        # ================== fetch queries ==================
+        
         # students = Student.objects.all() # return all students objects
         # ================== lookup for filter methods ==================
         # Get students with department 'BBA' 
@@ -22,8 +23,8 @@ class StudentRegistrationPost(View):
         # students = Student.objects.order_by('-name')
         # random order
         # students = Student.objects.order_by('?')
-        # order by id
-        # students = Student.objects.order_by('id').reverse()[:5]
+        # order by pk
+        # students = Student.objects.order_by('pk').reverse()[:5]
         # values for fields
         # students = Student.objects.values()
         # only specific fields
@@ -46,21 +47,65 @@ class StudentRegistrationPost(View):
         # dates
         # students = Student.objects.dates('passed_in_year', 'year', order='DESC')
         
-        # get by id
-        # students = Student.objects.get(id=1)
+        # get by pk
+        # students = Student.objects.get(pk=1)
         # get by name
         # students = Student.objects.get(name='John')
         # get by department
         # students = Student.objects.get(department='BBA')
         # first by
         # students = Student.objects.first()
-        # students = Student.objects.order_by('id').first()
+        # students = Student.objects.order_by('pk').first()
         # last
-        # students = Student.objects.order_by('-id').first()
+        # students = Student.objects.order_by('-pk').first()
+        # students = Student.objects.get(pk=3)
+        # students = get_object_or_404(Student, pk=3)
         # last by
         # students = Student.objects.last()
         # lastest
-        students = Student.objects.latest('created_at')
+        # students = Student.objects.latest('created_at')
+        # earlist
+        # students = Student.objects.earliest('created_at')
+        # count
+        # students = Student.objects.count()
+        
+        # ================== create queries and updates ==================
+        # create
+        # students = Student.objects.create(name='John', department='BBA')
+        # get_or_create
+        # students, created = Student.objects.get_or_create(name='John', department='BBA')
+        # update
+        # students = Student.objects.filter(pk=1).update(name='Jane')
+        # update_or_create
+        # students, created = Student.objects.update_or_create(pk=1, defaults={'name': 'Jane'})
+        # bulk_create
+        # students = Student.objects.bulk_create([
+        #     Student(name='John', department='BBA'),
+        #     Student(name='Jane', department='BBA')
+        # ])
+        # bulk_update
+        # students = Student.objects.filter(department='BBA')
+        # for student in students:
+        #     student.name = 'Jane'
+        # Student.objects.bulk_update(students, ['name'])
+        # in_bulk
+        # students = Student.objects.in_bulk([1, 2, 3])
+        # print("Students:", students[1])
+        # print("Students Name:", students['name'])
+        # print("All students:", students)
+        # print("In bulk:", students[1].name)
+        
+        # delete a specific student by department
+        # students = Student.objects.filter(department='BBA').delete()
+        # delete a specific student by pk
+        # students = Student.objects.filter(pk=1).delete()
+        # students = Student.objects.get(pk=2).delete()
+        # students = get_object_or_404(Student, pk=3)
+        # students.delete()
+        # bulk_delete
+        # students = Student.objects.bulk_delete([1, 2, 3])
+        
+        
         
         # print("Values:", students)
         # print("SQL:", students.query)
@@ -80,12 +125,12 @@ class StudentRegistrationPost(View):
         student_form = StudentForm(request.POST)
 
         if 'teacher_submit' in request.POST:
-            if teacher_form.is_valid():
+            if teacher_form.is_valpk():
                 teacher_form.save()
                 return redirect('StudentRegistrationPost')
 
         if 'student_submit' in request.POST:
-            if student_form.is_valid():
+            if student_form.is_valpk():
                 student_form.save()
                 return redirect('StudentRegistrationPost')
 
