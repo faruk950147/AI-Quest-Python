@@ -1,5 +1,6 @@
 🔹 select_related
-select_related ব্যবহার করা হয় যখন আপনি ForeignKey বা OneToOneField relationship থেকে related object একসাথে আনতে চান single JOIN query দিয়ে।
+select_related ব্যবহার করা হয় যখন আপনি ForeignKey বা OneToOneField relationship থেকে
+related object একসাথে আনতে চান single JOIN query দিয়ে।
 
 কবে ব্যবহার করবেন?
 যখন ForeignKey বা OneToOneField relationship আছে, এবং related object এর fields access করবেন।
@@ -24,7 +25,8 @@ for book in books:
 এখানে select_related('author') একবারেই Book ও Author টেবিল একসাথে JOIN করে data আনবে।
 
 🔹 prefetch_related
-prefetch_related ব্যবহার করা হয় যখন আপনি ManyToManyField বা Reverse ForeignKey ব্যবহার করছেন এবং related objects আলাদা query দিয়ে আনতে চান, but efficiently (Django internally optimized করে)।
+prefetch_related ব্যবহার করা হয় যখন আপনি ManyToManyField বা Reverse ForeignKey ব্যবহার করছেন এবং
+related objects আলাদা query দিয়ে আনতে চান, but efficiently (Django internally optimized করে)।
 
 কবে ব্যবহার করবেন?
 যখন আপনি ManyToMany বা reverse ForeignKey (যেমন: author.book_set) access করবেন।
@@ -48,12 +50,13 @@ for author in authors:
     print(author.name)
     for book in author.book_set.all():
         print("  -", book.title)
-এখানে prefetch_related('book_set') প্রথমে Author query করবে, তারপর আরেকটা query দিয়ে book গুলো আনবে, এবং Django automatically mapping করে দিবে।
+এখানে prefetch_related('book_set') প্রথমে Author query করবে, তারপর আরেকটা query দিয়ে book গুলো আনবে, 
+এবং Django automatically mapping করে দিবে।
 
 সংক্ষেপে পার্থক্য
-বিষয়	select_related	prefetch_related
+বিষয়	select_related	prefetch_related
 সম্পর্ক	ForeignKey, OneToOneField	ManyToMany, reverse ForeignKey
-কিভাবে কাজ করে	JOIN query দিয়ে	আলাদা ২টা query দিয়ে
+কিভাবে কাজ করে	JOIN query দিয়ে	আলাদা ২টা query দিয়ে
 Performance	দ্রুত (JOIN)	একটু ধীর, তবে optimized
 Query সংখ্যা	১টি query	২টি বা বেশি query
 
@@ -62,26 +65,18 @@ Query সংখ্যা	১টি query	২টি বা বেশি query
 
 যদি reverse relation বা many-to-many আনতে চান — prefetch_related ব্যবহার করুন।
 
-চাইলে আমি আপনার প্রোজেক্ট অনুযায়ী রিয়েল কোড উদাহরণ দিয়েও বুঝিয়ে দিতে পারি। জানাতে পারেন আপনি কোন ধরণের রিলেশনশিপ ব্যবহার করছেন।
+চাইলে আমি আপনার প্রোজেক্ট অনুযায়ী রিয়েল কোড উদাহরণ দিয়েও বুঝিয়ে দিতে পারি। জানাতে পারেন আপনি কোন ধরণের 
+রিলেশনশিপ ব্যবহার করছেন।
 
 
+হ্যাঁ ভাই, select_related আর prefetch_related ছাড়াও Django ORM-এ আরও কিছু powerful function আছে যেগুলা 
+ডেটা efficiently query করতে সাহায্য করে।
 
-
-
-
-
-
-You said:
-ei rokom ar function ase
-
-
-ChatGPT said:
-হ্যাঁ ভাই, select_related আর prefetch_related ছাড়াও Django ORM-এ আরও কিছু powerful function আছে যেগুলা ডেটা efficiently query করতে সাহায্য করে।
-
-নীচে গুরুত্বপূর্ণ কিছু related queryset functions দিলাম যেগুলো select_related / prefetch_related টাইপের performance বা query optimization এ সাহায্য করে:
+নীচে গুরুত্বপূর্ণ কিছু related queryset functions দিলাম যেগুলো select_related / prefetch_related টাইপের performance বা 
+query optimization এ সাহায্য করে:
 
 1. only()
-নির্দিষ্ট কিছু field ছাড়া বাকি কিছুই query করবে না।
+নির্দিষ্ট কিছু field ছাড়া বাকি কিছুই query করবে না।
 
 python
 Copy
