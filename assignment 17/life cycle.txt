@@ -20,8 +20,8 @@ WSGI → Sync request
 
 ASGI → Async / WebSocket
 
-➡️ Web server (Gunicorn, Daphne ইত্যাদি)
-এই request Django app-এ পাঠায়
+Web server (Gunicorn, Daphne ইত্যাদি)
+এই request Django app-এ পাঠায়
 
 3 Django Middleware (Request Phase)
 
@@ -41,8 +41,7 @@ Flow:
 
 Request → Middleware 1 → Middleware 2 → Middleware 3
 
-
-👉 Middleware পারে:
+Middleware পারে:
 
 request block করতে
 
@@ -58,11 +57,11 @@ Middleware পার হলে Django দেখে:
 path('products/<int:id>/', product_detail)
 
 
-➡️ Django URL match করে
-➡️ ঠিক করে কোন View কল হবে
+Django URL match করে
+ঠিক করে কোন View কল হবে
 
 যদি URL না মেলে:
-❌ 404 Error
+404 Error
 
 5 View Function / Class
 
@@ -90,25 +89,25 @@ View যদি database ব্যবহার করে:
 View → Model → ORM → Database
 
 
-➡️ Query চলে
-➡️ Result ফিরে আসে
+Query চলে
+Result ফিরে আসে
 
-7 Template Rendering (যদি HTML হয়)
+7 Template Rendering (যদি HTML হয়)
 
-যদি render() ব্যবহার করা হয়:
+যদি render() ব্যবহার করা হয়:
 
 render(request, 'product.html', context)
 
 
-➡️ Django Template Engine
+Django Template Engine
 
 HTML + context data merge করে
 
-Final HTML বানায়
+Final HTML বানায়
 
 8 HttpResponse তৈরি
 
-View থেকে Django পায়:
+View থেকে Django পায়:
 
 HttpResponse
 
@@ -122,7 +121,7 @@ HttpResponse("<h1>Hello</h1>")
 
 9 Middleware (Response Phase)
 
-এখন response আবার middleware দিয়ে ফিরে যায়:
+এখন response আবার middleware দিয়ে ফিরে যায়:
 
 Middleware 3 → Middleware 2 → Middleware 1 → Browser
 
@@ -139,7 +138,7 @@ response modify করতে
 
 শেষে:
 Django → Web Server → Browser
-User output দেখে 🎉
+User output দেখে
 
 Complete Flow Diagram (Easy)
 Browser
@@ -162,10 +161,10 @@ Middleware (response)
   ↓
 Browser
 
-Interview Important Points ⭐
+Interview Important Points
 
-✔ Middleware order matters
-✔ Request আগে middleware → পরে response middleware
-✔ urls.py শুধু routing করে
-✔ View হলো main brain
+Middleware order matters
+Request আগে middleware → পরে response middleware
+urls.py শুধু routing করে
+View হলো main brain
 ✔ ORM database handle করে

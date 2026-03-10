@@ -5,10 +5,6 @@ related object একসাথে আনতে চান single JOIN query দ�
 কবে ব্যবহার করবেন?
 যখন ForeignKey বা OneToOneField relationship আছে, এবং related object এর fields access করবেন।
 
-উদাহরণ:
-python
-Copy
-Edit
 # মডেল
 class Author(models.Model):
     name = models.CharField(max_length=100)
