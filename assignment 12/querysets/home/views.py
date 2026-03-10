@@ -111,6 +111,7 @@ class StudentRegistrationPost(View):
         # total_students = Student.objects.filter(passed_out_year__gt=F('passed_in_year'))
         # total_students = Student.objects.filter(age__gt=F('marks')|)
         
+        # change manager name
         students = Student.students.all()
         student = Student.students.get(id=1)
         total_students = Student.students.filter(Q(age__gt=F('marks')) | Q(marks__lt=50))
