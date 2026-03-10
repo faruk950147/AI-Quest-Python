@@ -12,7 +12,6 @@ class StudentRegistrationPost(View):
         # ================== fetch queries ==================
         
         # students = Student.objects.all() # return all students objects
-        # ================== lookup for filter methods ==================
         # Get students with department 'BBA' 
         # students = Student.objects.filter(department='BBA') 
         # Get students with department 'BBA' and age greater than 20
@@ -105,8 +104,50 @@ class StudentRegistrationPost(View):
         # bulk_delete
         # students = Student.objects.bulk_delete([1, 2, 3])
         
+        # ================== field lookups queries ==================
+        # field lookups is a way to filter queryset based on field values and conditions specifically 
+        # for that field where clause, methods like filter(), exclude(), get() etc.
+        # syntax: field__lookup=value
+        # __lt = less than
+        # students = Student.objects.filter(roll__lt=10)
+        # __gt = greater than
+        # students = Student.objects.filter(roll__gt=5)
+        # __lte = less than or equal
+        # students = Student.objects.filter(roll__lte=10)
+        # __gte = greater than or equal
+        # students = Student.objects.filter(roll__gte=5)
+        # exact case sentive
+        # students = Student.objects.filter(department__exact='BBA')
+        # students = Student.objects.filter(name__exact='John')
+        # iexact case insensitive
+        # students = Student.objects.filter(department__iexact='bba')
+        # students = Student.objects.filter(name__iexact='john')
+        # contains
+        # students = Student.objects.filter(name__contains='John')
+        # icontains
+        # students = Student.objects.filter(name__icontains='john')
+        # startswith
+        # students = Student.objects.filter(name__startswith='J')
+        # endswith
+        # students = Student.objects.filter(name__endswith='n')
+        # istartswith
+        # students = Student.objects.filter(name__istartswith='j')
+        # iendswith
+        # students = Student.objects.filter(name__iendswith='n')
+        # regex
+        # students = Student.objects.filter(name__regex=r'^J')
+        # iregex
+        # students = Student.objects.filter(name__iregex=r'^j')
+        # in_list = [1, 2, 3]
+        # students = Student.objects.filter(id__in=[1, 2, 3])
+        # students = Student.objects.filter(roll__range=(5, 10))
         
+        # ============================= Aggregation queries =============================
+        from django.db.models import Count, Avg, Max, Min, Sum
+        students = Student.objects.aggregate(Count('id'))
+        print("Students:", students)
         
+    
         # print("Values:", students)
         # print("SQL:", students.query)
 

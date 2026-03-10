@@ -25,6 +25,7 @@ class Student(models.Model):
     department = models.CharField(max_length=50, choices=DEPARTMENT_CHOICES)
     passed_in_year = models.DateField()
     passed_out_year = models.DateField()
+    marks = models.DecimalField(max_digits=5, decimal_places=2)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

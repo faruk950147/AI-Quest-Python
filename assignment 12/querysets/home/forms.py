@@ -26,4 +26,5 @@ class StudentForm(forms.ModelForm):
             'department': forms.Select(attrs={'class': 'form-control'}),
             'passed_in_year': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
             'passed_out_year': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+            'marks': forms.NumberInput(attrs={'class': 'form-control'}),
         }
