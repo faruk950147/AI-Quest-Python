@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
 from home.forms import TeacherForm, StudentForm
 from home.models import Student, Teacher
-from django.db.models import Count, Avg, Max, Min, Sum
+from django.db.models import Count, Avg, Max, Min, Sum, Q, F
 
 
 class StudentRegistrationPost(View):
@@ -97,9 +97,23 @@ class StudentRegistrationPost(View):
         # annotate() adds a calculated field to each object in a queryset
         # total_students = Student.objects.annotate(total=Count('id'))
         # total_students = Student.objects.annotate(total=Count('id'), avg_age=Avg('age'))
-        total_students = Student.objects.annotate(total=Count('id'), avg_age=Avg('age'), max_age=Max('age'), min_age=Min('age'), sum_age=Sum('age'))
+        # total_students = Student.objects.annotate(total=Count('id'), avg_age=Avg('age'), max_age=Max('age'), min_age=Min('age'), sum_age=Sum('age'))
         # total_students = Student.objects.annotate(total=Count('id'), avg_age=Avg('age'), max_age=Max('age'), min_age=Min('age'), sum_age=Sum('age')).filter(total__gt=1)
 
+        # ================= Q objects =================
+        # Q objects allow you to use logical operators (&, |, ~) in queries
+        # students = Student.objects.filter(Q(name__startswith='J') | Q(age__gt=20))
+        # students = Student.objects.filter(Q(name__startswith='J') & Q(age__gt=20))
+        # students = Student.objects.filter(~Q(name__startswith='J'))
+
+        # ================ F objects ================
+        # F objects allow you to reference model fields in queries
+        # total_students = Student.objects.filter(passed_out_year__gt=F('passed_in_year'))
+        # total_students = Student.objects.filter(age__gt=F('marks')|)
+        
+        total_students = Student.objects.filter(Q(age__gt=F('marks')) | Q(marks__lt=50))
+        
+        
         # ================== Context ==================
         context = {
             "teacher_form": teacher_form,
