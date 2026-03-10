@@ -17,3 +17,22 @@ INFO 2026-03-11 03:14:49,247 project views User admin added Product 8 - New Expo
 INFO 2026-03-11 03:14:53,704 project views User admin viewed cart with 1 items, total: 4000.0
 INFO 2026-03-11 03:14:57,475 project views User admin increased quantity of Product 8 to 2
 INFO 2026-03-11 03:14:59,380 project views User admin decreased quantity of Product 8 to 1
+INFO 2026-03-11 03:22:43,705 project views User Anonymous viewed Category 1 - LEHENGA. Products count: 5
+INFO 2026-03-11 03:22:46,890 project views User Anonymous visited Home page. Sliders: 4, Gents Pants: 5, Borkhas: 5, Baby Fashions: 5
+INFO 2026-03-11 03:22:50,616 project views User Anonymous viewed Category 1 - LEHENGA. Products count: 5
+INFO 2026-03-11 03:23:02,007 project views User Anonymous filtered Category 1 - LEHENGA. Filtered products count: 2
+INFO 2026-03-11 03:23:07,172 project views User Anonymous filtered Category 1 - LEHENGA. Filtered products count: 4
+INFO 2026-03-11 03:23:12,524 project views User Anonymous filtered Category 1 - LEHENGA. Filtered products count: 5
+INFO 2026-03-11 03:23:15,764 project views User Anonymous filtered Category 1 - LEHENGA. Filtered products count: 5
+INFO 2026-03-11 03:23:15,764 project views User Anonymous filtered Category 1 - LEHENGA. Filtered products count: 5
+INFO 2026-03-11 03:23:16,443 project views User Anonymous filtered Category 1 - LEHENGA. Filtered products count: 5
+INFO 2026-03-11 03:23:16,447 project views User Anonymous filtered Category 1 - LEHENGA. Filtered products count: 5
+INFO 2026-03-11 03:23:23,563 project views User Anonymous filtered Category 1 - LEHENGA. Filtered products count: 2
+INFO 2026-03-11 03:23:25,778 project views User Anonymous filtered Category 1 - LEHENGA. Filtered products count: 5
+INFO 2026-03-11 03:23:28,291 project views User Anonymous filtered Category 1 - LEHENGA. Filtered products count: 3
+INFO 2026-03-11 03:23:31,034 project views User Anonymous filtered Category 1 - LEHENGA. Filtered products count: 3
+INFO 2026-03-11 03:23:33,291 project views User Anonymous filtered Category 1 - LEHENGA. Filtered products count: 3
+INFO 2026-03-11 03:23:34,739 project views User Anonymous filtered Category 1 - LEHENGA. Filtered products count: 3
+INFO 2026-03-11 03:23:37,988 project views User Anonymous filtered Category 1 - LEHENGA. Filtered products count: 3
+INFO 2026-03-11 03:23:39,466 project views User Anonymous filtered Category 1 - LEHENGA. Filtered products count: 5
+INFO 2026-03-11 03:23:42,759 project views User Anonymous visited Home page. Sliders: 4, Gents Pants: 5, Borkhas: 5, Baby Fashions: 5

@@ -41,3 +41,17 @@ INFO 2026-03-11 03:16:35,826 project views User Anonymous viewed category 1 with
 INFO 2026-03-11 03:16:37,122 project views User Anonymous viewed category 1 with brand=1 and price_filter=None
 INFO 2026-03-11 03:16:38,554 project views User Anonymous viewed category 1 with brand=2 and price_filter=None
 INFO 2026-03-11 03:16:39,418 project views User Anonymous viewed category 1 with brand=4 and price_filter=None
+INFO 2026-03-11 03:21:31,284 project views User Anonymous visited Home page
+INFO 2026-03-11 03:21:39,264 project views User Anonymous viewed category 1 with brand=None and price_filter=None
+INFO 2026-03-11 03:21:45,375 project views User Anonymous viewed category 1 with brand=1 and price_filter=None
+INFO 2026-03-11 03:21:47,285 project views User Anonymous viewed category 1 with brand=2 and price_filter=None
+INFO 2026-03-11 03:21:49,147 project views User Anonymous viewed category 1 with brand=4 and price_filter=None
+INFO 2026-03-11 03:21:51,292 project views User Anonymous viewed category 1 with brand=None and price_filter=None
+INFO 2026-03-11 03:21:53,332 project views User Anonymous viewed category 1 with brand=1 and price_filter=None
+INFO 2026-03-11 03:21:54,865 project views User Anonymous viewed category 1 with brand=2 and price_filter=None
+INFO 2026-03-11 03:21:55,769 project views User Anonymous viewed category 1 with brand=4 and price_filter=None
+INFO 2026-03-11 03:21:57,016 project views User Anonymous viewed category 1 with brand=None and price_filter=below_20k
+INFO 2026-03-11 03:22:00,057 project views User Anonymous viewed category 1 with brand=None and price_filter=above_20k
+INFO 2026-03-11 03:22:02,003 project views User Anonymous viewed category 1 with brand=None and price_filter=below_20k
+INFO 2026-03-11 03:22:03,698 project views User Anonymous viewed category 1 with brand=None and price_filter=None
+INFO 2026-03-11 03:22:06,977 project views User Anonymous viewed category 1 with brand=None and price_filter=above_20k
