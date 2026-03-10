@@ -1,187 +1,127 @@
-from decimal import Decimal, ROUND_HALF_UP
-from django.views import generic
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render, get_object_or_404
-from django.http import JsonResponse
+from django.shortcuts import render, redirect, get_object_or_404
+from django.views import View
 from django.db import transaction
-from django.db.models import Sum, F, DecimalField
-from django.utils.decorators import method_decorator
-from django.views.decorators.cache import never_cache
+from django.utils import timezone
+from django.http import JsonResponse, HttpResponseBadRequest
+from .models import Order, OrderItem, Payment, decimal_round
+from carts.models import Cart
+from coupons.models import Coupon
+from .forms import CheckoutForm
+import uuid
+from decimal import Decimal
 
-from cart.models import Cart
-from checkout.models import Checkout, CheckoutItem, Coupon
-from account.models import Shipping
+def gen_invoice():
+    return uuid.uuid4().hex.upper()
 
-SHIPPING_COST = Decimal('150.00')
-
-
-# ===========================
-# Checkout Page + Coupon Apply
-# ===========================
-@method_decorator(never_cache, name='dispatch')
-class CheckoutView(LoginRequiredMixin, generic.View):
-    login_url = 'sign-in'
-
+class CheckoutView(View):
     def get(self, request):
-        cart_items = Cart.objects.filter(user=request.user, paid=False).select_related('product', 'variant')
-
-        # Aggregate subtotal
-        subtotal_dict = cart_items.aggregate(
-            total=Sum(F('stored_unit_price') * F('quantity'), output_field=DecimalField(max_digits=10, decimal_places=2))
-        )
-        subtotal = subtotal_dict['total'] or Decimal('0.00')
-        subtotal = subtotal.quantize(Decimal('0.01'), ROUND_HALF_UP)
-
-        # Coupon handling
-        discount_amount = Decimal('0.00')
-        coupon_code = request.session.get('coupon_code')
-        if coupon_code:
-            try:
-                coupon = Coupon.objects.get(code=coupon_code)
-                valid, _ = coupon.is_valid(user=request.user)
-                if valid:
-                    discount_amount = coupon.calculate_discount(subtotal)
-                else:
-                    request.session.pop('coupon_code', None)
-                    coupon_code = None
-            except Coupon.DoesNotExist:
-                request.session.pop('coupon_code', None)
-                coupon_code = None
-
-        grand_total = max(subtotal + SHIPPING_COST - discount_amount, Decimal('0.00')).quantize(Decimal('0.01'), ROUND_HALF_UP)
-
-        shipping_address = Shipping.objects.filter(user=request.user)
-        payment_methods = Checkout.PAYMENT_METHOD_CHOICES
-
-        return render(request, 'checkout/checkout.html', {
-            "cart_items": cart_items,
-            "shipping_address": shipping_address,
-            "payment_methods": payment_methods,
-            "subtotal": subtotal,
-            "shipping_cost": SHIPPING_COST,
-            "discount_amount": discount_amount,
-            "grand_total": grand_total,
-            "coupon_code": coupon_code
+        user = request.user
+        carts = Cart.objects.filter(user=user, paid=False)
+        subtotal = Decimal('0.00')
+        for c in carts:
+            subtotal += decimal_round(Decimal(c.unit_price) * c.quantity)
+        form = CheckoutForm()
+        return render(request, 'orders/checkout.html', {
+            'carts': carts, 'subtotal': subtotal, 'form': form
         })
 
     def post(self, request):
-        """AJAX Apply Coupon"""
-        code = request.POST.get('coupon_code')
-        cart_items = Cart.objects.filter(user=request.user, paid=False)
-        if not cart_items.exists():
-            return JsonResponse({"status": "error", "message": "Cart is empty."})
+        user = request.user
+        if not user.is_authenticated:
+            return redirect('account_login')  # change as per your auth url
 
-        coupon = get_object_or_404(Coupon, code=code)
-        valid, message = coupon.is_valid(user=request.user)
-        if not valid:
-            return JsonResponse({"status": "error", "message": message})
+        form = CheckoutForm(request.POST)
+        if not form.is_valid():
+            return render(request, 'orders/checkout.html', {'form': form, 'errors': form.errors})
 
-        # Aggregate subtotal directly
-        subtotal_dict = cart_items.aggregate(
-            total=Sum(F('stored_unit_price') * F('quantity'), output_field=DecimalField(max_digits=10, decimal_places=2))
-        )
-        subtotal = subtotal_dict['total'] or Decimal('0.00')
-        subtotal = subtotal.quantize(Decimal('0.01'), ROUND_HALF_UP)
+        payment_method = form.cleaned_data['payment_method']
+        coupon_code = form.cleaned_data.get('coupon_code') or None
 
-        discount_amount = coupon.calculate_discount(subtotal)
-        grand_total = max(subtotal + SHIPPING_COST - discount_amount, Decimal('0.00')).quantize(Decimal('0.01'), ROUND_HALF_UP)
-
-        request.session['coupon_code'] = coupon.code
-        request.session['discount_amount'] = str(discount_amount)
-
-        return JsonResponse({
-            "status": "success",
-            "message": f"Coupon {coupon.code} applied!",
-            "subtotal": str(subtotal),
-            "discount_amount": str(discount_amount),
-            "grand_total": str(grand_total)
-        })
-
-
-# ===========================
-# Checkout Place View
-# ===========================
-@method_decorator(never_cache, name='dispatch')
-class CheckoutPlaceView(LoginRequiredMixin, generic.View):
-
-    def post(self, request):
-        cart_items = Cart.objects.filter(user=request.user, paid=False).select_related('product', 'variant')
-        if not cart_items.exists():
-            return JsonResponse({"status": "error", "message": "Cart is empty."})
-
-        shipping_id = request.POST.get("address")
-        payment_method = request.POST.get("payment_method")
-        coupon_code = request.POST.get("coupon_code")
-
-        shipping = get_object_or_404(Shipping, id=shipping_id, user=request.user)
-
-        coupon = None
-        if coupon_code:
-            try:
-                coupon = Coupon.objects.get(code=coupon_code)
-            except Coupon.DoesNotExist:
-                coupon = None
+        carts = Cart.objects.filter(user=user, paid=False).select_related('product', 'variant')
+        if not carts.exists():
+            return HttpResponseBadRequest("No items in cart.")
 
         with transaction.atomic():
-            checkout = Checkout.objects.create(
-                user=request.user,
-                shipping=shipping,
+            invoice = gen_invoice()
+            order = Order.objects.create(user=user, invoice_id=invoice, payment_method=payment_method)
+
+            # apply coupon if provided
+            coupon = None
+            if coupon_code:
+                try:
+                    coupon = Coupon.objects.get(code__iexact=coupon_code)
+                    if not coupon.is_valid:
+                        coupon = None
+                except Coupon.DoesNotExist:
+                    coupon = None
+            order.coupon = coupon
+            order.save()
+
+            # create order items
+            for cart in carts:
+                unit_price = cart.unit_price
+                OrderItem.objects.create(
+                    order=order,
+                    product=cart.product,
+                    variant=cart.variant,
+                    unit_price=unit_price,
+                    quantity=cart.quantity
+                )
+
+            # recalc totals
+            order.recalc_totals()
+            order.save()
+
+            # create payment record (not yet paid for non-COD)
+            payment = Payment.objects.create(
+                order=order,
                 payment_method=payment_method,
-                coupon=coupon
+                amount=order.total,
+                paid=(payment_method == 'cod')  # mark paid immediately for COD
             )
 
-            # Create Checkout Items
-            items_bulk = [
-                CheckoutItem(
-                    checkout=checkout,
-                    product=item.product,
-                    variant=item.variant,
-                    quantity=item.quantity,
-                    unit_price=item.stored_unit_price,
-                    subtotal=(item.stored_unit_price * item.quantity).quantize(Decimal('0.01'), ROUND_HALF_UP)
-                )
-                for item in cart_items
-            ]
-            CheckoutItem.objects.bulk_create(items_bulk)
+            # If COD -> mark order as paid and deduct stock immediately
+            if payment_method == 'cod':
+                payment.mark_as_paid(txn_id=f'COD-{invoice}')
+                # order.mark_paid will be invoked by payment.mark_as_paid -> which calls order.mark_paid
 
-            # Finalize Checkout (stock, coupon, totals)
-            checkout.finalization_checkout()
+            # finally return success page
+            return redirect('orders:success', invoice_id=order.invoice_id)
 
-            # Clear Cart
-            cart_items.delete()
+def apply_coupon_ajax(request):
+    user = request.user
+    code = request.GET.get('code', '').strip()
+    if not code:
+        return JsonResponse({'ok': False, 'error': 'No code provided'})
 
-        return JsonResponse({
-            "status": "success",
-            "message": "Checkout successful",
-            "checkout_id": checkout.id
-        })
+    try:
+        coupon = Coupon.objects.get(code__iexact=code)
+    except Coupon.DoesNotExist:
+        return JsonResponse({'ok': False, 'error': 'Coupon not found'})
 
+    if not coupon.is_valid:
+        return JsonResponse({'ok': False, 'error': 'Coupon invalid/expired'})
 
-# ===========================
-# Checkout Success Page
-# ===========================
-@method_decorator(never_cache, name='dispatch')
-class CheckoutSuccess(LoginRequiredMixin, generic.View):
-    login_url = 'sign-in'
+    # calculate subtotal
+    carts = Cart.objects.filter(user=user, paid=False)
+    subtotal = Decimal('0.00')
+    for c in carts:
+        subtotal += Decimal(c.unit_price) * c.quantity
 
-    def get(self, request, id):
-        checkout = get_object_or_404(
-            Checkout.objects.prefetch_related('items__product', 'items__variant'),
-            id=id,
-            user=request.user
-        )
-        return render(request, 'checkout/checkout-success.html', {"checkout": checkout})
+    if subtotal < coupon.min_purchase:
+        return JsonResponse({'ok': False, 'error': f'Minimum purchase {coupon.min_purchase} required'})
 
+    if coupon.discount_type == 'percent':
+        discount = (subtotal * coupon.discount_value) / Decimal('100')
+    else:
+        discount = min(subtotal, coupon.discount_value)
 
-# ===========================
-# Checkout Lists Page
-# ===========================
-@method_decorator(never_cache, name='dispatch')
-class CheckoutListsView(LoginRequiredMixin, generic.View):
-    login_url = 'sign-in'
+    return JsonResponse({
+        'ok': True,
+        'discount': str(decimal_round(discount)),
+        'new_total': str(decimal_round(subtotal - discount))
+    })
 
-    def get(self, request):
-        checkouts = Checkout.objects.filter(user=request.user)\
-            .prefetch_related('items__product', 'items__variant')\
-            .order_by('-created_at')
-        return render(request, 'checkout/checkout-lists.html', {"checkouts": checkouts})
+def success_view(request, invoice_id):
+    order = get_object_or_404(Order, invoice_id=invoice_id, user=request.user)
+    return render(request, 'orders/success.html', {'order': order})

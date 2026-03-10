@@ -7,3 +7,37 @@ INFO 2026-03-11 03:02:15,834 project views User Anonymous viewed category 1 with
 INFO 2026-03-11 03:02:16,628 project views User Anonymous viewed category 1 with brand=2 and price_filter=None
 INFO 2026-03-11 03:02:17,332 project views User Anonymous viewed category 1 with brand=1 and price_filter=None
 INFO 2026-03-11 03:02:18,346 project views User Anonymous viewed category 1 with brand=None and price_filter=None
+INFO 2026-03-11 03:04:00,290 project views User Anonymous viewed category 1 with brand=None and price_filter=None
+INFO 2026-03-11 03:04:03,507 project views User Anonymous visited Home page
+INFO 2026-03-11 03:04:11,228 project views User Anonymous viewed category 2 with brand=None and price_filter=None
+INFO 2026-03-11 03:04:15,357 project views User Anonymous viewed category 2 with brand=1 and price_filter=None
+INFO 2026-03-11 03:04:17,545 project views User Anonymous viewed category 2 with brand=2 and price_filter=None
+INFO 2026-03-11 03:04:18,866 project views User Anonymous viewed category 2 with brand=4 and price_filter=None
+INFO 2026-03-11 03:04:20,609 project views User Anonymous viewed category 2 with brand=None and price_filter=None
+INFO 2026-03-11 03:04:23,011 project views User Anonymous viewed category 2 with brand=None and price_filter=below_20k
+INFO 2026-03-11 03:04:24,575 project views User Anonymous viewed category 2 with brand=None and price_filter=above_20k
+INFO 2026-03-11 03:04:27,183 project views User Anonymous visited Home page
+INFO 2026-03-11 03:04:29,531 project views User Anonymous viewed category 5 with brand=None and price_filter=None
+INFO 2026-03-11 03:04:33,052 project views User Anonymous viewed category 5 with brand=1 and price_filter=None
+INFO 2026-03-11 03:04:36,571 project views User Anonymous viewed category 5 with brand=4 and price_filter=None
+INFO 2026-03-11 03:04:37,922 project views User Anonymous viewed category 5 with brand=2 and price_filter=None
+INFO 2026-03-11 03:04:38,714 project views User Anonymous viewed category 5 with brand=1 and price_filter=None
+INFO 2026-03-11 03:04:41,248 project views User Anonymous visited Home page
+INFO 2026-03-11 03:05:41,059 project views User Anonymous visited Home page
+INFO 2026-03-11 03:05:47,332 project views User Anonymous viewed category 1 with brand=None and price_filter=None
+INFO 2026-03-11 03:06:12,867 project views User Anonymous viewed category 1 with brand=1 and price_filter=None
+INFO 2026-03-11 03:06:15,738 project views User Anonymous viewed category 1 with brand=None and price_filter=None
+INFO 2026-03-11 03:06:17,842 project views User Anonymous viewed category 1 with brand=1 and price_filter=None
+INFO 2026-03-11 03:06:19,315 project views User Anonymous viewed category 1 with brand=None and price_filter=None
+INFO 2026-03-11 03:06:20,817 project views User Anonymous viewed category 1 with brand=1 and price_filter=None
+INFO 2026-03-11 03:15:58,392 project views User Anonymous visited Home page
+INFO 2026-03-11 03:16:02,171 project views User Anonymous viewed category 1 with brand=None and price_filter=None
+INFO 2026-03-11 03:16:24,828 project views User Anonymous viewed category 1 with brand=None and price_filter=None
+INFO 2026-03-11 03:16:29,923 project views User Anonymous viewed category 1 with brand=2 and price_filter=None
+INFO 2026-03-11 03:16:31,250 project views User Anonymous viewed category 1 with brand=1 and price_filter=None
+INFO 2026-03-11 03:16:33,036 project views User Anonymous viewed category 1 with brand=None and price_filter=None
+INFO 2026-03-11 03:16:34,292 project views User Anonymous viewed category 1 with brand=1 and price_filter=None
+INFO 2026-03-11 03:16:35,826 project views User Anonymous viewed category 1 with brand=None and price_filter=None
+INFO 2026-03-11 03:16:37,122 project views User Anonymous viewed category 1 with brand=1 and price_filter=None
+INFO 2026-03-11 03:16:38,554 project views User Anonymous viewed category 1 with brand=2 and price_filter=None
+INFO 2026-03-11 03:16:39,418 project views User Anonymous viewed category 1 with brand=4 and price_filter=None
