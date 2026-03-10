@@ -6,7 +6,7 @@
 
 <main class="registration-form">
     <div class="container">
-        <div class="row justify-content-center align-items-center">
+        <div class="row justify-content-center align-items-start">
 
             <!-- Teacher Form -->
             <div class="col-md-4">
@@ -22,6 +22,7 @@
                 </form>
             </div>
 
+
             <!-- Student Form -->
             <div class="col-md-4">
                 <h2>Student Registration</h2>
@@ -36,12 +37,13 @@
                 </form>
             </div>
 
+
             <!-- Student List -->
-            <div class="col-md-4">
-                <h2>Student List</h2>
+            <div class="col-md-12 mt-4">
+                <h2 class="text-center">Student List</h2>
 
                 <table class="table table-striped table-bordered">
-                    <thead>
+                    <thead class="table-dark">
                         <tr>
                             <th>SL</th>
                             <th>Name</th>
@@ -50,10 +52,13 @@
                             <th>Department</th>
                             <th>Passed In</th>
                             <th>Passed Out</th>
+                            <th>Marks</th>
                         </tr>
                     </thead>
 
                     <tbody>
+
+                        <!-- All Students -->
                         {% for student in students %}
                         <tr>
                             <td>{{ forloop.counter }}</td>
@@ -63,16 +68,49 @@
                             <td>{{ student.get_department_display }}</td>
                             <td>{{ student.passed_in_year|date:"Y-m-d" }}</td>
                             <td>{{ student.passed_out_year|date:"Y-m-d" }}</td>
+                            <td>{{ student.marks }}</td>
                         </tr>
-
                         {% empty %}
                         <tr>
-                            <td colspan="7" class="text-center">No Student Found</td>
+                            <td colspan="8" class="text-center text-danger">
+                                No Student Found
+                            </td>
                         </tr>
                         {% endfor %}
+
+
+                        <!-- Specific Query Result -->
+                        {% if student %}
+                        <tr class="table-info">
+                            <th colspan="8" class="text-center">
+                                Specific Query Result
+                            </th>
+                        </tr>
+
+                        <tr>
+                            <td>#</td>
+                            <td>{{ student.name }}</td>
+                            <td>{{ student.age }}</td>
+                            <td>{{ student.roll }}</td>
+                            <td>{{ student.get_department_display }}</td>
+                            <td>{{ student.passed_in_year|date:"Y-m-d" }}</td>
+                            <td>{{ student.passed_out_year|date:"Y-m-d" }}</td>
+                            <td>{{ student.marks }}</td>
+                        </tr>
+                        {% endif %}
+
+
+                        <!-- Total Students -->
+                        <tr class="table-warning">
+                            <td colspan="8" class="text-center">
+                                Total Students : {{ total_students }}
+                            </td>
+                        </tr>
+
                     </tbody>
 
                 </table>
+
             </div>
 
         </div>
