@@ -1,9 +1,13 @@
-# from django.views import View # base class view
-from django.views.generic import View, ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView, RedirectView
+from django.shortcuts import render
+from django.views.generic import (
+    View, TemplateView, RedirectView, 
+    ListView, DetailView, CreateView, 
+    UpdateView, DeleteView, 
+    
+)
 
-from .models import Person
+from cbv.models import Person
 
-'''
 class PersonListView(View):
     def get(self, request):
         persons = Person.objects.all()
@@ -32,21 +36,10 @@ class PersonTemplateView(TemplateView):
         context['persons'] = Person.objects.all()
         return context
 
-
-class PersonListView(ListView):
-    model = Person
-    template_name = 'cbv/person_list.html'
-    context_object_name = 'persons'
-
-    def get_queryset(self):
-        return Person.objects.all()  # Optional because by default it returns all objects
-
-
 # Redirect View
 class PersonRedirectView(RedirectView):
     def get_redirect_url(self, *args, **kwargs):
         return '/cbv/person-list/'
 
-'''
 
    
