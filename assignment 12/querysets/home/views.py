@@ -126,7 +126,7 @@ class StudentRegistrationPost(View):
             "total_students": total_students
         }
 
-        return render(request, "home.html", context)
+        return render(request, "home/home.html", context)
 
     def post(self, request):
         teacher_form = TeacherForm(request.POST)
@@ -156,4 +156,4 @@ class StudentRegistrationPost(View):
             "total_students": total_students
         }
 
-        return render(request, 'home.html', context)
+        return render(request, 'home/home.html', context)
