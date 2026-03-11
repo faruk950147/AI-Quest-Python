@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from django.views import View
 from django.http import JsonResponse
+from django.db.models import F
 
 from task.models import Task
 from task.forms import TaskForm
+
 
 class HomeView(View):
     def get(self, request):
@@ -31,11 +33,14 @@ class HomeView(View):
 
 
 class ToggleTaskView(View):
-    def post(self, request, pk):
-        task = Task.objects.get(id=pk)
-        task.is_completed = not task.is_completed
-        task.save()
-        return JsonResponse({
-            'id': task.id,
-            'is_completed': task.is_completed
-        })
+    def post(self, request):
+        pk = request.POST.get('pk')
+        task_qs = Task.objects.filter(pk=pk)
+        if task_qs.exists():
+            task_qs.update(is_completed=~F('is_completed'))
+            task = task_qs.first()
+            return JsonResponse({
+                'id': task.id,
+                'is_completed': task.is_completed
+            })
+        return JsonResponse({'error': 'Task not found'}, status=404)

@@ -10,7 +10,6 @@
             <form id="taskForm">
                 {% csrf_token %}
                 {{ form.as_p }}
-                {% comment %} <input type="hidden" name="id"> {% endcomment %}
                 <button type="submit" class="btn btn-success w-100">Add Task</button>
             </form>
         </div>
@@ -37,15 +36,16 @@
                         <td>{{ task.department }}</td>
                         <td>{{ task.phone }}</td>
                         <td>
-                            <button class="btn toggle-btn {% if task.is_completed %}btn-success{% else %}btn-secondary{% endif %}" data-id="{{ task.id }}">
+                            <button class="btn toggle-btn {% if task.is_completed %}btn-success{% else %}btn-secondary{% endif %}" 
+                                data-id="{{ task.pk }}">
                                 {% if task.is_completed %}Completed{% else %}Pending{% endif %}
                             </button>
                         </td>
                         <td>
-                            <button class="btn btn-warning btn-sm" data-id="{{ task.id }}">
+                            <button class="btn btn-warning btn-sm" data-id="{{ task.pk }}">
                                 <i class="fas fa-edit"></i>
                             </button>
-                            <button class="btn btn-danger btn-sm" data-id="{{ task.id }}">
+                            <button class="btn btn-danger btn-sm" data-id="{{ task.pk }}">
                                 <i class="fas fa-trash"></i>
                             </button>
                         </td>
@@ -61,16 +61,16 @@
     </div>
 </div>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    // CSRF token
+    // get CSRF token from cookie
     function getCookie(name) {
         let cookieValue = null;
         if (document.cookie && document.cookie !== '') {
             const cookies = document.cookie.split(';');
-            for (let cookie of cookies) {
-                cookie = cookie.trim();
-                if (cookie.startsWith(name + '=')) {
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
                     cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
                     break;
                 }
@@ -81,79 +81,65 @@ document.addEventListener('DOMContentLoaded', function() {
     const csrftoken = getCookie('csrftoken');
 
     // Add Task via AJAX
-    const taskForm = document.getElementById('taskForm');
-    taskForm.addEventListener('submit', function(e) {
+    $('#taskForm').on('submit', function(e){
         e.preventDefault();
-        const formData = new FormData(taskForm);
-
-        fetch("{% url 'home' %}", {
-            method: 'POST',
+        $.ajax({
+            type: 'POST',
+            url: '', // HomeView post
+            data: $(this).serialize(),
             headers: {'X-CSRFToken': csrftoken},
-            body: formData
-        })
-        .then(res => res.json())
-        .then(data => {
-            if(data.success){
-                const task = data.task;
-                const tbody = document.querySelector('#taskTable tbody');
-                // Remove "No tasks" row if exists
-                const noTasksRow = document.getElementById('no-tasks');
-                if(noTasksRow){ noTasksRow.remove(); }
-
-                const newRow = document.createElement('tr');
-                newRow.id = `task-${task.id}`;
-                newRow.innerHTML = `
-                    <td>${task.id}</td>
-                    <td>${task.name}</td>
-                    <td>${task.department}</td>
-                    <td>${task.phone}</td>
-                    <td>
-                        <button class="btn toggle-btn btn-secondary" data-id="${task.id}">Pending</button>
-                    </td>
-                    <td>
-                        <button class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></button>
-                        <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
-                    </td>
-                `;
-                tbody.appendChild(newRow);
-                taskForm.reset();
-
-                // Attach toggle event to the new button
-                attachToggleEvent(newRow.querySelector('.toggle-btn'));
-            } else {
-                alert('Error adding task');
+            success: function(response){
+                if(response.success){
+                    const task = response.task;
+                    const html = `
+                    <tr id="task-${task.id}">
+                        <td>${task.id}</td>
+                        <td>${task.name}</td>
+                        <td>${task.department}</td>
+                        <td>${task.phone}</td>
+                        <td>
+                            <button class="btn toggle-btn btn-secondary" data-id="${task.id}">
+                                Pending
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-warning btn-sm" data-id="${task.id}">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn btn-danger btn-sm" data-id="${task.id}">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>`;
+                    
+                    // Remove "no tasks" row if exists
+                    $('#no-tasks').remove();
+                    $('#taskTable tbody').append(html);
+                    $('#taskForm')[0].reset();
+                } else {
+                    alert(JSON.stringify(response.errors));
+                }
             }
         });
     });
 
-    // Toggle Completed / Pending via AJAX
-    function attachToggleEvent(btn){
-        btn.addEventListener('click', function(){
-            const taskId = this.dataset.id;
-            fetch(`/toggle-task/${taskId}/`, {
-                method: 'POST',
-                headers: {
-                    'X-CSRFToken': csrftoken,
-                    'X-Requested-With': 'XMLHttpRequest'
-                }
-            })
-            .then(res => res.json())
-            .then(data => {
-                if(data.is_completed){
-                    btn.classList.remove('btn-secondary');
-                    btn.classList.add('btn-success');
-                    btn.textContent = 'Completed';
+    // Toggle task completion via AJAX
+    $('#taskTable').on('click', '.toggle-btn', function(){
+        const btn = $(this);
+        const pk = btn.data('id');
+        $.ajax({
+            type: 'POST',
+            url: '{% url "toggle-task" %}',
+            data: { pk: pk },
+            headers: {'X-CSRFToken': csrftoken},
+            success: function(response){
+                if(response.is_completed){
+                    btn.removeClass('btn-secondary').addClass('btn-success').text('Completed');
                 } else {
-                    btn.classList.remove('btn-success');
-                    btn.classList.add('btn-secondary');
-                    btn.textContent = 'Pending';
+                    btn.removeClass('btn-success').addClass('btn-secondary').text('Pending');
                 }
-            });
+            }
         });
-    }
-
-    // Attach toggle event to existing buttons
-    document.querySelectorAll('.toggle-btn').forEach(attachToggleEvent);
-});
+    });
 </script>
-{% endblock %}
+{% endblock content %}
