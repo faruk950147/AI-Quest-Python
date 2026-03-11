@@ -1,6 +1,6 @@
-from django.shortcuts import render
 from django.views import View
-from django.views.generic import TemplateView, ListView, RedirectView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView, RedirectView
+
 from .models import Person
 
 '''
