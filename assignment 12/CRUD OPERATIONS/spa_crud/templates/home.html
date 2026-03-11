@@ -37,12 +37,9 @@
                             <td>{{ task.department }}</td>
                             <td>{{ task.phone }}</td>
                             <td>
-                                <form action="" method="post">
-                                    {% csrf_token %}
-                                    <button class="btn {% if task.is_completed %}btn-success{% else %}btn-secondary{% endif %}">
-                                        {% if task.is_completed %}Completed{% else %}Pending{% endif %}
-                                    </button>
-                                </form>
+                                <button class="btn {% if task.is_completed %}btn-success{% else %}btn-secondary{% endif %}">
+                                    {% if task.is_completed %}Completed{% else %}Pending{% endif %}
+                                </button>
                             </td>
                             <td>
                                 <button class="btn btn-warning btn-sm" onclick="return confirm('Are you sure you want to edit this task?');">
