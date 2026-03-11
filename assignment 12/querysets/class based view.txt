@@ -245,9 +245,9 @@ get_form_kwargs() form kwargs
 form_valid() form valid হলে
 form_invalid() invalid হলে
 get_initial() initial value
-9️⃣ Decorators in CBV
+9 Decorators in CBV
 
-Function decorator ব্যবহার করতে হয় method_decorator
+Function decorator ব্যবহার করতে হয় method_decorator
 
 Example
 
@@ -288,7 +288,7 @@ get_context_data()
 render_to_response()
 ↓
 HttpResponse
-1 Advanced Tips
+11 Advanced Tips
 
 ✔ dispatch() override করে pre-processing করা যায়
 
