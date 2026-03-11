@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'cbv.apps.CbvConfig',
-    'home.apps.HomeConfig'
+    'queryset.apps.QuerysetConfig'
 ]
 
 MIDDLEWARE = [

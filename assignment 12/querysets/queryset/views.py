@@ -6,7 +6,6 @@ from django.db.models import Count, Avg, Max, Min, Sum, Q, F
 
 
 class StudentRegistrationPost(View):
-
     def get(self, request):
         teacher_form = TeacherForm()
         student_form = StudentForm()

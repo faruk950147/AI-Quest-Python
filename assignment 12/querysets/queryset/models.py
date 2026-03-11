@@ -24,6 +24,12 @@ class Teacher(models.Model):
 
     def __str__(self):
         return self.name
+    
+    class Meta:
+        db_table = "teacher"
+        ordering = ["-created_at"]
+        verbose_name = "Teacher"
+        verbose_name_plural = "Teachers"
 
 class Student(models.Model):
 
@@ -49,4 +55,7 @@ class Student(models.Model):
         return f"{self.roll} - {self.name}"
 
     class Meta:
-        ordering = ['roll']
+        db_table = "student"
+        ordering = ["-created_at"]
+        verbose_name = "Student"
+        verbose_name_plural = "Students"

@@ -1,9 +1,9 @@
 from django.urls import path
 
 from cbv.views import (
-    ShowView
+    PersonListView
 )
 
 urlpatterns = [
-    path('', ShowView.as_view(), name='show'),
+    path('', PersonListView.as_view(), name='person_list'),
 ]
