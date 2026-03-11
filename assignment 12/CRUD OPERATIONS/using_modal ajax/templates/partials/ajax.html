@@ -27,7 +27,6 @@ $(document).ready(function(){
             data: $(this).serialize(),
             success: function(res){
                 $('#task-table').html(res.html);
-                $('.modal').modal('hide');
             }
         });
     });
