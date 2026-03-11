@@ -8,7 +8,7 @@
             <!-- Task Add Form -->
             <div class="col-lg-4 my-5">
                 <h4 class="text-center">Add Task</h4>
-                <form action="{% url 'HomeView' %}" method="POST">
+                <form action="#" method="POST">
                     {% csrf_token %}
                     {{ form.as_p }}
                     <button class="btn btn-success w-100 my-2">Add Task</button>
@@ -37,28 +37,20 @@
                             <td>{{ task.department }}</td>
                             <td>{{ task.phone }}</td>
                             <td>
-                                <form action="{% url 'IsCompleteView' task.id %}" method="post">
+                                <form action="" method="post">
                                     {% csrf_token %}
-
                                     <button class="btn {% if task.is_completed %}btn-success{% else %}btn-secondary{% endif %}">
-                                        
-                                        {% if task.is_completed %}
-                                            Completed
-                                        {% else %}
-                                            Pending
-                                        {% endif %}
-
+                                        {% if task.is_completed %}Completed{% else %}Pending{% endif %}
                                     </button>
-
                                 </form>
                             </td>
                             <td>
-                                <a href="{% url 'EditedView' task.id %}" class="btn btn-warning btn-sm">
+                                <button class="btn btn-warning btn-sm" onclick="return confirm('Are you sure you want to edit this task?');">
                                     <i class="fas fa-edit"></i>
-                                </a>
-                                <a href="{% url 'DeletedView' task.id %}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this task?');">
+                                </button>
+                                <button class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this task?');">
                                     <i class="fas fa-trash"></i>
-                                </a>
+                                </button>
                             </td>
                         </tr>
                         {% empty %}
