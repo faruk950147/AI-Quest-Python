@@ -1,0 +1,377 @@
+Django CBV (Class-Based Views) A to Z - Full Explanation
+1. Introduction (CBV কী)
+
+CBV = Class Based View
+
+Django-তে View দুই ধরনের হয়:
+
+1 FBV (Function Based View)
+
+def home(request):
+return HttpResponse("Hello")
+
+2 CBV (Class Based View)
+
+class HomeView(View):
+def get(self, request):
+return HttpResponse("Hello")
+CBV এর সুবিধা
+
+✔ Code reusable
+✔ Large project এ maintain করা সহজ
+✔ Generic views ব্যবহার করে অনেক কাজ automatic হয়
+✔ Mixins ব্যবহার করে authentication / permission সহজে করা যায়
+
+2. Basic View Class
+
+Django-তে basic CBV তৈরি করতে হয় View class থেকে।
+
+from django.views import View
+from django.http import HttpResponse
+
+class MyView(View):
+
+def get(self, request):
+return HttpResponse("This is GET request")
+
+def post(self, request):
+return HttpResponse("This is POST request")
+Explanation
+Method কাজ
+get() GET request handle করে
+post() POST request handle করে
+URL Mapping
+from django.urls import path
+from .views import MyView
+
+urlpatterns = [
+path('myview/', MyView.as_view(), name='myview'),
+]
+গুরুত্বপূর্ণ
+
+as_view()
+class-কে callable function এ convert করে।
+
+3. as_view() Complete Process
+
+as_view() Django CBV এর সবচেয়ে গুরুত্বপূর্ণ অংশ।
+
+Step by step process
+
+1 URL mapping এ as_view() call হয়
+
+path('myview/', MyView.as_view())
+
+2 Django একটি callable function view() তৈরি করে
+
+3 Browser request পাঠায়
+
+Browser → URL → view(request)
+
+4 Django class instance তৈরি করে
+
+MyView()
+
+5 setup() run হয়
+
+setup(request, args, kwargs)
+
+6 dispatch() run হয়
+
+এটা check করে request method
+
+GET
+POST
+PUT
+DELETE
+
+7 correct method call হয়
+
+get()
+post()
+
+8 Response return হয়
+
+HttpResponse
+Full Flow
+Browser Request
+↓
+URL Dispatcher
+↓
+as_view()
+↓
+Class Instance
+↓
+setup()
+↓
+dispatch()
+↓
+get() / post()
+↓
+render_to_response()
+↓
+HttpResponse
+↓
+Browser
+4 Base View Methods
+
+Django View class-এ কিছু built-in method থাকে।
+
+Method কাজ
+as_view() class কে function বানায়
+dispatch() HTTP method detect করে
+setup() request initialize করে
+http_method_not_allowed() 405 error দেয়
+options() OPTIONS request handle করে
+HTTP Methods
+
+Django override করা যায়
+
+get()
+post()
+put()
+patch()
+delete()
+head()
+options()
+trace()
+5 Generic Views
+
+Django-তে অনেক ready-made CBV আছে যাকে Generic Views বলে।
+
+এগুলো CRUD সহজ করে।
+
+1 ListView
+
+Database থেকে multiple objects দেখায়।
+
+Example:
+
+class ProductListView(ListView):
+model = Product
+template_name = "product_list.html"
+Important methods
+Method কাজ
+get_queryset() database query
+get_context_data() template data
+render_to_response() template render
+paginate_queryset() pagination
+2 DetailView
+
+Single object দেখানোর জন্য।
+
+class ProductDetailView(DetailView):
+model = Product
+Important methods
+Method কাজ
+get_object() single object fetch
+get_queryset() query filter
+get_context_data() template data
+3 CreateView
+
+Database এ object create করে।
+
+class ProductCreateView(CreateView):
+model = Product
+fields = ['name','price']
+4 UpdateView
+
+Object update করে।
+
+class ProductUpdateView(UpdateView):
+model = Product
+fields = ['name','price']
+5 DeleteView
+
+Object delete করে।
+
+class ProductDeleteView(DeleteView):
+model = Product
+6 Mixins
+
+Mixins হচ্ছে extra functionality add করার class।
+
+Example:
+
+class ProductListView(LoginRequiredMixin, ListView):
+model = Product
+Common Mixins
+Mixin কাজ
+LoginRequiredMixin login ছাড়া access না
+UserPassesTestMixin custom condition
+PermissionRequiredMixin permission check
+FormMixin form handling
+MultipleObjectMixin multiple objects
+7 Method Overriding
+
+Generic view customize করতে method override করা হয়।
+
+Example
+
+class ProductListView(ListView):
+
+model = Product
+
+def get_queryset(self):
+return Product.objects.filter(active=True)
+Explanation
+
+এখানে
+
+Product.objects.filter(active=True)
+
+শুধু active product দেখাবে।
+
+Context override
+def get_context_data(self, **kwargs):
+
+context = super().get_context_data(**kwargs)
+
+context['message'] = "Welcome Faruk"
+
+return context
+
+Template এ ব্যবহার
+
+{{ message }}
+8️⃣ Form Handling Methods
+
+Form based CBV-তে গুরুত্বপূর্ণ method।
+
+Method কাজ
+get_form_class() form class return
+get_form() form instance
+get_form_kwargs() form kwargs
+form_valid() form valid হলে
+form_invalid() invalid হলে
+get_initial() initial value
+9️⃣ Decorators in CBV
+
+Function decorator ব্যবহার করতে হয় method_decorator
+
+Example
+
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
+
+@method_decorator(login_required, name='dispatch')
+class MyView(View):
+
+def get(self, request):
+return HttpResponse("Login users only")
+
+তবে best practice
+
+LoginRequiredMixin
+10 Request Lifecycle
+
+Django CBV request lifecycle
+
+URL
+↓
+as_view()
+↓
+callable function
+↓
+instance
+↓
+setup()
+↓
+dispatch()
+↓
+get() / post()
+↓
+get_queryset()
+↓
+get_context_data()
+↓
+render_to_response()
+↓
+HttpResponse
+1 Advanced Tips
+
+✔ dispatch() override করে pre-processing করা যায়
+
+✔ Multiple inheritance এ super() ব্যবহার করতে হবে
+
+✔ get_context_data() দিয়ে template data add
+
+✔ DB optimize
+
+select_related()
+prefetch_related()
+
+✔ caching ব্যবহার
+
+✔ AJAX response
+
+JsonResponse
+12 Full CRUD Example
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.urls import reverse_lazy
+from .models import Product
+ListView
+class ProductListView(LoginRequiredMixin, ListView):
+
+model = Product
+template_name = "product_list.html"
+
+def get_queryset(self):
+return Product.objects.filter(active=True)
+DetailView
+class ProductDetailView(DetailView):
+model = Product
+CreateView
+class ProductCreateView(LoginRequiredMixin, CreateView):
+
+model = Product
+fields = ['name','price','description']
+success_url = reverse_lazy('product-list')
+
+def form_valid(self, form):
+
+form.instance.created_by = self.request.user
+
+return super().form_valid(form)
+UpdateView
+class ProductUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+
+model = Product
+fields = ['name','price','description']
+success_url = reverse_lazy('product-list')
+
+def test_func(self):
+
+return self.request.user == self.get_object().created_by
+DeleteView
+class ProductDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+
+model = Product
+success_url = reverse_lazy('product-list')
+
+def test_func(self):
+
+return self.request.user == self.get_object().created_by
+13 Summary
+
+✔ CBV = Class Based Views
+✔ as_view() → class → callable function
+
+✔ dispatch() → HTTP method detect
+
+✔ get() / post() → request handler
+
+✔ Generic Views → CRUD automation
+
+✔ Mixins → extra behaviour
+
+✔ Override methods → customization
+
+✔ Form handling → form_valid()
+
+✔ Decorators → method_decorator
+
+✔ Performance → select_related, caching
+
+✔ AJAX → JsonResponse
