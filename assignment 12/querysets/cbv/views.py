@@ -39,7 +39,7 @@ class PersonTemplateView(TemplateView):
 # Redirect View
 class PersonRedirectView(RedirectView):
     def get_redirect_url(self, *args, **kwargs):
-        return '/cbv/person-list/'
+        return '/'
 
 
    
