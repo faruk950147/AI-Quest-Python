@@ -4,7 +4,8 @@ from cbv.views import (
     # PersonListView,
     # PersonInheritView
     # PersonTemplateView,
-    PersonListView
+    PersonListView,
+    PersonRedirectView
 )
 
 urlpatterns = [
@@ -12,4 +13,5 @@ urlpatterns = [
     # path('person-inherit/', PersonInheritView.as_view(), name='person_inherit'),
     # path('', PersonTemplateView.as_view(), name='person_template'),
     path('', PersonListView.as_view(), name='person_list'),
+    path('', PersonRedirectView.as_view(), name='person_redirect'),
 ]

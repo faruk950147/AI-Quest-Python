@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import View
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView, ListView, RedirectView
 from .models import Person
 
 '''
@@ -32,6 +32,7 @@ class PersonTemplateView(TemplateView):
         context['persons'] = Person.objects.all()
         return context
 
+
 '''
 class PersonListView(ListView):
     model = Person
@@ -40,5 +41,12 @@ class PersonListView(ListView):
 
     def get_queryset(self):
         return Person.objects.all()  # Optional because by default it returns all objects
+
+
+# Redirect View
+class PersonRedirectView(RedirectView):
+    def get_redirect_url(self, *args, **kwargs):
+        return '/cbv/person-list/'
+
 
    
