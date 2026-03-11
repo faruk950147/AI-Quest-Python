@@ -37,16 +37,15 @@
                         <td>{{ task.department }}</td>
                         <td>{{ task.phone }}</td>
                         <td>
-                            <button class="btn toggle-btn {% if task.is_completed %}btn-success{% else %}btn-secondary{% endif %}" 
-                                    data-id="{{ task.id }}">
+                            <button class="btn toggle-btn {% if task.is_completed %}btn-success{% else %}btn-secondary{% endif %}" data-id="{{ task.id }}">
                                 {% if task.is_completed %}Completed{% else %}Pending{% endif %}
                             </button>
                         </td>
                         <td>
-                            <button class="btn btn-warning btn-sm">
+                            <button class="btn btn-warning btn-sm" data-id="{{ task.id }}">
                                 <i class="fas fa-edit"></i>
                             </button>
-                            <button class="btn btn-danger btn-sm">
+                            <button class="btn btn-danger btn-sm" data-id="{{ task.id }}">
                                 <i class="fas fa-trash"></i>
                             </button>
                         </td>
