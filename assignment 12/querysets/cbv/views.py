@@ -1,5 +1,5 @@
-from django.views import View
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView, RedirectView
+# from django.views import View # base class view
+from django.views.generic import View, ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView, RedirectView
 
 from .models import Person
 
