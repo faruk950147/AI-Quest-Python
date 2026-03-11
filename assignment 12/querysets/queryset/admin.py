@@ -1,5 +1,5 @@
 from django.contrib import admin
-from home.models import Teacher, Student
+from queryset.models import Teacher, Student
 # Register your models here.
 class TeacherAdmin(admin.ModelAdmin):
     list_display = ['id', 'name', 'subject', 'department', 'salary', 'created_at', 'updated_at']

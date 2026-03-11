@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
-from home.forms import TeacherForm, StudentForm
-from home.models import Student, Teacher
+from queryset.forms import TeacherForm, StudentForm
+from queryset.models import Student, Teacher
 from django.db.models import Count, Avg, Max, Min, Sum, Q, F
 
 

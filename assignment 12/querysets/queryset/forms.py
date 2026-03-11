@@ -1,5 +1,5 @@
 from django import forms
-from home.models import Teacher, Student
+from queryset.models import Teacher, Student
 
 class TeacherForm(forms.ModelForm):
     class Meta:
