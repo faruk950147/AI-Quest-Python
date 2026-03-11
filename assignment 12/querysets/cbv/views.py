@@ -33,7 +33,6 @@ class PersonTemplateView(TemplateView):
         return context
 
 
-'''
 class PersonListView(ListView):
     model = Person
     template_name = 'cbv/person_list.html'
@@ -48,5 +47,6 @@ class PersonRedirectView(RedirectView):
     def get_redirect_url(self, *args, **kwargs):
         return '/cbv/person-list/'
 
+'''
 
    
