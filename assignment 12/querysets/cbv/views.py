@@ -7,4 +7,6 @@ class PersonListView(View):
     def get(self, request):
         persons = Person.objects.all()
         return render(request, 'cbv/person_list.html', {'persons': persons})
+    def post(self, request):
+        pass
 
