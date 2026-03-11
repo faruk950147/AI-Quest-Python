@@ -25,9 +25,10 @@ class TaskForm(forms.ModelForm):
     class Meta:
         model = Task
         fields = '__all__'
+        exclude = ['is_completed']
         widgets = {
             'name': forms.TextInput(attrs={'id': 'name'}),
             'department': forms.TextInput(attrs={'id': 'department'}),
             'phone': forms.TextInput(attrs={'id': 'phone'}),
-            'is_completed': forms.CheckboxInput(attrs={'id': 'is_completed'})
+            # 'is_completed': forms.CheckboxInput(attrs={'id': 'is_completed'})
         }
