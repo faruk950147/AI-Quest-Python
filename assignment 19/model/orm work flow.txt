@@ -1,6 +1,6 @@
 ORM Proper Notes (Django Focused)
 
-1️⃣ **ORM কী?**
+1️ **ORM কী?**
 
 * ORM = Object-Relational Mapping
 * Database table কে Python class হিসেবে map করে
@@ -17,7 +17,7 @@ class Product(models.Model):
     price = models.FloatField()
 ```
 
-2️⃣ **ORM Workflow Steps**
+2️ **ORM Workflow Steps**
 
 **Step 1: Model Definition**
 
@@ -121,7 +121,7 @@ cat = Category.objects.get(id=1)
 cat_products = cat.product_set.all()
 ```
 
-3️⃣ **ORM Workflow Diagram (Conceptual)**
+3️ **ORM Workflow Diagram (Conceptual)**
 
 ```
 Python Code (Model & Query)
@@ -139,7 +139,7 @@ Database (CRUD operation)
 Python Objects Returned
 ```
 
-4️⃣ **Key Points**
+4️ **Key Points**
 
 * ORM = Python ↔ Database Bridge
 * Manager = Gateway for queries
@@ -147,7 +147,7 @@ Python Objects Returned
 * Workflow = Define Model → Migration → Query → Manipulate → Save
 * ORM workflow = Pythonic way to handle database
 
-💡 **Extra Tips**
+**Extra Tips**
 
 * ORM knowledge = essential for Django developers
 * Understanding migrations = crucial
