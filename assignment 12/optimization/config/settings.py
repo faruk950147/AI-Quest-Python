@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'cbv.apps.CbvConfig',
     'queryset.apps.QuerysetConfig'
 ]
 

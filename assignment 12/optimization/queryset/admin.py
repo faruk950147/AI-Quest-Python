@@ -1,13 +1,13 @@
 from django.contrib import admin
-from queryset.models import Teacher, Student
+from queryset.models import Author, Post
 # Register your models here.
-class TeacherAdmin(admin.ModelAdmin):
-    list_display = ['id', 'name', 'subject', 'department', 'salary', 'created_at', 'updated_at']
-admin.site.register(Teacher, TeacherAdmin)
+class AuthorAdmin(admin.ModelAdmin):
+    list_display = ['id', 'name', 'email', 'created_at', 'updated_at']
+admin.site.register(Author, AuthorAdmin)
 
-class StudentAdmin(admin.ModelAdmin):
-    list_display = ['id', 'name', 'age', 'roll', 'department', 'passed_in_year', 'passed_out_year', 'marks', 'created_at', 'updated_at']
-admin.site.register(Student, StudentAdmin)
+class PostAdmin(admin.ModelAdmin):
+    list_display = ['id', 'author', 'title', 'content', 'created_at', 'updated_at']
+admin.site.register(Post, PostAdmin)
 
 
 

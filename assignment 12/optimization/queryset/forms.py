@@ -1,30 +1,24 @@
 from django import forms
-from queryset.models import Teacher, Student
+from queryset.models import Author, Post
 
-class TeacherForm(forms.ModelForm):
+class AuthorForm(forms.ModelForm):
     class Meta:
-        model = Teacher
+        model = Author
         fields = '__all__'
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control'}),
-            'subject': forms.TextInput(attrs={'class': 'form-control'}),
-            'department': forms.TextInput(attrs={'class': 'form-control'}),
-            'salary': forms.NumberInput(attrs={'class': 'form-control'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control'}),
         }
         
 
-class StudentForm(forms.ModelForm):
+class PostForm(forms.ModelForm):
 
     class Meta:
-        model = Student
+        model = Post
         fields = '__all__'
 
         widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-control'}),
-            'age': forms.NumberInput(attrs={'class': 'form-control'}),
-            'roll': forms.NumberInput(attrs={'class': 'form-control'}),
-            'department': forms.Select(attrs={'class': 'form-control'}),
-            'passed_in_year': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
-            'passed_out_year': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
-            'marks': forms.NumberInput(attrs={'class': 'form-control'}),
+            'author': forms.Select(attrs={'class': 'form-control'}),
+            'title': forms.TextInput(attrs={'class': 'form-control'}),
+            'content': forms.Textarea(attrs={'class': 'form-control'}),
         }

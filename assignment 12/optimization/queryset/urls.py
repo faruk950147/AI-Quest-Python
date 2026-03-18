@@ -1,5 +1,5 @@
 from django.urls import path
-from queryset.views import StudentRegistrationPost
+from queryset.views import PostListView
 urlpatterns = [
-    path('', StudentRegistrationPost.as_view(), name = 'StudentRegistrationPost'),
+    path('', PostListView.as_view(), name = 'PostListView'),
 ]

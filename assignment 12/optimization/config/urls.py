@@ -20,8 +20,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('', include('cbv.urls')),
-    path('queryset/', include('queryset.urls')),
+    path('', include('queryset.urls')),
     path('admin/', admin.site.urls),
 ]
 if settings.DEBUG:
