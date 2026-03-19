@@ -15,7 +15,7 @@ class PostListView(View):
         for query in connection.queries:
             print(query['sql'])
         print(f"Total Number of queries: {len(connection.queries)}")
-        return HttpResponse("Hello World")
+        return HttpResponse("Without Optimization Hello World")
 
 class PostListViewOptimazed(View):
     '''With Optimization select_related'''
@@ -26,5 +26,5 @@ class PostListViewOptimazed(View):
         for query in connection.queries:
             print(query['sql'])
         print(f"Total Number of queries: {len(connection.queries)}")
-        return HttpResponse("Hello World")
+        return HttpResponse("With Optimization Hello World")
 
