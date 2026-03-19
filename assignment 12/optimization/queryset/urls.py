@@ -8,7 +8,7 @@ from queryset.views import (
 )
 
 urlpatterns = [
-    path('', PostListWithoutSelectRelatedView.as_view(), name='posts-no-select'),
+    path('no-select/', PostListWithoutSelectRelatedView.as_view(), name='posts-no-select'),
     path('select/', PostListWithSelectRelatedView.as_view(), name='posts-select'),
     path('no-prefetch/', PostListWithoutPrefetchRelatedView.as_view(), name='posts-no-prefetch'),
     path('prefetch/', PostListWithPrefetchRelatedView.as_view(), name='posts-prefetch'),

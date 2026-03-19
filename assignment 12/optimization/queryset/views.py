@@ -74,3 +74,9 @@ class PostListOptimizedView(View):
             print(query['sql'])
         print(f"Total Number of queries: {len(connection.queries)}")
         return HttpResponse("Fully optimized view")
+    
+
+class ShowView(View):
+    def get(self, request):
+        return render(request, 'queryset/show.html')
+    
