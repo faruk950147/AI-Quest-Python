@@ -47,7 +47,7 @@ class PostListWithoutPrefetchRelatedView(View):
 
 class PostListWithPrefetchRelatedView(View):
     def get(self, request):
-        posts = Post.objects.prefetch_related('tags')  # efficient prefetch
+        posts = Post.objects.prefetch_related('tags', 'comments')  # efficient prefetch
         for post in posts:
             print(post.title)
             for tag in post.tags.all():
