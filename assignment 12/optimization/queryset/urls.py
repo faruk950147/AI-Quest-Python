@@ -5,6 +5,7 @@ from queryset.views import (
     PostListWithoutPrefetchRelatedView,
     PostListWithPrefetchRelatedView,
     PostListOptimizedView,
+    ShowView,
 )
 
 urlpatterns = [
@@ -13,4 +14,5 @@ urlpatterns = [
     path('no-prefetch/', PostListWithoutPrefetchRelatedView.as_view(), name='posts-no-prefetch'),
     path('prefetch/', PostListWithPrefetchRelatedView.as_view(), name='posts-prefetch'),
     path('optimized/', PostListOptimizedView.as_view(), name='posts-optimized'),
+    path('', ShowView.as_view(), name='show'),
 ]

@@ -25,16 +25,19 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'PostListWithoutSelectRelatedView' %}">Without Select Related</a>
+                            <a class="nav-link" href="{% url 'posts-no-select' %}">Without Select Related</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'PostListWithSelectRelatedView' %}">With Select Related</a>
+                            <a class="nav-link" href="{% url 'posts-select' %}">With Select Related</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'PostListWithoutPrefetchRelatedView' %}">Without Prefetch Related</a>
+                            <a class="nav-link" href="{% url 'posts-no-prefetch' %}">Without Prefetch Related</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'PostListWithPrefetchRelatedView' %}">With Prefetch Related</a>
+                            <a class="nav-link" href="{% url 'posts-prefetch' %}">With Prefetch Related</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'posts-optimized' %}">Optimized</a>
                         </li>
                     </ul>
                 </div>
