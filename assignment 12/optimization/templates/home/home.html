@@ -24,12 +24,12 @@
                     <thead class="table-dark">
                         <tr>
                             <th>SL</th>
-                            <th>author</th>
-                            <th>tags</th>
-                            <th>title</th>
-                            <th>content</th>
-                            <th>created_at</th>
-                            <th>updated_at</th>
+                            <th>Author</th>
+                            <th>Tags</th>
+                            <th>Title</th>
+                            <th>Content</th>
+                            <th>Created At</th>
+                            <th>Updated At</th>
                         </tr>
                     </thead>
 
@@ -37,7 +37,15 @@
 
                         <!-- All data -->
                         <tr>
-
+                            {% for post in posts %}
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ post.author.name }}</td>
+                            <td>{{ post.tags.all|join:", " }}</td>
+                            <td>{{ post.title }}</td>
+                            <td>{{ post.content }}</td>
+                            <td>{{ post.created_at }}</td>
+                            <td>{{ post.updated_at }}</td>
+                            {% endfor %}
                         </tr>
                         <tr>
                             <td colspan="8" class="text-center text-danger">
