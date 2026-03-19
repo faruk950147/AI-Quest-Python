@@ -36,8 +36,8 @@
                     <tbody>
 
                         <!-- All data -->
+                        {% for post in posts %}
                         <tr>
-                            {% for post in posts %}
                             <td>{{ forloop.counter }}</td>
                             <td>{{ post.author.name }}</td>
                             <td>{{ post.tags.all|join:", " }}</td>
@@ -45,8 +45,8 @@
                             <td>{{ post.content }}</td>
                             <td>{{ post.created_at }}</td>
                             <td>{{ post.updated_at }}</td>
-                            {% endfor %}
                         </tr>
+                        {% endfor %}
                         <tr>
                             <td colspan="8" class="text-center text-danger">
                                 No data found
