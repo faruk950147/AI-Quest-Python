@@ -8,9 +8,9 @@ from queryset.views import (
 )
 
 urlpatterns = [
-    path('posts/no-select/', PostListWithoutSelectRelatedView.as_view(), name='posts-no-select'),
-    path('posts/select/', PostListWithSelectRelatedView.as_view(), name='posts-select'),
-    path('posts/no-prefetch/', PostListWithoutPrefetchRelatedView.as_view(), name='posts-no-prefetch'),
-    path('posts/prefetch/', PostListWithPrefetchRelatedView.as_view(), name='posts-prefetch'),
-    path('posts/optimized/', PostListOptimizedView.as_view(), name='posts-optimized'),
+    path('', PostListWithoutSelectRelatedView.as_view(), name='posts-no-select'),
+    path('select/', PostListWithSelectRelatedView.as_view(), name='posts-select'),
+    path('no-prefetch/', PostListWithoutPrefetchRelatedView.as_view(), name='posts-no-prefetch'),
+    path('prefetch/', PostListWithPrefetchRelatedView.as_view(), name='posts-prefetch'),
+    path('optimized/', PostListOptimizedView.as_view(), name='posts-optimized'),
 ]
