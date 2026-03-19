@@ -79,6 +79,8 @@ class PostListOptimizedView(View):
 class ShowView(View):
     def get(self, request):
         # forword query for author
-        author = Author.objects.all()
-        return render(request, 'queryset/show.html', {'author': author})
+        author = Author.objects.first()
+        # reverse query for posts
+        posts = author.posts.all()
+        return render(request, 'queryset/show.html', {'author': author, 'posts': posts})
     
