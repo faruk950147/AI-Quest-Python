@@ -1,30 +1,76 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views import View
-from queryset.models import Author, Post
-from django.db.models import Count, Avg, Max, Min, Sum, Q, F
+from queryset.models import Author, Post, Comment
 from django.db import connection
 
-
-class PostListView(View):
-    '''Without Optimization select_related forward query relation'''
+# ==============================
+# 1. Forward relation: Post → Author
+# ==============================
+class PostListWithoutSelectRelatedView(View):
     def get(self, request):
-        posts = Post.objects.all()
+        posts = Post.objects.all()  # N+1 query problem
+        for post in posts:
+            print(post.author.name)  # Each access triggers a query
+        for query in connection.queries:
+            print(query['sql'])
+        print(f"Total Number of queries: {len(connection.queries)}")
+        return HttpResponse("Without select_related optimization")
+
+
+class PostListWithSelectRelatedView(View):
+    def get(self, request):
+        posts = Post.objects.select_related('author')  # single query
         for post in posts:
             print(post.author.name)
         for query in connection.queries:
             print(query['sql'])
         print(f"Total Number of queries: {len(connection.queries)}")
-        return HttpResponse("Without Optimization Hello World")
+        return HttpResponse("With select_related optimization")
 
-class PostListViewOptimazed(View):
-    '''With Optimization select_related forward query relation'''
+
+# ==============================
+# 2. Reverse / ManyToMany relation: Post → Tag
+# ==============================
+class PostListWithoutPrefetchRelatedView(View):
     def get(self, request):
-        posts = Post.objects.select_related('author')
+        posts = Post.objects.all()  # N+1 query on tags
         for post in posts:
-            print(post.author.name)
+            print(post.title)
+            for tag in post.tags.all():
+                print(tag.name)
         for query in connection.queries:
             print(query['sql'])
         print(f"Total Number of queries: {len(connection.queries)}")
-        return HttpResponse("With Optimization Hello World")
+        return HttpResponse("Without prefetch_related optimization")
 
+
+class PostListWithPrefetchRelatedView(View):
+    def get(self, request):
+        posts = Post.objects.prefetch_related('tags')  # efficient prefetch
+        for post in posts:
+            print(post.title)
+            for tag in post.tags.all():
+                print(tag.name)
+        for query in connection.queries:
+            print(query['sql'])
+        print(f"Total Number of queries: {len(connection.queries)}")
+        return HttpResponse("With prefetch_related optimization")
+
+
+# ==============================
+# 3. Combined optimization: Author + Tags + Comments
+# ==============================
+class PostListOptimizedView(View):
+    def get(self, request):
+        posts = Post.objects.select_related('author').prefetch_related('tags', 'comments')
+        for post in posts:
+            print(post.title, post.author.name)
+            for tag in post.tags.all():
+                print(tag.name)
+            for comment in post.comments.all():
+                print(comment.content)
+        for query in connection.queries:
+            print(query['sql'])
+        print(f"Total Number of queries: {len(connection.queries)}")
+        return HttpResponse("Fully optimized view")

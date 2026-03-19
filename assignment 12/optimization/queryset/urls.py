@@ -1,7 +1,16 @@
 from django.urls import path
-from queryset.views import PostListView, PostListViewOptimazed
+from queryset.views import (
+    PostListWithoutSelectRelatedView,
+    PostListWithSelectRelatedView,
+    PostListWithoutPrefetchRelatedView,
+    PostListWithPrefetchRelatedView,
+    PostListOptimizedView,
+)
 
 urlpatterns = [
-    path('', PostListView.as_view(), name = 'PostListView'),
-    path('optimazed/', PostListViewOptimazed.as_view(), name = 'PostListViewOptimazed'),
+    path('posts/no-select/', PostListWithoutSelectRelatedView.as_view(), name='posts-no-select'),
+    path('posts/select/', PostListWithSelectRelatedView.as_view(), name='posts-select'),
+    path('posts/no-prefetch/', PostListWithoutPrefetchRelatedView.as_view(), name='posts-no-prefetch'),
+    path('posts/prefetch/', PostListWithPrefetchRelatedView.as_view(), name='posts-prefetch'),
+    path('posts/optimized/', PostListOptimizedView.as_view(), name='posts-optimized'),
 ]

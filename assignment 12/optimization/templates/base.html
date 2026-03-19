@@ -25,16 +25,16 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            <a class="nav-link" href="{% url 'PostListWithoutSelectRelatedView' %}">Without Select Related</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Features</a>
+                            <a class="nav-link" href="{% url 'PostListWithSelectRelatedView' %}">With Select Related</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Pricing</a>
+                            <a class="nav-link" href="{% url 'PostListWithoutPrefetchRelatedView' %}">Without Prefetch Related</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Contact</a>
+                            <a class="nav-link" href="{% url 'PostListWithPrefetchRelatedView' %}">With Prefetch Related</a>
                         </li>
                     </ul>
                 </div>
