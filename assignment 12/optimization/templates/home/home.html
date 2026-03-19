@@ -13,7 +13,6 @@
             <!-- Form -->
             <div class="col-md-4">
  
-                </form>
             </div>
 
 
@@ -25,64 +24,27 @@
                     <thead class="table-dark">
                         <tr>
                             <th>SL</th>
-                            <th>Name</th>
-                            <th>Age</th>
+                            <th>author</th>
+                            <th>tags</th>
+                            <th>title</th>
+                            <th>content</th>
+                            <th>created_at</th>
+                            <th>updated_at</th>
                         </tr>
                     </thead>
 
                     <tbody>
 
-                        <!-- All Students -->
-                        {% for student in students %}
+                        <!-- All data -->
                         <tr>
-                            <td>{{ forloop.counter }}</td>
-                            <td>{{ student.name }}</td>
-                            <td>{{ student.age }}</td>
-                            <td>{{ student.roll }}</td>
-                            <td>{{ student.get_department_display }}</td>
-                            <td>{{ student.passed_in_year|date:"Y-m-d" }}</td>
-                            <td>{{ student.passed_out_year|date:"Y-m-d" }}</td>
-                            <td>{{ student.marks }}</td>
+
                         </tr>
-                        {% empty %}
                         <tr>
                             <td colspan="8" class="text-center text-danger">
-                                No Student Found
+                                No data found
                             </td>
                         </tr>
-                        {% endfor %}
-
-
-                        <!-- Specific Query Result -->
-                        {% if student %}
-                        <tr class="table-info">
-                            <th colspan="8" class="text-center">
-                                Specific Query Result
-                            </th>
-                        </tr>
-
-                        <tr>
-                            <td>#</td>
-                            <td>{{ student.name }}</td>
-                            <td>{{ student.age }}</td>
-                            <td>{{ student.roll }}</td>
-                            <td>{{ student.get_department_display }}</td>
-                            <td>{{ student.passed_in_year|date:"Y-m-d" }}</td>
-                            <td>{{ student.passed_out_year|date:"Y-m-d" }}</td>
-                            <td>{{ student.marks }}</td>
-                        </tr>
-                        {% endif %}
-
-
-                        <!-- Total Students -->
-                        <tr class="table-warning">
-                            <td colspan="8" class="text-center">
-                                Total Students : {{ total_students }}
-                            </td>
-                        </tr>
-
                     </tbody>
-
                 </table>
 
             </div>
