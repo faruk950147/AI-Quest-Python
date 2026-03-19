@@ -7,7 +7,7 @@ from django.db import connection
 
 
 class PostListView(View):
-    '''Without Optimization select_related'''
+    '''Without Optimization select_related forward query relation'''
     def get(self, request):
         posts = Post.objects.all()
         for post in posts:
@@ -18,7 +18,7 @@ class PostListView(View):
         return HttpResponse("Without Optimization Hello World")
 
 class PostListViewOptimazed(View):
-    '''With Optimization select_related'''
+    '''With Optimization select_related forward query relation'''
     def get(self, request):
         posts = Post.objects.select_related('author')
         for post in posts:
