@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.generic import (
     View, TemplateView, RedirectView, 
     ListView, DetailView, CreateView, 
-    UpdateView, DeleteView, 
+    UpdateView, DeleteView, FormView, 
     
 )
 
