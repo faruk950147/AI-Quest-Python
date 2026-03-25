@@ -5,8 +5,5 @@ websocket_urlpatterns = [
     path('ws/office/', OfficeSyncConsumer.as_asgi()),
     path('ws/office-async/', OfficeAsyncConsumer.as_asgi()),
 ]
-# http://127.0.0.1:8000/ws/office/
-# http://127.0.0.1:8000/ws/office-async/
-
 # ws://127.0.0.1:8000/ws/office/
 # ws://127.0.0.1:8000/ws/office-async/
