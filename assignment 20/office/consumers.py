@@ -49,7 +49,7 @@ class OfficeSyncConsumer(SyncConsumer):
         for i in range(50):
             self.send({
                 'type': 'websocket.send',
-                'text': f'Message {i+1}'
+                'text': str(f'Message {i+1}')
             })
             time.sleep(1)
     
@@ -70,7 +70,7 @@ class OfficeAsyncConsumer(AsyncConsumer):
         for i in range(5):
             await self.send({
                 'type': 'websocket.send',
-                'text': f'Message {i+1}'
+                'text': str(f'Message {i+1}')
             })
             await asyncio.sleep(1)
     
@@ -80,25 +80,7 @@ class OfficeAsyncConsumer(AsyncConsumer):
         })
 '''        
  
-class OfficeSyncConsumer(SyncConsumer):
-    def websocket_connect(self, event):
-        self.send({
-            'type': 'websocket.accept'
-        })
-    
-    def websocket_receive(self, event):
-        print(f'WebSocket received: {event["text"]}')
-        for i in range(50):
-            self.send({
-                'type': 'websocket.send',
-                'text': f'Message {i+1}'
-            })
-            time.sleep(1)
-    
-    def websocket_disconnect(self, event):
-        self.send({
-            'type': 'websocket.close'
-        })
+
  
 class OfficeAsyncConsumer(AsyncConsumer):
     async def websocket_connect(self, event):
@@ -108,14 +90,14 @@ class OfficeAsyncConsumer(AsyncConsumer):
     
     async def websocket_receive(self, event):
         print(f'WebSocket received: {event["text"]}')
-        await self.send({
-            'type': 'websocket.send',
-            'text': event['text']
-        })
+        for i in range(5):
+            await self.send({
+                'type': 'websocket.send',
+                'text': f'Message {i+1}'
+            })
+            await asyncio.sleep(1)
     
     async def websocket_disconnect(self, event):
-        self.send({
+        await self.send({
             'type': 'websocket.close'
         })
-        
-        
