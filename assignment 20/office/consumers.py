@@ -80,7 +80,42 @@ class OfficeAsyncConsumer(AsyncConsumer):
         })
 '''        
  
+class OfficeSyncConsumer(SyncConsumer):
+    def websocket_connect(self, event):
+        self.send({
+            'type': 'websocket.accept'
+        })
+    
+    def websocket_receive(self, event):
+        print(f'WebSocket received: {event["text"]}')
+        for i in range(50):
+            self.send({
+                'type': 'websocket.send',
+                'text': f'Message {i+1}'
+            })
+            time.sleep(1)
+    
+    def websocket_disconnect(self, event):
+        self.send({
+            'type': 'websocket.close'
+        })
  
-        
+class OfficeAsyncConsumer(AsyncConsumer):
+    async def websocket_connect(self, event):
+        await self.send({
+            'type': 'websocket.accept'
+        })
+    
+    async def websocket_receive(self, event):
+        print(f'WebSocket received: {event["text"]}')
+        await self.send({
+            'type': 'websocket.send',
+            'text': event['text']
+        })
+    
+    async def websocket_disconnect(self, event):
+        self.send({
+            'type': 'websocket.close'
+        })
         
         
