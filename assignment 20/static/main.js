@@ -1,5 +1,5 @@
 // web socket
-var socket = new WebSocket("ws://127.0.0.1:8000/ws/office/");
+var socket = new WebSocket("ws://127.0.0.1:8000/ws/office/async");
 
 socket.onopen = function (e) {
     console.log("Connected to WebSocket server");
