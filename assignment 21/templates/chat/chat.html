@@ -3,16 +3,20 @@
 {% block title %}Chat{% endblock %}
 
 {% block content %}
-    <main class="chat-main">
+    <main class="chat-main mt-5">
         <div class="container">
-            <div class="chat-messages">
-                <div class="show-messages">
-                    <textarea name="message" id="message" cols="30" rows="10"></textarea>
+            <div class="row">
+                <div class="col-6 mx-auto">
+                    <div class="chat-messages">
+                        <div class="form-group mb-3">
+                            <textarea class="form-control" name="message" id="message" cols="30" rows="10"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <input type="text" class="form-control" placeholder="Type a message...">
+                        <button class="btn btn-primary form-control mt-2">Send</button>
+                    </div>
                 </div>
-            </div>
-            <div class="chat-input">
-                <input type="text" placeholder="Type a message...">
-                <button>Send</button>
             </div>
         </div>
     </main>
