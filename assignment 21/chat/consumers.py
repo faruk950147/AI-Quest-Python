@@ -1,33 +1,14 @@
-from channels.consumer import AsyncConsumer
-import json
+from channels.generic.websocket import AsyncWebsocketConsumer
 
-class ChatConsumer(AsyncConsumer):
+class ChatConsumer(AsyncWebsocketConsumer):
+    async def connect(self):
+        await self.accept()
+        print("connected from frontend...")
+        print("channel_name:", self.channel_name)
 
-    async def websocket_connect(self, event):
-        print("connected", event)
-        await self.send({
-            "type": "websocket.accept"
-        })
-
-    async def websocket_receive(self, event):
-        print("received", event)
-
-        text_data = event.get("text", None)
-
-        if text_data:
-            try:
-                data = json.loads(text_data)
-                message = data.get("message", "")
-            except:
-                message = text_data  # fallback
-
-            await self.send({
-                "type": "websocket.send",
-                "text": f"Echo: {message}"
-            })
-
-    async def websocket_disconnect(self, event):
-        print("disconnected", event)
-        await self.send({
-            "type": "websocket.close"
-        })
+    async def receive(self, text_data=None, bytes_data=None):
+        await self.send(text_data=text_data)
+        print("received from frontend...", text_data)
+    
+    async def disconnect(self, close_code):
+        print("disconnected...")
