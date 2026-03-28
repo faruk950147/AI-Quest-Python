@@ -11,6 +11,7 @@ dependencies = [
     "daphne==4.2.1",
     "django==4.2.16",
     "pillow==12.1.1",
+    "python-dotenv==1.1.1",
     "sqlparse==0.5.5",
     "tzdata==2025.3",
 ]
