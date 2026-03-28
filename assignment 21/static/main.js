@@ -25,15 +25,3 @@ socket.onclose = function () {
     console.log("WebSocket closed");
 };
 
-// Send message
-sendBtn.onclick = function () {
-    const message = input.value;
-    if (!message.trim()) return;
-
-    socket.send(JSON.stringify({
-        username: "Faruk",  // replace dynamically if needed
-        message: message
-    }));
-
-    input.value = "";
-};
