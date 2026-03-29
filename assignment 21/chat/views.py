@@ -5,4 +5,4 @@ from django.views import View
 class ChatView(View):
     def get(self, request, room_name):
         print("Room name:", room_name)
-        return render(request, 'chat.html', {'room_name': room_name})
+        return render(request, 'chat/chat.html', {'room_name': room_name})
