@@ -7,8 +7,6 @@ class ChatConsumer(AsyncConsumer):
         # Get room name from the URL route (e.g., /ws/chat/<room_name>/)
         self.room_name = self.scope['url_route']['kwargs']['room_name']
         self.room_group_name = f"chat_{self.room_name}"
-        
-        print('scope:', type(self.scope))
 
         # Add this channel to the group
         await self.channel_layer.group_add(
@@ -24,7 +22,8 @@ class ChatConsumer(AsyncConsumer):
         print('channel name:', self.channel_name)
         print('room name:', self.room_name)
         print('room group name:', self.room_group_name)
-        print('scope:', type(self.scope))
+        print('scope:==========================', type(self.scope))
+        print('scope:==========================', self.scope)
     
     async def websocket_receive(self, event):
         # Receive message from WebSocket
