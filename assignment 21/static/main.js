@@ -2,22 +2,26 @@ const chatBox = document.getElementById("chat-show");
 const input = document.getElementById("chat-input");
 const sendBtn = document.getElementById("send-btn");
 
-const roomName = "room1"; // dynamic room
-const socket = new WebSocket(`ws://${window.location.host}/ws/chat/${roomName}/`);
+// Get room name from URL
+const roomName = window.location.pathname.split('/')[2];
 
-// connection status
+// Use wss if HTTPS
+const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
+const socket = new WebSocket(`${protocol}://${window.location.host}/ws/chat/${roomName}/`);
+
+// Connection opened
 socket.onopen = function (e) {
-    console.log("WebSocket connected", e);
+    console.log("WebSocket connected:", e);
 };
 
-// Receive message
+// Message received
 socket.onmessage = function (e) {
     console.log("Message received:", e.data);
 };
 
-// connection error
-socket.onerror = function (error) {
-    console.log("WebSocket error:", error);
+// Connection error
+socket.onerror = function (e) {
+    console.error("WebSocket error:", e);
 };
 
 // connection close
