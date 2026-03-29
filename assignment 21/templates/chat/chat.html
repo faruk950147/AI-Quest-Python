@@ -7,16 +7,24 @@
     <div class="container">
         <div class="row">
             <div class="col-6 mx-auto">
-                <!-- Chat Display Box -->
+
+                <!-- Room Title -->
+                <h4 class="mb-3">Chat Room: {{ room_name }}</h4>
+
+                <!-- Hidden JSON (IMPORTANT for JS) -->
+                {{ room_name|json_script:"room-name" }}
+
+                <!-- Chat Display -->
                 <div class="chat-showbox mb-3">
-                    <textarea class="form-control" id="chat-show" rows="10" readonly></textarea>
+                    <textarea class="form-control" id="chat-log" rows="12" readonly></textarea>
                 </div>
 
-                <!-- Input + Send Button -->
+                <!-- Input + Send -->
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" id="chat-input" placeholder="Type a message...">
+                    <input type="text" class="form-control" id="chat-input" placeholder="Type a message..." autocomplete="off">
                     <button class="btn btn-primary" id="send-btn">Send</button>
                 </div>
+
             </div>
         </div>
     </div>
