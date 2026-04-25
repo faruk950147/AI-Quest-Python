@@ -1,0 +1,92 @@
+1. Redis check করার command
+redis-cli ping
+
+কাজ:
+Redis ঠিকমতো চলছে কিনা চেক করে
+Output: PONG = Redis OK
+
+2. Redis server চালু করার command
+redis-server --daemonize yes
+
+কাজ:
+Redis background এ চালু করে
+
+3. Django install করার command
+pip3 install django
+
+কাজ:
+Python Django framework install করে
+
+4. Django version check
+django-admin --version
+
+কাজ:
+Django install হয়েছে কিনা এবং version দেখায়
+
+5. pip install (Python package installer)
+apt install python3-pip
+
+কাজ:
+Python package install করার tool ইনস্টল করে
+
+6. Celery + Redis (Django background task)
+pip3 install celery redis
+
+কাজ:
+
+Celery → background task system
+Redis → message broker
+7. Redis snap status check
+snap services redis
+
+কাজ:
+Redis running / stopped status দেখায়
+
+8. Redis start (snap version)
+snap start redis
+
+কাজ:
+Redis service চালু করে (snap install হলে)
+
+তোমার ভুলটা কোথায় হয়েছিল?
+
+তুমি এই জায়গায় ভুল command paste করেছো:
+
+echo "deb ... redis.list
+
+এটা আসলে APT repo setup করার command
+কিন্তু তুমি GPG prompt এর ভিতরে চালিয়ে ফেলেছো
+
+Simple Summary
+Redis test → redis-cli ping
+Redis run → redis-server --daemonize yes
+Django install → pip3 install django
+Django check → django-admin --version
+
+চাও হলে আমি তোমাকে
+Django + Redis + Celery full working setup (real project structure সহ) দেখিয়ে দিতে পারি।
+
+list
+
+নিচে তোমার সব command গুলো simple list আকারে দিলাম
+
+System & Package Install
+apt update → package list update করে
+apt install python3-pip → pip install করে (Python package manager)
+sudo -i → root user এ যায়
+Django related
+pip3 install django → Django install করে
+django-admin --version → Django version check করে
+Redis related
+snap install redis → Redis install (snap version)
+redis-server --daemonize yes → Redis background এ চালু করে
+redis-cli ping → Redis চলছে কিনা check (PONG আসে)
+Celery + Redis (Django background task)
+pip3 install celery redis → Celery + Redis Python package install করে
+Service / Status check
+snap services redis → Redis service status দেখায়
+snap start redis → Redis start করে (snap version হলে)
+GPG / Repo setup (Redis official repo)
+curl -fsSL https://packages.redis.io/gpg | gpg --dearmor -o ... → Redis key add করে
+echo "deb ..." | tee /etc/apt/sources.list.d/redis.list → Redis repo add করে
+apt update → নতুন repo load করে
