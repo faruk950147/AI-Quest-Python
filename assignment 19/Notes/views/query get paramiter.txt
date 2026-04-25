@@ -46,3 +46,40 @@ def product_list(request):
     http://localhost:8000/products/?category=electronics&sort=price
 
 {% endcomment %}
+Correct Way (a tag use করে)
+<li>
+    <a href="{% url 'product_detail' product.id %}">
+        {{ product.name }} - {{ product.category }} - {{ product.price }}
+    </a>
+</li>
+
+এটা কী করছে?
+
+পুরো <li> item clickable হয়ে যাবে
+click করলে যাবে product detail page-এ
+
+URL pattern লাগবে
+path('product/<int:id>/', views.product_detail, name='product_detail')
+Simple View
+def product_detail(request, id):
+    product = Product.objects.get(id=id)
+    return render(request, 'product_detail.html', {'product': product})
+যদি শুধু name clickable করতে চাও
+<li>
+    <a href="{% url 'product_detail' product.id %}">
+        {{ product.name }}
+    </a>
+    - {{ product.category }} - {{ product.price }}
+</li>
+
+Bonus Tip
+
+Better practice 👉 id এর বদলে slug use করা
+
+<a href="{% url 'product_detail' product.slug %}">
+Summary
+
+✔ <a> দিলে clickable হয়
+✔ {% url %} দিয়ে dynamic link বানানো হয়
+✔ product detail page-এ redirect হয়
+
