@@ -1,92 +1,23 @@
-1. Redis check করার command
-redis-cli ping
+Message broker হলো একটি middleware system যা দুটি বা তার বেশি অ্যাপ্লিকেশন বা সার্ভিসের মধ্যে message পাঠানো এবং গ্রহণ করা সহজ করে। সহজভাবে বললে, এটি হলো “মেসেজ ডেলিভারি সার্ভিস”।
 
-কাজ:
-Redis ঠিকমতো চলছে কিনা চেক করে
-Output: PONG = Redis OK
-
-2. Redis server চালু করার command
-redis-server --daemonize yes
-
-কাজ:
-Redis background এ চালু করে
-
-3. Django install করার command
-pip3 install django
-
-কাজ:
-Python Django framework install করে
-
-4. Django version check
-django-admin --version
-
-কাজ:
-Django install হয়েছে কিনা এবং version দেখায়
-
-5. pip install (Python package installer)
-apt install python3-pip
-
-কাজ:
-Python package install করার tool ইনস্টল করে
-
-6. Celery + Redis (Django background task)
-pip3 install celery redis
-
-কাজ:
-
-Celery → background task system
-Redis → message broker
-7. Redis snap status check
-snap services redis
-
-কাজ:
-Redis running / stopped status দেখায়
-
-8. Redis start (snap version)
-snap start redis
-
-কাজ:
-Redis service চালু করে (snap install হলে)
-
-তোমার ভুলটা কোথায় হয়েছিল?
-
-তুমি এই জায়গায় ভুল command paste করেছো:
-
-echo "deb ... redis.list
-
-এটা আসলে APT repo setup করার command
-কিন্তু তুমি GPG prompt এর ভিতরে চালিয়ে ফেলেছো
-
-Simple Summary
-Redis test → redis-cli ping
-Redis run → redis-server --daemonize yes
-Django install → pip3 install django
-Django check → django-admin --version
-
-চাও হলে আমি তোমাকে
-Django + Redis + Celery full working setup (real project structure সহ) দেখিয়ে দিতে পারি।
-
-list
-
-নিচে তোমার সব command গুলো simple list আকারে দিলাম
-
-System & Package Install
-apt update → package list update করে
-apt install python3-pip → pip install করে (Python package manager)
-sudo -i → root user এ যায়
-Django related
-pip3 install django → Django install করে
-django-admin --version → Django version check করে
-Redis related
-snap install redis → Redis install (snap version)
-redis-server --daemonize yes → Redis background এ চালু করে
-redis-cli ping → Redis চলছে কিনা check (PONG আসে)
-Celery + Redis (Django background task)
-pip3 install celery redis → Celery + Redis Python package install করে
-Service / Status check
-snap services redis → Redis service status দেখায়
-snap start redis → Redis start করে (snap version হলে)
-GPG / Repo setup (Redis official repo)
-curl -fsSL https://packages.redis.io/gpg | gpg --dearmor -o ... → Redis key add করে
-echo "deb ..." | tee /etc/apt/sources.list.d/redis.list → Redis repo add করে
-apt update → নতুন repo load করে
+১️⃣ Message Broker কি
+এটি একটি বিচ্ছিন্ন (decoupling) layer যেখানে producer (যিনি message পাঠান) এবং consumer (যিনি message গ্রহণ করেন) একে অপরকে সরাসরি জানে না।
+Broker messages কে receive, store, এবং forward করে।
+২️⃣ Message Broker-এর কাজ
+Receive messages – producer থেকে message নেয়।
+Queue messages – যদি consumer এখন busy থাকে, message temporary store হয়।
+Deliver messages – consumer ready হলে message পৌঁছে দেয়।
+Manage reliability – delivery confirmation, retry, ordered delivery ইত্যাদি handle করে।
+৩️⃣ কেন ব্যবহার করা হয়
+Systems loosely coupled থাকে। মানে, producer আর consumer একে অপরের timing বা location নিয়ে চিন্তা করে না।
+Asynchronous processing সম্ভব হয়।
+উদাহরণ: user signup → welcome email পাঠানো। Email sending delay করলে main app slow হবে না।
+Scalability সহজ হয়। অনেক producer এবং consumer সহজে add করা যায়।
+৪️⃣ Example Message Brokers
+RabbitMQ – Advanced features, supports multiple protocols।
+Redis Pub/Sub – Simple real-time messaging।
+Kafka – High throughput, stream processing।
+৫️⃣ ব্যবহার উদাহরণ
+Web application: User comment submit করলে background task worker comment moderation করবে।
+E-commerce: Order placed → payment processor এবং inventory update একসাথে handle হবে।
+Chat application: Real-time message delivery।
