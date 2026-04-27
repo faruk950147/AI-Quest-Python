@@ -14,10 +14,10 @@ Expected Result:
 100 - 50 - 30 = 20
 কিন্তু আসলে কি হতে পারে?
 
-দুইটা thread একসাথে পড়ছে:
+দুইটা thread একসাথে পড়ছে:
 
-Thread 1 পড়লো: balance = 100
-Thread 2 পড়লো: balance = 100
+Thread 1 পড়লো: balance = 100
+Thread 2 পড়লো: balance = 100
 
 তারপর:
 
