@@ -22,8 +22,8 @@ docker run python
 docker run -it python
 Django run
 docker run -p 8000:8000 python-django
-Name দিয়ে run
-docker run -p 8000:8000 --name myapp python-django
+Name দিয়ে run
+docker run -p 8000:8000 --name django-container django-image
 Running container list
 docker ps
 All containers
