@@ -11,12 +11,14 @@ myproject/
 │── Dockerfile
 │── docker-compose.yml
 │── .env
+
 2. requirements.txt
 Django==4.2
 gunicorn
 psycopg2-binary
 python-decouple
- 3. Dockerfile
+
+3. Dockerfile
 FROM python:3.12.10
 
 WORKDIR /app
@@ -30,6 +32,7 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
 CMD ["gunicorn", "myproject.wsgi:application", "--bind", "0.0.0.0:8000"]
+
 4. docker-compose.yml (Django + PostgreSQL)
 version: "3.9"
 
@@ -57,6 +60,7 @@ services:
 
 volumes:
   pgdata:
+
 5. .env file
 DEBUG=1
 SECRET_KEY=your-secret-key
@@ -65,6 +69,7 @@ DB_USER=myuser
 DB_PASSWORD=mypass
 DB_HOST=db
 DB_PORT=5432
+
 6. settings.py (important part)
 import os
 from decouple import config
@@ -84,19 +89,24 @@ DATABASES = {
         "PORT": config("DB_PORT"),
     }
 }
+
 7. Run Project (Step by Step)
 Build
 docker-compose build
 Run
-docker-compose up
+docker compose up
+
 Background run
-docker-compose up -d
+docker compose up -d
+
 Migrate DB
-docker-compose run web python manage.py migrate
+docker compose run web python manage.py migrate
 Create admin
-docker-compose run web python manage.py createsuperuser
+docker compose run web python manage.py createsuperuser
+
 8. Stop Project
-docker-compose down
+docker compose down
+
 9. Useful Extra Commands
 logs
 docker-compose logs -f

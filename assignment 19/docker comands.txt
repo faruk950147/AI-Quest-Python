@@ -3,6 +3,7 @@
 docker --version
 docker version
 docker info
+
 2. Images
 Image download
 docker pull python
@@ -14,6 +15,7 @@ docker rmi image_id
 docker rmi image_name
 Unused image remove
 docker image prune
+
 3. Containers
 Run container
 docker run python
@@ -35,17 +37,20 @@ Remove container
 docker rm container_id
 Remove stopped containers
 docker container prune
+
 4. Build Image
 Build image
 docker build -t python-django .
 Version tag
 docker build -t python-django:v1 .
+
 5. Logs & Debug
 Logs
 docker logs container_id
 docker logs -f container_id
 Container shell
 docker exec -it container_id bash
+
 6. Docker Compose
 Run
 docker compose up
@@ -53,9 +58,11 @@ Background run
 docker compose up -d
 Stop
 docker compose down
+
 7. Cleanup
 docker system prune
 docker system prune -a
+
 8. Network
 docker network ls
 docker network create mynetwork
@@ -106,26 +113,35 @@ If bash not available:
 docker compose exec web sh
 8. Run one-time command
 docker compose run service_name command
+
 9. Build images only
 docker compose build
+
 10. Pull images
 docker compose pull
+
 11. Start / Stop specific service
 docker compose start service_name
 docker compose stop service_name
+
 12. Remove stopped containers
 docker compose rm
+
 13. Scale service (multiple containers)
 docker compose up --scale web=3
+
 14. View config
 docker compose config
+
 15. Check running processes inside compose
 docker compose top
+
 Bonus (Real-world workflow)
 docker compose up -d --build
 docker compose logs -f
 docker compose exec web bash
 docker compose down
+
 Quick Summary
 up → start
 down → stop & remove

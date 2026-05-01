@@ -2,6 +2,7 @@ Django + Docker All Commands (Complete Guide)
 1. Docker Version Check
 docker --version
 docker compose version
+
 2. Docker Image Build
 docker build -t django-app .
 
@@ -15,6 +16,7 @@ docker run -p 8000:8000 django-app
 http://localhost:8000
 4. Background (Detached Mode)
 docker run -d -p 8000:8000 django-app
+
 5. Running Containers List
 docker ps
 
@@ -23,10 +25,13 @@ All container (stopped সহ)
 docker ps -a
 6. Stop Container
 docker stop container_id
+
 7. Remove Container
 docker rm container_id
+
 8. Remove Image
 docker rmi image_id
+
 9. Docker Logs (Error দেখার জন্য)
 docker logs container_id
 
@@ -45,12 +50,16 @@ Background:
 docker compose up -d
 11. Build + Start
 docker compose up --build
+
 12. Stop Services
 docker compose down
+
 13. Restart Services
 docker compose restart
+
 14. View Running Services
 docker compose ps
+
 15. Logs (Compose)
 docker compose logs
 
