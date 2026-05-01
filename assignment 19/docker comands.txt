@@ -67,13 +67,16 @@ docker system prune -a
 docker network ls
 docker network create mynetwork
 docker network inspect network_name
+
 9. Volume
 docker volume ls
 docker volume create myvolume
 docker volume inspect myvolume
+
 10. Save & Load Image
 docker save -o file.tar image_name
 docker load -i file.tar
+
 Django Docker basic flow
 docker build -t django-app .
 docker run -p 8000:8000 django-app
@@ -81,26 +84,34 @@ docker run -p 8000:8000 django-app
 Docker Compose All Important Commands
 1. Version check
 docker compose version
+
 2. Run containers (start project)
 docker compose up
+
 Background (detached mode)
 docker compose up -d
+
 Build + start
 docker compose up --build
 3. Stop containers
 docker compose down
 Remove volumes too
 docker compose down -v
+
 4. Restart services
 docker compose restart
+
 5. View running containers
 docker compose ps
+
 6. View logs
 docker compose logs
+
 Follow logs (real-time)
 docker compose logs -f
 Specific service logs
 docker compose logs service_name
+
 7. Execute command inside container
 docker compose exec service_name bash
 
@@ -111,6 +122,7 @@ docker compose exec web bash
 If bash not available:
 
 docker compose exec web sh
+
 8. Run one-time command
 docker compose run service_name command
 
