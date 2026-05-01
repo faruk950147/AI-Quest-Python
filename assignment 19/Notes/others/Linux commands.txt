@@ -1,6 +1,65 @@
 Linux commands বলতে চেয়েছেন। কিছু দরকারি Linux command নিচে দিলাম:
 
 File & Directory
+1. Root access (recommended way)
+sudo -i
+
+root shell এ ঢুকবে
+
+sudo su
+
+current user থেকে root এ যাবে
+
+2. Root password সেট/চেঞ্জ
+sudo passwd root
+
+এরপর password দিবে:
+
+New password:
+Retype new password:
+3. আবার su ব্যবহার
+su
+
+root password চাইবে (যেটা তুমি সেট করেছো)
+
+4. তোমার current user check
+whoami
+5. user info দেখো
+id
+6. sudo access আছে কিনা চেক
+sudo -l
+7. root login enable (WSL advanced)
+sudo passwd root
+8. WSL restart (Windows side)
+
+PowerShell এ:
+
+wsl --shutdown
+
+তারপর আবার চালু করো
+
+9. logout from root
+exit
+Best Practice (important)
+
+WSL/Ubuntu এ:
+
+su avoid করো
+sudo ব্যবহার করো
+
+Quick summary
+
+Root হও:
+
+sudo -i
+
+Root password সেট:
+
+sudo passwd root
+
+Normal কাজ:
+
+sudo <command>
 pwd        # বর্তমান directory দেখায়
 ls         # ফাইল/ফোল্ডার লিস্ট
 ls -la     # hidden files সহ details
