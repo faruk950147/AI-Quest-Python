@@ -1,3 +1,17 @@
+এখন ঠিক command
+
+তুমি Docker Hub এ push করতে চাইলে:
+
+docker tag ac6ff836d5ff faruk950147/docker-test:latest
+তারপর push:
+docker push faruk950147/docker-test:latest
+সহজভাবে মনে রাখো
+জিনিস	মানে
+docker-test:latest	নাম + tag
+ac6ff836d5ff	IMAGE ID
+docker tag	rename / re-label image
+
+
 =========== All Commands ==============
 1. Version & Info
 docker --version
